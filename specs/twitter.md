@@ -9,3 +9,20 @@ H5P.TwitterUserFeed 1.0 · alias : twitter, twitteruserfeed, twitter-user-feed �
 - userName* : texte — Nom d'utilisateur sur Twitter
 - showReplies : booléen — Montrer les réponses
 - numTweets : nombre, min 1, max 20, défaut 5 — Nombre de tweets
+
+## Exemple complet (validé : validateur officiel H5P + affichage)
+
+Fichier `tests/examples/twitter.md` (médias dans `tests/media/`).
+
+````markdown
+---
+type: twitter
+title: Fil d'actualité – la NASA en français
+language: fr
+---
+```yaml
+userName: NASA_fr
+showReplies: false
+numTweets: 5
+```
+````

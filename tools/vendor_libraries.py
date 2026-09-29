@@ -270,7 +270,12 @@ def main():
     ap.add_argument("types", nargs="*", help="machine names (défaut: tous les types exécutables du registre)")
     ap.add_argument("--jobs", type=int, default=max(2, (os.cpu_count() or 2)))
     ap.add_argument("--no-options", action="store_true", help="ne pas suivre les sous-contenus proposés")
+    ap.add_argument("--out", help="dossier de sortie (défaut: vendor/libraries)")
     args = ap.parse_args()
+    global OUT, LOCK
+    if args.out:
+        OUT = Path(args.out).resolve()
+        LOCK = OUT.parent / (OUT.name + ".lock.json")
 
     registry = json.loads(REGISTRY.read_text())
     if REGISTRY_EXTRA.exists():

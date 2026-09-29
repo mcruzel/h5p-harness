@@ -72,7 +72,7 @@ Cible : Moodle 4.5 ou plus récent (API H5P 1.28).
 | `audio` | Audio | H5P.Audio 1.5 | Markdown |
 | `enregistreur-audio` | Audio Recorder | H5P.AudioRecorder 1.0 | yaml |
 | `trous` | Fill in the Blanks | H5P.Blanks 1.14 | Markdown |
-| `scenario` | Branching Scenario | H5P.BranchingScenario 1.11 | yaml |
+| `scenario` | Branching Scenario | H5P.BranchingScenario 1.11 | Markdown |
 | `graphique` | Chart | H5P.Chart 1.2 | Markdown |
 | `explorateur-choix` | ChoiceExplorer | H5P.ChoiceExplorer 1.0 | yaml |
 | `collage` | Collage | H5P.Collage 0.3 | yaml |
