@@ -1,5 +1,5 @@
 # paquets construits: reconstruits à l'identique par la CI (voir README)
-dist/
+/dist/
 __pycache__/
 *.pyc
 *.tmp
