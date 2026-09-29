@@ -1,0 +1,20 @@
+name: Nettoyage des releases H5P
+
+on: delete
+
+permissions:
+  contents: write
+
+jobs:
+  nettoyage:
+    if: github.event.ref_type == 'branch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Supprimer la release de la branche supprimée
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          BRANCH: ${{ github.event.ref }}
+        run: |
+          tag="h5p-$(echo "$BRANCH" | sed -E 's/[^A-Za-z0-9._-]+/-/g; s/^-+|-+$//g')"
+          gh release delete "$tag" --cleanup-tag -y || echo "pas de release $tag"

@@ -125,8 +125,10 @@ def main():
             issues.append(f"filtre H5P: {len(alt)} altération(s): " + "; ".join(alt[:3]))
         rd = r.get("render")
         if rd and (rd.get("initError") or rd.get("errors") or rd.get("missing") or not rd.get("text")):
-            issues.append("rendu: " + "; ".join(filter(None, [rd.get("initError")] + rd.get("errors", [])[:3] +
-                                                         rd.get("missing", [])[:2] + ([] if rd.get("text") else ["aucun texte affiché"]))))
+            parts = [rd.get("initError")] + rd.get("errors", [])[:3] + rd.get("missing", [])[:2]
+            if not rd.get("text"):
+                parts.append("aucun texte affiché")
+            issues.append("rendu: " + "; ".join(filter(None, parts)))
         name = r["package"]
         if issues:
             failed += 1

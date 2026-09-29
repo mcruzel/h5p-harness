@@ -1,0 +1,60 @@
+name: Paquets H5P
+
+on:
+  push:
+    paths:
+      - "sources/**"
+      - "h5pharness/**"
+      - "vendor/**"
+      - "tools/**"
+      - "tests/**"
+      - "requirements*.txt"
+      - ".github/workflows/h5p.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: h5p-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  paquets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Dépendances
+        run: pip install -r requirements-dev.txt
+
+      - name: Tests du harnais
+        run: python -m pytest
+
+      - name: Construire les paquets (sources/)
+        run: python -m h5pharness build sources/ --offline
+
+      - name: Validation officielle H5P (droits Moodle gestionnaire et enseignant)
+        run: |
+          if ! php -m 2>/dev/null | grep -qi '^zip$' || ! php -m | grep -qi '^mbstring$'; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq php-cli php-zip php-mbstring
+          fi
+          python tools/qa.py dist/
+
+      - name: Publier dans la release de la branche
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python tools/release.py dist/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paquets-h5p
+          path: dist/**/*.h5p
+          retention-days: 30

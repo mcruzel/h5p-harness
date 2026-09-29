@@ -180,7 +180,8 @@ def h5pignore(tree: Path):
     f = tree / ".h5pignore"
     if not f.exists():
         return set()
-    return {l.strip().strip("/") for l in f.read_text().splitlines() if l.strip() and not l.startswith("#")}
+    return {line.strip().strip("/") for line in f.read_text().splitlines()
+            if line.strip() and not line.startswith("#")}
 
 
 def copy_distributable(tree: Path, dest: Path, lib_json):
@@ -293,7 +294,8 @@ def main():
             for item, res, err in pool.map(resolve, batch):
                 machine, major, minor, why = item
                 if err:
-                    failures[f"{machine} {major}.{minor}" if major is not None else machine] = f"{err} (requis par {why})"
+                    key = f"{machine} {major}.{minor}" if major is not None else machine
+                    failures[key] = f"{err} (requis par {why})"
                     continue
                 repo, ref, lj, sem = res
                 key = f"{lj['machineName']}-{lj['majorVersion']}.{lj['minorVersion']}"
