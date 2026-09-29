@@ -113,3 +113,86 @@ H5P.GameMap 1.9 · alias : carte-jeu, gamemap, game-map · syntaxe Markdown simp
   lives=…, timeLimitGlobal=…, timeoutWarningGlobal=…, finishScore=…, enableRetry=true, enableSolutionsButton=true
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n, a11y.
+
+## Exemple complet (validé : validateur officiel H5P + affichage)
+
+Fichier `tests/examples/carte-jeu.md` (médias dans `tests/media/`).
+
+````markdown
+---
+type: carte-jeu
+title: Voyage au pays des fractions
+language: fr
+preset: entrainement
+---
+```yaml
+showTitleScreen: true
+titleScreen:
+  titleScreenIntroduction: |
+    **Voyage au pays des fractions**
+
+    Traverse la carte en réussissant chaque étape !
+headline: Voyage au pays des fractions
+gamemaps:
+  - mapOptions:
+      name: La vallée
+      backgroundSettings:
+        backgroundImage: ../media/paysage.jpg
+        backgroundDescription: Une vallée avec une maison et un arbre
+    # chemins explicites : sinon le harnais génère un chemin sans from/to (plantage JS)
+    paths:
+      - {from: 0, to: 1}
+      - {from: 1, to: 2}
+    # KO harnais : specialStageType / specialStageLinkURL exigés pour chaque étape, alors que
+    # toute valeur transforme l'étape en « étape spéciale » (exercices ignorés).
+    elements:
+      - id: etape-vocabulaire
+        type: stage
+        label: Le vocabulaire
+        telemetry: {x: "10", y: "70", width: "6", height: "9"}
+        neighbors: ["1"]
+        stageBehaviour: {canBeStartStage: true}
+        contentsList:
+          - contentType:
+              library: qcm
+              md: |
+                Dans la fraction 3/4, comment s'appelle le nombre 4 ?
+                - [x] Le dénominateur
+                - [ ] Le numérateur
+                  > Non : le numérateur est le nombre du haut (3).
+                - [ ] Le quotient
+      - id: etape-pont
+        type: stage
+        label: Le pont
+        telemetry: {x: "45", y: "55", width: "6", height: "9"}
+        neighbors: ["0", "2"]
+        contentsList:
+          - contentType:
+              library: trous
+              md: |
+                Complète.
+
+                La moitié d'un gâteau correspond à la fraction 1/{{2}}.
+      - id: etape-chateau
+        type: stage
+        label: Le château
+        telemetry: {x: "80", y: "30", width: "6", height: "9"}
+        neighbors: ["1"]
+        contentsList:
+          - contentType:
+              library: vf
+              md: |
+                La fraction 2/4 est égale à la fraction 1/2.
+                - [x] Vrai
+                - [ ] Faux
+          - contentType:
+              library: image
+              file: ../media/etoile-orange.png
+              alt: Une étoile, récompense de fin de parcours
+endScreen:
+  success:
+    endScreenTextSuccess: Bravo, tu as traversé le pays des fractions !
+  noSuccess:
+    endScreenTextNoSuccess: Tu peux recommencer pour améliorer ton score.
+```
+````

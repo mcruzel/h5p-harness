@@ -14,6 +14,8 @@ HEADINGS = ["h1", "h2", "h3", "h4", "h5", "h6"]
 TABLE_TAGS = {"table", "thead", "tbody", "tfoot", "tr", "td", "th", "colgroup", "col"}
 INLINE_FORMAT = {"strong", "em", "b", "i", "u", "s", "del", "strike", "sub", "sup", "code", "span", "mark", "small"}
 SAFE_URL = re.compile(r"^(https?:|mailto:|ftp:|#|/|\.)", re.I)
+SUBSCRIPT = dict(zip("0123456789+-=()aehklmnopstx", "₀₁₂₃₄₅₆₇₈₉₊₋₌₍₎ₐₑₕₖₗₘₙₒₚₛₜₓ"))
+SUPERSCRIPT = dict(zip("0123456789+-=()in", "⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ⁱⁿ"))
 
 
 def allowed_tags(field):
@@ -33,7 +35,14 @@ def allowed_tags(field):
 
 
 def is_html_field(field):
-    return field.get("type") == "text" and (field.get("widget") == "html" or "tags" in field)
+    """Rich text = the H5P editor shows CKEditor (widget html, possibly wrapped by showWhen). Fields that only
+    list 'tags' without that widget are plain inputs displayed as text (e.g. QuestionSet introPage.title)."""
+    if field.get("type") != "text":
+        return False
+    widget = field.get("widget")
+    if widget == "showWhen":
+        widget = (field.get("showWhen") or {}).get("widget")
+    return widget == "html"
 
 
 class _Node:
@@ -155,6 +164,12 @@ class Converter:
                     out.append(para)
                     continue
             elif tag not in self.allowed:
+                if tag in ("sub", "sup"):
+                    flat = _text_of(n)
+                    table = SUBSCRIPT if tag == "sub" else SUPERSCRIPT
+                    if flat and all(c in table for c in flat):
+                        out.append("".join(table[c] for c in flat))
+                        continue
                 if tag in INLINE_FORMAT or tag == "a":
                     self._warn(f"mise en forme <{tag}> non autorisée dans ce champ (retirée)")
                     out.extend(n.children)

@@ -1,6 +1,7 @@
-Introduction facultative (page d'accueil ; une première ligne `# Titre` devient son titre), puis une section `## <type>` par question, écrite avec la syntaxe de ce type : `qcm`, `vf` (ou `vf: faux`), `trous`, `glisser-mots`, `marquer-mots`, `redaction`, `choix-unique`. Pour les autres types (glisser-déposer…), écrire tout le quiz en bloc ```yaml.
+Introduction facultative (page d'accueil ; une première ligne `# Titre` devient son titre), puis une section `## <type>` par question, écrite avec la syntaxe Markdown de ce type. Types acceptés par le quiz : `qcm`, `vf` (ou `vf: faux`), `trous`, `glisser-mots`, `marquer-mots`, `redaction`, `glisser-deposer`, `choix-images`.
 
 ```markdown
+# Révisions
 Révise les organites.
 
 ## qcm

@@ -21,3 +21,31 @@ Consigne facultative, puis deux lignes d'image : `![Avant](image1)` puis `![Apr�
   startingPosition=50, sliderOrientation=horizontal (horizontal|vertical), sliderColor=#f3f3f3
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : a11y.
+
+## Exemple complet (validé : validateur officiel H5P + affichage)
+
+Fichier `tests/examples/avant-apres.md` (médias dans `tests/media/`).
+
+````markdown
+---
+type: avant-apres
+title: La rénovation d'un quartier
+language: fr
+preset: decouverte
+license: CC BY-SA 4.0
+authors: Équipe d'histoire-géographie
+---
+Fais glisser le curseur pour comparer le quartier **avant** et **après** sa rénovation.
+
+- Quels bâtiments ont disparu ?
+- Quels nouveaux aménagements repères-tu ?
+
+![Avant (1990)](../media/avant.jpg)
+![Après (2020)](../media/apres.jpg)
+
+```yaml
+behavior:
+  startingPosition: 40
+  sliderColor: "#ffcc00"
+```
+````

@@ -17,3 +17,23 @@ Une ou plusieurs lignes `![titre](fichier .mp3/.m4a/.ogg/.wav ou URL)`.
 - autoplay : booléen — Activer le démarrage automatique
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : playAudio, pauseAudio, contentName, audioNotSupported.
+
+## Exemple complet (validé : validateur officiel H5P + affichage)
+
+Fichier `tests/examples/audio.md` (médias dans `tests/media/`).
+
+````markdown
+---
+type: audio
+title: Le signal sonore de l'expérience
+language: fr
+preset: decouverte
+license: CC BY-SA 4.0
+authors: Équipe de physique-chimie
+---
+![Signal sonore de 440 Hz (la du diapason)](../media/bip.wav)
+
+```yaml
+playerMode: full
+```
+````

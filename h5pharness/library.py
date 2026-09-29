@@ -91,9 +91,11 @@ def _overlay(fields, tr_fields):
     for f, t in zip(fields, tr_fields):
         if not isinstance(t, dict) or not isinstance(f, dict):
             continue
-        for k in ("default", "label", "description", "entity", "placeholder"):
-            if k in t and isinstance(t[k], (str, int, float, bool)):
+        for k in ("label", "description", "entity", "placeholder"):
+            if k in t and isinstance(t[k], str) and "\ufffd" not in t[k]:
                 f[k] = t[k]
+        if "default" in t and _same_kind(f, t["default"]):
+            f["default"] = t["default"]
         if "options" in t and isinstance(t["options"], list) and isinstance(f.get("options"), list):
             for fo, to in zip(f["options"], t["options"]):
                 if isinstance(fo, dict) and isinstance(to, dict) and "label" in to:
@@ -102,6 +104,18 @@ def _overlay(fields, tr_fields):
             _overlay(f.get("fields", []), t["fields"])
         if f.get("type") == "list" and isinstance(t.get("field"), dict):
             _overlay([f["field"]], [t["field"]])
+
+
+def _same_kind(field, value):
+    """A translated default must have the field's type (stale language files exist upstream)."""
+    t = field.get("type")
+    if t in ("text", "select"):
+        return isinstance(value, str) or (t == "select" and isinstance(value, (int, float, bool)))
+    if t == "boolean":
+        return isinstance(value, bool)
+    if t == "number":
+        return isinstance(value, (int, float)) and not isinstance(value, bool)
+    return isinstance(value, (dict, list))
 
 
 def _apply_overrides(fields, overrides, prefix=""):

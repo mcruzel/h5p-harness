@@ -24,3 +24,26 @@ Trouve les noms d'organites.
   fillPool=abcdefghijklmnopqrstuvwxyz, preferOverlap=true, showVocabulary=true, enableShowSolution=true, enableRetry=true
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n.
+
+## Exemple complet (validé : validateur officiel H5P + affichage)
+
+Fichier `tests/examples/mots-meles.md` (médias dans `tests/media/`).
+
+```markdown
+---
+type: mots-meles
+title: Mots mêlés – Les planètes
+language: fr
+license: CC BY-SA 4.0
+---
+Retrouve dans la grille les huit planètes du Système solaire.
+
+- mercure
+- vénus
+- terre
+- mars
+- jupiter
+- saturne
+- uranus
+- neptune
+```

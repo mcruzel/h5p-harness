@@ -48,8 +48,9 @@ La photosynthèse produit du {{dioxygène|oxygène}} et du {{glucose::un sucre}}
 
 Le format est décrit dans [`specs/README.md`](specs/README.md) ; chaque type a sa fiche dans
 `specs/` (générée depuis les schémas officiels, libellés en français). Deux écritures, combinables :
-une **syntaxe Markdown simplifiée** pour les types courants, et un **bloc YAML** qui donne accès à
-tous les champs de **tous** les types.
+une **syntaxe Markdown simplifiée** (34 types, dont présentation, vidéo interactive et glisser-déposer
+avec mise en page automatique) et un **bloc YAML** qui donne accès à tous les champs de **tous** les
+types (60 types de contenu + sous-contenus).
 
 ### Contrat de sortie (pensé pour les agents)
 
@@ -74,7 +75,11 @@ agents ; il ne charge qu'une description courte tant qu'il ne sert pas.
   paquet complet déposé une fois par un gestionnaire). Les paquets produits contiennent toujours
   les bibliothèques : ils conviennent aux deux cas. `--content-only` produit un paquet de quelques Ko
   sans bibliothèques.
-- **Import** : activité « Contenu interactif H5P » ou banque de contenus, fichier `.h5p`.
+- **Import** : activité « Contenu interactif H5P » ou banque de contenus, fichier `.h5p`. La release
+  propose aussi une variante `.contenu-seul.h5p` (sans bibliothèques, quelques Ko) pour les sites
+  qui ont déjà les bonnes versions et une limite de dépôt faible.
+- **Réseau des élèves** : la frise (`frise`) charge jQuery et des polices depuis les serveurs de
+  Google à l'affichage (comportement de la bibliothèque officielle TimelineJS).
 
 ## Où sont les paquets ? (poids de l'historique git)
 

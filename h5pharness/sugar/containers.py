@@ -16,9 +16,19 @@ def parse_blocks(numbered, s):
     blocks, text = [], []
 
     def flush():
-        body = join(text)
-        if body.strip():
-            blocks.append({"library": "H5P.AdvancedText", "text": body})
+        # a run of lines starting with '|' is a Markdown table -> H5P.Table (texts do not accept tables)
+        segment, is_table = [], None
+        for item in text + [(None, "")]:
+            table_line = item[1].lstrip().startswith("|")
+            if item[0] is None or (is_table is not None and table_line != is_table and item[1].strip()):
+                body = join(segment)
+                if body.strip():
+                    blocks.append({"library": "H5P.Table" if is_table else "H5P.AdvancedText", "text": body})
+                segment = []
+            if item[0] is not None:
+                if item[1].strip():
+                    is_table = table_line
+                segment.append(item)
         text.clear()
 
     i = 0

@@ -10,6 +10,7 @@ from .markdown import allowed_tags, is_html_field
 
 SPECS = ROOT / "specs"
 SUGAR_DOCS = PKG / "sugar_docs"
+EXAMPLES = ROOT / "tests" / "examples"
 L10N_NAMES = {"l10n", "a11y", "UI", "texts", "i10n", "labels", "localize", "translations", "dictionary"}
 KIND = {"text": "texte", "number": "nombre", "boolean": "booléen", "select": "choix", "group": "groupe",
         "list": "liste", "library": "sous-contenu", "image": "image (chemin ou URL)",
@@ -170,6 +171,13 @@ def render_spec(reg: Registry, lib):
     if collapsed:
         lines += ["", f"Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : "
                       f"{', '.join(collapsed)}."]
+    example = EXAMPLES / f"{aliases[0] if aliases else lib.machine}.md"
+    if example.exists():
+        body = example.read_text(encoding="utf-8").strip()
+        fence = "````" if "```" in body else "```"
+        lines += ["", "## Exemple complet (validé : validateur officiel H5P + affichage)", "",
+                  f"Fichier `tests/examples/{example.name}` (médias dans `tests/media/`).", "",
+                  f"{fence}markdown", body, fence]
     return "\n".join(lines).rstrip() + "\n"
 
 

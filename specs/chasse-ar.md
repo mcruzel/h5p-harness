@@ -41,3 +41,50 @@ H5P.ARScavenger 1.6 · alias : chasse-ar, arscavenger, ar-scavenger · syntaxe M
   enableRetry=true, overrideShowSolutionButton=useBehavioural (useBehavioural|always|n…, overrideRetryButton=useBehavioural (useBehavioural|always|n…, fallbackHeight=400
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n, a11y.
+
+## Exemple complet (validé : validateur officiel H5P + affichage)
+
+Fichier `tests/examples/chasse-ar.md` (médias dans `tests/media/`).
+
+````markdown
+---
+type: chasse-ar
+title: Chasse aux formes en réalité augmentée
+language: fr
+preset: entrainement
+---
+```yaml
+showTitleScreen: true
+titleScreen:
+  titleScreenIntroduction: |
+    ## Chasse aux formes
+    Imprime les marqueurs, cache-les dans la classe, puis vise-les avec la caméra
+    pour débloquer les questions.
+markers:
+  - markerImage: ../media/triangle-vert.png
+    # contournement : motif ARToolkit (.txt) généré à partir de l'image, comme le fait l'éditeur H5P
+    markerPattern: chasse-ar-triangle.txt
+    actionType: h5p
+    interaction:
+      interaction:
+        library: qcm
+        md: |
+          Combien de côtés possède un triangle ?
+          - [x] 3
+          - [ ] 4
+          - [ ] 5
+  - markerImage: ../media/carre-rouge.png
+    markerPattern: chasse-ar-carre.txt
+    actionType: h5p
+    interaction:
+      interaction:
+        library: vf
+        md: |
+          Un carré a quatre angles droits.
+          - [x] Vrai
+          - [ ] Faux
+showEndScreen: true
+endScreen:
+  endScreenOutro: Bravo, tu as trouvé **tous les marqueurs** !
+```
+````

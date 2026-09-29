@@ -58,3 +58,27 @@ H5P.KewArCode 1.7 · alias : qr-code, kewarcode, kew-ar-code · syntaxe Markdown
   - alignment : choix left|center|right, défaut center — Horizontal alignment
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n, a11y.
+
+## Exemple complet (validé : validateur officiel H5P + affichage)
+
+Fichier `tests/examples/qr-code.md` (médias dans `tests/media/`).
+
+````markdown
+---
+type: qr-code
+title: QR code – ressource sur les fractions
+language: fr
+---
+```yaml
+introduction: |
+  Scanne ce code avec ta tablette pour ouvrir la **fiche de révision sur les fractions**.
+  Tu peux aussi cliquer dessus.
+codeType: url
+url: https://fr.wikipedia.org/wiki/Fraction_(math%C3%A9matiques)
+behaviour:
+  codeColor: "#1e3a8a"
+  backgroundColor: "#ffffff"
+  maxSize: 250px
+  alignment: center
+```
+````

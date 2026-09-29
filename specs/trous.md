@@ -34,3 +34,32 @@ L'ADN se trouve dans le {{noyau}}.
   enableRetry=true, allowRetryIfCorrect=false, enableSolutionsButton=true, autoCheck=false, caseSensitive=true, showSolutionsRequiresInput=true, separateLines=false, confirmCheckDialog=false, confirmRetryDialog=false, acceptSpellingErrors=false
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : showSolutions, tryAgain, checkAnswer, submitAnswer, notFilledOut, answerIsCorrect, answerIsWrong, answeredCorrectly, answeredIncorrectly, solutionLabel, inputLabel, inputHasTipLabel, tipLabel, confirmCheck, confirmRetry, scoreBarLabel, a11yCheck, a11yShowSolution, a11yRetry, a11yCheckingModeHeader.
+
+## Exemple complet (validé : validateur officiel H5P + affichage)
+
+Fichier `tests/examples/trous.md` (médias dans `tests/media/`).
+
+````markdown
+---
+type: trous
+title: Conjugaison – le passé composé
+language: fr
+license: CC BY-SA 4.0
+---
+Complète chaque phrase avec le verbe entre parenthèses conjugué au **passé composé**.
+
+Hier, nous {{sommes allés|sommes allées}} (aller) au musée d'Orsay.
+
+Les élèves {{ont fini::auxiliaire avoir}} (finir) leur exposé à temps.
+
+Marie {{est partie}} (partir) très tôt ce matin et elle {{a pris}} (prendre) le train de 7 h.
+
+```yaml
+behaviour:
+  caseSensitive: false
+  acceptSpellingErrors: false
+overallFeedback:
+  - {from: 0, to: 59, feedback: "Revois l'accord du participe passé avec l'auxiliaire être."}
+  - {from: 60, to: 100, feedback: "Très bien !"}
+```
+````

@@ -1,1 +1,1 @@
-Tout le corps est du Markdown (titres `##`, listes, gras, liens, tableaux).
+Tout le corps est du Markdown : gras, italique, barré, liens, listes, titres `##`/`###`, code, séparateur `---`. Pas de tableau ni d'indice/exposant HTML dans ce type (H<sub>2</sub>O est converti en H₂O) ; dans une colonne, un livre ou une présentation, un tableau Markdown devient automatiquement un bloc tableau.

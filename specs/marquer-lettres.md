@@ -20,3 +20,27 @@ H5P.MarkTheLetters 1.1 · alias : marquer-lettres, marktheletters, mark-the-lett
   enableRetry=true, enableSolutionsButton=true, showScorePoints=true
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : checkAnswerButton, tryAgainButton, showSolutionButton, correctAnswer, incorrectAnswer, missedAnswer, displaySolutionDescription, scoreBarLabel.
+
+## Exemple complet (validé : validateur officiel H5P + affichage)
+
+Fichier `tests/examples/marquer-lettres.md` (médias dans `tests/media/`).
+
+````markdown
+---
+type: marquer-lettres
+title: Les lettres muettes en fin de mot
+language: fr
+preset: entrainement
+license: CC BY-SA 4.0
+authors: Équipe de lettres
+---
+```yaml
+question: Clique sur les **lettres muettes** à la fin des mots.
+textField: Le cha\*t\* de mon voisin dor\*t\* dan\*s\* le jardin.
+addSolution: "false"
+solution: ""
+overallFeedback:
+  - {from: 0, to: 99, feedback: Relis chaque mot à voix haute pour repérer les lettres que l'on n'entend pas.}
+  - {from: 100, to: 100, feedback: Bravo !}
+```
+````

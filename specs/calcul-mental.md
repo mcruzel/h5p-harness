@@ -14,3 +14,21 @@ H5P.ArithmeticQuiz 1.1 · alias : calcul-mental, arithmeticquiz, arithmetic-quiz
 - maxQuestions : nombre, min 2, max 100, défaut 20 — Nombre maximum de questions
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : UI.
+
+## Exemple complet (validé : validateur officiel H5P + affichage)
+
+Fichier `tests/examples/calcul-mental.md` (médias dans `tests/media/`).
+
+````markdown
+---
+type: calcul-mental
+title: Calcul mental – tables de multiplication
+language: fr
+---
+```yaml
+intro: Entraîne-toi sur les tables de multiplication. Réponds le plus vite possible !
+quizType: arithmetic
+arithmeticType: multiplication
+maxQuestions: 10
+```
+````

@@ -25,13 +25,21 @@ Corps : syntaxe Markdown simplifiée du type (si elle existe) et/ou un bloc ```y
 Règles communes aux champs :
 
 - **texte riche** : écrire du Markdown (gras, italique, listes, titres `##`, liens, tableaux,
-  `H<sub>2</sub>O`) ; seules les balises indiquées dans la fiche sont conservées.
+  `H<sub>2</sub>O`) ; seules les balises indiquées dans la fiche sont conservées (sinon : retrait
+  avec avertissement, H<sub>2</sub>O → H₂O, tableau → erreur hors conteneur).
+- **texte simple** (champ « texte » de la fiche) : pas de Markdown, le texte est affiché tel quel.
+- **YAML** : mettre entre guillemets tout texte contenant « : » suivi d'un espace (fréquent en
+  français : `question: "Vrai ou faux : …"`) ; pour un texte sur plusieurs lignes, `champ: |` puis
+  les lignes indentées.
 - **média** (image, audio, vidéo, fichier) : chemin relatif au `.md` ou à la racine du dépôt, ou
   URL complète (téléchargée une fois dans `sources/.media/`) ; forme longue
   `{src: …, license: CC BY-SA 4.0, author: …, title: …, source: …}`. Vidéo : lien YouTube/Vimeo
   accepté tel quel. SVG et WebP sont convertis (Moodle les refuse).
 - **sous-contenu** : `library: <type>` plus ses champs au même niveau
-  (ex. `{library: qcm, question: …, answers: […]}`), ou `md: |` + syntaxe Markdown du type.
+  (ex. `{library: qcm, question: …, answers: […]}`), ou `md: |` + syntaxe Markdown du type ;
+  `metadata: {title: …}` fixe son titre (sommaire d'un livre, bilan d'un quiz), sinon il est déduit
+  du premier texte. Si le champ H5P s'appelle lui-même `library` (questionnaire), cela donne
+  `library: {library: choix-simple, …}`.
 - **groupe à un champ** : écrire directement la valeur (règle H5P).
 - Les textes d'interface (boutons, messages, accessibilité) et les réglages ont des valeurs par
   défaut en français : ne les écrire que pour les modifier.
@@ -57,7 +65,7 @@ Cible : Moodle 4.5 ou plus récent (API H5P 1.28).
 |---|---|---|---|
 | `chasse-ar` | AR Scavenger (beta) | H5P.ARScavenger 1.6 | yaml |
 | `accordeon` | Accordion | H5P.Accordion 1.0 | Markdown |
-| `trous-avances` | Advanced Fill in the Blanks | H5P.AdvancedBlanks 1.4 | yaml |
+| `trous-avances` | Advanced Fill in the Blanks | H5P.AdvancedBlanks 1.4 | Markdown |
 | `calendrier-avent` | Advent Calendar (beta) | H5P.AdventCalendar 0.4 | yaml |
 | `agamotto` | Agamotto | H5P.Agamotto 1.7 | Markdown |
 | `calcul-mental` | Arithmetic Quiz | H5P.ArithmeticQuiz 1.1 | yaml |

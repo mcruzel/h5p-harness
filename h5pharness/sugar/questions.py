@@ -260,3 +260,42 @@ def questionset(text, s, arg=None):
         if title:
             out["introPage"]["title"] = title
     return out
+
+
+@adapter("H5P.AdvancedBlanks")
+def advancedblanks(text, s, arg=None):
+    """Like trous: {{réponse|variante::indice}}; wrong choices for the drop-down mode: {{Paris|~Lyon>retour}}."""
+    intro, body, media = _intro_and_body(text, s)
+    blanks, has_wrong = [], False
+
+    def repl(m):
+        nonlocal has_wrong
+        inner, _, hint = m.group(1).partition("::")
+        alternatives = []
+        for alt in inner.split("|"):
+            alt = alt.strip()
+            wrong = alt.startswith("~")
+            alt, _, feedback = alt.lstrip("~").partition(">")
+            item = {"text": alt.strip(), "isCorrect": not wrong}
+            if hint.strip() and not wrong:
+                item["hint"] = hint.strip()
+            if wrong and feedback.strip():
+                item["optionsIncorrect"] = {"incorrectAnswerFeedback": feedback.strip()}
+            has_wrong = has_wrong or wrong
+            alternatives.append(item)
+        if not any(a["isCorrect"] for a in alternatives):
+            s.error(None, f"« {m.group(1)} » : au moins une bonne réponse (sans ~)")
+        blanks.append(alternatives)
+        return "___"
+
+    blanks_text = re.sub(r"\{\{(.+?)\}\}", repl, "\n\n".join("\n".join(p) for _, p in body))
+    if not blanks:
+        s.error(None, "aucun trou : écrire {{réponse}} dans le texte")
+    out = {"content": {"blanksText": blanks_text, "blanksList": blanks}}
+    if intro:
+        out["content"]["task"] = intro
+    if has_wrong:
+        out["behaviour"] = {"mode": "selection"}
+    if media:
+        out["media"] = {"type": media}
+    return out

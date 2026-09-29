@@ -401,7 +401,7 @@ def build_library(field, value, ctx, path, siblings, hidden):
     finally:
         ctx.stack.pop()
     meta = value.get("metadata") if isinstance(value.get("metadata"), dict) else {}
-    title = meta.get("title") or value.get("title") or auto_title(params) or lib.title
+    title = meta.get("title") or value.get("title") or auto_title(params, lib, ctx.registry) or lib.title
     metadata = {"contentType": lib.title, "license": "U", "title": title[:255]}
     for k in ("license", "licenseVersion", "authors", "source", "yearFrom", "yearTo", "authorComments"):
         if k in meta:
@@ -418,16 +418,44 @@ def choices(registry, options):
     return ", ".join(dict.fromkeys(names))
 
 
-TITLE_KEYS = ("question", "text", "title", "taskDescription", "introduction", "statement", "headline", "label")
+TITLE_KEYS = ("question", "text", "title", "taskDescription", "introduction", "statement", "headline", "label",
+              "intro", "description")
+FRENCH_NAMES = {"qcm": "QCM", "vf": "Vrai ou faux", "trous": "Texte à trous", "glisser-mots": "Glisser les mots",
+                "marquer-mots": "Marquer les mots", "choix-unique": "Choix unique", "redaction": "Rédaction",
+                "resume": "Résumé", "texte": "Texte", "texte-simple": "Texte", "image": "Image", "video": "Vidéo",
+                "audio": "Audio", "glisser-deposer": "Glisser-déposer", "mots-croises": "Mots croisés",
+                "mots-meles": "Mots mêlés", "choix-images": "Choix d'images", "tableau": "Tableau", "lien": "Lien"}
 
 
-def auto_title(params):
-    for key in TITLE_KEYS:
-        v = params.get(key) if isinstance(params, dict) else None
-        if isinstance(v, str) and v.strip():
-            t = markdown.html_to_text(v)
-            if t:
-                return t[:80] + ("…" if len(t) > 80 else "")
+def auto_title(params, lib=None, registry=None):
+    """First meaningful text of the sub-content (searched a few levels deep), else a French type name."""
+    def find(value, depth):
+        if depth > 3:
+            return None
+        if isinstance(value, dict):
+            for key in TITLE_KEYS:
+                v = value.get(key)
+                if isinstance(v, str) and markdown.html_to_text(v):
+                    return markdown.html_to_text(v)
+            for v in value.values():
+                if isinstance(v, (dict, list)):
+                    found = find(v, depth + 1)
+                    if found:
+                        return found
+        elif isinstance(value, list):
+            for v in value[:3]:
+                found = find(v, depth + 1)
+                if found:
+                    return found
+        return None
+
+    t = find(params, 0)
+    if t:
+        return t[:80] + ("…" if len(t) > 80 else "")
+    if lib is not None and registry is not None:
+        aliases = registry.aliases_of(lib.machine)
+        if aliases:
+            return FRENCH_NAMES.get(aliases[0], aliases[0].replace("-", " ").capitalize())
     return None
 
 

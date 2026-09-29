@@ -17,3 +17,30 @@ H5P.SpeakTheWords 1.5 · alias : dire-mots, speakthewords, speak-the-words · sy
 - inputLanguage : choix af-ZA|am-ET|ar-DZ|ar-BH|ar-EG|ar-IQ|ar-JO|ar-KW|ar-LB|ar-LY|…, défaut en-US — Langue de la saisie vocale
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n.
+
+## Exemple complet (validé : validateur officiel H5P + affichage)
+
+Fichier `tests/examples/dire-mots.md` (médias dans `tests/media/`).
+
+````markdown
+---
+type: dire-mots
+title: Dis le mot – les couleurs en anglais
+language: fr
+---
+```yaml
+media:
+  type:
+    library: image
+    file: ../media/carre-rouge.png
+    alt: Un carré rouge
+question: Quelle est la couleur de ce carré ? Réponds à voix haute en anglais.
+acceptedAnswers:
+  - red
+  - it's red
+  - it is red
+correctAnswerText: Well done! C'est bien « red ».
+incorrectAnswerText: Essaie encore, pense à la couleur des tomates.
+inputLanguage: en-GB
+```
+````

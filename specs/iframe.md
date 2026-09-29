@@ -11,3 +11,22 @@ H5P.IFrameEmbed 1.0 · alias : iframe, iframeembed, i-frame-embed · syntaxe Mar
 - height* : texte — Hauteur
 - source* : texte — Source
 - resizeSupported : booléen, défaut true — Redimensionnement supporté
+
+## Exemple complet (validé : validateur officiel H5P + affichage)
+
+Fichier `tests/examples/iframe.md` (médias dans `tests/media/`).
+
+````markdown
+---
+type: iframe
+title: Simulation PhET – introduction aux fractions
+language: fr
+---
+```yaml
+source: https://phet.colorado.edu/sims/html/fractions-intro/latest/fractions-intro_fr.html
+width: 100%
+minWidth: 300px
+height: 600px
+resizeSupported: true
+```
+````

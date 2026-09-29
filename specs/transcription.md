@@ -20,3 +20,32 @@ H5P.Transcript 1.3 · alias : transcription, transcript · syntaxe Markdown simp
   - chapterMarks : texte multiligne — Chapter marks
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n, a11y.
+
+## Exemple complet (validé : validateur officiel H5P + affichage)
+
+Fichier `tests/examples/transcription.md` (médias dans `tests/media/`).
+
+````markdown
+---
+type: transcription
+title: Transcription – le compte à rebours
+language: fr
+---
+```yaml
+mediumGroup:
+  medium:
+    library: video
+    md: "![Compte à rebours](../media/clip.webm)"
+transcriptFiles:
+  # pas de .vtt dans tests/media : transcription écrite à côté de l'exemple
+  - transcriptFile: transcription.vtt
+    label: Français
+    languageCode: fr
+behaviour:
+  maxLines: 6
+chapters:
+  chapterMarks: |
+    00:00:00 Début du compte
+    00:00:01 Fin du compte
+```
+````

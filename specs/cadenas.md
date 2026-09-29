@@ -13,3 +13,30 @@ H5P.CombinationLock 1.0 · alias : cadenas, combinationlock, combination-lock ·
   autoCheck=true, maxAttempts=…, enableRetry=true, enableSolutionsButton=true
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n, a11y.
+
+## Exemple complet (validé : validateur officiel H5P + affichage)
+
+Fichier `tests/examples/cadenas.md` (médias dans `tests/media/`).
+
+````markdown
+---
+type: cadenas
+title: Le cadenas des polygones
+language: fr
+preset: entrainement
+---
+```yaml
+introduction: |
+  ## Ouvre le cadenas !
+  Le code a **4 chiffres**. Chaque chiffre est le nombre de côtés d'un polygone :
+
+  1. un triangle ;
+  2. un carré ;
+  3. un hexagone ;
+  4. un octogone.
+solution: "3468"
+alphabet: "0123456789"
+behaviour:
+  maxAttempts: 5
+```
+````

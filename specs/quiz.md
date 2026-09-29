@@ -4,9 +4,10 @@ H5P.QuestionSet 1.21 · alias : quiz, questionset, question-set · syntaxe Markd
 
 ## Syntaxe Markdown
 
-Introduction facultative (page d'accueil ; une première ligne `# Titre` devient son titre), puis une section `## <type>` par question, écrite avec la syntaxe de ce type : `qcm`, `vf` (ou `vf: faux`), `trous`, `glisser-mots`, `marquer-mots`, `redaction`, `choix-unique`. Pour les autres types (glisser-déposer…), écrire tout le quiz en bloc ```yaml.
+Introduction facultative (page d'accueil ; une première ligne `# Titre` devient son titre), puis une section `## <type>` par question, écrite avec la syntaxe Markdown de ce type. Types acceptés par le quiz : `qcm`, `vf` (ou `vf: faux`), `trous`, `glisser-mots`, `marquer-mots`, `redaction`, `glisser-deposer`, `choix-images`.
 
 ```markdown
+# Révisions
 Révise les organites.
 
 ## qcm
@@ -27,7 +28,7 @@ L'ADN se trouve dans le {{noyau}}.
 
 - introPage : groupe — Introduction du Quiz
   - showIntroPage : booléen — Afficher l'introduction
-  - title : texte riche (Markdown: code em strong sub sup) — Titre
+  - title : texte — Titre
   - introduction : texte riche (Markdown: code em strong sub sup) — Texte d'introduction
   - startButtonText : texte, défaut Commencer — Texte du bouton de démarrage
   - backgroundImage : image (chemin ou URL) — Image d'arrière-plan
@@ -44,7 +45,7 @@ L'ADN se trouve dans le {{noyau}}.
   - showSolutionButton : booléen, défaut true — Afficher le bouton "Solution".
   - showRetryButton : booléen, défaut true — Afficher le bouton "Recommencer".
   - noResultMessage : texte, défaut Terminé — Message si pas de résultats
-  - message : texte riche (Markdown: code em strong), défaut Résultats — Results heading
+  - message : texte, défaut Résultats — Results heading
   - amountCorrect : texte, défaut Réponses correctes : @finals … — Amount correct heading
   - scoreBarLabel : texte, défaut Vous avez obtenu @finals sur … — Score announcer
   - scoreHeader : texte, défaut Score — Score heading
@@ -70,3 +71,62 @@ L'ADN se trouve dans le {{noyau}}.
   - backgroundImage : image (chemin ou URL) — Image d'arrière-plan
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : texts.
+
+## Exemple complet (validé : validateur officiel H5P + affichage)
+
+Fichier `tests/examples/quiz.md` (médias dans `tests/media/`).
+
+````markdown
+---
+type: quiz
+title: Quiz – La Seconde Guerre mondiale
+language: fr
+license: CC BY-SA 4.0
+preset: evaluation
+---
+Réponds aux questions pour vérifier tes connaissances sur la période **1939-1945**.
+
+## qcm
+Quels pays faisaient partie des **Alliés** en 1944 ?
+- [x] Le Royaume-Uni
+- [x] Les États-Unis
+- [ ] L'Italie de Mussolini
+  > Non : l'Italie fasciste était alliée à l'Allemagne jusqu'en 1943.
+- [ ] Le Japon
+
+## vf: faux
+Le débarquement de Normandie a eu lieu le 8 mai 1945.
+
+## trous
+Complète avec les bonnes dates.
+
+La guerre commence en {{1939}} avec l'invasion de la {{Pologne}}.
+
+## glisser-mots
+Place les noms au bon endroit.
+
+{{De Gaulle}} lance l'appel du 18 juin 1940 depuis {{Londres}}.
+Distracteurs: Pétain, Vichy
+
+## marquer-mots
+Clique sur les noms des **dirigeants alliés**.
+
+À Yalta, {{Roosevelt}}, {{Churchill}} et {{Staline}} discutent de l'après-guerre, tandis qu'Hitler est encore au pouvoir.
+
+## redaction
+En quelques lignes, explique pourquoi l'année 1942 est un tournant de la guerre.
+
+- Stalingrad
+- Midway
+- El Alamein | El-Alamein
+
+```yaml
+passPercentage: 60
+progressType: textual
+endGame:
+  amountCorrect: "@finals point(s) sur @totals"
+  overallFeedback:
+    - {from: 0, to: 59, feedback: "Relis ton cours et réessaie."}
+    - {from: 60, to: 100, feedback: "Bon travail !"}
+```
+````

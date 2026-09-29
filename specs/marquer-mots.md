@@ -31,3 +31,19 @@ Le chat {{dort}} pendant que le chien {{court}} dans le jardin.
   enableRetry=true, enableSolutionsButton=true, showScorePoints=true
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : checkAnswerButton, submitAnswerButton, tryAgainButton, showSolutionButton, correctAnswer, incorrectAnswer, missedAnswer, displaySolutionDescription, scoreBarLabel, a11yFullTextLabel, a11yClickableTextLabel, a11ySolutionModeHeader, a11yCheckingHeader, a11yCheck, a11yShowSolution, a11yRetry.
+
+## Exemple complet (validé : validateur officiel H5P + affichage)
+
+Fichier `tests/examples/marquer-mots.md` (médias dans `tests/media/`).
+
+```markdown
+---
+type: marquer-mots
+title: Repérer les adjectifs qualificatifs
+language: fr
+license: CC BY-SA 4.0
+---
+Clique sur tous les **adjectifs qualificatifs** du texte.
+
+Le {{vieux}} marin regardait la mer {{grise}}. Un vent {{glacial}} soufflait sur le port {{désert}}, et les mouettes criaient au-dessus des bateaux.
+```
