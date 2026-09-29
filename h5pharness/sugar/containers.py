@@ -34,7 +34,7 @@ def parse_blocks(numbered, s):
                 j += 1
             if j >= len(numbered):
                 s.error(ln, "bloc « ::: » non fermé (ligne « ::: » seule attendue)")
-            kind, rest = d.group(1), d.group(2)
+            kind, rest = d.group(1), d.group(2).lstrip(":").strip()
             try:
                 machine, _, _ = s.ctx.registry.machine_of(kind)
             except KeyError:

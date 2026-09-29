@@ -50,7 +50,7 @@ def _is_settings(field):
 
 
 def _short(v, n=30):
-    s = str(v)
+    s = str(v).lower() if isinstance(v, bool) else str(v)
     s = re.sub(r"<[^>]+>", "", s)
     return s if len(s) <= n else s[:n - 1] + "…"
 

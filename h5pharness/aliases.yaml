@@ -60,6 +60,7 @@ H5P.Transcript: [transcription]
 H5P.TrueFalse: [vf, vrai-faux]
 H5P.TwitterUserFeed: [twitter]
 H5P.XRay: [rayons-x]
+H5P.ChoiceExplorer: [explorateur-choix]
 # sous-contenus fréquents (non autonomes)
 H5P.AdvancedText: [texte]
 H5P.Image: [image]

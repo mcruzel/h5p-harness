@@ -1,0 +1,37 @@
+# Sort the Paragraphs — `trier-paragraphes`
+
+H5P.SortParagraphs 0.12 · alias : trier-paragraphes, sortparagraphs, sort-paragraphs · syntaxe Markdown simplifiée : oui
+
+## Syntaxe Markdown
+
+Consigne facultative, puis les paragraphes **dans l'ordre correct**, un par ligne `- …` (lignes suivantes indentées pour continuer un paragraphe). Ils sont mélangés à l'affichage.
+
+```markdown
+Remets les étapes de la mitose dans l'ordre.
+
+- Prophase : les chromosomes se condensent.
+- Métaphase : ils s'alignent au centre.
+- Anaphase : les chromatides se séparent.
+- Télophase : deux noyaux se forment.
+```
+
+## Champs (bloc ```yaml, noms H5P)
+
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+
+- media : groupe — Média
+  - type : sous-contenu, library: image | video | audio — Type
+  - disableImageZooming : booléen, défaut false, conditionnel — Bloquer le zoom d’image
+- taskDescription* : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul) — Description de la tâche
+- paragraphs* : liste (min 3) — Paragraphes
+  chaque élément = texte riche (Markdown: code em h2 h3 hr li ol pre strong u ul) — Paragraphe
+- overallFeedback : groupe — Feedback général (groupe à un champ: écrire directement la valeur)
+  - overallFeedback : liste (min 1) — Définir un feedback personnalisé pour n'importe quelle gamme de note
+    chaque élément :
+      - from : nombre, min 0, max 100, défaut 0 — Gamme de notes
+      - to : nombre, min 0, max 100, défaut 100
+      - feedback : texte — Feedback pour une gamme de notes définie
+- behaviour : réglages — Paramètres comportementaux
+  scoringMode=positions (positions|transitions), applyPenalties=true, duplicatesInterchangeable=true, addButtonsForMovement=true, enableRetry=true, enableSolutionsButton=true
+
+Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n, a11y.

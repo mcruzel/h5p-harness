@@ -145,19 +145,23 @@ class Registry:
         self.aliases = self._load_aliases()
 
     def _load_aliases(self):
-        table = {}
+        table, self.curated = {}, {}
         for machine in self.by_machine:
             for key in (machine, machine.lower(), kebab(machine), kebab(machine).replace("-", "")):
                 table.setdefault(key.lower(), machine)
         data = yaml.safe_load((Path(__file__).parent / "aliases.yaml").read_text(encoding="utf-8")) or {}
         for machine, names in data.items():
-            for n in names or []:
-                table[str(n).lower()] = machine
+            self.curated[machine] = [str(n).lower() for n in names or []]
+            for n in self.curated[machine]:
+                table[n] = machine
         return table
 
     def aliases_of(self, machine):
-        return sorted({a for a, m in self.aliases.items() if m == machine and not a.startswith("h5p.")},
+        """Curated French aliases first (aliases.yaml order), then automatic ones."""
+        curated = self.curated.get(machine, [])
+        auto = sorted({a for a, m in self.aliases.items() if m == machine and not a.startswith("h5p.")} - set(curated),
                       key=lambda a: (len(a), a))
+        return curated + auto
 
     def get(self, machine, major=None, minor=None):
         libs = self.by_machine.get(machine, [])

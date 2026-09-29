@@ -289,6 +289,10 @@ def build_select(field, value, ctx, path, siblings, hidden):
     if value is MISSING:
         return default_or_missing(field, ctx, path, hidden, "select")
     options = field.get("options", [])
+    if not options:  # dynamic options filled by the editor at runtime (e.g. drop zone indexes)
+        vals = value if isinstance(value, list) else [value]
+        vals = [str(v) if isinstance(v, (int, float)) and not isinstance(v, bool) else v for v in vals]
+        return vals if field.get("multiple") else vals[0]
     by_value = {str(o.get("value")): o.get("value") for o in options}
     by_label = {str(o.get("label", "")).strip().lower(): o.get("value") for o in options}
 
