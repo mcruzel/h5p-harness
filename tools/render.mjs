@@ -51,7 +51,7 @@ page.on('response', r => {
   const u = r.url().replace(/^http:\/\/[^/]+/, '');
   if (r.status() >= 400 && !u.endsWith('favicon.ico')) missing.push(r.status() + ' ' + u);
 });
-let initError = null, text = '';
+let initError = null, text = '', media = 0;
 try {
   await page.goto(`http://127.0.0.1:${port}/index.html`);
   await page.waitForFunction(() => window.__h5pReady || window.__h5pError, null, { timeout: 30000 });
@@ -59,11 +59,13 @@ try {
   await page.waitForTimeout(2000);
   const frame = page.frames().find(f => f !== page.mainFrame());
   text = frame ? (await frame.locator('body').innerText()).replace(/\s+/g, ' ').trim().slice(0, 300) : '';
+  media = frame ? await frame.evaluate(() => [...document.querySelectorAll('img, canvas, video, svg')]
+    .filter(e => { const r = e.getBoundingClientRect(); return r.width > 20 && r.height > 20; }).length) : 0;
   if (shot) await page.screenshot({ path: shot, fullPage: true });
 } catch (e) {
   initError = String(e).split('\n')[0];
 }
-console.log(JSON.stringify({ initError, errors: [...new Set(errors)], missing, text }));
+console.log(JSON.stringify({ initError, errors: [...new Set(errors)], missing, text, media }));
 await browser.close();
 server.close();
 fs.rmSync(root, { recursive: true, force: true });

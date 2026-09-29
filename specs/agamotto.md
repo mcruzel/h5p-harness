@@ -1,6 +1,10 @@
 # Agamotto — `agamotto`
 
-H5P.Agamotto 1.7 · alias : agamotto · syntaxe Markdown simplifiée : non (bloc ```yaml)
+H5P.Agamotto 1.7 · alias : agamotto · syntaxe Markdown simplifiée : oui
+
+## Syntaxe Markdown
+
+`# Titre` facultatif, puis une étape par section `## Libellé`, contenant une image `![description](image)` et une description Markdown facultative. Au moins 2 étapes (images de même taille de préférence).
 
 ## Champs (bloc ```yaml, noms H5P)
 

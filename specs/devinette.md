@@ -1,6 +1,16 @@
 # Guess the Answer — `devinette`
 
-H5P.GuessTheAnswer 1.5 · alias : devinette, guesstheanswer, guess-the-answer · syntaxe Markdown simplifiée : non (bloc ```yaml)
+H5P.GuessTheAnswer 1.5 · alias : devinette, guesstheanswer, guess-the-answer · syntaxe Markdown simplifiée : oui
+
+## Syntaxe Markdown
+
+Consigne en Markdown, une ligne `![description](image ou vidéo)`, puis `Réponse: …` (texte révélé au clic) et, facultatif, `Bouton: …` (libellé du bouton).
+
+```markdown
+Quel est cet organe ?
+![Radiographie](images/radio.png)
+Réponse: Le cœur.
+```
 
 ## Champs (bloc ```yaml, noms H5P)
 

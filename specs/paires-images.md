@@ -1,6 +1,10 @@
 # Image Pair — `paires-images`
 
-H5P.ImagePair 1.4 · alias : paires-images, imagepair, image-pair · syntaxe Markdown simplifiée : non (bloc ```yaml)
+H5P.ImagePair 1.4 · alias : paires-images, imagepair, image-pair · syntaxe Markdown simplifiée : oui
+
+## Syntaxe Markdown
+
+Consigne, puis une paire par ligne : `- ![a](image1) = ![b](image2)` (ou `- ![a](image)` pour deux images identiques). Au moins 2 paires.
 
 ## Champs (bloc ```yaml, noms H5P)
 

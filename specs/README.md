@@ -59,7 +59,7 @@ Cible : Moodle 4.5 ou plus récent (API H5P 1.28).
 | `accordeon` | Accordion | H5P.Accordion 1.0 | Markdown |
 | `trous-avances` | Advanced Fill in the Blanks | H5P.AdvancedBlanks 1.4 | yaml |
 | `calendrier-avent` | Advent Calendar (beta) | H5P.AdventCalendar 0.4 | yaml |
-| `agamotto` | Agamotto | H5P.Agamotto 1.7 | yaml |
+| `agamotto` | Agamotto | H5P.Agamotto 1.7 | Markdown |
 | `calcul-mental` | Arithmetic Quiz | H5P.ArithmeticQuiz 1.1 | yaml |
 | `audio` | Audio | H5P.Audio 1.5 | Markdown |
 | `enregistreur-audio` | Audio Recorder | H5P.AudioRecorder 1.0 | yaml |
@@ -82,14 +82,14 @@ Cible : Moodle 4.5 ou plus récent (API H5P 1.28).
 | `mots-meles` | Find The Words | H5P.FindTheWords 1.4 | Markdown |
 | `flashcards` | Flashcards | H5P.Flashcards 1.7 | Markdown |
 | `carte-jeu` | Game Map | H5P.GameMap 1.9 | yaml |
-| `devinette` | Guess the Answer | H5P.GuessTheAnswer 1.5 | yaml |
+| `devinette` | Guess the Answer | H5P.GuessTheAnswer 1.5 | Markdown |
 | `iframe` | Iframe Embedder | H5P.IFrameEmbed 1.0 | yaml |
 | `trouver-zone` | Find the Hotspot | H5P.ImageHotspotQuestion 1.8 | yaml |
-| `image-interactive` | Image Hotspots | H5P.ImageHotspots 1.11 | yaml |
-| `avant-apres` | Image Juxtaposition | H5P.ImageJuxtaposition 1.6 | yaml |
+| `image-interactive` | Image Hotspots | H5P.ImageHotspots 1.11 | Markdown |
+| `avant-apres` | Image Juxtaposition | H5P.ImageJuxtaposition 1.6 | Markdown |
 | `trouver-zones` | Find Multiple Hotspots | H5P.ImageMultipleHotspotQuestion 1.0 | yaml |
-| `paires-images` | Image Pair | H5P.ImagePair 1.4 | yaml |
-| `sequence-images` | Image Sequencing | H5P.ImageSequencing 1.1 | yaml |
+| `paires-images` | Image Pair | H5P.ImagePair 1.4 | Markdown |
+| `sequence-images` | Image Sequencing | H5P.ImageSequencing 1.1 | Markdown |
 | `carrousel` | Image Slider | H5P.ImageSlider 1.1 | Markdown |
 | `mur-infos` | Information Wall | H5P.InfoWall 0.6 | yaml |
 | `livre` | Interactive Book | H5P.InteractiveBook 1.15 | Markdown |
@@ -111,7 +111,7 @@ Cible : Moodle 4.5 ou plus récent (API H5P 1.28).
 | `onglets` | Tabs | H5P.Tabs 1.3 | yaml |
 | `modele-3d` | 3D Model | H5P.ThreeDModel 1.0 | yaml |
 | `visite-360` | Virtual Tour (360) | H5P.ThreeImage 0.5 | yaml |
-| `frise` | Timeline | H5P.Timeline 1.1 | yaml |
+| `frise` | Timeline | H5P.Timeline 1.1 | Markdown |
 | `transcription` | Transcript | H5P.Transcript 1.3 | yaml |
 | `vf` | True/False Question | H5P.TrueFalse 1.8 | Markdown |
 | `twitter` | Twitter User Feed | H5P.TwitterUserFeed 1.0 | yaml |

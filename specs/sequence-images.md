@@ -1,6 +1,10 @@
 # Image Sequencing — `sequence-images`
 
-H5P.ImageSequencing 1.1 · alias : sequence-images, imagesequencing, image-sequencing · syntaxe Markdown simplifiée : non (bloc ```yaml)
+H5P.ImageSequencing 1.1 · alias : sequence-images, imagesequencing, image-sequencing · syntaxe Markdown simplifiée : oui
+
+## Syntaxe Markdown
+
+Consigne, puis les images **dans l'ordre correct**, une par ligne `- ![description](image)` (au moins 3) ; elles sont mélangées à l'affichage.
 
 ## Champs (bloc ```yaml, noms H5P)
 

@@ -102,6 +102,10 @@ class Repo:
         self.init()
         heads = [r for r in self._refs if r.startswith("refs/heads/")]
         order = []
+        if self._release_is_maintained():
+            # H5P Group publishes to the Hub from "release"; the default branch may hold unreleased
+            # (sometimes broken) work, e.g. h5p/timelinejs master redeclares LazyLoad as a const.
+            order.append("refs/heads/release")
         if self.default:
             order.append(f"refs/heads/{self.default}")
         order += [f"refs/heads/{b}" for b in PREFERRED_BRANCHES if f"refs/heads/{b}" in self._refs]
@@ -120,6 +124,24 @@ class Repo:
                 seen.add(r)
                 out.append(r)
         return out
+
+    def _release_is_maintained(self):
+        """Prefer 'release' when it carries the same version as the default branch (what the Hub
+        publishes; the default branch may hold unreleased work) or was updated within a year of it."""
+        if self.default in (None, "release") or "refs/heads/release" not in self._refs:
+            return False
+        refs = (f"refs/heads/{self.default}", "refs/heads/release")
+        try:
+            versions = []
+            for r in refs:
+                lj = json.loads(self.show(r, "library.json") or "{}")
+                versions.append((lj.get("majorVersion"), lj.get("minorVersion"), lj.get("patchVersion")))
+            if versions[0] == versions[1] and versions[0][0] is not None:
+                return True
+            dates = [int(self._git("log", "-1", "--format=%ct", self.fetch(r)).stdout.strip()) for r in refs]
+        except (RuntimeError, ValueError):
+            return False
+        return dates[0] - dates[1] < 365 * 24 * 3600
 
     def fetch(self, ref):
         local = "refs/cache/" + ref.split("/", 2)[-1]

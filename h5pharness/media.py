@@ -135,7 +135,8 @@ class Media:
         if re.match(r"^https?://", src, re.I):
             return self._download(src), urllib.parse.unquote(Path(urllib.parse.urlparse(src).path).name or "media")
         path = Path(src)
-        candidates = [path] if path.is_absolute() else [self.doc_dir / path, ROOT / src.lstrip("/")]
+        # "/x/y.png" = relative to the repository root; otherwise relative to the .md, then to the root
+        candidates = [ROOT / src.lstrip("/"), path] if path.is_absolute() else [self.doc_dir / path, ROOT / src]
         for c in candidates:
             c = c.resolve()
             if c.is_file():

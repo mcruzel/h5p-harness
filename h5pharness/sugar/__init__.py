@@ -54,4 +54,4 @@ def _load():
     global _loaded
     if not _loaded:
         _loaded = True
-        from . import questions, games, cards, containers, media_types, presentation, video, dragdrop  # noqa: F401
+        from . import questions, games, cards, containers, media_types, presentation, video, dragdrop, visual  # noqa: F401

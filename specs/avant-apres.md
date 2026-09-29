@@ -1,6 +1,10 @@
 # Image Juxtaposition — `avant-apres`
 
-H5P.ImageJuxtaposition 1.6 · alias : avant-apres, imagejuxtaposition, image-juxtaposition · syntaxe Markdown simplifiée : non (bloc ```yaml)
+H5P.ImageJuxtaposition 1.6 · alias : avant-apres, imagejuxtaposition, image-juxtaposition · syntaxe Markdown simplifiée : oui
+
+## Syntaxe Markdown
+
+Consigne facultative, puis deux lignes d'image : `![Avant](image1)` puis `![Après](image2)` (le texte alternatif sert aussi d'étiquette). Images de même taille.
 
 ## Champs (bloc ```yaml, noms H5P)
 
