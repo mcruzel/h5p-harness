@@ -4,3 +4,4 @@ extend-exclude = ["vendor"]
 
 [lint]
 select = ["E", "F", "W"]
+ignore = ["E741"]  # `l` is used for Library objects throughout

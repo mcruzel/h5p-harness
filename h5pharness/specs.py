@@ -4,7 +4,6 @@ They are what an agent reads (on demand) before writing a source file: compact, 
 that matter first and the invariant interface strings collapsed.
 """
 import re
-from pathlib import Path
 
 from .library import PKG, ROOT, Registry
 from .markdown import allowed_tags, is_html_field
@@ -72,7 +71,8 @@ def _describe(f, reg):
         bits = ["couleur #rrggbb"]
     elif t == "select":
         opts = [str(o.get("value")) for o in f.get("options", [])]
-        bits = [f"choix {'|'.join(opts[:10])}{'|…' if len(opts) > 10 else ''}" + (" (plusieurs)" if f.get("multiple") else "")]
+        more = "|…" if len(opts) > 10 else ""
+        bits = [f"choix {'|'.join(opts[:10])}{more}" + (" (plusieurs)" if f.get("multiple") else "")]
     elif t == "library":
         names = []
         for o in f.get("options", []):

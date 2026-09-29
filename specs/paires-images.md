@@ -6,7 +6,7 @@ H5P.ImagePair 1.4 · alias : paires-images, imagepair, image-pair · syntaxe Mar
 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
-- taskDescription : texte, défaut Drag images from the left to … — Task Description
+- taskDescription : texte, défaut Faites glisser les images de … — Task Description
 - cards* : liste (min 2, max 100) — Cards
   chaque élément :
     - image : image (chemin ou URL) — Image

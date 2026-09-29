@@ -37,7 +37,9 @@ const server = http.createServer((req, res) => {
   fs.createReadStream(p).pipe(res);
 }).listen(0);
 const port = server.address().port;
-const browser = await chromium.launch(process.env.H5P_CHROMIUM ? { executablePath: process.env.H5P_CHROMIUM } : {});
+const launch = { args: ['--disable-background-networking', '--disable-component-update', '--no-first-run'] };
+if (process.env.H5P_CHROMIUM) launch.executablePath = process.env.H5P_CHROMIUM;
+const browser = await chromium.launch(launch);
 const page = await browser.newPage({ viewport: { width: 1000, height: 800 } });
 const errors = [], missing = [];
 page.on('pageerror', e => errors.push('pageerror: ' + e.message.split('\n')[0]));

@@ -102,6 +102,8 @@ def build_group(field, value, ctx, path, siblings=None, hidden=False, top=False)
         return build_field(child, value, ctx, path, siblings or {}, hidden)
     if value is MISSING:
         value = {}
+        if field.get("optional"):
+            hidden = True  # optional group left out by the author: defaults only, nothing is required inside
     if not isinstance(value, dict):
         ctx.error(path, f"objet attendu (clés possibles: {', '.join(f['name'] for f in fields)})")
         value = {}
@@ -134,15 +136,14 @@ def build_list(field, value, ctx, path, siblings, hidden):
         n = field.get("defaultNum", field.get("min", 1))
         n = int(n or 0)
         if n == 0:
-            return MISSING if field.get("optional") else []
+            return MISSING  # H5P drops empty lists anyway
         probe = Ctx(ctx.registry, ctx.lang, ctx.media, ctx.seed, ctx.preset, quiet=True, stack=list(ctx.stack))
         items = [build_field(item, MISSING, probe, path + [i], {}) for i in range(n)]
         if not probe.errors and all(x is not MISSING for x in items):
             return items
-        if field.get("optional") or hidden or int(field.get("min", 0) or 0) == 0:
-            return MISSING if field.get("optional") else []
-        ctx.error(path, f"au moins {field.get('min', 1)} {label}(s) requis")
-        return []
+        if not (field.get("optional") or hidden or int(field.get("min", 0) or 0) == 0):
+            ctx.error(path, f"au moins {field.get('min', 1)} {label}(s) requis")
+        return MISSING
     if not isinstance(value, list):
         value = [value]
     if "min" in field and len(value) < int(field["min"]) and not hidden:
@@ -154,7 +155,7 @@ def build_list(field, value, ctx, path, siblings, hidden):
         r = build_field(item, v, ctx, path + [i], {}, hidden)
         if r is not MISSING:
             out.append(r)
-    return out
+    return out or MISSING
 
 
 # --------------------------------------------------------------------------------------------------
@@ -196,7 +197,8 @@ def default_or_missing(field, ctx, path, hidden, kind):
     if name in ctx.preset and _compatible(field, ctx.preset[name]):
         return ctx.preset[name]
     if "default" in field:
-        return field["default"]
+        # a null default means "no value": omit it (H5P would turn it into "")
+        return MISSING if field["default"] is None else field["default"]
     if kind == "boolean":
         return False
     if not field.get("optional") and not hidden and field.get("widget") != "none":
@@ -348,6 +350,10 @@ def sub_id(ctx, path):
 
 
 def build_library(field, value, ctx, path, siblings, hidden):
+    if value is MISSING and isinstance(field.get("default"), dict) and field["default"].get("library"):
+        # semantics default sub-content (e.g. the summary of an interactive video): built like the editor
+        # does, with nothing required inside since the author did not ask for it
+        value, hidden = dict(field["default"]), True
     if value is MISSING:
         if not field.get("optional") and not hidden:
             ctx.error(path, "sous-contenu requis (clé library)")
@@ -385,8 +391,9 @@ def build_library(field, value, ctx, path, siblings, hidden):
     try:
         params = build_group({"type": "group", "fields": lib.localized_semantics(ctx.lang)}, raw, ctx,
                              path, top=True, hidden=hidden)
-        from .rules import check
-        check(lib.machine, params, ctx, path)
+        if not hidden:
+            from .rules import check
+            check(lib.machine, params, ctx, path)
     finally:
         ctx.stack.pop()
     meta = value.get("metadata") if isinstance(value.get("metadata"), dict) else {}

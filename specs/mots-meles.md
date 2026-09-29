@@ -18,8 +18,8 @@ Trouve les noms d'organites.
 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
-- taskDescription : texte, défaut Find the words from the grid — Task description
-- wordList : texte, défaut one,two,three — Word list
+- taskDescription : texte, défaut Trouvez les mots dans la gril… — Task description
+- wordList : texte, défaut un,deux,trois — Word list
 - behaviour : réglages — Behavioural settings
   fillPool=abcdefghijklmnopqrstuvwxyz, preferOverlap=true, showVocabulary=true, enableShowSolution=true, enableRetry=true
 

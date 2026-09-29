@@ -8,7 +8,6 @@ Output contract (kept tiny for AI agents):
 """
 import argparse
 import json
-import sys
 import traceback
 from pathlib import Path
 
@@ -67,7 +66,7 @@ def cmd_build(args, write=True):
             if len(r.errors) > MAX_LINES:
                 print(f"- … et {len(r.errors) - MAX_LINES} autre(s)")
         if r.warnings and not args.quiet:
-            print(f"  avertissement(s): " + " | ".join(r.warnings[:3]) +
+            print("  avertissement(s): " + " | ".join(r.warnings[:3]) +
                   (f" (+{len(r.warnings) - 3})" if len(r.warnings) > 3 else ""))
     if args.json:
         print(json.dumps([{"source": str(r.source), "ok": r.ok, "package": str(r.out) if r.out else None,

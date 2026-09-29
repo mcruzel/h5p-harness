@@ -1,0 +1,384 @@
+{
+ "H5P.AdvancedBlanks": {
+  "submitAnswer": "Soumettre",
+  "a11yCheck": "Vérifier les réponses. Les réponses seront marquées comme correctes ou incorrectes.",
+  "a11ySubmitAndCheck": "Soumettre les réponses et les vérifier. Les réponses seront marquées comme correctes ou incorrectes.",
+  "a11yShowSolution": "Afficher la solution. Les blancs seront remplis avec la solution attendue.",
+  "a11yRetry": "Recommencer l'activité. Toutes les réponses seront réinitialisées et l'activité reprendra depuis le début.",
+  "noBlanks": "Aucun blanc n'a été défini pour cet exercice.",
+  "scoreBarLabel": "Vous avez obtenu :num sur :total points"
+ },
+ "H5P.AdventCalendar": {
+  "l10n.nothingToSee": "Il n'y a rien à voir ici !🎄",
+  "l10n.dummy": "Dummy",
+  "a11y.door": "Porte",
+  "a11y.locked": "Verrouillée. Ce n'est pas encore le moment d'ouvrir celle-ci.",
+  "a11y.content": "Contenu de la @door",
+  "a11y.mute": "Couper le son",
+  "a11y.unmute": "Activer le son",
+  "a11y.closeWindow": "Fermer la fenêtre",
+  "a11y.loading": "Chargement..."
+ },
+ "H5P.Agamotto": {
+  "a11y.image": "Image"
+ },
+ "H5P.ArithmeticQuiz": {
+  "UI.incorrectText": "Réponse incorrecte. La bonne réponse était :num"
+ },
+ "H5P.Audio": {
+  "playAudio": "Lire l'audio",
+  "pauseAudio": "Mettre l'audio en pause",
+  "contentName": "Audio"
+ },
+ "H5P.AudioRecorder": {
+  "l10n.pause": "Pause"
+ },
+ "H5P.Blanks": {
+  "scoreBarLabel": "Vous avez obtenu :num sur :total points"
+ },
+ "H5P.BranchingScenario": {
+  "branchingScenario.content.content.proceedButtonText": "Continuer",
+  "branchingScenario.l10n.disableProceedButtonText": "Vous devez d'abord terminer le module en cours"
+ },
+ "H5P.ChoiceExplorer": {
+  "l10n.missingParameters": "Des paramètres de décision et/ou des paramètres cibles sont manquants.",
+  "l10n.done": "Terminé"
+ },
+ "H5P.CombinationLock": {
+  "l10n.check": "Vérifier",
+  "l10n.submit": "Soumettre",
+  "l10n.showSolution": "Afficher la solution",
+  "l10n.retry": "Recommencer",
+  "l10n.lockOpen": "Cadenas ouvert !",
+  "l10n.lockDisabled": "Plus aucune tentative. Cadenas bloqué.",
+  "l10n.attemptsLeft": "Tentatives restantes : @number",
+  "l10n.correctCombination": "Cette combinaison ouvre le cadenas.",
+  "l10n.wrongCombination": "Cette combinaison n'ouvre pas le cadenas.",
+  "a11y.check": "Vérifier si la combinaison ouvre le cadenas.",
+  "a11y.showSolution": "Afficher la solution. Les symboles corrects permettant d'ouvrir le cadenas seront affichés.",
+  "a11y.retry": "Recommencer l'activité. Toutes les molettes du cadenas seront réinitialisées et l'activité reprendra depuis le début.",
+  "a11y.currentSymbol": "Symbole actuel : @symbol",
+  "a11y.currentSymbols": "Symboles actuels : @symbols",
+  "a11y.previousSymbol": "Symbole précédent",
+  "a11y.nextSymbol": "Symbole suivant",
+  "a11y.correctCombination": "Cette combinaison ouvre le cadenas. @combination.",
+  "a11y.wrongCombination": "Combinaison incorrecte",
+  "a11y.combinationLock": "cadenas à combinaison",
+  "a11y.segment": "Molette @number sur @total"
+ },
+ "H5P.Cornell": {
+  "notesFields.notesTitle": "Notes"
+ },
+ "H5P.CoursePresentation": {
+  "l10n.slides": "Diapositives",
+  "l10n.score": "Score",
+  "l10n.total": "Total",
+  "l10n.resultHeader": "Résultats",
+  "l10n.amountCorrect": "Réponses correctes : @value / @max",
+  "l10n.amountCorrectAria": "Réponses correctes : @value sur @max",
+  "l10n.slideshowNavigationLabel": "Navigation dans le diaporama",
+  "override.social.facebookShare.url": "@currentpageurl",
+  "override.social.twitterShare.url": "@currentpageurl",
+  "override.social.googleShareUrl": "@currentpageurl"
+ },
+ "H5P.Crossword": {
+  "a11y.submitAndcheck": "Soumettre la réponse et vérifier les caractères. Les réponses seront marquées comme correctes, incorrectes ou sans réponse."
+ },
+ "H5P.Dictation": {
+  "a11y.solution": "Solution",
+  "a11y.wrongCapitalization": "Erreur de majuscule"
+ },
+ "H5P.DocumentExportPage": {
+  "exportTextLabel": "Exporter",
+  "requiresInputErrorMessage": "Les pages suivantes contiennent des champs obligatoires à remplir pour pouvoir relire ou soumettre ce document : @pages",
+  "tooltipExitText": "Quitter",
+  "ariaLabelExitText": "Quitter",
+  "submitTextLabel": "Soumettre",
+  "submitSuccessTextLabel": "Votre rapport a bien été soumis !",
+  "selectAllTextLabel": "Sélectionner",
+  "helpTextLabel": "Plus d'informations"
+ },
+ "H5P.DocumentationTool": {
+  "i10n.previous": "Précédent",
+  "i10n.next": "Suivant"
+ },
+ "H5P.DragQuestion": {
+  "grabbableSuffix": "Placé dans la zone de dépôt {num}.",
+  "dropzonePrefix": "Zone de dépôt {num} sur {total}.",
+  "a11yCheck": "Vérifier les réponses. Les réponses seront marquées comme correctes, incorrectes ou sans réponse.",
+  "scoreBarLabel": "Vous avez obtenu :num sur :total points"
+ },
+ "H5P.DragText": {
+  "a11yCheck": "Vérifier les réponses. Les réponses seront marquées comme correctes, incorrectes ou sans réponse.",
+  "scoreBarLabel": "Vous avez obtenu :num sur :total points"
+ },
+ "H5P.Essay": {
+  "submitAnswer": "Soumettre",
+  "feedbackHeader": "Commentaires",
+  "ariaYourResult": "Vous avez obtenu @score sur @total points",
+  "ariaNavigatedToSolution": "Navigation vers l'exemple de solution nouvellement ajouté après la zone de texte.",
+  "ariaCheck": "Vérifier les réponses.",
+  "ariaRetry": "Recommencer l'activité. Vous pouvez améliorer votre réponse précédente si l'auteur l'a autorisé."
+ },
+ "H5P.FindTheWords": {
+  "taskDescription": "Trouvez les mots dans la grille",
+  "wordList": "un,deux,trois",
+  "l10n.check": "Vérifier",
+  "l10n.tryAgain": "Recommencer",
+  "l10n.showSolution": "Afficher la solution",
+  "l10n.found": "Mots trouvés : @found sur @totalWords",
+  "l10n.timeSpent": "Temps écoulé",
+  "l10n.score": "Vous avez obtenu @score sur @total points",
+  "l10n.wordListHeader": "Mots à trouver"
+ },
+ "H5P.Flashcards": {
+  "cardsHeader": "Cartes",
+  "scoreHeader": "Score"
+ },
+ "H5P.GameMap": {
+  "l10n.confirmAccessDeniedForTargetDialog": "L'étape de destination nécessite que vous atteigniez certains objectifs avant de pouvoir être débloquée.",
+  "l10n.ok": "OK",
+  "l10n.restrictionStageScorePercentageLessThan": "Votre pourcentage de réussite à l'étape @label est inférieur à @value.",
+  "l10n.restrictionStageScorePercentageEqualTo": "Votre pourcentage de réussite à l'étape @label est égal à @value.",
+  "l10n.restrictionStageScorePercentageNotEqualTo": "Votre pourcentage de réussite à l'étape @label est différent de @value.",
+  "l10n.restrictionStageScorePercentageGreaterThan": "Votre pourcentage de réussite à l'étape @label est supérieur à @value.",
+  "l10n.maxScoreAdjusted": "Notez que le score maximum de cette étape a été ajusté et ne correspondra pas à la somme des scores maximums de tous les exercices.",
+  "l10n.livesInfoIntro": "Voici comment vous perdez une vie dans un exercice :",
+  "l10n.loseLifeRuleTemplate": "@title : @rule",
+  "l10n.neverLoseLives": "Vous ne perdez jamais de vie.",
+  "l10n.loseLifeIfNotFullScore": "Vous perdez une vie si vous n'obtenez pas le score maximum.",
+  "l10n.loseLifeIfBelowPercentage": "Vous perdez une vie si vous obtenez moins de @percentage% du total des points.",
+  "a11y.statusContainerTime": "Temps restant : @time",
+  "a11y.statusContainerLives": "Vies restantes : @lives",
+  "a11y.statusContainerStages": "Étapes : @stages sur @total",
+  "a11y.statusContainerScore": "Score : @score sur @total",
+  "a11y.buttonSettings": "Réglages",
+  "a11y.teleportedToMap": "Téléportation vers la carte @name.",
+  "a11y.neighborsToExploreTemplate": "Étapes voisines à explorer : @count",
+  "a11y.showStageInfo": "Afficher les informations de l'étape",
+  "a11y.hideStageInfo": "Masquer les informations de l'étape"
+ },
+ "H5P.Image": {
+  "contentName": "Image"
+ },
+ "H5P.ImageHotspotQuestion": {
+  "a11yRetry": "Recommencer l'activité. Toutes les réponses seront réinitialisées et l'activité reprendra depuis le début."
+ },
+ "H5P.ImageHotspots": {
+  "untitledHotspotLabel": "Point d'intérêt sans titre",
+  "containsAudioVideoLabel": "Contient de l'audio ou de la vidéo"
+ },
+ "H5P.ImageJuxtaposition": {
+  "a11y.imageVisibleMessage": "Image visible à @percentage %",
+  "a11y.buttonFullscreenEnter": "Passer en mode plein écran",
+  "a11y.buttonFullscreenExit": "Quitter le mode plein écran"
+ },
+ "H5P.ImageMultipleHotspotQuestion": {
+  "imageMultipleHotspotQuestion.backgroundImageSettings.questionTitle": "Question à zones sensibles sur image"
+ },
+ "H5P.ImagePair": {
+  "taskDescription": "Faites glisser les images de gauche pour les associer aux images correspondantes de droite",
+  "l10n.checkAnswer": "Vérifier",
+  "l10n.tryAgain": "Recommencer",
+  "l10n.showSolution": "Afficher la solution",
+  "l10n.score": "Vous avez obtenu @score sur @total points"
+ },
+ "H5P.ImageSequencing": {
+  "taskDescription": "Faites glisser les images pour les remettre dans le bon ordre",
+  "altTaskDescription": "Remettez la liste suivante dans le bon ordre. Utilisez les touches fléchées pour parcourir les éléments de la liste, la barre d'espace pour activer ou désactiver un élément et les touches fléchées pour le déplacer",
+  "l10n.totalMoves": "Nombre de déplacements",
+  "l10n.timeSpent": "Temps écoulé",
+  "l10n.score": "Vous avez obtenu @score sur @total points",
+  "l10n.checkAnswer": "Vérifier",
+  "l10n.tryAgain": "Recommencer",
+  "l10n.showSolution": "Afficher la solution",
+  "l10n.resume": "Reprendre",
+  "l10n.audioNotSupported": "Erreur audio",
+  "l10n.ariaPlay": "Lire l'audio correspondant",
+  "l10n.ariaMoveDescription": "@cardDesc déplacé de la position @posSrc à la position @posDes",
+  "l10n.ariaCardDesc": "élément à ordonner"
+ },
+ "H5P.InteractiveBook": {
+  "page": "Page",
+  "next": "Suivant",
+  "previous": "Précédent",
+  "scoreText": "@score / @maxscore",
+  "score": "Score"
+ },
+ "H5P.InteractiveVideo": {
+  "l10n.pause": "Pause",
+  "l10n.more": "Plus d'options du lecteur",
+  "l10n.minutes": "Minutes",
+  "l10n.endcardTableRowScore": "Score",
+  "l10n.endcardQuestion": "Question",
+  "l10n.endCardTableRowSummaryWithScore": "Vous avez obtenu @score sur @total points pour la question @question, apparue après @minutes minutes et @seconds secondes.",
+  "l10n.endcardInformation": "Vous avez répondu à @answered questions. Cliquez ci-dessous pour remettre vos réponses.",
+  "l10n.endcardInformationOnSubmitButtonDisabled": "Vous avez répondu à @answered questions."
+ },
+ "H5P.KewArCode": {
+  "l10n.contact": "Contact",
+  "l10n.country": "Pays",
+  "l10n.dateEnd": "Date de fin",
+  "l10n.dateStart": "Date de début",
+  "l10n.description": "Description",
+  "l10n.email": "Courriel",
+  "l10n.event": "Événement",
+  "l10n.extended": "Complément d'adresse",
+  "l10n.latitude": "Latitude",
+  "l10n.locality": "Ville",
+  "l10n.location": "Lieu",
+  "l10n.longitude": "Longitude",
+  "l10n.message": "Message",
+  "l10n.name": "Nom",
+  "l10n.note": "Note",
+  "l10n.organization": "Organisation",
+  "l10n.phone": "Téléphone",
+  "l10n.region": "Région",
+  "l10n.sms": "SMS",
+  "l10n.street": "Rue",
+  "l10n.text": "Texte",
+  "l10n.title": "Titre",
+  "l10n.url": "URL",
+  "l10n.zip": "Code postal",
+  "l10n.noContentToDisplay": "Aucun contenu à afficher",
+  "a11y.codeContents": ". Contenu du code"
+ },
+ "H5P.MarkTheLetters": {
+  "checkAnswerButton": "Vérifier",
+  "tryAgainButton": "Recommencer",
+  "showSolutionButton": "Afficher la solution",
+  "correctAnswer": "Correct !",
+  "incorrectAnswer": "Incorrect !",
+  "missedAnswer": "Oubliée !",
+  "displaySolutionDescription": "L'activité a été mise à jour pour afficher la solution.",
+  "scoreBarLabel": "Vous avez obtenu :num sur :total points"
+ },
+ "H5P.MarkTheWords": {
+  "a11yFullTextLabel": "Texte intégral lisible",
+  "a11yClickableTextLabel": "Texte intégral dans lequel les mots peuvent être marqués",
+  "a11ySolutionModeHeader": "Mode solution",
+  "a11yCheckingHeader": "Mode de vérification",
+  "a11yCheck": "Vérifier les réponses. Les réponses seront marquées comme correctes, incorrectes ou sans réponse."
+ },
+ "H5P.MemoryGame": {
+  "l10n.playAudio": "Lire l'audio",
+  "l10n.label": "Utilisez les flèches gauche et droite pour parcourir les cartes. Utilisez la barre d'espace ou la touche Entrée pour retourner une carte.",
+  "l10n.cardTurned": "Retournée.",
+  "l10n.cardMatchedA11y": "Vos cartes correspondent !",
+  "l10n.cardNotMatchedA11y": "Les cartes choisies ne correspondent pas. Retournez d'autres cartes pour réessayer."
+ },
+ "H5P.MultiChoice": {
+  "UI.scoreBarLabel": "Vous avez obtenu :num sur :total points"
+ },
+ "H5P.MultiMediaChoice": {
+  "l10n.closeModalText": "Fermer la fenêtre modale"
+ },
+ "H5P.QuestionSet": {
+  "texts.previous": "Précédent",
+  "texts.next": "Suivant",
+  "texts.questionLabel": "Question",
+  "texts.navigationLabel": "Questions",
+  "texts.questionSetInstruction": "Choisissez la question à afficher",
+  "texts.noQuestionAdded": "Aucune question n'a été ajoutée",
+  "endGame.message": "Résultats",
+  "endGame.amountCorrect": "Réponses correctes : @finals sur @totals",
+  "endGame.scoreHeader": "Score"
+ },
+ "H5P.SingleChoiceSet": {
+  "l10n.nextButton": "Suivant",
+  "l10n.showResultsButtonLabel": "Afficher les résultats",
+  "l10n.shouldSelect": "Il fallait sélectionner cette réponse",
+  "l10n.shouldNotSelect": "Il ne fallait pas sélectionner cette réponse",
+  "l10n.solutionListQuestionNumber": "Question :num",
+  "l10n.a11yShowSolution": "Afficher la solution. Les bonnes réponses seront indiquées dans l'activité.",
+  "l10n.a11yRetry": "Recommencer l'activité. Toutes les réponses seront réinitialisées et l'activité reprendra depuis le début.",
+  "l10n.resultHeader": "Votre résultat :",
+  "l10n.totalScore": "Réponses correctes : :score sur :maxScore",
+  "l10n.resultTableHeader": "Question",
+  "l10n.resultScoreTableHeader": "Score",
+  "l10n.retryButtonLabel": "Recommencer",
+  "l10n.solutionViewTitle": "Liste des solutions"
+ },
+ "H5P.SortParagraphs": {
+  "a11y.point": "@score point"
+ },
+ "H5P.SpeakTheWords": {
+  "l10n.a11yShowSolution": "Afficher la solution. Les bonnes réponses seront indiquées dans l'activité.",
+  "l10n.a11yRetry": "Recommencer l'activité. Toutes les réponses seront réinitialisées et l'activité reprendra depuis le début."
+ },
+ "H5P.SpeakTheWordsSet": {
+  "l10n.finishButtonLabel": "Terminer"
+ },
+ "H5P.StructureStrip": {
+  "l10n.section": "Section",
+  "a11y.feedback": "Commentaires"
+ },
+ "H5P.Summary": {
+  "labelCorrect": "Correct.",
+  "labelIncorrect": "Incorrect ! Veuillez réessayer.",
+  "alternativeIncorrectLabel": "Incorrect"
+ },
+ "H5P.Tabs": {
+  "l10n.noContent": "Il n'y a aucun contenu à afficher.",
+  "a11y.tabList": "Choisissez un onglet."
+ },
+ "H5P.ThreeDModel": {
+  "l10n.noModel": "Impossible de charger un modèle 3D. Quelqu'un a-t-il oublié d'en ajouter un ?",
+  "a11y.front": "Face avant du modèle 3D",
+  "a11y.back": "Face arrière du modèle 3D",
+  "a11y.left": "Côté gauche du modèle 3D",
+  "a11y.right": "Côté droit du modèle 3D",
+  "a11y.upper-front": "Haut de la face avant du modèle 3D",
+  "a11y.upper-back": "Haut de la face arrière du modèle 3D",
+  "a11y.upper-left": "Haut du côté gauche du modèle 3D",
+  "a11y.upper-right": "Haut du côté droit du modèle 3D",
+  "a11y.lower-front": "Bas de la face avant du modèle 3D",
+  "a11y.lower-back": "Bas de la face arrière du modèle 3D",
+  "a11y.lower-left": "Bas du côté gauche du modèle 3D",
+  "a11y.lower-right": "Bas du côté droit du modèle 3D",
+  "a11y.interaction-prompt": "Utilisez la souris, l'écran tactile ou les touches fléchées pour vous déplacer et interagir avec le modèle 3D.",
+  "a11y.buttonFullscreenEnter": "Passer en mode plein écran",
+  "a11y.buttonFullscreenExit": "Quitter le mode plein écran",
+  "a11y.buttonPlay": "Lancer l'animation",
+  "a11y.buttonPause": "Mettre l'animation en pause"
+ },
+ "H5P.Transcript": {
+  "l10n.noMedium": "Aucun média n'a été associé à la transcription.",
+  "l10n.noTranscript": "Aucune transcription n'a été fournie.",
+  "l10n.troubleWebVTT": "Le fichier WebVTT semble comporter une erreur. Veuillez consulter la console de développement du navigateur pour plus d'informations.",
+  "l10n.chapterMarks": "Repères de chapitre",
+  "l10n.unnamedOption": "Option sans nom",
+  "a11y.buttonVisible": "Masquer la transcription. Actuellement visible.",
+  "a11y.buttonInvisible": "Afficher la transcription. Actuellement masquée.",
+  "a11y.buttonAutoscrollActive": "Désactiver le défilement automatique. Actuellement activé.",
+  "a11y.buttonAutoscrollInactive": "Activer le défilement automatique. Actuellement désactivé.",
+  "a11y.buttonAutoscrollDisabled": "Option de défilement automatique désactivée.",
+  "a11y.buttonInteractive": "Passer à l'affichage en texte brut",
+  "a11y.buttonPlaintext": "Passer à l'affichage de la transcription interactive.",
+  "a11y.buttonModeDisabled": "Changement de mode désactivé.",
+  "a11y.buttonTimeActive": "Masquer l'horodatage. Actuellement affiché.",
+  "a11y.buttonTimeInactive": "Afficher l'horodatage. Actuellement masqué.",
+  "a11y.buttonTimeDisabled": "Option d'horodatage désactivée.",
+  "a11y.buttonLineBreakActive": "Masquer les retours à la ligne. Actuellement affichés.",
+  "a11y.buttonLineBreakInactive": "Afficher les retours à la ligne. Actuellement masqués.",
+  "a11y.buttonLineBreakDisabled": "Option des retours à la ligne désactivée.",
+  "a11y.buttonChapterMarksOpen": "Ouvrir les repères de chapitre",
+  "a11y.buttonChapterMarksClose": "Fermer les repères de chapitre",
+  "a11y.buttonChapterMarksDisabled": "Repères de chapitre désactivés.",
+  "a11y.interactiveTranscript": "Transcription interactive",
+  "a11y.selectField": "Sélectionnez la transcription à afficher.",
+  "a11y.selectFieldDisabled": "Liste de sélection désactivée.",
+  "a11y.enterToHighlight": "Saisissez une recherche pour surligner le texte correspondant.",
+  "a11y.searchboxDisabled": "Champ de recherche désactivé.",
+  "a11y.close": "Fermer"
+ },
+ "H5P.TrueFalse": {
+  "l10n.scoreBarLabel": "Vous avez obtenu :num sur :total points"
+ },
+ "H5P.Video": {
+  "l10n.name": "Vidéo"
+ },
+ "H5P.XRay": {
+  "a11y.movedLensTo": "Lentille déplacée à @positionHorizontal horizontalement et à @positionVertical verticalement."
+ }
+}

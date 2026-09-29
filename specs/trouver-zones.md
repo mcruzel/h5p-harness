@@ -8,7 +8,7 @@ H5P.ImageMultipleHotspotQuestion 1.0 · alias : trouver-zones, imagemultiplehots
 
 - imageMultipleHotspotQuestion : groupe — Image Multiple Hotspot Question Editor
   - backgroundImageSettings : groupe — Background image
-    - questionTitle : texte, défaut Image hotspot question — The title of this question
+    - questionTitle : texte, défaut Question à zones sensibles su… — The title of this question
     - backgroundImage : image (chemin ou URL) — Background image
   - hotspotSettings : groupe — Hotspots
     - taskDescription : texte — Task description

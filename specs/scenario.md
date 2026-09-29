@@ -23,7 +23,7 @@ H5P.BranchingScenario 1.11 · alias : scenario, scenario-a-embranchements, branc
     chaque élément :
       - type* : sous-contenu, library: question-embranchement | presentation | texte | image | image-interactive | video-interactive | video
       - showContentTitle : booléen — Voir le titre du contenu dans la vue
-      - proceedButtonText : texte, défaut Proceed — Text for the proceed button (max length: 50 characters)
+      - proceedButtonText : texte, défaut Continuer — Text for the proceed button (max length: 50 characters)
       - forceContentFinished : choix useBehavioural|enabled|disabled, défaut useBehavioural — Identifiant de contenu suivant (les écrans de fin sont définis par de…
       - feedback : groupe — Feedback
         - title : texte riche (Markdown: a code del em s strong) — Feedback title

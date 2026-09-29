@@ -6,8 +6,8 @@ H5P.ImageSequencing 1.1 · alias : sequence-images, imagesequencing, image-seque
 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
-- taskDescription : texte, défaut Drag to arrange the images in… — Task Description
-- altTaskDescription : texte, défaut Make the following list be or… — Alternate Task Description
+- taskDescription : texte, défaut Faites glisser les images pou… — Task Description
+- altTaskDescription : texte, défaut Remettez la liste suivante da… — Alternate Task Description
 - sequenceImages* : liste (min 3) — Images
   chaque élément :
     - image : image (chemin ou URL) — Image

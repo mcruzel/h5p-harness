@@ -71,7 +71,7 @@ Cible : Moodle 4.5 ou plus récent (API H5P 1.28).
 | `colonne` | Page | H5P.Column 1.22 | Markdown |
 | `cadenas` | Combination Lock | H5P.CombinationLock 1.0 | yaml |
 | `cornell` | Cornell Notes | H5P.Cornell 0.5 | yaml |
-| `presentation` | Course Presentation | H5P.CoursePresentation 1.27 | yaml |
+| `presentation` | Course Presentation | H5P.CoursePresentation 1.27 | Markdown |
 | `mots-croises` | Crossword | H5P.Crossword 0.7 | Markdown |
 | `cartes` | Dialog Cards | H5P.Dialogcards 1.9 | Markdown |
 | `dictee` | Dictation | H5P.Dictation 1.4 | yaml |
@@ -93,7 +93,7 @@ Cible : Moodle 4.5 ou plus récent (API H5P 1.28).
 | `carrousel` | Image Slider | H5P.ImageSlider 1.1 | Markdown |
 | `mur-infos` | Information Wall | H5P.InfoWall 0.6 | yaml |
 | `livre` | Interactive Book | H5P.InteractiveBook 1.15 | Markdown |
-| `video-interactive` | Interactive Video | H5P.InteractiveVideo 1.28 | yaml |
+| `video-interactive` | Interactive Video | H5P.InteractiveVideo 1.28 | Markdown |
 | `qr-code` | KewAr Code | H5P.KewArCode 1.7 | yaml |
 | `marquer-lettres` | Mark the Letters | H5P.MarkTheLetters 1.1 | yaml |
 | `marquer-mots` | Mark the Words | H5P.MarkTheWords 1.11 | Markdown |

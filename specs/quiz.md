@@ -44,8 +44,8 @@ L'ADN se trouve dans le {{noyau}}.
   - showSolutionButton : booléen, défaut true — Afficher le bouton "Solution".
   - showRetryButton : booléen, défaut true — Afficher le bouton "Recommencer".
   - noResultMessage : texte, défaut Terminé — Message si pas de résultats
-  - message : texte riche (Markdown: code em strong), défaut Results — Results heading
-  - amountCorrect : texte, défaut @finals of @totals correct — Amount correct heading
+  - message : texte riche (Markdown: code em strong), défaut Résultats — Results heading
+  - amountCorrect : texte, défaut Réponses correctes : @finals … — Amount correct heading
   - scoreBarLabel : texte, défaut Vous avez obtenu @finals sur … — Score announcer
   - scoreHeader : texte, défaut Score — Score heading
   - overallFeedback : groupe — Feedback général (groupe à un champ: écrire directement la valeur)
