@@ -32,7 +32,7 @@ Quel gaz est rejeté ?
       - elements : liste
         chaque élément :
           - action : sous-contenu, library: texte | lien | image | forme | video | audio | trous | choix-unique | qcm | vf | glisser-deposer | resume | glisser-mots | marquer-mots | cartes | texte-continu | zone-texte | tableau | video-interactive | twitter | enregistreur-audio | choix-images
-          - solution : texte riche (Markdown: a code del em h2 h3 hr li ol pre s strong ul) — Commentaires
+          - solution : texte riche (Markdown: a code del em h2 h3 hr li ol pre s strong ul) — Commentaires (Les commentaires sont affichés pour aider les utilisateurs lors de la présentation.)
           - alwaysDisplayComments : booléen — Toujours afficher les commentaires
           - backgroundOpacity : nombre, min 0, max 100, défaut 0 — Opacité
           - displayAsButton : booléen, défaut false — Afficher sous forme de bouton
@@ -40,24 +40,24 @@ Quel gaz est rejeté ?
           - buttonSize : choix small|big, défaut big — La taille de bouton
           - title : texte — Titre
           - goToSlideType : choix specified|next|previous, défaut specified — Aller vers
-          - goToSlide : nombre, min 1 — Aller à la diapositive
-          - invisible : booléen, défaut false — Invisible
+          - goToSlide : nombre, min 1 — Aller à la diapositive (N'est applicable que si le bouton 'Le numéro de diapositive spécifique' est sélectionné)
+          - invisible : booléen, défaut false — Invisible (Curseur par défaut, pas de titre, pas d'onglets. Attention : Les utilisateurs ayant des handicaps ou ceux qui…)
       - keywords : liste
         chaque élément :
           - main : texte
           - subs : liste
             chaque élément = texte
       - slideBackgroundSelector : groupe
-        - imageSlideBackground : image (chemin ou URL) — Image
+        - imageSlideBackground : image (chemin ou URL) — Image (Pour que l'image d'arrière-plan ne soit pas déformée, elle doit avoir un ratio largeur/hauteur de 2 pour 1. L…)
         - fillSlideBackground : couleur #rrggbb — Sélectionnez une couleur
   - keywordListEnabled : booléen, défaut true — Liste des mots-clés
   - keywordListAlwaysShow : booléen, défaut false — Toujours l'afficher
   - keywordListAutoHide : booléen, défaut false — La cacher automatiquement
   - keywordListOpacity : nombre, min 0, max 100, défaut 100 — Opacité
   - globalBackgroundSelector : groupe
-    - imageGlobalBackground : image (chemin ou URL) — Image d'arrière-plan
+    - imageGlobalBackground : image (chemin ou URL) — Image d'arrière-plan (Pour que l'image d'arrière-plan ne soit pas déformée, elle doit avoir un ratio largeur/hauteur de 2 pour 1. L…)
     - fillGlobalBackground : couleur #rrggbb — Sélectionnez une couleur
-- override : réglages — Réglages généraux
+- override : réglages — Réglages généraux (Ces options vous permettent d'enlever certains réglages.)
   activeSurface=false, hideSummarySlide=false, showSolutionButton= (on|off), retryButton= (on|off), summarySlideSolutionButton=true, summarySlideRetryButton=true, enablePrintButton=false
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n.
@@ -79,10 +79,9 @@ presentation:
   globalBackgroundSelector:
     fillGlobalBackground: "#f5f7fa"
   slides:
+    # x, y, width, height : en % de la diapo (obligatoires en YAML, sinon l'élément est invisible)
     - keywords:
         - main: Introduction
-      slideBackgroundSelector:
-        fillSlideBackground: "#ffffff"
       elements:
         - x: 5
           y: 5

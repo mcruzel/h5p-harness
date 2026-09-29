@@ -6,7 +6,7 @@ H5P.AudioRecorder 1.0 · alias : enregistreur-audio, audiorecorder, audio-record
 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
-- title : texte multiligne — Consigne
+- title : texte multiligne — Consigne (Texte facultatif affiché au dessus de l'enregistreur audio)
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n.
 

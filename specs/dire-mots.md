@@ -7,7 +7,7 @@ H5P.SpeakTheWords 1.5 · alias : dire-mots, speakthewords, speak-the-words · sy
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
 - media : groupe — Media
-  - type : sous-contenu, library: image | video | audio — Type
+  - type : sous-contenu, library: image | video | audio — Type (Optional media to display above the question.)
   - disableImageZooming : booléen, défaut false, conditionnel — Disable image zooming
 - question* : texte — Décrire la tâche
 - acceptedAnswers* : liste (min 1) — Réponses acceptées

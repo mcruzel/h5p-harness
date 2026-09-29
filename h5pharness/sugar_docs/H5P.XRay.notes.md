@@ -1,0 +1,2 @@
+- `imageForeground` = image visible ; `imageBackground` = image révélée sous la loupe (mêmes dimensions).
+- `xRayLensWidth` / `xRayLensHeight` sont des **textes avec unité** : `"30%"` ou `"160px"` (un nombre seul est lu en pixels).

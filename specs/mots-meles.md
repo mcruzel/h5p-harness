@@ -18,9 +18,9 @@ Trouve les noms d'organites.
 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
-- taskDescription : texte, défaut Trouvez les mots dans la gril… — Task description
-- wordList : texte, défaut un,deux,trois — Word list
-- behaviour : réglages — Behavioural settings
+- taskDescription : texte, défaut Trouvez les mots dans la gril… — Task description (Description of the Game)
+- wordList : texte, défaut un,deux,trois — Word list (Comma Separated list of words. Special Characters, White Spaces and Numbers Not allowed)
+- behaviour : réglages — Behavioural settings (These options will let you control how the game behaves.)
   fillPool=abcdefghijklmnopqrstuvwxyz, preferOverlap=true, showVocabulary=true, enableShowSolution=true, enableRetry=true
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n.

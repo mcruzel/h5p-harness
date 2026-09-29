@@ -24,47 +24,47 @@ Range chaque animal dans sa classe.
 
 - question : groupe
   - settings : groupe — Réglages
-    - background : image (chemin ou URL) — Image d'arrière-plan
-    - size : groupe — Taille de la zone de l'activité
+    - background : image (chemin ou URL) — Image d'arrière-plan (Sélectionnez une image d'arrière-plan pour votre activité (facultatif).)
+    - size : groupe — Taille de la zone de l'activité (Spécifiez la largeur et la hauteur (en pixels) de la zone de l'activité.)
       - width* : nombre
       - height* : nombre
-  - task : groupe — Éléments de l'activité
+  - task : groupe — Éléments de l'activité (Commencez par créer vos zones de dépôt. Ensuite, créez les étiquettes à glisser en cochant la/les zone(s) où …)
     - elements : liste — Eléments
       chaque élément :
-        - type* : sous-contenu, library: texte | image
+        - type* : sous-contenu, library: texte | image (Sélectionnez le type de contenu que vous souhaitez ajouter.)
         - dropZones* : choix  (plusieurs) — Sélectionnez les zones de dépôt
-        - backgroundOpacity : nombre, min 0, max 100, défaut 100 — Opacité
-        - multiple : booléen, défaut false — Nombre illimité d'instances pour cet élément
+        - backgroundOpacity : nombre, min 0, max 100, défaut 100 — Opacité (Reducing the opacity may result in an insufficient contrast and make the content not accessible.)
+        - multiple : booléen, défaut false — Nombre illimité d'instances pour cet élément (Cloner cet élément de sorte qu'il puisse être déposé dans plusieurs zones.)
     - dropZones : liste — Zones de dépôt
       chaque élément :
-        - label* : texte riche (Markdown: code del em s strong) — Etiquette
+        - label* : texte riche (Markdown: code del em s strong) — Etiquette (The label is used by assistive technologies.)
         - showLabel : booléen — Afficher l'étiquette
         - correctElements* : choix  (plusieurs) — Sélectionnez les éléments qui devront être correctement placés dans c…
-        - backgroundOpacity : nombre, min 0, max 100, défaut 100 — Opacité
+        - backgroundOpacity : nombre, min 0, max 100, défaut 100 — Opacité (Reducing the opacity may result in an insufficient contrast and make the content not accessible.)
         - tipsAndFeedback : groupe — Aides et commentaires
           - tip : texte riche (Markdown: code em strong) — Indice
-          - feedbackOnCorrect : texte — Message qui apparaît si l'association des éléments est correcte
-          - feedbackOnIncorrect : texte — Message qui apparaît si l'association des éléments est incorrecte
-        - single : booléen, défaut false — Cette zone de dépôt ne peut contenir qu'un seul élément
-        - autoAlign : booléen — Activer l'alignement automatique des éléments déplacés
+          - feedbackOnCorrect : texte — Message qui apparaît si l'association des éléments est correcte (Ce message apparaîtra au-dessous de "vérifier" si l'élément est placé correctement.)
+          - feedbackOnIncorrect : texte — Message qui apparaît si l'association des éléments est incorrecte (Ce message apparaîtra au-dessous de "vérifier" si l'élément est placé incorrectement.)
+        - single : booléen, défaut false — Cette zone de dépôt ne peut contenir qu'un seul élément (Assurez-vous qu'il n'existe qu'une seule bonne réponse pour cette zone)
+        - autoAlign : booléen — Activer l'alignement automatique des éléments déplacés (Les éléments déposés dans cette zone seront automatiquement alignés si cette option est cochée.)
 - overallFeedback : groupe — Feedback général (groupe à un champ: écrire directement la valeur)
-  - overallFeedback : liste (min 1) — Définissez le feedback pour chaque intervalle de scores
+  - overallFeedback : liste (min 1) — Définissez le feedback pour chaque intervalle de scores (Cliquez sur le bouton "Ajouter Intervalle" pour ajouter autant d'intervalles de score que vous le souhaitez. …)
     chaque élément :
       - from : nombre, min 0, max 100, défaut 0 — Intervalle des scores
       - to : nombre, min 0, max 100, défaut 100
       - feedback : texte — Feedback pour un intervalle de scores défini
-- behaviour : groupe — Paramètres comportementaux
+- behaviour : groupe — Paramètres comportementaux (Ces options vous permettent de contrôler le déroulement de vos activités.)
   - enableRetry : booléen, défaut true — Activer le bouton "Recommencer"
-  - singlePoint : booléen, défaut false — Donner un point pour la question dans sa globalité
-  - applyPenalties : booléen, défaut true — Appliquer des pénalités
-  - enableScoreExplanation : booléen, défaut true, conditionnel — Activer les explications du score
-  - backgroundOpacity : texte — Opacité des étiquettes
-  - dropZoneHighlighting : choix dragging|always|never, défaut dragging — Mise en évidence de la zone de dépôt
+  - singlePoint : booléen, défaut false — Donner un point pour la question dans sa globalité (Désactivez cette option pour donner un point pour chaque étiquette correctement placée.)
+  - applyPenalties : booléen, défaut true — Appliquer des pénalités (Appliquez des pénalités pour les éléments déposés dans les mauvaises zones de dépôt. Cela doit être activé lo…)
+  - enableScoreExplanation : booléen, défaut true, conditionnel — Activer les explications du score (Montrer l'explication du score aux utilisateurs en vérifiant leurs réponses (si l'option 'Appliquer les pénal…)
+  - backgroundOpacity : texte — Opacité des étiquettes (Si vous remplissez ce champ, la valeur d'opacité choisie enlevera la valeur de l'opacité paramétrée avant pou…)
+  - dropZoneHighlighting : choix dragging|always|never, défaut dragging — Mise en évidence de la zone de dépôt (Choisissez quand mettre en évidence la zone de dépôt.)
   - autoAlignSpacing : nombre, min 0, défaut 2 — Marge pour l'alignement automatique (en pixels)
-  - enableFullScreen : booléen, défaut false — Activer le bouton Plein écran
-  - showScorePoints : booléen, défaut true — Montrer les points de votre score
-  - showTitle : booléen, défaut true — Afficher le titre
-  - dragHandleVisibility : booléen, défaut true — Montrer les Poignées de Déplacement (nouveau look uniquement)
+  - enableFullScreen : booléen, défaut false — Activer le bouton Plein écran (Cochez cette option pour autoriser le mode Plein écran.)
+  - showScorePoints : booléen, défaut true — Montrer les points de votre score (Afficher les points obtenus pour chaque réponse. Indisponible quand l'option 'Donner un point pour la questio…)
+  - showTitle : booléen, défaut true — Afficher le titre (Décochez cette option si vous ne voulez pas que ce titre soit affiché. Le titre ne sera affiché que dans les …)
+  - dragHandleVisibility : booléen, défaut true — Montrer les Poignées de Déplacement (nouveau look uniquement) (Change l'état de visibilité des poignées permettant de déplacer des éléments sur le canevas)
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : scoreShow, submit, tryAgain, scoreExplanation, localize, grabbablePrefix, grabbableSuffix, dropzonePrefix, noDropzone, tipLabel, tipAvailable, correctAnswer, wrongAnswer, feedbackHeader, scoreBarLabel, scoreExplanationButtonLabel, a11yCheck, a11yRetry.
 

@@ -29,10 +29,10 @@ Le {{noyau}} contient l'ADN.
 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
-- showCoverPage : booléen, défaut false — Activer la couverture du livre
+- showCoverPage : booléen, défaut false — Activer la couverture du livre (Une couverture montre les informations concernant le livre avant l'accès)
 - bookCover : groupe, conditionnel — Page de couverture
-  - coverDescription : texte riche (Markdown: a code col colgroup del em figcaption figure h1 h2 h3 h4 h5 h6 hr li ol pre s strong sub sup table tbody td tfoot th thead tr u ul), défaut  — Description de la couverture
-  - coverMedium : sous-contenu, library: image | video — Cover media
+  - coverDescription : texte riche (Markdown: a code col colgroup del em figcaption figure h1 h2 h3 h4 h5 h6 hr li ol pre s strong sub sup table tbody td tfoot th thead tr u ul), défaut  — Description de la couverture (Ce texte sera la description de votre livre)
+  - coverMedium : sous-contenu, library: image | video — Cover media (Optional media to display on the cover.)
 - chapters* : liste (min 1, max 50) — Pages
   chaque élément = sous-contenu, library: colonne — Page
 - behaviour : réglages — Paramètres comportementaux

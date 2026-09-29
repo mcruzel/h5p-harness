@@ -11,11 +11,11 @@ H5P.SpeakTheWordsSet 1.3 · alias : dire-mots-serie, speakthewordsset, speak-the
   - introductionImage : image (chemin ou URL), conditionnel — Image d'introduction
   - introductionImageAltText : texte, conditionnel — Texte alternatif pour l'image d'introduction
   - introductionTitle : texte, conditionnel — Titre
-  - introductionText : texte riche (Markdown: code em strong sub sup), conditionnel — Texte d'introduction
+  - introductionText : texte riche (Markdown: code em strong sub sup), conditionnel — Texte d'introduction (Ce texte apparaît en-dessous du titre.)
 - questions* : liste (min 1) — Questions
   chaque élément = sous-contenu, library: dire-mots — Question
 - overallFeedback : groupe — Feedback global (groupe à un champ: écrire directement la valeur)
-  - overallFeedback : liste (min 1) — Définissez le feedback pour chaque intervalle de score
+  - overallFeedback : liste (min 1) — Définissez le feedback pour chaque intervalle de score (Cliquez sur le bouton "Ajouter Intervalle" pour ajouter autant d'intervalles que vous le souhaitez. Exemple :…)
     chaque élément :
       - from : nombre, min 0, max 100, défaut 0 — Intervalle de score
       - to : nombre, min 0, max 100, défaut 100

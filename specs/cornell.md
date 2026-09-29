@@ -6,8 +6,8 @@ H5P.Cornell 0.5 · alias : cornell, notes-cornell · syntaxe Markdown simplifié
 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
-- headline : texte — Instructions
-- instructions : texte riche (Markdown: a em h2 h3 hr li ol strong u ul) — Contenu de l'exercice
+- headline : texte — Instructions (Les élèves verront ces instructions au-dessus des remarques.)
+- instructions : texte riche (Markdown: a em h2 h3 hr li ol strong u ul) — Contenu de l'exercice (Les élèves verront ces instructions au-dessus des notes.)
 - exerciseContent* : sous-contenu, library: modele-3d | audio | image | texte | video — Champs de remarques
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : notesFields, l10n, a11y.

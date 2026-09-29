@@ -57,7 +57,11 @@ def _short(v, n=30):
 
 def _label(f):
     lab = (f.get("label") or "").strip()
-    return f" — {_short(lab, 70)}" if lab else ""
+    desc = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", f.get("description") or "")).strip()
+    out = f" — {_short(lab, 70)}" if lab else ""
+    if desc and desc.lower() != lab.lower():
+        out += f" ({_short(desc, 110)})"
+    return out
 
 
 def _describe(f, reg):
@@ -163,6 +167,9 @@ def render_spec(reg: Registry, lib):
     doc = SUGAR_DOCS / f"{lib.machine}.md"
     if doc.exists():
         lines += ["## Syntaxe Markdown", "", doc.read_text(encoding="utf-8").strip(), ""]
+    notes = SUGAR_DOCS / f"{lib.machine}.notes.md"
+    if notes.exists():
+        lines += ["## Points d'attention", "", notes.read_text(encoding="utf-8").strip(), ""]
     lines += ["## Champs (bloc ```yaml, noms H5P)", "",
               "`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.", ""]
     out, collapsed = [], []

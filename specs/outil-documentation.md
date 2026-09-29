@@ -6,9 +6,9 @@ H5P.DocumentationTool 1.8 · alias : outil-documentation, documentationtool, doc
 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
-- taskDescription : texte, défaut Outil de documentation — En-tête
+- taskDescription : texte, défaut Outil de documentation — En-tête (Titre de l'outil de documentation.)
 - pagesList* : liste (min 1) — Eléments
-  chaque élément = sous-contenu, library: page-standard | goalspage | goalsassessmentpage | documentexportpage — Type de Page
+  chaque élément = sous-contenu, library: page-standard | goalspage | goalsassessmentpage | documentexportpage — Type de Page (Bibliothèque pour cette page.)
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : i10n.
 
@@ -23,7 +23,7 @@ title: Carnet de bord – exposé sur le système solaire
 language: fr
 ---
 ```yaml
-# titres des pages : metadata.title (sinon titre anglais de la bibliothèque)
+# metadata.title = titre de la page dans le sommaire
 taskDescription: Carnet de bord de l'exposé
 pagesList:
   - library: goalspage

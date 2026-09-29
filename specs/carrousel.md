@@ -12,7 +12,7 @@ Une image par ligne : `- ![description](image)` (au moins 2).
 
 - imageSlides : liste — Images
   chaque élément = sous-contenu, library: imageslide — Diapositive
-- aspectRatioMode : choix auto|custom|notFixed, défaut auto — Ratio de l'affichage
+- aspectRatioMode : choix auto|custom|notFixed, défaut auto — Ratio de l'affichage (Indiquez : "Automatique" pour un ratio d'affichage déterminé par celui des images de l'album nécessitant la p…)
 - aspectRatio : réglages — Paramétrages du ratio de l'affichage
   aspectWidth=4, aspectHeight=3
 

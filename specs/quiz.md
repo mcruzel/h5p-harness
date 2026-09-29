@@ -28,47 +28,47 @@ L'ADN se trouve dans le {{noyau}}.
 
 - introPage : groupe — Introduction du Quiz
   - showIntroPage : booléen — Afficher l'introduction
-  - title : texte — Titre
-  - introduction : texte riche (Markdown: code em strong sub sup) — Texte d'introduction
+  - title : texte — Titre (Ce titre sera affiché au-dessus de votre texte d'introduction.)
+  - introduction : texte riche (Markdown: code em strong sub sup) — Texte d'introduction (Ce texte sera affiché avant le démarrage du quiz.)
   - startButtonText : texte, défaut Commencer — Texte du bouton de démarrage
-  - backgroundImage : image (chemin ou URL) — Image d'arrière-plan
-  - backgroundImageAltText : texte — Alternative text
-- progressType : choix textual|dots, défaut dots — Indicateur de progression
-- passPercentage : nombre, min 0, max 100, défaut 50 — Pourcentage de réussite
+  - backgroundImage : image (chemin ou URL) — Image d'arrière-plan (Image d'arrière-plan optionnelle pour l'introduction.)
+  - backgroundImageAltText : texte — Alternative text (If the browser can't load the image this text will be displayed instead. Also used by "text-to-speech" reader…)
+- progressType : choix textual|dots, défaut dots — Indicateur de progression (Question set progress indicator style. Will be Textual if backwards navigation is disabled.)
+- passPercentage : nombre, min 0, max 100, défaut 50 — Pourcentage de réussite (Pourcentage exigé pour considérer que le quiz est réussi.)
 - questions* : liste (min 1) — Questions
-  chaque élément = sous-contenu, library: qcm | glisser-deposer | trous | marquer-mots | glisser-mots | vf | redaction | choix-images — Type de question
-- disableBackwardsNavigation : booléen, défaut false — Désactiver la possibilité de naviguer en arrière
-- randomQuestions : booléen, défaut false — Afficher les questions dans un ordre aléatoire
-- poolSize : nombre, min 1 — Nombre de questions à afficher :
+  chaque élément = sous-contenu, library: qcm | glisser-deposer | trous | marquer-mots | glisser-mots | vf | redaction | choix-images — Type de question (Types possibles pour cette question.)
+- disableBackwardsNavigation : booléen, défaut false — Désactiver la possibilité de naviguer en arrière (Cette option ne permettra plus que la navigation en avant au sein du module Question Set.)
+- randomQuestions : booléen, défaut false — Afficher les questions dans un ordre aléatoire (Activer pour choisir aléatoirement l'ordre des questions à l'affichage.)
+- poolSize : nombre, min 1 — Nombre de questions à afficher : (Génère aléatoirement un jeu de questions parmi toutes les questions disponibles.)
 - endGame : groupe — Quiz terminé
   - showResultPage : booléen, défaut true — Afficher les résultats
   - showSolutionButton : booléen, défaut true — Afficher le bouton "Solution".
   - showRetryButton : booléen, défaut true — Afficher le bouton "Recommencer".
-  - noResultMessage : texte, défaut Terminé — Message si pas de résultats
-  - message : texte, défaut Résultats — Results heading
-  - amountCorrect : texte, défaut Réponses correctes : @finals … — Amount correct heading
-  - scoreBarLabel : texte, défaut Vous avez obtenu @finals sur … — Score announcer
-  - scoreHeader : texte, défaut Score — Score heading
+  - noResultMessage : texte, défaut Terminé — Message si pas de résultats (Texte affiché sur la page finale si l'option "Afficher les résultats" est désactivée.)
+  - message : texte, défaut Résultats — Results heading (This heading will be displayed at the end of the quiz when the user has answered all questions.)
+  - amountCorrect : texte, défaut Réponses correctes : @finals … — Amount correct heading (Header to show the final score to the user on the end screen)
+  - scoreBarLabel : texte, défaut Vous avez obtenu @finals sur … — Score announcer (Cette vignette sera utilisée pour annoncer la note finale à l'utilisateur sur l'écran de fin)
+  - scoreHeader : texte, défaut Score — Score heading (Header for the score part of the results table)
   - overallFeedback : groupe — Feedback général (groupe à un champ: écrire directement la valeur)
-    - overallFeedback : liste (min 1) — Définir un retour personnalisé pour chaque tranche de score
+    - overallFeedback : liste (min 1) — Définir un retour personnalisé pour chaque tranche de score (Exemple : 0-20 % mauvaise note, 21-91 % note moyenne, 91-100 % excellente note !)
       chaque élément :
         - from : nombre, min 0, max 100, défaut 0 — Tranche de score
         - to : nombre, min 0, max 100, défaut 100
         - feedback : texte — Retour pour cette tranche de score
-  - solutionButtonText : texte, défaut Voir la solution — Texte du bouton "Solution"
-  - retryButtonText : texte, défaut Recommencer — Texte du bouton "Recommencer"
+  - solutionButtonText : texte, défaut Voir la solution — Texte du bouton "Solution" (Texte pour le bouton de solution.)
+  - retryButtonText : texte, défaut Recommencer — Texte du bouton "Recommencer" (Texte pour le bouton Recommencer.)
   - finishButtonText : texte, défaut Terminer — Texte pour le bouton "Terminer"
   - submitButtonText : texte, défaut Soumettre — Submit button text
   - showAnimations : booléen — Afficher une vidéo avant l'affichage des résultats du quiz
   - skippable : booléen — Activer le bouton "Passer la vidéo"
   - skipButtonText : texte, défaut Passer la vidéo — Texte du bouton "Passer la vidéo"
-  - successVideo : vidéo (URL YouTube/Vimeo, chemin ou URL) — Vidéo en cas de succès
-  - failVideo : vidéo (URL YouTube/Vimeo, chemin ou URL) — Vidéo en cas d'échec
+  - successVideo : vidéo (URL YouTube/Vimeo, chemin ou URL) — Vidéo en cas de succès (Vidéo affichée si l'utilisateur réussit le quiz.)
+  - failVideo : vidéo (URL YouTube/Vimeo, chemin ou URL) — Vidéo en cas d'échec (Vidéo affichée si l'utilisateur échoue au quiz.)
 - override : groupe — Behavioural settings
-  - checkButton : booléen, défaut true — Montrer les boutons "Vérifier"
-  - showSolutionButton : choix on|off, conditionnel — Cacher le bouton "Voir la correction"
-  - retryButton : choix on|off, conditionnel — Cacher le bouton "Recommencer"
-  - backgroundImage : image (chemin ou URL) — Image d'arrière-plan
+  - checkButton : booléen, défaut true — Montrer les boutons "Vérifier" (Cette option determine si le bouton "Vérifier" va apparaître pour toutes les questions.)
+  - showSolutionButton : choix on|off, conditionnel — Cacher le bouton "Voir la correction" (Cette option détermine si le bouton "Voir la correction" sera affiché pour toutes les questions, désactivé po…)
+  - retryButton : choix on|off, conditionnel — Cacher le bouton "Recommencer" (Cette option détermine si le bouton "Recommencer" sera affiché pour toutes les questions, désactivé pour tout…)
+  - backgroundImage : image (chemin ou URL) — Image d'arrière-plan (Image d'arrière-plan optionnelle pour la série de questions.)
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : texts.
 

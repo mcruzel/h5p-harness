@@ -7,9 +7,9 @@ H5P.ChoiceExplorer 1.0 · alias : explorateur-choix, choiceexplorer, choice-expl
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
 - media : groupe — Media
-  - type : sous-contenu, library: image | video | audio — Type
+  - type : sous-contenu, library: image | video | audio — Type (Optional media to display above the question.)
   - disableImageZooming : booléen, défaut false, conditionnel — Disable image zooming
-- taskDescription* : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul) — Task description
+- taskDescription* : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul) — Task description (Describe the task for the learners)
 - decisions* : liste (min 1) — Decision parameters
   chaque élément :
     - label* : texte — Label
@@ -24,14 +24,14 @@ H5P.ChoiceExplorer 1.0 · alias : explorateur-choix, choiceexplorer, choice-expl
     - unit : texte — Unit
     - min : nombre — Minimum value
     - max : nombre — Maximum value
-- weights : liste — Weights
+- weights : liste — Weights (For each decision item, set how much 1 unit of the decision item affects each of the target items.)
   chaque élément :
     - decisionId* : texte — Id
     - targets : liste — Targets
       chaque élément :
         - targetId* : texte — Id
         - weight* : nombre — Weight
-- behaviour : réglages — Behavioural settings
+- behaviour : réglages — Behavioural settings (These options will let you control how the task behaves.)
   maxTotalDecisions=…, givesLiveFeedback=false
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n.

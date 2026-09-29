@@ -46,19 +46,19 @@ On ne touche jamais un produit chimique à mains nues.
       - endScreenTitle : texte riche (Markdown: a code del em s strong) — Titre
       - endScreenSubtitle : texte riche (Markdown: a code del em s strong) — Texte
       - endScreenImage : image (chemin ou URL) — Image
-      - endScreenScore : nombre, défaut 0 — Score
+      - endScreenScore : nombre, défaut 0 — Score (Le score sera envoyé à tout LMS, LRS ou tout autre service qui reçoit des résultats depuis H5P pour des utili…)
   - content* : liste (min 1) — Liste de contenus de scénario de branchement
     chaque élément :
       - type* : sous-contenu, library: question-embranchement | presentation | texte | image | image-interactive | video-interactive | video
-      - showContentTitle : booléen — Voir le titre du contenu dans la vue
+      - showContentTitle : booléen — Voir le titre du contenu dans la vue (Si sélectionné, l'utilisateur verra le titre du contenu dans la barre supérieure en haut de ce contenu)
       - proceedButtonText : texte, défaut Continuer — Text for the proceed button (max length: 50 characters)
-      - forceContentFinished : choix useBehavioural|enabled|disabled, défaut useBehavioural — Identifiant de contenu suivant (les écrans de fin sont définis par de…
+      - forceContentFinished : choix useBehavioural|enabled|disabled, défaut useBehavioural — Identifiant de contenu suivant (les écrans de fin sont définis par de… (Contourner les options personnelles exigeant la complétion du contenu avant d’activer le bouton « Continuer »…)
       - feedback : groupe — Feedback
         - title : texte riche (Markdown: a code del em s strong) — Feedback title
         - subtitle : texte riche (Markdown: a code del em s strong) — Feedback text
         - image : image (chemin ou URL) — Feedback image
-        - endScreenScore : nombre — Score for this scenario
-      - contentBehaviour : choix useBehavioural|enabled|disabled, défaut useBehavioural — Navigate back
+        - endScreenScore : nombre — Score for this scenario (The score will be sent to any LMS, LRS or any other connected service that receives scores from H5P for users…)
+      - contentBehaviour : choix useBehavioural|enabled|disabled, défaut useBehavioural — Navigate back (This will allow the user to go back and see the previous content/question in the scenario.)
   - scoringOptionGroup : réglages — Options de notation
     scoringOption=no-score (static-end-score|dynamic-scor…, includeInteractionsScores=true
   - behaviour : réglages — Options comportementales

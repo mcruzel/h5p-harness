@@ -156,7 +156,9 @@
   "a11y.teleportedToMap": "Téléportation vers la carte @name.",
   "a11y.neighborsToExploreTemplate": "Étapes voisines à explorer : @count",
   "a11y.showStageInfo": "Afficher les informations de l'étape",
-  "a11y.hideStageInfo": "Masquer les informations de l'étape"
+  "a11y.hideStageInfo": "Masquer les informations de l'étape",
+  "a11y.second": "seconde",
+  "a11y.seconds": "secondes"
  },
  "H5P.Image": {
   "contentName": "Image"
@@ -265,7 +267,9 @@
   "l10n.label": "Utilisez les flèches gauche et droite pour parcourir les cartes. Utilisez la barre d'espace ou la touche Entrée pour retourner une carte.",
   "l10n.cardTurned": "Retournée.",
   "l10n.cardMatchedA11y": "Vos cartes correspondent !",
-  "l10n.cardNotMatchedA11y": "Les cartes choisies ne correspondent pas. Retournez d'autres cartes pour réessayer."
+  "l10n.cardNotMatchedA11y": "Les cartes choisies ne correspondent pas. Retournez d'autres cartes pour réessayer.",
+  "l10n.pauseAudio": "Mettre l'audio en pause",
+  "l10n.cardUnturned": "Non retournée. Cliquez pour la retourner."
  },
  "H5P.MultiChoice": {
   "UI.scoreBarLabel": "Vous avez obtenu :num sur :total points"

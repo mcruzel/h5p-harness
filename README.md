@@ -96,7 +96,8 @@ est aussi disponible immédiatement en local dans `dist/`.
 `![description](images/schema.png)` ou `image: {src: https://…, license: CC BY-SA 4.0, author: …}` :
 chemin relatif au `.md` ou à la racine du dépôt, ou URL complète. Les URL sont téléchargées une fois
 dans `sources/.media/` (+ `lock.json`) et versionnées avec la source : la CI reconstruit hors ligne.
-Les images sont converties (SVG, WebP → PNG/JPG, refusés par Moodle) et redimensionnées (1920 px).
+Les images sont converties (WebP, BMP, TIFF → PNG/JPG, refusés par Moodle ; SVG si `cairosvg` est
+installé) et redimensionnées (1920 px).
 Vidéos : lien YouTube/Vimeo conservé tel quel, ou fichier MP4/WebM.
 **L'environnement de l'agent doit pouvoir joindre l'hôte des URL** (politique réseau).
 
@@ -119,6 +120,7 @@ Vidéos : lien YouTube/Vimeo conservé tel quel, ou fichier MP4/WebM.
 | régénérer les fiches | `python -m h5pharness specs` |
 | tests | `python -m pytest` · `python -m ruff check .` |
 | contrôle complet | `python tools/qa.py dist/ --render` |
+| ajouter des lignes aux commits de `--publish` | variable `H5P_COMMIT_TRAILERS` (ex. `Co-Authored-By: …`) |
 
 Les bibliothèques (`vendor/libraries`, 171 bibliothèques pour 60 types, 54 Mo) viennent des dépôts
 GitHub listés par le registre officiel `h5p-cli` (`vendor/registry.json`, corrections dans

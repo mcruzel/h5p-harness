@@ -1,0 +1,2 @@
+- Modèle au format `.glb` / `.gltf`.
+- Une annotation n'est affichée que si elle a une `surface` (position sur le modèle) en plus de son `text` ; sans elle, le harnais émet un avertissement.

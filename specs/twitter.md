@@ -6,7 +6,7 @@ H5P.TwitterUserFeed 1.0 · alias : twitter, twitteruserfeed, twitter-user-feed �
 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
-- userName* : texte — Nom d'utilisateur sur Twitter
+- userName* : texte — Nom d'utilisateur sur Twitter (Nom qui est affiché lors de vos tweets)
 - showReplies : booléen — Montrer les réponses
 - numTweets : nombre, min 1, max 20, défaut 5 — Nombre de tweets
 

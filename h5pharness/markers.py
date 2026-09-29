@@ -127,7 +127,44 @@ def advancedblanks_text(text, field, ctx, path):
     return out
 
 
+def marktheletters_text(text, field, ctx, path):
+    """H5P.MarkTheLetters: correct letters are *x* (single characters); {{x}} also accepted."""
+    text = text.replace("\\*", "*")  # authors often escape the asterisks to protect them from Markdown
+    if SUGAR.search(text):
+        for body in SUGAR.findall(text):
+            if len(body.strip()) != 1:
+                ctx.error(path, f"« {body} » : une seule lettre par marque")
+        text = SUGAR.sub(lambda m: f"*{m.group(1).strip()}*", text)
+    if not STAR.search(text):
+        ctx.error(path, "aucune lettre marquée : écrire *x* (ou {{x}}) autour de chaque lettre à trouver")
+    out, errors, warnings = markdown.to_html(text, field, protect=STAR)
+    for e in errors:
+        ctx.error(path, e)
+    for w in warnings:
+        ctx.warn(path, w)
+    return out
+
+
+DATE_ISO = re.compile(r"^(-?\d{1,4})(?:-(\d{1,2})(?:-(\d{1,2}))?)?$")
+DATE_FR = re.compile(r"^(\d{1,2})/(\d{1,2})/(-?\d{1,4})$")
+
+
+def timeline_date(text, field, ctx, path):
+    """TimelineJS wants 'AAAA,MM,JJ'; accept ISO (1789-07-14), JJ/MM/AAAA and years."""
+    t = str(text).strip()
+    m = DATE_ISO.match(t)
+    if m:
+        return ",".join([m.group(1)] + [f"{int(x):02d}" for x in m.groups()[1:] if x])
+    m = DATE_FR.match(t)
+    if m:
+        return f"{m.group(3)},{int(m.group(2)):02d},{int(m.group(1)):02d}"
+    return t
+
+
 TEXT_HOOKS.update({
+    ("H5P.MarkTheLetters", "textField"): marktheletters_text,
+    ("H5P.Timeline", "startDate"): timeline_date,
+    ("H5P.Timeline", "endDate"): timeline_date,
     ("H5P.Blanks", "question"): blanks_question,
     ("H5P.DragText", "textField"): dragtext_text,
     ("H5P.DragText", "distractors"): dragtext_distractors,

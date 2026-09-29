@@ -18,18 +18,18 @@ Distracteurs: Lyon, Milan
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
 - media : groupe — Média
-  - type : sous-contenu, library: image | video | audio — Type
+  - type : sous-contenu, library: image | video | audio — Type (Média à afficher au-dessus de la question (facultatif).)
   - disableImageZooming : booléen, défaut false, conditionnel — Désactiver le zoom sur image pour l'image de la question
-- taskDescription : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul), défaut Déplacez les textes dans les … — Description de la tâche
+- taskDescription : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul), défaut Déplacez les textes dans les … — Description de la tâche (La consigne indique ce que l'utilisateur doit faire.)
 - textField* : texte multiligne — Question
-- distractors : texte — Distractors
+- distractors : texte — Distractors (Enter extra solutions that are wrong as distractors. Use the same asterisk (*) scheme as for the text.)
 - overallFeedback : groupe — Feedback général (groupe à un champ: écrire directement la valeur)
-  - overallFeedback : liste (min 1) — Définissez le feedback pour chaque intervalle de scores
+  - overallFeedback : liste (min 1) — Définissez le feedback pour chaque intervalle de scores (Cliquez sur le bouton "Ajouter Intervalle" pour ajouter autant d'intervalles que vous le souhaitez. Exemple: …)
     chaque élément :
       - from : nombre, min 0, max 100, défaut 0 — Intervalle de score
       - to : nombre, min 0, max 100, défaut 100
       - feedback : texte — Feedback pour un intervalle de score défini
-- behaviour : réglages — Options générales.
+- behaviour : réglages — Options générales. (Ces options vous permettent de contrôler le déroulement de vos activités.)
   enableRetry=true, enableSolutionsButton=true, instantFeedback=false
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : checkAnswer, submitAnswer, tryAgain, showSolution, dropZoneIndex, empty, contains, ariaDraggableIndex, tipLabel, correctText, incorrectText, resetDropTitle, resetDropDescription, grabbed, cancelledDragging, correctAnswer, feedbackHeader, scoreBarLabel, a11yCheck, a11yShowSolution, a11yRetry.

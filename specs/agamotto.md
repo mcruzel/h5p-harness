@@ -10,14 +10,14 @@ H5P.Agamotto 1.7 · alias : agamotto · syntaxe Markdown simplifiée : oui
 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
-- title : texte — Rubrique
+- title : texte — Rubrique (La rubrique que vous souhaiteriez afficher au-dessus de l'image)
 - items* : liste (min 2, max 50) — Éléments
   chaque élément :
     - image* : sous-contenu, library: image — Image
-    - labelText : texte — Vignette
-    - description : texte riche (Markdown: a code em h3 h4 li ol pre strong sub sup ul) — Description
-    - audio : audio (chemin ou URL) — Audio
-- behaviour : réglages — Paramètres comportementaux
+    - labelText : texte — Vignette (Vignette facultative pour une coche. Assurez-vous qu'elle n'est pas trop longue, sinon elle sera cachée.)
+    - description : texte riche (Markdown: a code em h3 h4 li ol pre strong sub sup ul) — Description (Description facultative pour l’image)
+    - audio : audio (chemin ou URL) — Audio (Audio facultatif qui joue lorsqu'une image est affichée.)
+- behaviour : réglages — Paramètres comportementaux (Ces options vous permettront de contrôler le déroulement de la tâche.)
   startImage=1, snap=true, ticks=false, labels=false, transparencyReplacementColor=#000000, imagesDescriptionsRatio=70
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : a11y.

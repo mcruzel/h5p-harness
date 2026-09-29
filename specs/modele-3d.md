@@ -2,25 +2,30 @@
 
 H5P.ThreeDModel 1.0 · alias : modele-3d, threedmodel, three-d-model · syntaxe Markdown simplifiée : non (bloc ```yaml)
 
+## Points d'attention
+
+- Modèle au format `.glb` / `.gltf`.
+- Une annotation n'est affichée que si elle a une `surface` (position sur le modèle) en plus de son `text` ; sans elle, le harnais émet un avertissement.
+
 ## Champs (bloc ```yaml, noms H5P)
 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
 - model : groupe — Model
-  - file : fichier (chemin ou URL) — 3D model file
-  - alt* : texte — Alternative text
+  - file : fichier (chemin ou URL) — 3D model file (Upload a glTF (.glb / .gltf) file here. The preferred format is "glTF 2.0 binary" in a single file.)
+  - alt* : texte — Alternative text (Alternative text for screen readers.)
 - annotations : groupe — Annotations
-  - annotations* : liste (min 1) — Annotations
+  - annotations* : liste (min 1) — Annotations (Add annotation labels to the 3D model by typing their their text and using the adjacent button.)
     chaque élément :
       - text : texte — Text
 - visuals : groupe — Visual settings
-  - backgroundImage : image (chemin ou URL) — Background image
+  - backgroundImage : image (chemin ou URL) — Background image (Optional image that will be used for the background.)
   - backgroundColor : couleur #rrggbb, défaut rgba(255, 255, 255, 1) — Background color
-  - poster : image (chemin ou URL) — Poster image
+  - poster : image (chemin ou URL) — Poster image (Optional image that will be shown before the 3D model is loaded. This can be used to show a preview of the 3D…)
 - size : groupe — Size settings
-  - maxWidth : texte — Maximum width
-  - minHeight : texte — Minimum height
-  - maxHeight : texte — Maximum height
+  - maxWidth : texte — Maximum width (H5P will usually scale content to full width. Set a maximum width here in CSS units (px, rem, etc.). Please n…)
+  - minHeight : texte — Minimum height (H5P will usually determine the height based on the width. Change the minimum height here in CSS units (px, re…)
+  - maxHeight : texte — Maximum height (H5P will usually determine the height based on the width. Set a maximum height here in CSS units (px, rem, et…)
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n, a11y.
 

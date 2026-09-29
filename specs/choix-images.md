@@ -11,21 +11,21 @@ Question en Markdown, puis une option par ligne : `- [x] ![description](image)` 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
 - media : groupe — Média
-  - type : sous-contenu, library: image | video | audio — Type
+  - type : sous-contenu, library: image | video | audio — Type (Média facultatif pour afficher au-dessus de la question.)
   - disableImageZooming : booléen, défaut false, conditionnel — Bloquer le zoom d’image
 - question* : texte riche (Markdown: code em h2 h3 pre strong sub sup) — Question
 - options* : liste (min 2, max 20) — Options disponibles
   chaque élément :
-    - media* : sous-contenu, library: image | video | audio — Média
+    - media* : sous-contenu, library: image | video | audio — Média (Media to display as a choice.)
     - poster : image (chemin ou URL), conditionnel — Poster image
     - correct : booléen — Correcte
 - overallFeedback : groupe — Feedback général (groupe à un champ: écrire directement la valeur)
-  - overallFeedback : liste (min 1) — Définir un feedback personnalisé pour n'importe quelle gamme de note
+  - overallFeedback : liste (min 1) — Définir un feedback personnalisé pour n'importe quelle gamme de note (Cliquez sur la touche « Ajouter une gamme » pour ajouter autant de gammes que nécessaire. Exemple : 0-20 % ma…)
     chaque élément :
       - from : nombre, min 0, max 100, défaut 0 — Gamme de notes
       - to : nombre, min 0, max 100, défaut 100
       - feedback : texte — Feedback pour une gamme de notes définie
-- behaviour : réglages — Paramètres comportementaux
+- behaviour : réglages — Paramètres comportementaux (Ces options vous permettront de contrôler le déroulement de la tâche.)
   enableRetry=true, enableSolutionsButton=true, confirmCheckDialog=false, confirmRetryDialog=false, singlePoint=false, showSolutionsRequiresInput=true, questionType=auto (auto|multi|single), aspectRatio=auto (auto|16to9|4to3|3to2|1to1), maxAlternativesPerRow=4 (1|2|3|4), passPercentage=100
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n.

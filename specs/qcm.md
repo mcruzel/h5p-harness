@@ -21,7 +21,7 @@ Quel organite est le siège de la **photosynthèse** ?
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
 - media : groupe — Média
-  - type : sous-contenu, library: image | video | audio — Type
+  - type : sous-contenu, library: image | video | audio — Type (Média à afficher au-dessus de la question (facultatif).)
   - disableImageZooming : booléen, défaut false, conditionnel — Désactiver le zoom sur image pour l'image de la question
 - question* : texte riche (Markdown: code em h2 h3 pre strong sub sup) — Question
 - answers* : liste (min 1) — Options disponibles
@@ -29,16 +29,16 @@ Quel organite est le siège de la **photosynthèse** ?
     - text* : texte riche (Markdown: code em strong sub sup) — Réponse
     - correct : booléen — Réponse correcte
     - tipsAndFeedback : groupe — Aide et retour
-      - tip : texte riche (Markdown: a code em strong) — Indice
-      - chosenFeedback : texte riche (Markdown: a code em strong sub sup) — Commentaire (si cette réponse a été sélectionnée)
-      - notChosenFeedback : texte riche (Markdown: a code em strong sub sup) — Commentaire (si cette réponse n'a pas été sélectionnée)
+      - tip : texte riche (Markdown: a code em strong) — Indice (Indication pour l'utilisateur. Ce texte s'affiche avant que l'utilisateur ne valide la/les réponse(s).)
+      - chosenFeedback : texte riche (Markdown: a code em strong sub sup) — Commentaire (si cette réponse a été sélectionnée) (Cette indication s'affiche sous la réponse quand l'utilisateur clique sur "Vérifier".)
+      - notChosenFeedback : texte riche (Markdown: a code em strong sub sup) — Commentaire (si cette réponse n'a pas été sélectionnée) (Après vérification par l'utilisateur, s'affiche sous la réponse si celle-ci n'a pas été sélectionnée.)
 - overallFeedback : groupe — Retour général (groupe à un champ: écrire directement la valeur)
-  - overallFeedback : liste (min 1) — Définir un retour personnalisé pour chaque tranche de score
+  - overallFeedback : liste (min 1) — Définir un retour personnalisé pour chaque tranche de score (Cliquez sur le bouton "Ajouter Intervalle" pour ajouter autant d'intervalles de score que vous souhaitez. Exe…)
     chaque élément :
       - from : nombre, min 0, max 100, défaut 0 — Fourchette de score
       - to : nombre, min 0, max 100, défaut 100
       - feedback : texte — Retour pour cet intervalle de score
-- behaviour : réglages — Paramètres comportementaux
+- behaviour : réglages — Paramètres comportementaux (Ces options vous permettent de gérer le comportement de l'activité.)
   enableRetry=true, enableSolutionsButton=true, type=auto (auto|multi|single), singlePoint=false, randomAnswers=true, showSolutionsRequiresInput=true, confirmCheckDialog=false, confirmRetryDialog=false, autoCheck=false, passPercentage=100, showScorePoints=true
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : UI, confirmCheck, confirmRetry.

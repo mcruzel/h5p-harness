@@ -8,7 +8,7 @@ H5P.Questionnaire 1.3 · alias : questionnaire · syntaxe Markdown simplifiée :
 
 - questionnaireElements* : liste (min 1) — Eléments du questionnaire
   chaque élément :
-    - library* : sous-contenu, library: question-ouverte | choix-simple — Bibliothèque
+    - library* : sous-contenu, library: question-ouverte | choix-simple — Bibliothèque (Choisir une bibliothèque)
     - requiredField : booléen, défaut false — Champ requis
 - successScreenOptions : groupe — Ecran en cas de réussite
   - enableSuccessScreen : booléen, défaut true — Activer l'écran

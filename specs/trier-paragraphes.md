@@ -20,18 +20,18 @@ Remets les étapes de la mitose dans l'ordre.
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
 - media : groupe — Média
-  - type : sous-contenu, library: image | video | audio — Type
+  - type : sous-contenu, library: image | video | audio — Type (Média facultatif pour afficher au-dessus de la question.)
   - disableImageZooming : booléen, défaut false, conditionnel — Bloquer le zoom d’image
-- taskDescription* : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul) — Description de la tâche
+- taskDescription* : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul) — Description de la tâche (Ce que vos élèves devraient savoir.)
 - paragraphs* : liste (min 3) — Paragraphes
   chaque élément = texte riche (Markdown: code em h2 h3 hr li ol pre strong u ul) — Paragraphe
 - overallFeedback : groupe — Feedback général (groupe à un champ: écrire directement la valeur)
-  - overallFeedback : liste (min 1) — Définir un feedback personnalisé pour n'importe quelle gamme de note
+  - overallFeedback : liste (min 1) — Définir un feedback personnalisé pour n'importe quelle gamme de note (Cliquez sur la touche « Ajouter une gamme » pour ajouter autant de gammes que nécessaire. Exemple : 0-20 % ma…)
     chaque élément :
       - from : nombre, min 0, max 100, défaut 0 — Gamme de notes
       - to : nombre, min 0, max 100, défaut 100
       - feedback : texte — Feedback pour une gamme de notes définie
-- behaviour : réglages — Paramètres comportementaux
+- behaviour : réglages — Paramètres comportementaux (Ces options vous permettront de contrôler le déroulement de la tâche.)
   scoringMode=positions (positions|transitions), applyPenalties=true, duplicatesInterchangeable=true, addButtonsForMovement=true, enableRetry=true, enableSolutionsButton=true
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n, a11y.

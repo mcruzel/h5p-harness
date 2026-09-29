@@ -5,6 +5,7 @@ plus the harness' translation overrides and pedagogical presets. The engine fill
 converts Markdown to the HTML each field accepts, ingests media, generates sub-content ids and
 reports every problem the platform would otherwise silently "fix" (H5P filters, never rejects).
 """
+import datetime
 import difflib
 import re
 import uuid
@@ -67,6 +68,8 @@ def is_flat_group(field):
 def build_content(lib: Library, values, ctx: Ctx):
     ctx.used.add(lib)
     ctx.stack.append(lib.machine)
+    from .rules import PATCH_DEFAULTS
+    values = deep_merge(PATCH_DEFAULTS.get(lib.machine, {}), values if isinstance(values, dict) else {})
     try:
         fields = lib.localized_semantics(ctx.lang)
         params = build_group({"type": "group", "fields": fields}, values, ctx, [], top=True)
@@ -222,6 +225,8 @@ TEXT_HOOKS = {}   # (machine, field name) -> callable(text, field, ctx, path) ->
 def build_text(field, value, ctx, path, siblings, hidden):
     if value is MISSING:
         return default_or_missing(field, ctx, path, hidden, "text")
+    if isinstance(value, (datetime.date, datetime.datetime)):  # YAML reads 1789-07-14 as a date
+        value = value.isoformat()
     if isinstance(value, bool) or not isinstance(value, (str, int, float)):
         ctx.error(path, "texte attendu")
         return MISSING
@@ -392,6 +397,8 @@ def build_library(field, value, ctx, path, siblings, hidden):
         raw = deep_merge(sugar, raw)
     ctx.used.add(lib)
     ctx.stack.append(lib.machine)
+    from .rules import PATCH_DEFAULTS
+    raw = deep_merge(PATCH_DEFAULTS.get(lib.machine, {}), raw if isinstance(raw, dict) else {})
     try:
         params = build_group({"type": "group", "fields": lib.localized_semantics(ctx.lang)}, raw, ctx,
                              path, top=True, hidden=hidden)

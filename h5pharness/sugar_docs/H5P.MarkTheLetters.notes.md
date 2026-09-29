@@ -1,0 +1,2 @@
+- Dans `textField`, entourer chaque lettre à trouver : `*t*` (ou `{{t}}`), ex. `Le cha*t* dor*t*.`.
+- La bibliothèque ne garde que les lettres a-z : les lettres accentuées disparaissent (avertissement du harnais).

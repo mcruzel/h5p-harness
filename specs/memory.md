@@ -18,17 +18,17 @@ Une carte par ligne : `- ![description](image)` (paire identique) ou `- ![a](ima
 - cards* : liste (min 2, max 100) — Cartes
   chaque élément :
     - image : image (chemin ou URL) — Image
-    - imageAlt* : texte — Texte alternatif pour l'image
-    - audio : audio (chemin ou URL) — Audio Track
-    - match : image (chemin ou URL) — Image correspondante
-    - matchAlt : texte — Texte alternatif pour l'image correspondante
-    - matchAudio : audio (chemin ou URL) — Matching Audio Track
-    - description : texte — Description
-- behaviour : réglages — Paramètres comportementaux
+    - imageAlt* : texte — Texte alternatif pour l'image (Décrivez ce que représente l'image. Le texte est lu par la synthèse vocale.)
+    - audio : audio (chemin ou URL) — Audio Track (An optional sound that plays when the card is turned.)
+    - match : image (chemin ou URL) — Image correspondante (Une image facultative à comparer au lieu d'utiliser deux cartes avec la même image.)
+    - matchAlt : texte — Texte alternatif pour l'image correspondante (Décrivez ce que représente l'image correspondante. Le texte est lu par la synthèse vocale.)
+    - matchAudio : audio (chemin ou URL) — Matching Audio Track (An optional sound that plays when the second card is turned.)
+    - description : texte — Description (Un texte court optionnel qui apparaîtra une fois que les deux cartes correspondantes auront été trouvées.)
+- behaviour : réglages — Paramètres comportementaux (Ces options vous permettent de définir le "comportement" du jeu de mémoire.)
   useGrid=true, numCardsToUse=…, allowRetry=true
-- lookNFeel : groupe — Apparence
-  - themeColor : couleur #rrggbb, défaut #707070 — Couleur du thème
-  - cardBack : image (chemin ou URL) — Dos des cartes
+- lookNFeel : groupe — Apparence (Définissez l'apparence visuelle des éléments dans le jeu.)
+  - themeColor : couleur #rrggbb, défaut #707070 — Couleur du thème (Choisissez une couleur pour créer un thème pour votre jeu de cartes.)
+  - cardBack : image (chemin ou URL) — Dos des cartes (Utilisez un dos personnalisé pour vos cartes.)
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n.
 

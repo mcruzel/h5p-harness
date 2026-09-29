@@ -22,7 +22,7 @@ Choisis l'affirmation correcte dans chaque série.
 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
-- intro : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul), défaut Choisissez l'affirmation exac… — Texte d'introduction
+- intro : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul), défaut Choisissez l'affirmation exac… — Texte d'introduction (Il sera affiché au-dessus de l'activité Résumé.)
 - summaries* : liste (min 1, max 100) — Résumé
   chaque élément :
     - summary* : liste (min 2) — Liste des affirmations pour le résumé - la première affirmation de la…
@@ -30,7 +30,7 @@ Choisis l'affirmation correcte dans chaque série.
     - tip : groupe — Indice (groupe à un champ: écrire directement la valeur)
       - tip : texte riche (Markdown: code em strong) — Indice
 - overallFeedback : groupe — Feedback général (groupe à un champ: écrire directement la valeur)
-  - overallFeedback : liste (min 1) — Définissez le feedback pour chaque intervalle de score
+  - overallFeedback : liste (min 1) — Définissez le feedback pour chaque intervalle de score (Cliquez sur "Ajouter Intervalle" pour ajouter autant d'intervalles de score que vous le souhaitez. Exemple : …)
     chaque élément :
       - from : nombre, min 0, max 100, défaut 0 — Intervalle de score
       - to : nombre, min 0, max 100, défaut 100

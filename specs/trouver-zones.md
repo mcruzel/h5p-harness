@@ -2,22 +2,27 @@
 
 H5P.ImageMultipleHotspotQuestion 1.0 · alias : trouver-zones, imagemultiplehotspotquestion, image-multiple-hotspot-question · syntaxe Markdown simplifiée : non (bloc ```yaml)
 
+## Points d'attention
+
+- Zones comme `trouver-zone` : `computedSettings: {x, y, width, height, figure}` (coin haut-gauche et taille en % de l'image ; `figure` = `rectangle` ou `circle`).
+- Le retour d'une zone correcte ne s'affiche que si `hotspotName` est renseigné. La bibliothèque affiche « N of M » en anglais (texte codé en dur).
+
 ## Champs (bloc ```yaml, noms H5P)
 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
 - imageMultipleHotspotQuestion : groupe — Image Multiple Hotspot Question Editor
   - backgroundImageSettings : groupe — Background image
-    - questionTitle : texte, défaut Question à zones sensibles su… — The title of this question
-    - backgroundImage : image (chemin ou URL) — Background image
-  - hotspotSettings : groupe — Hotspots
-    - taskDescription : texte — Task description
-    - hotspotName : texte — Hotspot Name
-    - numberHotspots : nombre — Number of correct hotspots that need to be found for question complet…
+    - questionTitle : texte, défaut Question à zones sensibles su… — The title of this question (Used in summaries, statistics etc.)
+    - backgroundImage : image (chemin ou URL) — Background image (Select an image to use as background the image hotspot question.)
+  - hotspotSettings : groupe — Hotspots (Choose appropriate figure for your hotspot, configure it, then drag and resize it into place.)
+    - taskDescription : texte — Task description (Instructions to the user.)
+    - hotspotName : texte — Hotspot Name (Please enter what the user is trying to find i.e. risks, objects, errors (this will be used in feedback state…)
+    - numberHotspots : nombre — Number of correct hotspots that need to be found for question complet… (If left blank, will default to the number of correct hotspots created.)
     - hotspot : liste — Hotspot
       chaque élément :
         - userSettings : groupe — userSettings
-          - correct : booléen — Correct
+          - correct : booléen — Correct (There can be multiple correct hotspots. The user gets correct/incorrect feedback immediately after each click…)
           - feedbackText : texte — Feedback
         - computedSettings : groupe — computedSettings
           - x : nombre

@@ -19,18 +19,18 @@ L'ADN se trouve dans le {{noyau}}.
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
 - media : groupe — Média
-  - type : sous-contenu, library: image | video | audio — Type
+  - type : sous-contenu, library: image | video | audio — Type (Média à afficher au-dessus de la question (facultatif).)
   - disableImageZooming : booléen, défaut false, conditionnel — Désactiver l'agrandissement de l'image
-- text : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul), défaut Complétez les mots manquants — Description de la tâche
+- text : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul), défaut Complétez les mots manquants — Description de la tâche (Un guide expliquant à l'utilisateur comment répondre à cette tâche.)
 - questions* : liste (min 1, max 31) — Blocs de texte
   chaque élément = texte riche (Markdown: code del em s strong u) — Ligne de texte
 - overallFeedback : groupe — Retour général (groupe à un champ: écrire directement la valeur)
-  - overallFeedback : liste (min 1) — Définissez des feedbacks pour différents intervalles de scores
+  - overallFeedback : liste (min 1) — Définissez des feedbacks pour différents intervalles de scores (Cliquez sur le bouton "Ajouter Intervalle" pour ajouter autant d'intervalles de score que vous souhaitez. Exe…)
     chaque élément :
       - from : nombre, min 0, max 100, défaut 0 — Fourchette de score
       - to : nombre, min 0, max 100, défaut 100
       - feedback : texte — Retour pour cet intervalle de score
-- behaviour : réglages — Options générales
+- behaviour : réglages — Options générales (Ces options vous permettent de paramétrer le déroulement de l'exercice.)
   enableRetry=true, allowRetryIfCorrect=false, enableSolutionsButton=true, autoCheck=false, caseSensitive=true, showSolutionsRequiresInput=true, separateLines=false, confirmCheckDialog=false, confirmRetryDialog=false, acceptSpellingErrors=false
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : showSolutions, tryAgain, checkAnswer, submitAnswer, notFilledOut, answerIsCorrect, answerIsWrong, answeredCorrectly, answeredIncorrectly, solutionLabel, inputLabel, inputHasTipLabel, tipLabel, confirmCheck, confirmRetry, scoreBarLabel, a11yCheck, a11yShowSolution, a11yRetry, a11yCheckingModeHeader.

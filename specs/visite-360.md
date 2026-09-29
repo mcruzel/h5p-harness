@@ -2,6 +2,12 @@
 
 H5P.ThreeImage 0.5 · alias : visite-360, threeimage, three-image · syntaxe Markdown simplifiée : non (bloc ```yaml)
 
+## Points d'attention
+
+- Chaque scène a un `sceneId` (nombre) ; une interaction « aller à la scène » pointe vers `gotoscene.nextSceneId`.
+- `cameraStartPosition` (obligatoire) et `interactionpos` : `"lacet,tangage"` en **radians** pour une scène 360 (ex. `"-2.1,0.3"`), `"x%,y%"` pour une scène statique (ex. `"45%,30%"`).
+- Image de scène 360 : panorama équirectangulaire (rapport 2:1).
+
 ## Champs (bloc ```yaml, noms H5P)
 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
@@ -10,26 +16,26 @@ H5P.ThreeImage 0.5 · alias : visite-360, threeimage, three-image · syntaxe Mar
   - scenes : liste (min 0) — Scènes
     chaque élément :
       - sceneType : choix 360|static, défaut 360 — Type de scène
-      - showBackButton : booléen, défaut true, conditionnel — Afficher un bouton "Retour"
+      - showBackButton : booléen, défaut true, conditionnel — Afficher un bouton "Retour" (Affichez un bouton pour revenir à la scène précédente)
       - sceneId* : nombre
-      - scenename* : texte — Titre de la scène
+      - scenename* : texte — Titre de la scène (Utilisé pour identifier la scène)
       - scenesrc : image (chemin ou URL) — Image de fond de la scène
-      - scenedescription : texte riche (Markdown: code em strong) — Description de la scène
+      - scenedescription : texte riche (Markdown: code em strong) — Description de la scène (Un texte pour décirire la scène à l'utilisateur final)
       - cameraStartPosition* : texte
       - interactions : liste (min 0)
         chaque élément :
-          - labelText : texte — Vignette
+          - labelText : texte — Vignette (If left blank no label will be displayed and we'll try to use the title field for screen readers)
           - label : réglages — Label Settings
             labelPosition=inherit (inherit|right|left|top|bottom), showLabel=inherit (inherit|show|hide)
           - action* : sous-contenu, library: gotoscene | texte | image | audio | video | resume | choix-unique
           - interactionpos* : texte
-      - iconType : choix arrow|plus, défaut arrow — Style du bouton
-      - audio : audio (chemin ou URL) — Piste audio
+      - iconType : choix arrow|plus, défaut arrow — Style du bouton (Décidez à quoi devraient ressembler les boutons pointant vers cette scène. Pour les scènes statiques qui ne c…)
+      - audio : audio (chemin ou URL) — Piste audio (Ajoutez une piste audio spécifique à cette scène.)
   - startSceneId : nombre, défaut 0
   - audio : audio (chemin ou URL) — Piste audio
-- behaviour : groupe — Paramètres comportementaux
-  - audio : audio (chemin ou URL) — Piste audio globale
-  - sceneRenderingQuality : choix high|medium|low, défaut high — Qualité de rendu de la scène
+- behaviour : groupe — Paramètres comportementaux (Ces options vous permettront de contrôler comment le monde doit se comporter.)
+  - audio : audio (chemin ou URL) — Piste audio globale (Ajoutez une piste audio globale disponible par défaut pour toutes les scènes.)
+  - sceneRenderingQuality : choix high|medium|low, défaut high — Qualité de rendu de la scène (Choisissez la résolution pour le rendu d'une scène. Ceci affecte directement le niveau de qualité de la scène…)
   - label : réglages — Paramètres de vignette
     labelPosition=right (right|left|top|bottom), showLabel=true
 

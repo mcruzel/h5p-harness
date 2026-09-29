@@ -23,19 +23,19 @@ Livre
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
 - title : texte riche (Markdown: code em strong) — En-tête
-- mode : choix normal|repetition, défaut normal — Mode
+- mode : choix normal|repetition, défaut normal — Mode (Mode de présentation des cartes de dialogue)
 - description : texte riche (Markdown: code em strong) — Consigne
 - dialogs* : liste (min 1) — Dialogue
   chaque élément :
-    - text : texte riche (Markdown: code em strong), défaut  — Question
-    - answer : texte riche (Markdown: code em strong), défaut  — Réponse
-    - image : image (chemin ou URL) — Image
+    - text : texte riche (Markdown: code em strong), défaut  — Question (Texte pour la face avant de la carte)
+    - answer : texte riche (Markdown: code em strong), défaut  — Réponse (Texte pour le dos de la carte)
+    - image : image (chemin ou URL) — Image (Image facultative pour la carte. (Une carte peut contenir une image seule, un texte seul ou les deux combinés))
     - imageAltText : texte — Texte alternatif pour l'image
     - audio : audio (chemin ou URL) — Fichiers audio
     - tips : groupe — Indices
-      - front : texte — Indice pour la face avant
-      - back : texte — Indice pour le dos
-- behaviour : réglages — Paramètres comportementaux
+      - front : texte — Indice pour la face avant (Indice pour la face avant de la carte)
+      - back : texte — Indice pour le dos (Indice pour le dos de la carte)
+- behaviour : réglages — Paramètres comportementaux (Ces options vous permettent de paramétrer le déroulement de l'exercice.)
   enableRetry=true, disableBackwardsNavigation=false, scaleTextNotCard=false, randomCards=false, maxProficiency=5, quickProgression=false
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : answer, next, prev, retry, correctAnswer, incorrectAnswer, round, cardsLeft, nextRound, startOver, showSummary, summary, summaryCardsRight, summaryCardsWrong, summaryCardsNotShown, summaryOverallScore, summaryCardsCompleted, summaryCompletedRounds, summaryAllDone, progressText, cardFrontLabel, cardBackLabel, tipButtonLabel, audioNotSupported, confirmStartingOver.

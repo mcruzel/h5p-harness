@@ -23,7 +23,7 @@ La cellule est l'unité du vivant.
   chaque élément :
     - title* : texte — Titre
     - content* : sous-contenu, library: texte — Type de contenu
-- hTag : choix h2|h3|h4, défaut h2 — Balise H pour les sections (ne modifie pas la taille du bloc de l'en-…
+- hTag : choix h2|h3|h4, défaut h2 — Balise H pour les sections (ne modifie pas la taille du bloc de l'en-… (La balise H définit le titre de chaque section, qui est en H2 par défaut. Utiliser H3 si ce titre est imbriqu…)
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 

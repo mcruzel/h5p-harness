@@ -19,18 +19,18 @@ La mitochondrie contient de la chlorophylle.
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
 - media : groupe — Média
-  - type : sous-contenu, library: image | video | audio — Type
+  - type : sous-contenu, library: image | video | audio — Type (Média à afficher au-dessus de la question (facultatif).)
   - disableImageZooming : booléen, défaut false, conditionnel — Désactiver la possibilité d'agrandir l'image
 - question* : texte riche (Markdown: code em h2 h3 pre strong sub sup) — Question
 - correct : choix true|false, défaut true — Bonne réponse
-- behaviour : groupe — Options générales
+- behaviour : groupe — Options générales (Ces options vous permettent de paramétrer le déroulement de l'exercice.)
   - enableRetry : booléen, défaut true — Activer le bouton "Recommencer"
   - enableSolutionsButton : booléen, défaut true — Activer le bouton "Voir la solution"
   - confirmCheckDialog : booléen, défaut false — Afficher la fenêtre de confirmation pour "Vérifier"
   - confirmRetryDialog : booléen, défaut false — Afficher la fenêtre de confirmation pour "Recommencer"
-  - autoCheck : booléen, défaut false — Vérifier automatiquement la réponse cochée
-  - feedbackOnCorrect : texte — Commentaire pour une réponse correcte
-  - feedbackOnWrong : texte — Commentaire pour une mauvaise réponse
+  - autoCheck : booléen, défaut false — Vérifier automatiquement la réponse cochée (Noter que l'accessibilité sera pénalisée si cette option est activée)
+  - feedbackOnCorrect : texte — Commentaire pour une réponse correcte (Ceci remplacera le commentaire par défaut. Variables disponibles: @score et @total)
+  - feedbackOnWrong : texte — Commentaire pour une mauvaise réponse (Ceci remplacera le commentaire par défaut. Variables disponibles: @score et @total)
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n, confirmCheck, confirmRetry.
 

@@ -1,0 +1,2 @@
+- Zones : `computedSettings: {x, y, width, height, figure}` ; `x`/`y` = coin haut-gauche **en % de l'image**, `width`/`height` en %, `figure` = `rectangle` ou `circle`.
+- `userSettings: {correct: true|false, feedbackText: …}` pour chaque zone ; `noneSelectedFeedback` si l'élève clique hors zone.

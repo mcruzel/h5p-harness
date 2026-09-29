@@ -16,40 +16,45 @@ Symbole de la fin de l'Ancien Régime.
 ## 1792 → 1804 : Première République
 ```
 
+## Points d'attention
+
+- En YAML, les dates peuvent s'écrire `1789-07-14`, `14/07/1789` ou `1789` : le harnais les convertit au format TimelineJS `AAAA,MM,JJ`.
+- `language` vaut `fr` par défaut.
+
 ## Champs (bloc ```yaml, noms H5P)
 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
 - timeline : groupe — Chronologie
-  - headline* : texte — Titre
-  - text : texte riche (Markdown: a code del em hr li ol s strong ul) — Corps du texte
-  - defaultZoomLevel : texte, défaut 0 — Niveau de zoom par défaut
-  - backgroundImage : image (chemin ou URL) — Image d'arrière-plan'
-  - height : nombre, défaut 600 — Hauteur
-  - asset : groupe — Média
-    - media : texte — Adresse URL du média
-    - credit : texte — Crédits
-    - caption : texte — Légende
-  - date* : liste (min 1) — Dates
+  - headline* : texte — Titre (Entrez ici le titre principal de la chronologie (première page))
+  - text : texte riche (Markdown: a code del em hr li ol s strong ul) — Corps du texte (Entrez ici le corps de texte principal de la chronologie (première page).)
+  - defaultZoomLevel : texte, défaut 0 — Niveau de zoom par défaut (Cela va modifier le niveau de zoom par défaut. Equivalent à appuyer sur le bouton zoom avant ou zoom arrière …)
+  - backgroundImage : image (chemin ou URL) — Image d'arrière-plan' (Affiche une image de fond.)
+  - height : nombre, défaut 600 — Hauteur (La hauteur en pixels)
+  - asset : groupe — Média (Here you can add an asset to your timeline "front page")
+    - media : texte — Adresse URL du média (Lien vers l'URL du fichier média (Twitter, YouTube, Flickr, Vimeo, Google Maps et SoundCloud sont autorisés à…)
+    - credit : texte — Crédits (Crédits du fichier média)
+    - caption : texte — Légende (Saisissez ici la légende du fichier média)
+  - date* : liste (min 1) — Dates (Ajoutez des dates à votre chronologie !)
     chaque élément :
-      - startDate* : texte — Date de début
-      - endDate : texte — Date de fin
-      - headline* : texte — Titre
-      - text : texte riche (Markdown: a code del em h2 h3 hr li ol pre s strong ul) — Texte
-      - tag : texte — Etiquettes
+      - startDate* : texte — Date de début (AAAA,MM,JJ (AAAA est un minimum obligatoire))
+      - endDate : texte — Date de fin (AAAA,MM,JJ (AAAA est un minimum obligatoire))
+      - headline* : texte — Titre (Titre de l'événement)
+      - text : texte riche (Markdown: a code del em h2 h3 hr li ol pre s strong ul) — Texte (Texte associé à l'événement)
+      - tag : texte — Etiquettes (Saisissez les étiquettes (catégories))
       - asset : groupe — Média
-        - media : texte — Adresse URL du média
-        - thumbnail : image (chemin ou URL) — Image miniature
-        - credit : texte — Crédits
-        - caption : texte — Légende
-  - era : liste (min 0) — Périodes
+        - media : texte — Adresse URL du média (Lien vers l'URL du fichier média (Twitter, YouTube, Flickr, Vimeo, Wikipedia, Google Maps et SoundCloud sont …)
+        - thumbnail : image (chemin ou URL) — Image miniature (Ajoutez au besoin une miniature 32x32)
+        - credit : texte — Crédits (Crédits du fichier média)
+        - caption : texte — Légende (Légende du fichier média)
+  - era : liste (min 0) — Périodes (Ajoutez une période à votre chronologie)
     chaque élément :
-      - startDate* : texte — Date de début
-      - endDate : texte — Date de fin
-      - headline* : texte — Titre
-      - text : texte riche (Markdown: a code del em hr li ol s strong ul) — Contenu
-      - tag : texte — Etiquette
-  - language : choix af|ar|hy|eu|bg|ca|zh-cn|hr|cz|da|…, défaut en — Langue
+      - startDate* : texte — Date de début (AAAA,MM,JJ (AAAA est un minimum obligatoire))
+      - endDate : texte — Date de fin (AAAA,MM,JJ (AAAA est un minimum obligatoire))
+      - headline* : texte — Titre (Titre de la période)
+      - text : texte riche (Markdown: a code del em hr li ol s strong ul) — Contenu (Contenu de la période)
+      - tag : texte — Etiquette (Etiquettes de la période (catégories))
+  - language : choix af|ar|hy|eu|bg|ca|zh-cn|hr|cz|da|…, défaut en — Langue (Choisissez la langue de l'interface)
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 

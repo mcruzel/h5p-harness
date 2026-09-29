@@ -6,11 +6,11 @@ H5P.IFrameEmbed 1.0 · alias : iframe, iframeembed, i-frame-embed · syntaxe Mar
 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
-- width* : texte — Largeur
-- minWidth* : texte — Largeur minimale
-- height* : texte — Hauteur
-- source* : texte — Source
-- resizeSupported : booléen, défaut true — Redimensionnement supporté
+- width* : texte — Largeur (Largeur du cadre au format CSS standard. Défaut: "500px")
+- minWidth* : texte — Largeur minimale (Largeur minimale du cadre au format CSS standard. Défaut: "300px")
+- height* : texte — Hauteur (Hauteur du cadre au format CSS standard. Défaut: "500px")
+- source* : texte — Source (URL du document externe, ou chemin vers un document H5P (dans /content))
+- resizeSupported : booléen, défaut true — Redimensionnement supporté (Si cette option est activée, un bouton "Plein écran" apparaîtra, et le contenu H5P sera redimensionné afin d'…)
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 

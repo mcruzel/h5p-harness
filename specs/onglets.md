@@ -12,10 +12,10 @@ Un onglet par section `## Titre`, avec un contenu comme une colonne : texte Mark
 
 - tabs* : liste (min 1, max 100) — Tabs
   chaque élément = sous-contenu, library: colonne — Content
-- behaviour : réglages — Behavioural settings
+- behaviour : réglages — Behavioural settings (These options will let you control how the task behaves.)
   tabPlacement=dynamic (dynamic|top|left), tabSpread=70
 - a11y : groupe — Accessibility texts
-  - tabList : texte, défaut Choisissez un onglet. — Choose a tab
+  - tabList : texte, défaut Choisissez un onglet. — Choose a tab (Text for screenreaders.)
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n.
 
@@ -32,7 +32,7 @@ preset: entrainement
 ---
 ```yaml
 tabs:
-  # titre de l'onglet = metadata.title (sinon « Page »)
+  # metadata.title = titre de l'onglet
   - library: colonne
     metadata: {title: Solide}
     md: |

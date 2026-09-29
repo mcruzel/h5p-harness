@@ -29,14 +29,18 @@ Règles communes aux champs :
   avec avertissement, H<sub>2</sub>O → H₂O, tableau → erreur hors conteneur).
 - **texte simple** (champ « texte » de la fiche) : pas de Markdown, le texte est affiché tel quel.
 - **YAML** : mettre entre guillemets tout texte contenant « : » suivi d'un espace (fréquent en
-  français : `question: "Vrai ou faux : …"`) ; pour un texte sur plusieurs lignes, `champ: |` puis
-  les lignes indentées.
+  français : `question: "Vrai ou faux : …"`), et, dans la notation `{…}` / `[…]`, tout texte
+  contenant une virgule ; pour un texte sur plusieurs lignes, `champ: |` puis les lignes indentées.
+- **retours à la ligne** : un simple retour à la ligne dans un paragraphe est conservé (`<br>`) ;
+  une ligne vide sépare les paragraphes.
 - **média** (image, audio, vidéo, fichier) : chemin relatif au `.md` ou à la racine du dépôt, ou
-  URL complète (téléchargée une fois dans `sources/.media/`) ; forme longue
-  `{src: …, license: CC BY-SA 4.0, author: …, title: …, source: …}`. Vidéo : lien YouTube/Vimeo
-  accepté tel quel. SVG et WebP sont convertis (Moodle les refuse).
+  URL complète (téléchargée une fois dans `sources/.media/`) ; un chemin commençant par `/` part de
+  la racine du dépôt ; forme longue `{src: …, license: CC BY-SA 4.0, author: …, title: …, source: …}`.
+  Vidéo : lien YouTube/Vimeo accepté tel quel. WebP, BMP, TIFF sont convertis en PNG/JPG (Moodle
+  les refuse) ; SVG seulement si le paquet Python `cairosvg` est installé, sinon fournir un PNG.
 - **sous-contenu** : `library: <type>` plus ses champs au même niveau
-  (ex. `{library: qcm, question: …, answers: […]}`), ou `md: |` + syntaxe Markdown du type ;
+  (ex. `{library: qcm, question: …, answers: […]}`), ou `library: <type>` + `md: |` + syntaxe
+  Markdown du type ;
   `metadata: {title: …}` fixe son titre (sommaire d'un livre, bilan d'un quiz), sinon il est déduit
   du premier texte. Si le champ H5P s'appelle lui-même `library` (questionnaire), cela donne
   `library: {library: choix-simple, …}`.

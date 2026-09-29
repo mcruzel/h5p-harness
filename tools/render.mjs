@@ -59,8 +59,9 @@ try {
   await page.waitForTimeout(2000);
   const frame = page.frames().find(f => f !== page.mainFrame());
   text = frame ? (await frame.locator('body').innerText()).replace(/\s+/g, ' ').trim().slice(0, 300) : '';
-  media = frame ? await frame.evaluate(() => [...document.querySelectorAll('img, canvas, video, svg')]
-    .filter(e => { const r = e.getBoundingClientRect(); return r.width > 20 && r.height > 20; }).length) : 0;
+  media = frame ? await frame.evaluate(() => [...document.querySelectorAll('img, canvas, video, svg, audio, button')]
+    .filter(e => { const r = e.getBoundingClientRect(); return e.tagName === 'AUDIO' || (r.width > 20 && r.height > 20); })
+    .length) : 0;
   if (shot) await page.screenshot({ path: shot, fullPage: true });
 } catch (e) {
   initError = String(e).split('\n')[0];

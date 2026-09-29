@@ -2,19 +2,24 @@
 
 H5P.ImageHotspotQuestion 1.8 · alias : trouver-zone, imagehotspotquestion, image-hotspot-question · syntaxe Markdown simplifiée : non (bloc ```yaml)
 
+## Points d'attention
+
+- Zones : `computedSettings: {x, y, width, height, figure}` ; `x`/`y` = coin haut-gauche **en % de l'image**, `width`/`height` en %, `figure` = `rectangle` ou `circle`.
+- `userSettings: {correct: true|false, feedbackText: …}` pour chaque zone ; `noneSelectedFeedback` si l'élève clique hors zone.
+
 ## Champs (bloc ```yaml, noms H5P)
 
 `*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
 
 - imageHotspotQuestion : groupe — Editeur de questions de l'image interactive
   - backgroundImageSettings : groupe — Image d'arrière-plan (groupe à un champ: écrire directement la valeur)
-    - backgroundImage : image (chemin ou URL) — Image d'arrière-plan
-  - hotspotSettings : groupe — Zones sensibles
-    - taskDescription : texte — Consigne
+    - backgroundImage : image (chemin ou URL) — Image d'arrière-plan (Sélectionner une image à utiliser comme fond pour la question de la zone réactive de l'image.)
+  - hotspotSettings : groupe — Zones sensibles (Sélectionnez la forme de votre choix pour votre zone sensible, redimensionnez-la en l'étirant et placez-la au…)
+    - taskDescription : texte — Consigne (Consigne pour l'utilisateur.)
     - hotspot : liste — Zone sensible
       chaque élément :
         - userSettings : groupe — Réglages manuels
-          - correct : booléen — Correct
+          - correct : booléen — Correct (Il peut y avoir plusieurs zones sensibles à trouver. Toutefois, l'utilisateur est averti de la justesse ou no…)
           - feedbackText : texte — Commentaire de retour
         - computedSettings : groupe — Réglages calculés automatiquement
           - x : nombre

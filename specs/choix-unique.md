@@ -27,7 +27,7 @@ Une section `## question` par question, avec exactement une réponse `[x]` (l'or
     - answers* : liste (min 2, max 4) — Réponses possibles - la première de la liste est celle qui est juste.
       chaque élément = texte riche (Markdown: code em strong) — Réponse possible
 - overallFeedback : groupe — Opacité des étiquettes (groupe à un champ: écrire directement la valeur)
-  - overallFeedback : liste (min 1) — Définissez le feedback pour chaque intervalle de score
+  - overallFeedback : liste (min 1) — Définissez le feedback pour chaque intervalle de score (Cliquez le bouton "Ajouter Intervalle" pour ajouter autant d'intervalles que vous le souhaitez. Exemple : 0-2…)
     chaque élément :
       - from : nombre, min 0, max 100, défaut 0 — Intervalle de score
       - to : nombre, min 0, max 100, défaut 100

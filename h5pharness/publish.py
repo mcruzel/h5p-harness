@@ -1,4 +1,5 @@
 """git add / commit / push of the sources (the .h5p itself is rebuilt by CI, see README)."""
+import os
 import subprocess
 import time
 from pathlib import Path
@@ -26,6 +27,9 @@ def publish(paths, message):
     code, _ = _git("diff", "--cached", "--quiet")
     if code == 0:
         return "déjà à jour (rien de nouveau à publier)"
+    trailers = os.environ.get("H5P_COMMIT_TRAILERS", "").strip()   # e.g. Co-Authored-By lines required by a team
+    if trailers:
+        message = f"{message}\n\n{trailers}"
     code, out = _git("commit", "-q", "-m", message)
     if code:
         raise PublishError(f"git commit: {out.splitlines()[-1] if out else code}")

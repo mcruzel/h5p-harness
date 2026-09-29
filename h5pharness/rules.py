@@ -4,6 +4,13 @@ import re
 from .markdown import html_to_text
 
 RULES = {}
+FIXUPS = {}
+
+# Values applied under the author's own values (the content type misbehaves without them).
+PATCH_DEFAULTS = {
+    "H5P.MarkTheLetters": {"solution": ""},            # letter.js crashes on an absent solution
+    "H5P.Timeline": {"timeline": {"language": "fr"}},  # TimelineJS interface language
+}
 
 
 def rule(machine):
@@ -14,9 +21,30 @@ def rule(machine):
 
 
 def check(machine, params, ctx, path):
+    fix = FIXUPS.get(machine)
+    if fix and isinstance(params, dict):
+        fix(params)
     fn = RULES.get(machine)
     if fn and isinstance(params, dict):
         fn(params, ctx, path)
+
+
+def fixup(machine):
+    def deco(fn):
+        FIXUPS[machine] = fn
+        return fn
+    return deco
+
+
+PALETTE = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"]
+
+
+@fixup("H5P.Chart")
+def _chart_palette(p):
+    """The semantics default colour is black for every item: give a readable palette instead."""
+    for i, item in enumerate(p.get("listOfTypes") or []):
+        if isinstance(item, dict) and item.get("color") in (None, "#000", "#000000"):
+            item["color"] = PALETTE[i % len(PALETTE)]
 
 
 @rule("H5P.MultiChoice")
@@ -93,3 +121,62 @@ def _findthewords(p, ctx, path):
         for w in items:
             if not re.fullmatch(r"[^\W\d_]+", w):
                 ctx.error(path + ["wordList"], f"« {w} »: lettres uniquement, sans espace")
+
+
+@rule("H5P.ImageHotspots")
+def _imagehotspots(p, ctx, path):
+    for i, h in enumerate(p.get("hotspots") or []):
+        pos = (h or {}).get("position") or {}
+        for axis in ("x", "y"):
+            v = pos.get(axis)
+            if isinstance(v, (int, float)) and not 0 <= v <= 100:
+                ctx.error(path + ["hotspots", i, "position", axis], f"{v} : position en % de l'image (0 à 100)")
+
+
+@rule("H5P.ImageHotspotQuestion")
+def _findhotspot(p, ctx, path):
+    settings = (p.get("imageHotspotQuestion") or {}).get("hotspotSettings") or {}
+    for i, h in enumerate(settings.get("hotspot") or []):
+        cs = (h or {}).get("computedSettings") or {}
+        where = path + ["imageHotspotQuestion", "hotspotSettings", "hotspot", i, "computedSettings"]
+        if cs.get("figure") not in (None, "rectangle", "circle"):
+            ctx.error(where + ["figure"], f"« {cs.get('figure')} » : rectangle ou circle")
+        for k in ("x", "y", "width", "height"):
+            v = cs.get(k)
+            if isinstance(v, (int, float)) and not 0 <= v <= 100:
+                ctx.error(where + [k], f"{v} : en % de l'image (0 à 100)")
+
+
+@rule("H5P.ThreeDModel")
+def _threedmodel(p, ctx, path):
+    def walk(v, where):
+        if isinstance(v, dict):
+            annotation = "text" in v and ("surface" in v or "id" in v or where[-2:-1] == ["annotations"])
+            if annotation and not v.get("surface"):
+                ctx.warn(where, "annotation sans « surface » : elle ne sera pas affichée par le modèle 3D")
+            for k, x in v.items():
+                walk(x, where + [k])
+        elif isinstance(v, list):
+            for i, x in enumerate(v):
+                walk(x, where + [i])
+    walk(p, path)
+
+
+@rule("H5P.Collage")
+def _collage(p, ctx, path):
+    col = p.get("collage") or {}
+    template = str(col.get("template") or "")
+    if re.fullmatch(r"\d+(-\d+)*", template):
+        needed = sum(int(x) for x in template.split("-"))
+        have = len(col.get("clips") or [])
+        if have != needed:
+            ctx.warn(path + ["collage", "clips"],
+                     f"la mise en page « {template} » attend {needed} image(s), {have} fournie(s)")
+
+
+@rule("H5P.MarkTheLetters")
+def _markletters(p, ctx, path):
+    text = html_to_text(p.get("textField") or "")
+    if re.search(r"[^\x00-\x7f]", text):
+        ctx.warn(path + ["textField"],
+                 "lettres accentuées ou non latines : ce type ne garde que a-z (elles disparaîtront)")
