@@ -1,0 +1,182 @@
+{
+  "semantics": [
+    {
+      "label": "Medios",
+      "fields": [
+        {
+          "label": "Tipo",
+          "description": "Medios opcionales mostrados encima de la pregunta."
+        },
+        {
+          "label": "Deshabilitar acercamiento de imagen"
+        }
+      ]
+    },
+    {
+      "label": "Descripción del trabajo",
+      "description": "Explique a sus estudiantes lo que se espera de ellos."
+    },
+    {
+      "label": "Secciones",
+      "entity": "sección",
+      "widgets": [
+        {
+          "label": "Predeterminado"
+        }
+      ],
+      "field": {
+        "label": "Parámetros de sección",
+        "fields": [
+          {
+            "label": "Título"
+          },
+          {
+            "label": "Pistas",
+            "description": "Opcionalmente añada pistas o instrucciones particulares para esta sección."
+          },
+          {
+            "label": "Ponderación",
+            "description": "Determine que tan larga se espera que sea cada sección con relación a las otras secciones. Ejemplo: Sección 1 = 1; Sección 2 = 3 (el triple de largo de 1); Sección 3 = 1 (mismo largo que sección 1)."
+          },
+          {
+            "label": "Color del fondo"
+          },
+          {
+            "label": "Color del texto"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Configuraciones del comportamiento",
+      "description": "Estas opciones le permitirán controlar como se comporta el trabajo.",
+      "fields": [
+        {
+          "label": "Habilitar \"Reintentar\""
+        },
+        {
+          "label": "Habilitar \"Solución\""
+        },
+        {
+          "label": "Holgura",
+          "description": "La holgura es flexibilidad incorporada de una sección, calculada en porcentaje."
+        },
+        {
+          "label": "Longitud mínima del texto",
+          "description": "Defina una longitud absoluta mínima total del texto. Por favor tenga en cuenta que la ponderación de una sección comparada con otras secciones es la principal causa del mensaje de retroalimentación, no este valor mínimo."
+        },
+        {
+          "label": "Longitud máxima del texto",
+          "description": "Defina una longitud máxima absoluta total del texto.Por favor tenga en cuenta que la ponderación de una sección comparada con otras secciones es la principal causa del mensaje de retroalimentación, no este valor mínimo."
+        },
+        {
+          "label": "Modo de retroalimentación",
+          "description": "Decidir si es que quiere o no mostrar retroalimentación mientras se escribe o solamente cuando el estudiante lo solicita.",
+          "options": [
+            {
+              "label": "Por solicitud"
+            },
+            {
+              "label": "Mientras se escribe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Interfaz del usuario",
+      "fields": [
+        {
+          "label": "Texto para botón \"Copiar\"",
+          "default": "Copiar"
+        },
+        {
+          "label": "Texto para botón \"Comprobar\"",
+          "default": "Comprobar"
+        },
+        {
+          "label": "Texto para botón \"Reintentar\"",
+          "default": "Reintentar"
+        },
+        {
+          "label": "Texto para botón \"Mostrar solución\"",
+          "default": "Mostrar solución"
+        },
+        {
+          "label": "Todas las secciones bien",
+          "description": "Texto de retroalimentación mostrado cuando todas las secciones son de longitud tolerable.",
+          "default": "Las longitudes de sus secciones están todas bien."
+        },
+        {
+          "label": "Sección demasiado corta",
+          "description": "Texto de retroalimentación mostrado para secciones que son demasiado cortas (@title será remplazado por el título de la sección, @chars será remplazado por el número de caracteres faltantes).",
+          "default": "Su sección \"@title\" es demasiado corta. Usted necesita al menos @chars caracteres más."
+        },
+        {
+          "label": "Sección demasiado larga",
+          "description": "Texto de retroalimentación mostrado para secciones que son demasiado largas (@title será remplazado por el título de la sección, @chars será remplazado por el número de caracteres que necesitan quitarse).",
+          "default": "Su sección \"@title\" es demasiado larga. Quite al menos @chars caracteres."
+        },
+        {
+          "label": "Sección demasiado corta (al escribir)",
+          "description": "Estado mostrado al escribir para secciones que son demasiado cortas (@chars será remplazado por el número de caracteres faltantes).",
+          "default": "@chars caracteres demasiado corta"
+        },
+        {
+          "label": "Sección demasiado larga (al escribir)",
+          "description": "Estado mostrado al escribir para secciones que son demasiado largas (@chars será remplazado por el número de caracteres que es necesario quitar).",
+          "default": "@chars caracteres demasiado larga"
+        },
+        {
+          "label": "Texto copiado al portapapeles",
+          "default": "Su texto fue copiado al portapapeles"
+        },
+        {
+          "label": "No se puede copiar al portapapeles",
+          "default": "Su texto no pudo ser copiado al portapapeles"
+        },
+        {
+          "label": "Sección",
+          "default": "Sección"
+        },
+        {
+          "label": "Texto para mensaje \"No hay sección\"",
+          "default": "No hubo sección dada para esta tira de estructura."
+        },
+        {
+          "label": "Texto para botón \"Enviar\"",
+          "default": "Enviar"
+        }
+      ]
+    },
+    {
+      "label": "Lector de texto en voz alta",
+      "fields": [
+        {
+          "label": "Descripción de tecnología asistiva para botón \"Comprobar\"",
+          "default": "Comprobar las respuestas. Las respuestas serán marcadas como correcta, incorrecta, o sin contestar."
+        },
+        {
+          "label": "Descripción de tecnología asistiva para botón \"Reintentar\"",
+          "default": "Reintentar el trabajo. Reiniciar todas las respuestas e iniciar el trabajo de nuevo."
+        },
+        {
+          "label": "Retroalimentación (texto para lector de texto en voz alta)",
+          "default": "Retroalimentación"
+        },
+        {
+          "label": "Copiar su texto al portapapeles (texto para lector de texto en voz alta)",
+          "default": "Copiar texto al portapapeles"
+        },
+        {
+          "label": "Cerrar ventana (texto para lector de texto en voz alta)",
+          "default": "Cerrar ventana"
+        },
+        {
+          "label": "Mostrar pistas (texto para lector de texto en voz alta)",
+          "default": "Mostrar pistas"
+        }
+      ]
+    }
+  ]
+}

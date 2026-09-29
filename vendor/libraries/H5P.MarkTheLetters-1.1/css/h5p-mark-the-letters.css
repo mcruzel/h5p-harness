@@ -1,0 +1,106 @@
+/* The main containers for the module, specific to this module. */
+.h5p-mark-the-letters {
+  position: relative;
+  margin: 2em;
+  background: rgba(255, 255, 255, 0.9);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#e6FFFFFF,endColorstr=#e6FFFFFF);
+  overflow: hidden;
+  /* text-align: center; */
+}
+
+.h5p-mark-the-letters .h5p-task-description{
+  font-size: 1.25em;
+  text-transform: capitalize;
+  font-weight: 500;
+
+}
+
+/* Actual text paragraphs */
+.h5p-mark-the-letters .h5p-letter-inner {
+  font-size: 1em;
+  font-weight: normal;
+  padding: 0;
+  margin: 0 0 1em;
+  text-align: justify;
+  /* color: #192538; */
+}
+
+/* Selectable letters container */
+.h5p-mark-the-letters .h5p-letter-selectable-letters {
+  line-height: 1.75em;
+  outline: none;
+  line-height: 3;
+}
+
+/* Selectable letters*/
+.h5p-mark-the-letters [role="option"] {
+  white-space: nowrap;
+  padding: 0.15em;
+  margin-right: .125em;
+  border-radius: 0.25em;
+  cursor: pointer;
+  position: relative;
+}
+
+.h5p-mark-the-letters .h5p-letter-selectable-letters:not(.h5p-disable-hover) [role="option"]:hover {
+  box-shadow: inset 0px 0px 0px 2px #cee0f4;
+}
+
+/* Colors and styling for letter selections */
+.h5p-mark-the-letters [aria-selected="true"] {
+  background: #cee0f4;
+}
+
+/* Missed letter*/
+.h5p-mark-the-letters [aria-describedby="h5p-description-missed"] {
+  border: 0.1em #77b395 dotted;
+  background-color: #E4F4EC;
+}
+
+/* Correctly answered marking */
+.h5p-mark-the-letters [aria-describedby="h5p-description-correct"] {
+  background: #9dd8bb;
+  color: #255c41;
+  display: inline-block;
+  line-height: 1;
+}
+/* Wrongly answered marking */
+.h5p-mark-the-letters [aria-describedby="h5p-description-incorrect"] {
+  background-color: #f7d0d0;
+  color: #b71c1c;
+  text-decoration: line-through;
+  display: inline-block;
+  line-height: 1;
+}
+/* Feedback icons */
+.h5p-mark-the-letters [aria-describedby="h5p-description-correct"]:after {
+  position: relative;
+  right: 0.1em;
+  text-decoration: none;
+  content: "\f00c";
+  font-family: 'H5PFontAwesome4';
+  color: #255c41;
+  padding-left: 0.75em;
+}
+.h5p-mark-the-letters [aria-describedby="h5p-description-incorrect"]:after {
+  position: relative;
+  right: 0.1em;
+  display: inline-block;
+  font-family: 'H5PFontAwesome4';
+  text-decoration: none;
+  content: "\f00d";
+  color: #b71c1c;
+  padding-left: 0.75em;
+}
+
+.h5p-feedback-container{
+  display: inline-block;
+}
+.h5p-button-bar{
+  text-align: left;
+}
+.h5p-feedback-text {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #1a73d9;
+}

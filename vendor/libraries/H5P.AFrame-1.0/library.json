@@ -1,0 +1,20 @@
+{
+  "machineName": "H5P.AFrame",
+  "title": "aframe.js",
+  "description": "An H5P wrapper around the AFrame library",
+  "license": "MIT",
+  "author": "A-Frame authors",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 5,
+  "runnable": 0,
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 27
+  },
+  "preloadedJs": [
+    {
+      "path": "aframe.js"
+    }
+  ]
+}

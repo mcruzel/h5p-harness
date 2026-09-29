@@ -1,0 +1,207 @@
+{
+  "semantics": [
+    {
+      "label": "Mod pentru imaginile ușilor",
+      "description": "Selectați dacă doriți să setați personal fiecare imagine a ușii sau să lăsați H5P să facă acest lucru pentru dvs., bazându-se pe imaginea de fundal a calendarului setată în setările de comportament.",
+      "options": [
+        {
+          "label": "Doresc să setez personal fiecare imagine a ușii"
+        },
+        {
+          "label": "H5P va seta imaginile ușilor pe baza imaginii de fundal"
+        }
+      ]
+    },
+    {
+      "label": "Uși",
+      "entity": "ușă",
+      "field": {
+        "fields": [
+          {
+            "label": "Tip de conținut",
+            "description": "Tipul de conținut care ar trebui să apară opțional când ușa este deschisă.",
+            "options": [
+              {
+                "label": "Audio"
+              },
+              {
+                "label": "Imagine"
+              },
+              {
+                "label": "Link"
+              },
+              {
+                "label": "Text"
+              },
+              {
+                "label": "Video"
+              }
+            ]
+          },
+          {
+            "label": "Audio"
+          },
+          {
+            "label": "Imagine"
+          },
+          {
+            "label": "Link"
+          },
+          {
+            "label": "Text"
+          },
+          {
+            "label": "Video"
+          },
+          {
+            "label": "Redare automată"
+          },
+          {
+            "label": "Imagine ușă",
+            "description": "Imaginea care va fi folosită pentru ușă. Trebuie să aibă un raport de 1:1 dacă doriți ca jumătatea stângă să se potrivească cu jumătatea dreaptă."
+          },
+          {
+            "label": "Imagine de fundal",
+            "description": "Imaginea care ar trebui să apară în spatele ușii. Implicit, va fi numărul ușii."
+          }
+        ]
+      },
+      "widgets": [
+        {
+          "label": "Implicit"
+        }
+      ]
+    },
+    {
+      "label": "Setări vizuale",
+      "description": "Aceste opțiuni vă vor permite să configurați aspectul vizual.",
+      "fields": [
+        {
+          "label": "Imagine de fundal pentru calendar"
+        },
+        {
+          "label": "Șablon pentru imaginea ușii",
+          "description": "Dacă este setată o imagine, aceasta va fi folosită pentru fiecare ușă, cu excepția cazului în care o imagine specifică este setată pentru o singură ușă."
+        },
+        {
+          "label": "Ascunde chenarul ușii"
+        },
+        {
+          "label": "Ascunde numerele ușilor"
+        },
+        {
+          "label": "Ascunde clanțele ușilor"
+        },
+        {
+          "label": "Ascunde tocul ușii"
+        },
+        {
+          "label": "Să ningă",
+          "description": "Va adăuga ninsoare în fața calendarului. Nu plouă niciodată în California de Sud, nu ninge niciodată pe IE11."
+        }
+      ]
+    },
+    {
+      "label": "Setări audio",
+      "description": "Aceste opțiuni vă vor permite să configurați setările audio.",
+      "fields": [
+        {
+          "label": "Muzică de fundal"
+        },
+        {
+          "label": "Redare automată a muzicii de fundal",
+          "description": "Dacă este setat, muzica de fundal va porni automat odată ce conținutul este deschis. Vă rugăm să rețineți: politica media a unor browsere poate împiedica redarea automată."
+        }
+      ]
+    },
+    {
+      "label": "Setări de comportament",
+      "description": "Aceste opțiuni vă vor permite să suprascrieți setările de comportament.",
+      "fields": [
+        {
+          "label": "Mod pentru amplasarea ușilor",
+          "description": "Selectați dacă doriți să setați un număr fix de coloane și rânduri pentru uși sau dacă H5P ar trebui să decidă dinamic, în funcție de spațiul disponibil. Rețineți că ultima opțiune poate interfera cu poziția imaginii de fundal și a imaginilor personalizate de acoperire a ușilor care ar trebui să fie într-o anumită poziție.",
+          "options": [
+            {
+              "label": "Fix"
+            },
+            {
+              "label": "Dinamic"
+            }
+          ]
+        },
+        {
+          "label": "Raport rânduri-coloane",
+          "description": "Selectați câte coloane și rânduri ar trebui să utilizeze calendarul.",
+          "options": [
+            {
+              "label": "6 × 4"
+            },
+            {
+              "label": "4 × 6"
+            }
+          ]
+        },
+        {
+          "label": "Ordine aleatorie",
+          "description": "Amestecă ordinea ușilor. Dacă opțiunea \"salvează starea conținutului\" este activată în setările H5P, acea ordine va rămâne aceeași când utilizatorul revine mai târziu."
+        },
+        {
+          "label": "Păstrează ordinea imaginilor",
+          "description": "Amestecă ușile, dar păstrează imaginile de acoperire ale ușilor în pozițiile lor fixe, începând cu 1 în colțul din stânga sus până la 24 în colțul din dreapta jos."
+        },
+        {
+          "label": "Mod de proiectare",
+          "description": "Când este în modul de proiectare, toate ușile pot fi deschise. Altfel, ușile pot fi deschise doar în luna decembrie, în ziua respectivă indicată de numărul ușii sau după aceasta."
+        }
+      ]
+    },
+    {
+      "label": "Localizare",
+      "fields": [
+        {
+          "label": "Nimic de văzut",
+          "default": "Nu e nimic de văzut aici!🎄"
+        },
+        {
+          "label": "Text de umplutură",
+          "default": "Text de umplutură"
+        }
+      ]
+    },
+    {
+      "label": "Accesibilitate",
+      "fields": [
+        {
+          "label": "Ușă",
+          "default": "Ușă"
+        },
+        {
+          "label": "Blocat",
+          "default": "Blocat. Nu este încă timpul să o deschideți pe aceasta."
+        },
+        {
+          "description": "Anunță conținutul. @door este o variabilă și va fi înlocuită cu descrierea ușii corespunzătoare.",
+          "label": "Conținutul ușii",
+          "default": "Conținutul ușii @door"
+        },
+        {
+          "label": "Dezactivează sunetul",
+          "default": "Dezactivează sunetul"
+        },
+        {
+          "label": "Activează sunetul",
+          "default": "Activează sunetul"
+        },
+        {
+          "label": "Închide fereastra",
+          "default": "Închide fereastra"
+        },
+        {
+          "label": "Loading",
+          "default": "Loading..."
+        }
+      ]
+    }
+  ]
+}

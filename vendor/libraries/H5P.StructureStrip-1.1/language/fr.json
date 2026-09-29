@@ -1,0 +1,182 @@
+{
+  "semantics": [
+    {
+      "label": "Média",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Média facultatif pour afficher au-dessus de la question."
+        },
+        {
+          "label": "Bloquer le zoom d’image"
+        }
+      ]
+    },
+    {
+      "label": "Description de la tâche",
+      "description": "Expliquez à vos élèves ce qu'on attend d'eux."
+    },
+    {
+      "label": "Sections",
+      "entity": "section",
+      "widgets": [
+        {
+          "label": "Par défaut"
+        }
+      ],
+      "field": {
+        "label": "Paramètres de section",
+        "fields": [
+          {
+            "label": "Titre"
+          },
+          {
+            "label": "Indices",
+            "description": "Ajouter éventuellement des indices ou des instructions particulières pour cette section."
+          },
+          {
+            "label": "Poids",
+            "description": "Saisir le poids de cette section par rapport aux autres sections. Le poids détermine la longueur qu'une section est censée avoir par rapport aux autres sections."
+          },
+          {
+            "label": "Couleur de fond"
+          },
+          {
+            "label": "Couleur du texte"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Paramètres comportementaux",
+      "description": "Ces options vous permettront de contrôler le déroulement de la tâche.",
+      "fields": [
+        {
+          "label": "Activer « Réessayer »"
+        },
+        {
+          "label": "Activer « Solution »"
+        },
+        {
+          "label": "Jeu",
+          "description": "Pourcentage de jeu qui est acceptable pour la longueur d'une section."
+        },
+        {
+          "label": "Longueur du texte minimale",
+          "description": "Définir une longueur du texte totale minimale absolue. Veuillez noter que le poids d'une section par rapport aux autres sections est le principal moteur du message de feedback, et non cette valeur minimale."
+        },
+        {
+          "label": "Longueur maximale du texte",
+          "description": "Définir une longueur du texte totale maximale absolue. Veuillez noter que le poids d'une section par rapport aux autres sections est le principal moteur du message de feedback, et non cette valeur maximale."
+        },
+        {
+          "label": "Mode de feedback",
+          "description": "Décidez si vous souhaitez afficher le feedback lors de la saisie ou uniquement lorsque l'élève le demande.",
+          "options": [
+            {
+              "label": "Sur demande"
+            },
+            {
+              "label": "Lors de la saisie"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Interface utilisateur",
+      "fields": [
+        {
+          "label": "Texte pour la touche « Copier »",
+          "default": "Copier"
+        },
+        {
+          "label": "Texte pour la touche « Vérifier »",
+          "default": "Vérifier"
+        },
+        {
+          "label": "Texte pour la touche « Réessayer »",
+          "default": "Réessayer"
+        },
+        {
+          "label": "Texte pour la touche « Afficher la solution »",
+          "default": "Afficher la solution"
+        },
+        {
+          "label": "Toutes les sections sont bonnes",
+          "description": "Texte de feedback affiché lorsque toutes les sections ont une longueur tolérable.",
+          "default": "Les longueurs de vos sections sont toutes bonnes."
+        },
+        {
+          "label": "Section trop courte",
+          "description": "Texte de feedback affiché pour les sections trop courtes ( @title sera remplacé par le titre de la section, @chars sera remplacé par le nombre de caractères manquants).",
+          "default": "Votre section « @title » est trop courte. Vous avez besoin d'au moins @chars caractères additionnels."
+        },
+        {
+          "label": "Section trop longue",
+          "description": "Texte de feedback affiché pour les sections trop longues ( @title sera remplacé par le titre de la section, @chars sera remplacé par le nombre de caractères à supprimer).",
+          "default": "Votre section « @title » est trop longue. Supprimer au moins @chars caractères."
+        },
+        {
+          "label": "Section trop courte (pendant la saisie)",
+          "description": "Statut affiché pour les sections trop courtes ( @charssera remplacé par le nombre de caractères manquants).",
+          "default": "@chars caractères manquants"
+        },
+        {
+          "label": "Section trop longue (pendant la saisie)",
+          "description": "Statut affiché lors de la saisie de sections trop longues (@chars sera remplacé par le nombre de caractères à supprimer).",
+          "default": "@chars caractères à supprimer"
+        },
+        {
+          "label": "Texte copié dans le presse-papier",
+          "default": "Votre texte a été copié dans le presse-papier"
+        },
+        {
+          "label": "Impossible de copier dans le presse-papier",
+          "default": "Votre texte n'a pas pu être copié dans le presse-papier"
+        },
+        {
+          "label": "Section",
+          "default": "Section"
+        },
+        {
+          "label": "Texte du message « Aucune section »",
+          "default": "Il n'y avait pas de section donnée pour cette bande de structure."
+        },
+        {
+          "label": "Texte pour le bouton \"Vérifier\"",
+          "default": "Vérifier"
+        }
+      ]
+    },
+    {
+      "label": "ReadSpeaker",
+      "fields": [
+        {
+          "label": "Description du bouton \"Vérifier\" pour les outils d'accessibilité",
+          "default": "Vérifiez les réponses. Les réponses seront marquées comme correctes, incorrectes ou sans réponse."
+        },
+        {
+          "label": "Description du bouton \"Recommencer\" pour les outils d'accessibilité",
+          "default": "Recommencer la tâche. Réinitialise toutes les réponses et redémarre l'activité."
+        },
+        {
+          "label": "Feedback (texte pour les synthèses vocales)",
+          "default": "Feedback"
+        },
+        {
+          "label": "Copiez votre texte dans le presse-papier (texte pour les synthèses vocales)",
+          "default": "Copier le texte dans le presse-papier"
+        },
+        {
+          "label": "Fermer la fenêtre (texte pour les synthèses vocales)",
+          "default": "Fermer la fenêtre"
+        },
+        {
+          "label": "Afficher les indices (texte pour les synthèses vocales)",
+          "default": "Afficher les indices"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "title": "ChoiceExplorer",
+  "description": "Let users explore how different choices affect the outcome of a scenario.",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 7,
+  "runnable": 1,
+  "author": "Oliver Tacke",
+  "license": "MIT",
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 24
+  },
+  "machineName": "H5P.ChoiceExplorer",
+  "embedTypes": [
+    "iframe"
+  ],
+  "preloadedJs": [
+    {
+      "path": "dist/h5p-choice-explorer.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "dist/h5p-choice-explorer.css"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "H5P.Question",
+      "majorVersion": 1,
+      "minorVersion": 5
+    }
+  ],
+  "editorDependencies": [
+    {
+      "machineName": "H5PEditor.ChoiceExplorer",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
+      "machineName": "H5PEditor.VerticalTabs",
+      "majorVersion": 1,
+      "minorVersion": 3
+    },
+    {
+      "machineName": "H5PEditor.ShowWhen",
+      "majorVersion": 1,
+      "minorVersion": 0
+    }
+  ]
+}

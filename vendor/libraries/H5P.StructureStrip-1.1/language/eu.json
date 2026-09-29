@@ -1,0 +1,182 @@
+{
+  "semantics": [
+    {
+      "label": "Multimedia",
+      "fields": [
+        {
+          "label": "Mota",
+          "description": "Galderaren gainean bistaratzeko aukerako multimedia."
+        },
+        {
+          "label": "Desgaitu irudien zooma"
+        }
+      ]
+    },
+    {
+      "label": "Atazaren deskribapena",
+      "description": "Azaldu zure ikasleei zer espero den eurak egitea."
+    },
+    {
+      "label": "Atalak",
+      "entity": "atala",
+      "widgets": [
+        {
+          "label": "Lehenetsitakoa"
+        }
+      ],
+      "field": {
+        "label": "Atalaren parametroak",
+        "fields": [
+          {
+            "label": "Izenburua"
+          },
+          {
+            "label": "Pistak",
+            "description": "Atal honetarako aukerazko pista edo argibideak gehitzen ditu."
+          },
+          {
+            "label": "Pisua",
+            "description": "Zehaztu atal honen beste atalekiko pisua. Pisuak atal batek beste atalekin konparatuz duen tamaina zehazten du."
+          },
+          {
+            "label": "Atzeko planoko kolorea"
+          },
+          {
+            "label": "Testuaren kolorea"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Portaeren ezarpenak",
+      "description": "Aukera hauek lanaren portaera kontrolatzea ahalbidetzen dizute.",
+      "fields": [
+        {
+          "label": "Gaitu \"Berriz saiatu\""
+        },
+        {
+          "label": "Gaitu \"Emaitza\""
+        },
+        {
+          "label": "Malgutasuna",
+          "description": "Atal baten luzerarentzako onargarria den malgutasuna."
+        },
+        {
+          "label": "Testuaren gutxieneko luzera",
+          "description": "Zehaztu testuaren luzerarentzako gutxieneko absolutua. Please note that a section's weight compared to other sections is the main driver for the feedback message, not this minimum value."
+        },
+        {
+          "label": "Testuaren gehieneko luzera",
+          "description": "Zehaztu testuaren luzerarentzako gehienezko absolutua. Please note that a section's weight compared to other sections is the main driver for the feedback message, not this maximum value."
+        },
+        {
+          "label": "Feedback modua",
+          "description": "Erabaki feedbacka idatzi bitartean ala ikasleak eskatzen duenean soilik erakutsi nahi duzun.",
+          "options": [
+            {
+              "label": "Eskatzen denean"
+            },
+            {
+              "label": "Idatzi bitartean"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Erabiltzaile-interfazea",
+      "fields": [
+        {
+          "label": "\"Kopiatu\" botoiarentzako testua",
+          "default": "Kopiatu"
+        },
+        {
+          "label": "\"Egiaztatu\" botoiarentzako testua",
+          "default": "Egiaztatu"
+        },
+        {
+          "label": "\"Berriz saiatu\" botoiarentzako testua",
+          "default": "Berriz saiatu"
+        },
+        {
+          "label": "\"Erakutsi emaitza\" botoiaren testua",
+          "default": "Erakutsi erantzuna"
+        },
+        {
+          "label": "Atal guztiak ondo",
+          "description": "Atal guztiek luzera onargarria dutenean erakusten den feedbackaren testua.",
+          "default": "Zure atalen luzera guztiak ondo daude."
+        },
+        {
+          "label": "Atala laburregia da",
+          "description": "Laburregiak diren atalentzako erakutsiko den feedbackaren testua (@title atalaren izenburuarekin ordezkatuko da, @chars falta den karaktere kopuruarekin ordezkatuko da).",
+          "default": "Zure \"@title\" atala laburregia da. Gutxienez @chars karaktere gehiago behar dituzu."
+        },
+        {
+          "label": "Atala luzeegia da",
+          "description": "Luzeegiak diren atalentzako erakutsiko den feedbackaren testua (@title atalaren izenburuarekin ordezkatuko da, @chars kendu beharreko karaktere kopuruarekin ordezkatuko da).",
+          "default": "Zure \"@title\" atala luzeegia da. Kendu itzazu @chars karaktere gutxienez."
+        },
+        {
+          "label": "Atala laburregia da (idatzi bitartean)",
+          "description": "Laburregiak diren atalentzako erakutsiko den egoera (@title atalaren izenburuarekin ordezkatuko da, @chars falta den karaktere kopuruarekin ordezkatuko da).",
+          "default": "Laburregia, @chars karaktere"
+        },
+        {
+          "label": "Atal luzeegia (idatzi bitartean)",
+          "description": "Luzeegiak diren atalentzako erakutsiko den egoera (@title atalaren izenburuarekin ordezkatuko da, @chars kendu beharreko karaktere kopuruarekin ordezkatuko da).",
+          "default": "Luzeegia, @chars karaktere"
+        },
+        {
+          "label": "Testua arbelera kopiatu da",
+          "default": "Zure testua arbelera kopiatu da"
+        },
+        {
+          "label": "Ezin da arbelera kopiatu",
+          "default": "Zure testua ezin izan da arbelera kopiatu"
+        },
+        {
+          "label": "Atala",
+          "default": "Atala"
+        },
+        {
+          "label": "\"Atalik ez\" mezuaren testua",
+          "default": "Ez dago egitura-tira honentzako atalik."
+        },
+        {
+          "label": "\"Bidali\" botoiarentzako testua",
+          "default": "Bidali"
+        }
+      ]
+    },
+    {
+      "label": "Pantaila-irakurlea",
+      "fields": [
+        {
+          "label": "\"Egiaztatu\" botoiaren laguntza-teknologientzako etiketa",
+          "default": "Egiaztatu erantzunak. Emandako erantzunak zuzen, oker edo erantzun-gabeko gisa markatuko dira."
+        },
+        {
+          "label": "\"Saiatu berriro\" botoiaren laguntza-teknologientzako deskribapena",
+          "default": "Zeregina berriz egiten saiatu. Berrabiarazi erantzun guztiak eta hasi zeregina berriz."
+        },
+        {
+          "label": "Feedbacka (irakurtzen duen bozgorailua)",
+          "default": "Feedbacka"
+        },
+        {
+          "label": "Kopiatu zure testua arbelera (irakurtzen duen bozgorailua)",
+          "default": "Kopiatu testua arbelera"
+        },
+        {
+          "label": "Itxi leihoa (irakurtzen duen bozgorailua)",
+          "default": "Itxi leihoa"
+        },
+        {
+          "label": "Erakutsi pistak (irakurtzen duen bozgorailua)",
+          "default": "Erakutsi pistak"
+        }
+      ]
+    }
+  ]
+}

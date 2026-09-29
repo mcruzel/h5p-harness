@@ -1,0 +1,29 @@
+{
+  "libraryStrings": {
+    "browserCannotConvert": "თქვენ glTF ფაილის ატვირთვა სცადეთ, რომელსაც არ აქვს ჩაშენებული რესურსები. ამ ბრაუზერში .glb ფაილად მყისიერი გარდაქმნის მხარდაჭერა არაა. გთხოვთ, მონახოთ ალტერნატიული გარდამქმნელი.",
+    "conversionError": "glb ფორმატში გადაყვანა ვერ მოხერხდა.",
+    "dropFolderHere": "საქაღალდე ყველა glTF მასალით აქ გადმოაჩოჩეთ",
+    "fileDamaged": "ფაილის შემოწმება ვერ მოხერხდა. შესაძლოა, დაზიანებულია.",
+    "filetypeNotSupported": "ამ ფაილს არ გააჩნია 3D მოდელის ტიპის მხარდაჭერა.",
+    "noGLTFFound": "ამ საქაღალდეში glTF ფაილი არ არის",
+    "notAFolder": "ეს არ არის საქაღალდე.",
+    "onlyEmbeddedAssets": "თქვენ glTF ფაილის ატვირთვა სცადეთ, რომელსაც არ აქვს ჩაშენებული რესურსები. ის უნდა იყოს საქაღალდეში სხვა ფაილებთან ერთად. გადმოაჩოჩეთ საქაღალდე განთავსების ზონაში, რომ შექმნათ ერთიანი ფაილი, რომელსაც შემდეგში გამოიყენებთ.",
+    "onlyVersionTwo": "ეს glTF ფაილი 1.0 ვერსიისაა. გთხოვთ აქციოთ ის 2.0 ვერსიად, რომ შემდეგში აქ გამოიყენოთ.",
+    "placeAnnotation": "Place annotation in 3D model",
+    "sizeUp": "Size up",
+    "sizeDown": "Size down",
+    "front": "Front of 3D model",
+    "back": "Back of 3D model",
+    "left": "Left side of 3D model",
+    "right": "Right side of 3D model",
+    "upper-front": "Upper front of 3D model",
+    "upper-back": "Upper back of 3D model",
+    "upper-left": "Upper left side of 3D model",
+    "upper-right": "Upper right side of 3D model",
+    "lower-front": "Lower front of 3D model",
+    "lower-back": "Lower back of 3D model",
+    "lower-left": "Lower left side of 3D model",
+    "lower-right": "Lower right side of 3D model",
+    "interaction-prompt": "Use mouse, touch or arrow keys to move to interact with the 3D model."
+  }
+}
