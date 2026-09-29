@@ -1,6 +1,10 @@
 # Multimedia Choice — `choix-images`
 
-H5P.MultiMediaChoice 0.3 · alias : choix-images, multimediachoice, multi-media-choice · syntaxe Markdown simplifiée : non (bloc ```yaml)
+H5P.MultiMediaChoice 0.3 · alias : choix-images, multimediachoice, multi-media-choice · syntaxe Markdown simplifiée : oui
+
+## Syntaxe Markdown
+
+Question en Markdown, puis une option par ligne : `- [x] ![description](image)` (bonne) ou `- [ ] ![description](image)` ; plusieurs `[x]` = plusieurs bonnes réponses.
 
 ## Champs (bloc ```yaml, noms H5P)
 

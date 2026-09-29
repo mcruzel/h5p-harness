@@ -38,7 +38,9 @@ jobs:
         run: python -m pytest
 
       - name: Construire les paquets (sources/)
-        run: python -m h5pharness build sources/ --offline
+        run: |
+          python -m h5pharness build sources/ --offline
+          python -m h5pharness build sources/ --offline --content-only -o dist-lite -q
 
       - name: Validation officielle H5P (droits Moodle gestionnaire et enseignant)
         run: |
@@ -47,11 +49,16 @@ jobs:
           fi
           python tools/qa.py dist/
 
+      - name: Valider un exemple de chaque type de contenu (tests/examples)
+        run: |
+          python -m h5pharness build tests/examples -o build-examples --offline -q
+          python tools/qa.py build-examples
+
       - name: Publier dans la release de la branche
         if: github.event_name == 'push'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python tools/release.py dist/
+        run: python tools/release.py dist/ dist-lite/
 
       - uses: actions/upload-artifact@v6
         with:

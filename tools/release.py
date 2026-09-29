@@ -22,13 +22,19 @@ def gh(*args, check=True):
 
 def main():
     dist = Path(sys.argv[1] if len(sys.argv) > 1 else "dist")
+    lite = Path(sys.argv[2]) if len(sys.argv) > 2 else None   # content-only variants (no libraries)
     branch = os.environ["GITHUB_REF_NAME"]
     sha = os.environ.get("GITHUB_SHA", "")[:7]
     tag = "h5p-" + re.sub(r"[^A-Za-z0-9._-]+", "-", branch).strip("-")
     packages = {p.relative_to(dist).as_posix().replace("/", "--"): p for p in sorted(dist.rglob("*.h5p"))}
+    if lite and lite.exists():
+        packages.update({p.relative_to(lite).as_posix().replace("/", "--")[:-4] + ".contenu-seul.h5p": p
+                         for p in sorted(lite.rglob("*.h5p"))})
     now = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     notes = (f"Paquets H5P construits automatiquement depuis `sources/` (branche `{branch}`, commit {sha}, {now}).\n\n"
-             "Importer un fichier `.h5p` dans Moodle : activité « Contenu interactif H5P » ou banque de contenus.\n\n"
+             "Importer un fichier `.h5p` dans Moodle : activité « Contenu interactif H5P » ou banque de contenus. "
+             "Les fichiers `.contenu-seul.h5p` n'embarquent pas les bibliothèques (quelques Ko) : à utiliser si le "
+             "site possède déjà les mêmes versions des types de contenu (limite de dépôt faible).\n\n"
              + "\n".join(f"- `{name}`" for name in packages))
     if gh("release", "view", tag, check=False).returncode != 0:
         gh("release", "create", tag, "--prerelease", "--title", f"Paquets H5P — {branch}", "--notes", notes,

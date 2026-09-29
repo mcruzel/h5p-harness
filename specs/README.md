@@ -65,7 +65,7 @@ Cible : Moodle 4.5 ou plus récent (API H5P 1.28).
 | `enregistreur-audio` | Audio Recorder | H5P.AudioRecorder 1.0 | yaml |
 | `trous` | Fill in the Blanks | H5P.Blanks 1.14 | Markdown |
 | `scenario` | Branching Scenario | H5P.BranchingScenario 1.11 | yaml |
-| `graphique` | Chart | H5P.Chart 1.2 | yaml |
+| `graphique` | Chart | H5P.Chart 1.2 | Markdown |
 | `explorateur-choix` | ChoiceExplorer | H5P.ChoiceExplorer 1.0 | yaml |
 | `collage` | Collage | H5P.Collage 0.3 | yaml |
 | `colonne` | Page | H5P.Column 1.22 | Markdown |
@@ -74,7 +74,7 @@ Cible : Moodle 4.5 ou plus récent (API H5P 1.28).
 | `presentation` | Course Presentation | H5P.CoursePresentation 1.27 | Markdown |
 | `mots-croises` | Crossword | H5P.Crossword 0.7 | Markdown |
 | `cartes` | Dialog Cards | H5P.Dialogcards 1.9 | Markdown |
-| `dictee` | Dictation | H5P.Dictation 1.4 | yaml |
+| `dictee` | Dictation | H5P.Dictation 1.4 | Markdown |
 | `outil-documentation` | Documentation Tool | H5P.DocumentationTool 1.8 | yaml |
 | `glisser-deposer` | Drag and Drop | H5P.DragQuestion 1.15 | Markdown |
 | `glisser-mots` | Drag the Words | H5P.DragText 1.10 | Markdown |
@@ -99,7 +99,7 @@ Cible : Moodle 4.5 ou plus récent (API H5P 1.28).
 | `marquer-mots` | Mark the Words | H5P.MarkTheWords 1.11 | Markdown |
 | `memory` | Memory Game | H5P.MemoryGame 1.3 | Markdown |
 | `qcm` | Multiple Choice | H5P.MultiChoice 1.16 | Markdown |
-| `choix-images` | Multimedia Choice | H5P.MultiMediaChoice 0.3 | yaml |
+| `choix-images` | Multimedia Choice | H5P.MultiMediaChoice 0.3 | Markdown |
 | `quiz` | Question Set | H5P.QuestionSet 1.21 | Markdown |
 | `questionnaire` | Questionnaire | H5P.Questionnaire 1.3 | yaml |
 | `choix-unique` | Single Choice Set | H5P.SingleChoiceSet 1.11 | Markdown |
@@ -108,7 +108,7 @@ Cible : Moodle 4.5 ou plus récent (API H5P 1.28).
 | `dire-mots-serie` | Speak the Words Set | H5P.SpeakTheWordsSet 1.3 | yaml |
 | `bande-structure` | Structure Strip | H5P.StructureStrip 1.1 | yaml |
 | `resume` | Summary | H5P.Summary 1.10 | Markdown |
-| `onglets` | Tabs | H5P.Tabs 1.3 | yaml |
+| `onglets` | Tabs | H5P.Tabs 1.3 | Markdown |
 | `modele-3d` | 3D Model | H5P.ThreeDModel 1.0 | yaml |
 | `visite-360` | Virtual Tour (360) | H5P.ThreeImage 0.5 | yaml |
 | `frise` | Timeline | H5P.Timeline 1.1 | Markdown |

@@ -1,6 +1,17 @@
 # Chart — `graphique`
 
-H5P.Chart 1.2 · alias : graphique, chart · syntaxe Markdown simplifiée : non (bloc ```yaml)
+H5P.Chart 1.2 · alias : graphique, chart · syntaxe Markdown simplifiée : oui
+
+## Syntaxe Markdown
+
+Ligne facultative `type: barres` (ou `secteurs`, par défaut), puis une donnée par ligne : `- Libellé : valeur` (couleur facultative `#rrggbb` en fin de ligne).
+
+```markdown
+type: barres
+- Chats : 12
+- Chiens : 8
+- Poissons : 3 #1f77b4
+```
 
 ## Champs (bloc ```yaml, noms H5P)
 

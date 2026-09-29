@@ -5,3 +5,5 @@ __pycache__/
 *.tmp
 .pytest_cache/
 node_modules/
+/build-examples/
+/dist-lite/

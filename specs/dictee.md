@@ -1,6 +1,16 @@
 # Dictation — `dictee`
 
-H5P.Dictation 1.4 · alias : dictee, dictation · syntaxe Markdown simplifiée : non (bloc ```yaml)
+H5P.Dictation 1.4 · alias : dictee, dictation · syntaxe Markdown simplifiée : oui
+
+## Syntaxe Markdown
+
+Consigne, puis une phrase par ligne : `- ![](audio.mp3) Phrase attendue` (le son est lu, l'élève écrit la phrase) ; indication facultative après ` :: `.
+
+```markdown
+Écoute et écris chaque phrase.
+- ![](audios/phrase1.mp3) Le chat dort sur le canapé. :: présent de l'indicatif
+- ![](audios/phrase2.mp3) Nous irons à la plage demain.
+```
 
 ## Champs (bloc ```yaml, noms H5P)
 

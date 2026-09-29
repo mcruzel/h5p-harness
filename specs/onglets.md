@@ -1,6 +1,10 @@
 # Tabs — `onglets`
 
-H5P.Tabs 1.3 · alias : onglets, tabs · syntaxe Markdown simplifiée : non (bloc ```yaml)
+H5P.Tabs 1.3 · alias : onglets, tabs · syntaxe Markdown simplifiée : oui
+
+## Syntaxe Markdown
+
+Un onglet par section `## Titre`, avec un contenu comme une colonne : texte Markdown, images, sous-contenus `::: type` … `:::`.
 
 ## Champs (bloc ```yaml, noms H5P)
 
