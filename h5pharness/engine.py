@@ -100,6 +100,10 @@ def build_group(field, value, ctx, path, siblings=None, hidden=False, top=False)
                 child.get("type") == "group" and child["name"] in {f["name"] for f in child.get("fields", [])}):
             value = value[child["name"]]
         return build_field(child, value, ctx, path, siblings or {}, hidden)
+    known_names = {f.get("name") for f in fields}
+    if value is MISSING and isinstance(field.get("default"), dict):
+        # group-level default (e.g. the play area size of a drag and drop)
+        value = {k: v for k, v in field["default"].items() if k in known_names}
     if value is MISSING:
         value = {}
         if field.get("optional"):

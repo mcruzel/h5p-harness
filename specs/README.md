@@ -76,7 +76,7 @@ Cible : Moodle 4.5 ou plus récent (API H5P 1.28).
 | `cartes` | Dialog Cards | H5P.Dialogcards 1.9 | Markdown |
 | `dictee` | Dictation | H5P.Dictation 1.4 | yaml |
 | `outil-documentation` | Documentation Tool | H5P.DocumentationTool 1.8 | yaml |
-| `glisser-deposer` | Drag and Drop | H5P.DragQuestion 1.15 | yaml |
+| `glisser-deposer` | Drag and Drop | H5P.DragQuestion 1.15 | Markdown |
 | `glisser-mots` | Drag the Words | H5P.DragText 1.10 | Markdown |
 | `redaction` | Essay | H5P.Essay 1.6 | Markdown |
 | `mots-meles` | Find The Words | H5P.FindTheWords 1.4 | Markdown |
