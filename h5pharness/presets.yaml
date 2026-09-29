@@ -1,0 +1,24 @@
+# Préréglages pédagogiques : valeurs appliquées à tous les champs portant ces noms, dans tout le
+# contenu (sous-contenus compris), sauf si l'auteur les fixe lui-même.
+entrainement:
+  enableRetry: true
+  enableSolutionsButton: true
+  enableCheckButton: true
+  showSolutionsRequiresInput: true
+  autoCheck: false
+
+evaluation:
+  enableRetry: false
+  enableSolutionsButton: false
+  showSolutionButton: false
+  showRetryButton: false
+  allowRetry: false
+  confirmCheckDialog: true
+  randomAnswers: true
+
+decouverte:
+  enableRetry: true
+  enableSolutionsButton: true
+  autoCheck: true
+  instantFeedback: true
+  enableInstantFeedback: true
