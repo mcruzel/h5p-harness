@@ -9,6 +9,8 @@ Configuration (environment of the agent):
   H5P_MOODLE_PHP    PHP binary (default: php)
   H5P_MOODLE_RUNAS  system user that owns moodledata, e.g. www-data (run through sudo -n / runuser)
   H5P_MOODLE_USER   Moodle account the deposit is made with (default: the main administrator)
+  H5P_MOODLE_BANQUE 1 = also put every content in the course content bank (like --banque)
+  H5P_MOODLE_OWNER  teacher account the content bank items are attributed to (so that it can edit them)
 """
 import json
 import os
@@ -22,7 +24,8 @@ SCRIPT = Path(__file__).with_name("moodle_deploy.php")
 CANDIDATES = ("/var/www/moodle", "/var/www/html/moodle", "/var/www/html", "/srv/moodle", "/opt/moodle",
               "/usr/share/moodle", "~/moodle")
 AS = {"activite": "activity", "activité": "activity", "activity": "activity", "h5pactivity": "activity",
-      "page": "page"}
+      "page": "page", "banque": "bank", "bank": "bank", "contentbank": "bank"}
+YES = {"1", "true", "oui", "yes", "on"}
 
 
 class MoodleError(Exception):
@@ -51,17 +54,22 @@ def target(meta, cli):
     if not isinstance(fm, dict):
         raise MoodleError("en-tête: « moodle: » attend des clés course, section, as, page, hidden")
     t = {"course": fm.get("course", fm.get("cours")), "section": fm.get("section", 0),
-         "as": fm.get("as", fm.get("forme", "activite")), "page": fm.get("page"), "hidden": fm.get("hidden", False)}
+         "as": fm.get("as", fm.get("forme", "activite")), "page": fm.get("page"), "hidden": fm.get("hidden", False),
+         "bank": bool(fm.get("banque", fm.get("bank", False)))
+         or os.environ.get("H5P_MOODLE_BANQUE", "").strip().lower() in YES}
     for k in ("course", "section", "as", "page"):
         if cli.get(k) not in (None, ""):
             t[k] = cli[k]
     if cli.get("hidden"):
         t["hidden"] = True
+    if cli.get("bank"):
+        t["bank"] = True
     if t["page"]:
         t["as"] = "page"
     if t["as"] not in AS:
         raise MoodleError(f"forme « {t['as']} » inconnue : activite (activité H5P) ou page")
     t["as"] = AS[t["as"]]
+    t["bank"] = t["bank"] or t["as"] == "bank"
     if t["course"] in (None, ""):
         raise MoodleError("cours Moodle non précisé : --moodle <id ou nom abrégé du cours> (ou « moodle: {course: …} » "
                           "dans l'en-tête)")
@@ -72,12 +80,14 @@ def _slug(text):
     return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")[:60] or "activite"
 
 
-def deploy(package, *, key, name, course, section=0, as_="activity", page=None, hidden=False, moodle_dir=None):
-    """Create or update the activity/page for this source; returns the script's JSON answer."""
+def deploy(package, *, key, name, course, section=0, as_="activity", page=None, hidden=False, bank=False,
+           moodle_dir=None):
+    """Create or update the activity/page (and/or content bank item) of this source; returns the JSON answer."""
     root = find_moodle(moodle_dir)
     request = {"course": str(course), "section": int(section or 0), "as": as_, "page": page, "key": key,
+               "bank": bool(bank),
                "name": name, "visible": not hidden, "filename": _slug(key.rsplit(".", 1)[0]) + ".h5p",
-               "user": os.environ.get("H5P_MOODLE_USER") or None}
+               "user": os.environ.get("H5P_MOODLE_USER") or None, "owner": os.environ.get("H5P_MOODLE_OWNER") or None}
     with tempfile.TemporaryDirectory(prefix="h5pharness-") as tmp:
         os.chmod(tmp, 0o755)   # readable by the web server account when H5P_MOODLE_RUNAS is set
         work = Path(tmp)

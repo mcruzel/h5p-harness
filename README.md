@@ -102,16 +102,31 @@ l'agent (serveur OpenClaw, par exemple), `--moodle` exécute un petit script PHP
 | `--as page` | nouvelle **page** qui intègre le contenu (filtre « Afficher H5P ») |
 | `--page "<nom>"` ou `--page <id>` | ajoute le contenu à une **page existante** (sans toucher au reste) |
 | `--section <n>` · `--hidden` | section du cours (créée si besoin) · caché aux étudiants |
+| `--banque` | range aussi le contenu dans la **banque de contenus** du cours et y **lie** l'activité ou la page (un seul exemplaire : une mise à jour se répercute partout) |
+| `--as banque` | banque de contenus seule, sans activité (l'enseignant l'insère où il veut) |
 
 Relancer la même commande **met à jour** l'activité ou la page (identifiant stable dérivé du chemin de
 la source), sans doublon. Configuration par variables d'environnement : `H5P_MOODLE_DIR` (dossier
 contenant `config.php`, sinon recherche dans les emplacements usuels), `H5P_MOODLE_RUNAS` (compte
 système propriétaire de moodledata, ex. `www-data`, via `sudo -n`/`runuser`), `H5P_MOODLE_USER` (compte
 Moodle utilisé ; défaut : l'administrateur principal, seul capable d'installer les bibliothèques H5P
-contenues dans le paquet), `H5P_MOODLE_PHP`. Vérifié de bout en bout sur Moodle 5.0 + PostgreSQL : les exemples
+contenues dans le paquet), `H5P_MOODLE_PHP`, `H5P_MOODLE_BANQUE=1` (banque de contenus par défaut), `H5P_MOODLE_OWNER` (voir
+ci-dessous). Vérifié de bout en bout sur Moodle 5.0 + PostgreSQL : les exemples
 des 63 types et les 5 variantes YAML (68 activités) déposés en 32 s, puis ouverts sans erreur par un
 compte élève (bibliothèques installées par Moodle au premier affichage) ; page existante complétée,
-mise à jour sans doublon, dépôt au nom d'un enseignant et sous `www-data`.
+mise à jour sans doublon, dépôt au nom d'un enseignant et sous `www-data`, banque de contenus (contenu
+lié, mis à jour, visible dans la banque du cours).
+
+**Banque de contenus : facultative.** Comme lorsqu'un enseignant téléverse un `.h5p` dans une activité,
+le contenu est par défaut rangé dans l'activité elle-même : il fonctionne et reste modifiable par les
+enseignants (bouton « Modifier le contenu H5P » de l'activité) sans passer par la banque, qui sert
+surtout à **réutiliser** un contenu (autres activités, pages, bouton H5P de l'éditeur de texte). Avec
+`--banque`, l'activité ou la page pointe vers le contenu de la banque, comme le fait Moodle quand on le
+choisit avec « Lier au fichier ». Dans la banque, un enseignant ne peut modifier que ses propres
+contenus (les autres le sont par les gestionnaires et créateurs de cours) : `H5P_MOODLE_OWNER=<identifiant>`
+attribue les contenus de banque à cet enseignant, le fichier restant au nom du compte de dépôt (ce qui
+permet à Moodle d'installer les bibliothèques). Sans `--banque`, la sortie le rappelle par une ligne
+`piste:`.
 
 ## Moodle
 

@@ -278,5 +278,9 @@ def test_moodle_target_merges_front_matter_and_options():
     t = target({}, {"course": "12", "as": "activité", "section": 3})
     assert (t["course"], t["as"], t["section"]) == ("12", "activity", 3)
     assert target({}, {"course": "12", "page": "Cours 1"})["as"] == "page"      # adding to a page
+    assert target({"moodle": {"course": 3, "banque": True}}, {})["bank"] is True
+    t = target({}, {"course": "3", "as": "banque"})
+    assert (t["as"], t["bank"]) == ("bank", True)
+    assert target({}, {"course": "3"})["bank"] is False
     with pytest.raises(MoodleError):
         target({}, {"course": ""})

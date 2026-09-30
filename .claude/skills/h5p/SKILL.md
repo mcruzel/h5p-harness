@@ -22,7 +22,9 @@ Ne jamais écrire de JSON H5P ni lire `vendor/` : le générateur s'en charge.
    - dépôt dans un Moodle **installé sur la même machine** : ajouter `--moodle <cours>` (id ou nom abrégé)
      et, au choix, `--as activite` (activité H5P dédiée, notée ; défaut) ou `--as page` (page qui intègre
      le contenu), `--page "<nom de page existante>"` (ajoute le contenu à cette page), `--section <n>`,
-     `--hidden`. Relancer la même commande met à jour la même activité (pas de doublon).
+     `--hidden`, `--banque` (range aussi le contenu dans la banque de contenus du cours et y lie
+     l'activité : à ajouter si l'utilisateur veut le retrouver ou le réutiliser dans la banque),
+     `--as banque` (banque seule). Relancer la même commande met à jour la même activité (pas de doublon).
 4. **Lire la sortie** (quelques lignes) :
    - `OK …` → paquet dans `dist/` ; `PUBLIÉ …` → sources poussées ; `MOODLE … : <url>` → déposé.
    - `ERREUR` → corriger **uniquement** les points cités (`l.12` = ligne du fichier ; `answers[1]` = 2e

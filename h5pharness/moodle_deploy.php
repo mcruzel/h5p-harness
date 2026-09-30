@@ -4,15 +4,44 @@
 //   php moodle_deploy.php <moodle_dir> <request.json>
 //
 // request.json: {"h5p": chemin du paquet, "filename": nom du fichier dans Moodle, "name": titre de l'activité,
-//   "course": id ou nom abrégé, "section": n°, "as": "activity"|"page", "page": cmid ou nom d'une page existante
-//   (facultatif), "key": identifiant stable de la source, "visible": true|false, "user": nom d'utilisateur (facultatif)}
-// Réponse (stdout, une ligne JSON) : {"ok": true, "action": "created"|"updated", "cmid": …, "url": …, "warnings": […]}
-// ou {"ok": false, "error": "…"}.
+//   "course": id ou nom abrégé, "section": n°, "as": "activity"|"page"|"bank", "page": cmid ou nom d'une page
+//   existante (facultatif), "bank": true pour ranger aussi le contenu dans la banque de contenus du cours et y lier
+//   l'activité ou la page, "key": identifiant stable de la source, "visible": true|false,
+//   "user": nom d'utilisateur (facultatif), "owner": enseignant à qui attribuer le contenu de banque (facultatif)}
+// Réponse (stdout, une ligne JSON) : {"ok": true, "action": "created"|"updated", "cmid": …, "url": …,
+//   "bank": {"id", "action", "url"} | null, "linked": bool, "warnings": […]} ou {"ok": false, "error": "…"}.
 //
 // Le paquet est déposé au nom d'un administrateur (par défaut) : seul le propriétaire du fichier décide si Moodle peut
 // installer les bibliothèques H5P qu'il contient (capacité moodle/h5p:updatelibraries).
 
 define('CLI_SCRIPT', true);
+
+/**
+ * Create or replace the course content bank item of this source (found again by its stable file name).
+ *
+ * @return array [\core_contentbank\content, 'created'|'updated']
+ */
+function h5pharness_bank(context $coursecontext, string $filename, string $name, string $path, stdClass $user): array {
+    global $DB;
+    $fs = get_file_storage();
+    $cb = new \core_contentbank\contentbank();
+    $itemid = $DB->get_field_sql("SELECT itemid FROM {files} WHERE contextid = ? AND component = 'contentbank'
+                                     AND filearea = 'public' AND filename = ?", [$coursecontext->id, $filename],
+                                  IGNORE_MULTIPLE);
+    $draft = $fs->create_file_from_pathname(['contextid' => context_user::instance($user->id)->id, 'component' => 'user',
+        'filearea' => 'draft', 'itemid' => file_get_unused_draft_itemid(), 'filepath' => '/', 'filename' => $filename,
+        'userid' => $user->id], $path);
+    if ($itemid && ($content = $cb->get_content_from_id((int) $itemid))) {
+        $content->get_content_type_instance()->replace_content($draft, $content);
+        $action = 'updated';
+    } else {
+        $content = $cb->create_content_from_file($coursecontext, $user->id, $draft);
+        $action = 'created';
+    }
+    $content->set_name($name);
+    $draft->delete();
+    return [$content, $action];
+}
 
 function h5pharness_out(array $data, int $code = 0): void {
     fwrite(STDOUT, json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . "\n");
@@ -70,9 +99,10 @@ try {
     }
 
     $fs = get_file_storage();
-    $as = ($req['as'] ?? 'activity') === 'page' ? 'page' : 'activity';
+    $as = in_array($req['as'] ?? '', ['page', 'bank'], true) ? $req['as'] : 'activity';
+    $bank = $as === 'bank' || !empty($req['bank']);
     $modname = $as === 'page' ? 'page' : 'h5pactivity';
-    if (!$DB->get_field('modules', 'visible', ['name' => $modname])) {
+    if ($as !== 'bank' && !$DB->get_field('modules', 'visible', ['name' => $modname])) {
         throw new moodle_exception('generalexceptionmessage', 'error', '', "le module $modname est désactivé sur ce site");
     }
     if ($as === 'page' && !array_key_exists('displayh5p', filter_get_globally_enabled())) {
@@ -89,6 +119,53 @@ try {
     $filerecord = function (int $contextid, string $component, string $filearea) use ($filename, $user): array {
         return ['contextid' => $contextid, 'component' => $component, 'filearea' => $filearea, 'itemid' => 0,
             'filepath' => '/', 'filename' => $filename, 'userid' => $user->id];
+    };
+
+    // Content bank: the item is created or replaced first; activities and pages then point to it (an alias, as when a
+    // teacher picks it in the file picker with « Lier au fichier »), so there is a single copy to update.
+    $bankinfo = null;
+    $repoid = null;
+    $bankfile = null;
+    if ($bank) {
+        if (!has_capability('moodle/contentbank:upload', $coursecontext)) {
+            throw new moodle_exception('generalexceptionmessage', 'error', '', "{$user->username} ne peut pas déposer "
+                . "dans la banque de contenus de ce cours (moodle/contentbank:upload)");
+        }
+        [$content, $bankaction] = h5pharness_bank($coursecontext, $filename, $name, $req['h5p'], $user);
+        if (!empty($req['owner'])) {
+            // In the bank a teacher may only edit its own contents (manageowncontent); the file itself stays owned by the
+            // depositing account, which is what lets Moodle install the libraries it contains.
+            $ownerid = $DB->get_field('user', 'id', ['username' => $req['owner'], 'deleted' => 0]);
+            if (!$ownerid) {
+                throw new moodle_exception('generalexceptionmessage', 'error', '', "propriétaire « {$req['owner']} » inconnu");
+            }
+            $DB->set_field('contentbank_content', 'usercreated', $ownerid, ['id' => $content->get_id()]);
+        }
+        $bankfile = $content->get_file();
+        $bankinfo = ['id' => (int) $content->get_id(), 'action' => $bankaction,
+            'url' => (new moodle_url('/contentbank/view.php', ['id' => $content->get_id()]))->out(false)];
+        $repoid = $DB->get_field_sql("SELECT ri.id FROM {repository_instances} ri
+                                        JOIN {repository} r ON r.id = ri.typeid
+                                       WHERE r.type = 'contentbank' AND r.visible = 1", [], IGNORE_MULTIPLE);
+        if (!$repoid && $as !== 'bank') {
+            $warnings[] = "le dépôt « Banque de contenus » est désactivé sur ce site : l'activité reçoit une copie du "
+                . "contenu au lieu d'un lien";
+        }
+    }
+    if ($as === 'bank') {
+        h5pharness_out(['ok' => true, 'action' => $bankinfo['action'], 'as' => 'bank', 'cmid' => null,
+            'course' => (int) $course->id, 'url' => $bankinfo['url'], 'bank' => $bankinfo, 'linked' => false,
+            'warnings' => $warnings]);
+    }
+    // The file of the activity/page: an alias of the content bank file, or the package itself.
+    $putfile = function (array $record) use ($fs, $req, $repoid, $bankfile) {
+        if ($repoid && $bankfile) {
+            $reference = file_storage::pack_reference(['contextid' => $bankfile->get_contextid(),
+                'component' => 'contentbank', 'filearea' => 'public', 'itemid' => $bankfile->get_itemid(),
+                'filepath' => $bankfile->get_filepath(), 'filename' => $bankfile->get_filename()]);
+            return $fs->create_file_from_reference($record, $repoid, $reference);
+        }
+        return $fs->create_file_from_pathname($record, $req['h5p']);
     };
 
     // Target module: an existing page named by the agent, or the module this source created before (idnumber).
@@ -122,14 +199,14 @@ try {
         $context = context_module::instance($cm->id);
         if ($as === 'activity') {
             $fs->delete_area_files($context->id, 'mod_h5pactivity', 'package');
-            $fs->create_file_from_pathname($filerecord($context->id, 'mod_h5pactivity', 'package'), $req['h5p']);
+            $putfile($filerecord($context->id, 'mod_h5pactivity', 'package'));
             $DB->update_record('h5pactivity', (object) ['id' => $cm->instance, 'name' => $name, 'timemodified' => time()]);
         } else {
             $page = $DB->get_record('page', ['id' => $cm->instance], '*', MUST_EXIST);
             if ($old = $fs->get_file($context->id, 'mod_page', 'content', 0, '/', $filename)) {
                 $old->delete();
             }
-            $fs->create_file_from_pathname($filerecord($context->id, 'mod_page', 'content'), $req['h5p']);
+            $putfile($filerecord($context->id, 'mod_page', 'content'));
             $content = $page->content;
             if (strpos($content, '@@PLUGINFILE@@/' . rawurlencode($filename)) === false) {
                 $content .= "\n" . $placeholder;   // added to a page written by someone else: keep what is there
@@ -153,9 +230,9 @@ try {
         ];
         if ($as === 'activity') {
             $draftid = file_get_unused_draft_itemid();
-            $fs->create_file_from_pathname(['contextid' => context_user::instance($user->id)->id, 'component' => 'user',
+            $putfile(['contextid' => context_user::instance($user->id)->id, 'component' => 'user',
                 'filearea' => 'draft', 'itemid' => $draftid, 'filepath' => '/', 'filename' => $filename,
-                'userid' => $user->id], $req['h5p']);
+                'userid' => $user->id]);
             $config = get_config('h5pactivity');
             $core = (new \core_h5p\factory())->get_core();
             $mi->packagefile = $draftid;
@@ -177,13 +254,13 @@ try {
         $cmid = $info->coursemodule;
         if ($as === 'page') {
             $context = context_module::instance($cmid);
-            $fs->create_file_from_pathname($filerecord($context->id, 'mod_page', 'content'), $req['h5p']);
+            $putfile($filerecord($context->id, 'mod_page', 'content'));
         }
         $action = 'created';
     }
     $url = (new moodle_url('/mod/' . $modname . '/view.php', ['id' => $cmid]))->out(false);
     h5pharness_out(['ok' => true, 'action' => $action, 'as' => $as, 'cmid' => (int) $cmid, 'course' => (int) $course->id,
-        'url' => $url, 'warnings' => $warnings]);
+        'url' => $url, 'bank' => $bankinfo, 'linked' => (bool) ($repoid && $bankfile), 'warnings' => $warnings]);
 } catch (Throwable $e) {
     $msg = $e instanceof moodle_exception && !empty($e->a) && is_string($e->a) ? $e->a : $e->getMessage();
     h5pharness_out(['ok' => false, 'error' => $msg], 1);
