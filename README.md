@@ -90,8 +90,10 @@ la source), sans doublon. Configuration par variables d'environnement : `H5P_MOO
 contenant `config.php`, sinon recherche dans les emplacements usuels), `H5P_MOODLE_RUNAS` (compte
 système propriétaire de moodledata, ex. `www-data`, via `sudo -n`/`runuser`), `H5P_MOODLE_USER` (compte
 Moodle utilisé ; défaut : l'administrateur principal, seul capable d'installer les bibliothèques H5P
-contenues dans le paquet), `H5P_MOODLE_PHP`. Vérifié de bout en bout sur Moodle 5.0 + PostgreSQL : les
-63 exemples déposés puis affichés par un compte élève.
+contenues dans le paquet), `H5P_MOODLE_PHP`. Vérifié de bout en bout sur Moodle 5.0 + PostgreSQL : les exemples
+des 63 types (68 activités) déposés en 32 s, puis ouverts sans erreur par un compte élève (bibliothèques
+installées par Moodle au premier affichage) ; page existante complétée, mise à jour sans doublon,
+dépôt au nom d'un enseignant et sous `www-data`.
 
 ## Moodle
 
