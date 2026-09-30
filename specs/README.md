@@ -71,7 +71,8 @@ comme les références entre éléments (`correctElements`, `neighbors`, `nextCo
 
 ## Types disponibles
 
-Cible : Moodle 4.5 ou plus récent (API H5P 1.28).
+Cible : Moodle 4.5 ou plus récent (API H5P 1.28). Colonne « exemple validé » : l'exemple complet du
+type est dans `sources/exemples/<type>.md` (médias dans `sources/exemples/media/`).
 
 <!-- index -->
 | type | nom | bibliothèque | syntaxe | exemple validé |

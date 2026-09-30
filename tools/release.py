@@ -76,8 +76,8 @@ def main():
     stale = sorted(set(remote) - set(packages))
     for name in stale:
         gh("release", "delete-asset", tag, name, "-y")
-    print(f"release {tag} : {len(packages)} paquet(s), {len(changed)} envoyé(s) (les autres sont inchangés)"
-          + (f", {len(stale)} retiré(s)" if stale else ""))
+    print(f"release {tag} : {len(packages)} paquet(s) dont {len(changed)} envoyé(s) et "
+          f"{len(packages) - len(changed)} inchangé(s)" + (f", {len(stale)} retiré(s)" if stale else ""))
 
 
 if __name__ == "__main__":
