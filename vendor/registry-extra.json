@@ -53,5 +53,23 @@
       "type": "github",
       "url": "https://github.com/otacke/h5p-editor-choice-explorer"
     }
+  },
+  "H5P.PersonalityQuiz": {
+    "id": "H5P.PersonalityQuiz",
+    "title": "Personality Quiz",
+    "runnable": true,
+    "repo": {
+      "type": "github",
+      "url": "https://github.com/h5p/h5p-personality-quiz"
+    }
+  },
+  "H5P.Bingo": {
+    "id": "H5P.Bingo",
+    "title": "Bingo",
+    "runnable": true,
+    "repo": {
+      "type": "github",
+      "url": "https://github.com/otacke/h5p-bingo"
+    }
   }
 }

@@ -23,6 +23,8 @@ class Result:
     out: Path = None
     errors: list = field(default_factory=list)
     warnings: list = field(default_factory=list)
+    hints: list = field(default_factory=list)
+    meta: dict = field(default_factory=dict)
     touched: set = field(default_factory=set)
     size: int = 0
     ms: int = 0
@@ -68,6 +70,7 @@ def build_one(src: Path, registry: Registry, out_dir: Path = DIST, full=True, of
         res.errors = [f"lecture impossible: {e}"]
         return res
     meta = doc.meta
+    res.meta = meta
     res.title = str(meta.get("title", ""))
     try:
         lib = registry.resolve(meta["type"])
@@ -96,6 +99,11 @@ def build_one(src: Path, registry: Registry, out_dir: Path = DIST, full=True, of
         raw = parse_sugar(lib.machine, doc.body, ctx, [], line_offset=doc.body_line)
     for _line, block in doc.yaml_blocks:
         raw = deep_merge(raw, block)
+    if meta.get("transcript"):
+        if lib.machine != "H5P.InteractiveVideo":
+            res.errors = ["en-tête: « transcript: » ne sert qu'aux vidéos interactives (type video-interactive)"]
+            return res
+        raw.setdefault("transcript", meta["transcript"])
     params = build_content(lib, raw, ctx)
     used = [lib] + sorted(ctx.used - {lib}, key=lambda l: l.folder)
     runtime, embedded, missing = package.libraries_for(registry, used, full=full)
@@ -107,6 +115,7 @@ def build_one(src: Path, registry: Registry, out_dir: Path = DIST, full=True, of
             ctx.errors.append(f"{l.uber} exige l'API H5P {api['majorVersion']}.{api['minorVersion']} "
                               f"(cible: {TARGET_CORE_API[0]}.{TARGET_CORE_API[1]})")
     res.warnings = ctx.warnings
+    res.hints = ctx.hints
     if ctx.errors:
         res.errors = ctx.errors
         return res

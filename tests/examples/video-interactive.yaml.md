@@ -3,6 +3,7 @@ type: video-interactive
 title: Les états de l'eau – vidéo interactive
 language: fr
 preset: entrainement
+transcript: ../media/etats-eau.vtt
 ---
 ```yaml
 interactiveVideo:

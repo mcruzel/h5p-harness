@@ -277,6 +277,11 @@
  "H5P.MultiMediaChoice": {
   "l10n.closeModalText": "Fermer la fenêtre modale"
  },
+ "H5P.PersonalityQuiz": {
+  "startText": "Commencer",
+  "progressText": "Question @question sur @total",
+  "retakeText": "Recommencer le quiz"
+ },
  "H5P.QuestionSet": {
   "texts.previous": "Précédent",
   "texts.next": "Suivant",

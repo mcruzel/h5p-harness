@@ -2,27 +2,30 @@
 
 Générateur **déterministe** de paquets H5P pour **Moodle** : un agent IA (ou un humain) écrit un
 fichier Markdown court ; un script Python produit le paquet `.h5p` complet (bibliothèques,
-traductions françaises, paramètres), le vérifie, puis le publie via git. La partie invariante
-d'un paquet ne passe jamais par l'IA : elle ne coûte aucun token et ne peut pas « halluciner ».
+traductions françaises, paramètres), le vérifie, le publie via git et, si Moodle est installé sur la
+même machine, le dépose directement dans un cours (activité H5P ou page). La partie invariante d'un
+paquet ne passe jamais par l'IA : elle ne coûte aucun token et ne peut pas « halluciner ».
 
 ```
-sources/svt/cellule.md ──► python -m h5pharness build … --publish ──► git push (sources)
-   (seule partie variable)        │  lecture Markdown/YAML                 │
-                                  │  valeurs par défaut + traductions fr   ▼
-                                  │  validation stricte               CI GitHub : reconstruction,
-                                  │  médias (chemins/URL) intégrés     validateur H5P officiel,
-                                  ▼                                    release « h5p-<branche> »
-                          dist/svt/cellule.h5p  ──────────────────────► import dans Moodle
+sources/svt/cellule.md ──► python -m h5pharness build … [--publish] [--moodle <cours>]
+   (seule partie variable)        │  lecture Markdown/YAML
+                                  │  valeurs par défaut + traductions fr
+                                  │  validation stricte, médias (chemins/URL) intégrés
+                                  ▼
+                          dist/svt/cellule.h5p ──► --moodle : activité H5P ou page dans le cours
+                                               ──► --publish : git push des sources (release GitHub)
 ```
 
 ## Utilisation
 
 ```bash
 pip install -r requirements.txt                          # une fois (automatique sur Claude Code web)
-python -m h5pharness types                               # les 60 types disponibles
+python -m h5pharness types                               # les 63 types disponibles
 python -m h5pharness spec qcm                            # fiche d'un type
 python -m h5pharness build sources/svt/cellule.md        # -> dist/svt/cellule.h5p
 python -m h5pharness build sources/svt/cellule.md --publish   # + git add/commit/push des sources
+python -m h5pharness build sources/svt/cellule.md --moodle svt5e --section 2   # + dépôt dans Moodle
+python -m h5pharness transcript video.vtt                # transcrit compact (vidéo interactive)
 ```
 
 Exemple de source (`type: quiz`) :
@@ -48,10 +51,10 @@ La photosynthèse produit du {{dioxygène|oxygène}} et du {{glucose::un sucre}}
 
 Le format est décrit dans [`specs/README.md`](specs/README.md) ; chaque type a sa fiche dans
 `specs/` (générée depuis les schémas officiels : champs, valeurs par défaut en français, points
-d'attention et un **exemple complet validé** pour chacun des 61 types). Deux écritures, combinables :
-une **syntaxe Markdown simplifiée** (36 types, dont présentation, vidéo interactive, glisser-déposer
+d'attention et un **exemple complet validé** pour chacun des 63 types). Deux écritures, combinables :
+une **syntaxe Markdown simplifiée** (38 types, dont présentation, vidéo interactive, glisser-déposer
 et scénario, avec mise en page automatique) et un **bloc YAML** qui donne accès à tous les champs de
-**tous** les types (61 types de contenu + sous-contenus). En YAML aussi, le harnais complète ce que
+**tous** les types (63 types de contenu + sous-contenus). En YAML aussi, le harnais complète ce que
 l'éditeur H5P aurait calculé : positions absentes (diapos, glisser-déposer, vidéo, carte de jeu),
 enchaînements d'un scénario, identifiants et chemins d'une carte, motifs des marqueurs de réalité
 augmentée.
@@ -67,6 +70,28 @@ augmentée.
 
 Le skill [`.claude/skills/h5p/SKILL.md`](.claude/skills/h5p/SKILL.md) donne cette procédure aux
 agents ; il ne charge qu'une description courte tant qu'il ne sert pas.
+
+## Dépôt direct dans Moodle (même machine)
+
+Moodle n'offre pas de service web pour créer des activités : quand il est installé sur la machine de
+l'agent (serveur OpenClaw, par exemple), `--moodle` exécute un petit script PHP **dans** Moodle
+(`h5pharness/moodle_deploy.php`), qui passe par l'API de Moodle (droits, journal, cache de cours) :
+
+| option | effet |
+|---|---|
+| `--moodle <cours>` | id ou nom abrégé du cours (ou `moodle: {course: …}` dans l'en-tête) |
+| `--as activite` (défaut) | **activité H5P** dédiée (suivi des tentatives, note dans le carnet) |
+| `--as page` | nouvelle **page** qui intègre le contenu (filtre « Afficher H5P ») |
+| `--page "<nom>"` ou `--page <id>` | ajoute le contenu à une **page existante** (sans toucher au reste) |
+| `--section <n>` · `--hidden` | section du cours (créée si besoin) · caché aux étudiants |
+
+Relancer la même commande **met à jour** l'activité ou la page (identifiant stable dérivé du chemin de
+la source), sans doublon. Configuration par variables d'environnement : `H5P_MOODLE_DIR` (dossier
+contenant `config.php`, sinon recherche dans les emplacements usuels), `H5P_MOODLE_RUNAS` (compte
+système propriétaire de moodledata, ex. `www-data`, via `sudo -n`/`runuser`), `H5P_MOODLE_USER` (compte
+Moodle utilisé ; défaut : l'administrateur principal, seul capable d'installer les bibliothèques H5P
+contenues dans le paquet), `H5P_MOODLE_PHP`. Vérifié de bout en bout sur Moodle 5.0 + PostgreSQL : les
+63 exemples déposés puis affichés par un compte élève.
 
 ## Moodle
 
@@ -84,6 +109,10 @@ agents ; il ne charge qu'une description courte tant qu'il ne sert pas.
   qui ont déjà les bonnes versions et une limite de dépôt faible.
 - **Réseau des élèves** : la frise (`frise`) charge jQuery et des polices depuis les serveurs de
   Google à l'affichage (comportement de la bibliothèque officielle TimelineJS).
+- **Vidéo interactive** : questions et activités seulement d'après le transcrit horodaté de la vidéo
+  (`transcript: fichier.vtt` ou `.srt`) ; le harnais vérifie leur placement, les signale si elles
+  semblent sans rapport avec le passage, et ajoute le transcrit en sous-titres. Sans transcrit, il
+  construit la vidéo seule et indique en « piste » comment l'obtenir.
 - **Réalité augmentée** (`chasse-ar`) : les marqueurs à imprimer se téléchargent dans l'éditeur H5P
   de Moodle (en modifiant l'activité) ; `twitter` est obsolète (X a fermé l'intégration).
 
@@ -130,7 +159,7 @@ Vidéos : lien YouTube/Vimeo conservé tel quel, ou fichier MP4/WebM.
 | contrôle complet | `python tools/qa.py dist/ --render` |
 | ajouter des lignes aux commits de `--publish` | variable `H5P_COMMIT_TRAILERS` (ex. `Co-Authored-By: …`) |
 
-Les bibliothèques (`vendor/libraries`, 172 bibliothèques pour 61 types, 55 Mo) viennent des dépôts
+Les bibliothèques (`vendor/libraries`, 175 bibliothèques pour 63 types, 55 Mo) viennent des dépôts
 GitHub listés par le registre officiel `h5p-cli` (`vendor/registry.json`, corrections dans
 `vendor/registry-extra.json`), compilées si nécessaire. Pour chaque dépôt, la branche `release` (ce
 que publie le Hub H5P, donc ce qu'installe Moodle) est préférée à la branche de développement quand

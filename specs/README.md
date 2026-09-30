@@ -55,10 +55,16 @@ Règles communes aux champs :
 ```bash
 python -m h5pharness build sources/mon-activite.md            # -> dist/mon-activite.h5p
 python -m h5pharness build sources/mon-activite.md --publish  # + git add/commit/push
+python -m h5pharness build sources/mon-activite.md --moodle 12 --as page   # + dépôt dans un Moodle local
 python -m h5pharness spec qcm                                 # fiche d'un type
+python -m h5pharness transcript video.vtt                     # transcrit d'une vidéo, en lignes m:ss
 ```
 
-Sortie : `OK <paquet>` (code 0) ; `ERREUR` + au plus 8 lignes `- emplacement: problème` (code 1 :
+Dépôt Moodle : `--as activite` (activité H5P, défaut) ou `--as page` ; `--page "<nom>"` ajoute à une page
+existante ; `--section <n>`, `--hidden`. Relancer met à jour la même activité. Sortie `MOODLE … : <url>`,
+ou `ECHEC_MOODLE …` (code 2 : le paquet est bon, ne pas le régénérer).
+
+Sortie : `OK <paquet>` (code 0), éventuellement suivi de lignes `piste:` (possibilités à proposer) ; `ERREUR` + au plus 8 lignes `- emplacement: problème` (code 1 :
 corriger seulement ces points) ; code 2 = problème d'environnement (git, réseau) : ne pas
 régénérer le contenu, signaler. Les emplacements comptent à partir de 0 (`answers[1]` = 2e réponse),
 comme les références entre éléments (`correctElements`, `neighbors`, `nextContentId`).
@@ -78,6 +84,7 @@ Cible : Moodle 4.5 ou plus récent (API H5P 1.28).
 | `calcul-mental` | Arithmetic Quiz | H5P.ArithmeticQuiz 1.1 | yaml | ✓ |
 | `audio` | Audio | H5P.Audio 1.5 | Markdown | ✓ |
 | `enregistreur-audio` | Audio Recorder | H5P.AudioRecorder 1.0 | yaml | ✓ |
+| `bingo` | Bingo | H5P.Bingo 0.3 | Markdown | ✓ |
 | `trous` | Fill in the Blanks | H5P.Blanks 1.14 | Markdown | ✓ |
 | `scenario` | Branching Scenario | H5P.BranchingScenario 1.11 | Markdown | ✓ |
 | `graphique` | Chart | H5P.Chart 1.2 | Markdown | ✓ |
@@ -115,6 +122,7 @@ Cible : Moodle 4.5 ou plus récent (API H5P 1.28).
 | `memory` | Memory Game | H5P.MemoryGame 1.3 | Markdown | ✓ |
 | `qcm` | Multiple Choice | H5P.MultiChoice 1.16 | Markdown | ✓ |
 | `choix-images` | Multimedia Choice | H5P.MultiMediaChoice 0.3 | Markdown | ✓ |
+| `quiz-personnalite` | Personality Quiz | H5P.PersonalityQuiz 1.0 | Markdown | ✓ |
 | `quiz` | Question Set | H5P.QuestionSet 1.21 | Markdown | ✓ |
 | `questionnaire` | Questionnaire | H5P.Questionnaire 1.3 | yaml | ✓ |
 | `choix-unique` | Single Choice Set | H5P.SingleChoiceSet 1.11 | Markdown | ✓ |

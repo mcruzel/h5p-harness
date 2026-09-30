@@ -30,11 +30,14 @@ def text(text, s, arg=None):
 def interactive_video(text, s, arg=None):
     """![titre](vidéo)  description…  ## 0:30 qcm … ## 1:10 texte … ## 2:00 signet: Partie 2"""
     pre, sections = split_headings(lines_of(text), 2)
-    video, desc = None, []
+    video, desc, transcript = None, [], None
     for ln, line in pre:
         im = IMAGE.match(line)
+        tr = re.match(r"^\s*transcri(?:t|pt)\s*:\s*(\S.*?)\s*$", line, re.I)
         if im and video is None:
             video = im
+        elif tr:
+            transcript = tr.group(1)
         elif line.strip():
             desc.append(line.strip())
     if video is None:
@@ -86,4 +89,6 @@ def interactive_video(text, s, arg=None):
         out["interactiveVideo"]["assets"]["bookmarks"] = bookmarks
     if endscreens:
         out["interactiveVideo"]["assets"]["endscreens"] = endscreens
+    if transcript:
+        out["transcript"] = transcript
     return out

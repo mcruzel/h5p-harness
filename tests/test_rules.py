@@ -137,6 +137,7 @@ def test_drag_and_drop_without_positions(tmp_path):
 
 def test_interactive_video_positions_and_times(tmp_path):
     c, _ = build(tmp_path, "video-interactive", """
+        transcript: /tests/media/etats-eau.vtt
         interactiveVideo:
           video: {files: [/tests/media/clip.webm]}
           assets:
@@ -212,3 +213,70 @@ def test_locations_are_zero_based_but_ids_stable():
     ctx = Ctx(REG, "fr", None, "seed")
     # same id as the builds made before locations became 0-based (seed "seed:questions[1]")
     assert sub_id(ctx, ["questions", 0]) == "dea2abaa-b0e4-5f86-95d8-877bbcbef3b0"
+
+
+def test_video_interactions_need_a_transcript(tmp_path):
+    _, res = build(tmp_path, "video-interactive", """
+        interactiveVideo:
+          video: {files: [/tests/media/clip.webm]}
+          assets:
+            interactions:
+              - duration: {from: 1, to: 2}
+                action: {library: vf, md: "La glace est solide.\\n- [x] Vrai\\n- [ ] Faux"}
+    """, ok=False)
+    assert any("transcrit horodaté" in e for e in res.errors)
+
+
+def test_video_without_interactions_invites_to_get_the_transcript(tmp_path):
+    c, res = build(tmp_path, "video-interactive", """
+        interactiveVideo:
+          video: {files: [/tests/media/clip.webm]}
+    """)
+    assert any("transcrit" in h for h in res.hints)
+
+
+def test_video_checked_against_its_transcript(tmp_path):
+    c, res = build(tmp_path, "video-interactive", """
+        transcript: /tests/media/etats-eau.vtt
+        interactiveVideo:
+          video: {files: [/tests/media/clip.webm]}
+          assets:
+            interactions:
+              - duration: {from: 2, to: 3}
+                action: {library: vf, md: "La glace est de l'eau solide.\\n- [x] Vrai\\n- [ ] Faux"}
+              - duration: {from: 2, to: 3}
+                action: {library: vf, md: "Paris est la capitale de la France.\\n- [x] Vrai\\n- [ ] Faux"}
+    """)
+    track = c["interactiveVideo"]["video"]["textTracks"]["videoTrack"][0]
+    assert track["srcLang"] == "fr" and track["track"]["mime"] == "text/vtt"
+    assert len([w for w in res.warnings if "sans mot commun" in w]) == 1
+    _, res = build(tmp_path, "video-interactive", """
+        transcript: /tests/media/etats-eau.vtt
+        interactiveVideo:
+          video: {files: [/tests/media/clip.webm]}
+          assets:
+            interactions:
+              - duration: {from: 60, to: 70}
+                action: {library: texte-simple, text: Trop tard}
+    """, ok=False)
+    assert any("après la fin du transcrit" in e for e in res.errors)
+
+
+def test_transcript_formats():
+    from h5pharness.transcript import compact, parse
+    srt = "1\n00:00:01,500 --> 00:00:03,000\n<i>Bonjour</i> à tous\n\n2\n00:01:02,000 --> 00:01:04,000\nSuite\n"
+    cues = parse(srt)
+    assert [(c.start, c.text) for c in cues] == [(1.5, "Bonjour à tous"), (62.0, "Suite")]
+    assert compact(cues) == ["0:01 Bonjour à tous", "1:02 Suite"]
+
+
+def test_moodle_target_merges_front_matter_and_options():
+    import pytest
+    from h5pharness.moodle import MoodleError, target
+    t = target({"moodle": {"course": "svt5", "section": 2, "as": "page"}}, {"course": "", "section": None})
+    assert (t["course"], t["section"], t["as"]) == ("svt5", 2, "page")
+    t = target({}, {"course": "12", "as": "activité", "section": 3})
+    assert (t["course"], t["as"], t["section"]) == ("12", "activity", 3)
+    assert target({}, {"course": "12", "page": "Cours 1"})["as"] == "page"      # adding to a page
+    with pytest.raises(MoodleError):
+        target({}, {"course": ""})

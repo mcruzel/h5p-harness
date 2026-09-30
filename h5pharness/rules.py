@@ -452,13 +452,96 @@ def _dragdrop_layout(p, ctx, path):
     q.setdefault("settings", {})["size"] = {"width": WIDTH_PX, "height": geo["height"]}
 
 
+NO_TRANSCRIPT = (
+    "questions et activités dans une vidéo : seulement d'après son transcrit horodaté. Fournir le fichier "
+    ".vtt ou .srt de la vidéo (sous-titres de la plateforme, export d'un outil de transcription) et le "
+    "déclarer dans l'en-tête : « transcript: fichier.vtt » ; si vous ne l'avez pas, le demander à l'agent "
+    "qui vous a confié la tâche ou à l'utilisateur. Puis lire « python -m h5pharness transcript fichier.vtt » "
+    "et placer chaque question après le passage qui y répond")
+TRACK_LABELS = {"fr": "Français", "en": "English", "de": "Deutsch", "es": "Español", "it": "Italiano"}
+STREAMING_MIMES = {"video/YouTube", "video/Vimeo", "video/Panopto", "video/Echo360"}
+
+
+@prepare("H5P.InteractiveVideo")
+def _video_transcript_key(raw, ctx, path):
+    """`transcript:` belongs to the harness, not to H5P: keep it aside for the fixup below."""
+    if "transcript" in raw:
+        raw = dict(raw)
+        ctx.extra[("transcript", tuple(path))] = raw.pop("transcript")
+    return raw
+
+
+def _texts(v):
+    if isinstance(v, str):
+        return [html_to_text(v)]
+    if isinstance(v, dict):
+        return [t for k, x in v.items() if k not in ("library", "subContentId", "metadata") for t in _texts(x)]
+    if isinstance(v, list):
+        return [t for x in v for t in _texts(x)]
+    return []
+
+
 @fixup("H5P.InteractiveVideo")
-def _video_positions(p, ctx, path):
-    from .sugar.video import BUTTON_BOX, POSTER_BOX
-    for it in ((p.get("interactiveVideo") or {}).get("assets") or {}).get("interactions") or []:
-        if isinstance(it, dict) and ("x" not in it or "y" not in it):
+def _interactive_video(p, ctx, path):
+    from .media import MediaError
+    from .sugar.video import BUTTON_BOX, POSTER_BOX, TEXT_TYPES
+    from .transcript import TranscriptError, clock, content_words, parse, to_vtt, window_text
+    iv = p.get("interactiveVideo") or {}
+    assets = iv.get("assets") or {}
+    # the video editor adds no default interaction (the generic list rule would add an empty one)
+    interactions = [it for it in assets.get("interactions") or [] if isinstance(it, dict) and it.get("action")]
+    if interactions:
+        assets["interactions"] = interactions
+    else:
+        assets.pop("interactions", None)
+    for it in interactions:
+        if "x" not in it or "y" not in it:
             for k, v in (POSTER_BOX if it.get("displayType") == "poster" else BUTTON_BOX).items():
                 it.setdefault(k, v)
+    task = (iv.get("summary") or {}).get("task") or {}
+    summary = any(html_to_text(str(x)) for s in (task.get("params") or {}).get("summaries") or []
+                  for x in (s or {}).get("summary") or [])
+    src = ctx.extra.get(("transcript", tuple(path)))
+    if not src:
+        if interactions or summary:
+            ctx.error(path + ["interactiveVideo", "assets", "interactions"], NO_TRANSCRIPT)
+        else:
+            ctx.hint("pour ajouter des questions ou activités H5P dans cette vidéo, obtenir son transcrit "
+                     "horodaté (.vtt/.srt) — auprès de l'agent qui vous a confié la tâche ou de l'utilisateur si "
+                     "vous ne l'avez pas — puis le déclarer (« transcript: fichier.vtt ») et écrire les "
+                     "interactions d'après lui (python -m h5pharness spec video-interactive)")
+        return
+    try:
+        data, _ = ctx.media._read(str(src))
+        cues = parse(data)
+    except (MediaError, TranscriptError) as e:
+        ctx.error(path + ["transcript"], f"transcrit {src} : {e}")
+        return
+    end = cues[-1].end
+    for i, it in enumerate(interactions):
+        t = (it.get("duration") or {}).get("from", 0)
+        where = path + ["interactiveVideo", "assets", "interactions", i]
+        if t > end + 1:
+            ctx.error(where, f"à {clock(t)}, après la fin du transcrit ({clock(end)})")
+            continue
+        action = it.get("action") or {}
+        if _machine(action) in TEXT_TYPES:
+            continue
+        asked = content_words(" ".join(_texts(action.get("params") or {})))
+        said = content_words(window_text(cues, t))
+        if asked and not asked & said:
+            ctx.warn(where, f"question à {clock(t)} sans mot commun avec ce qui est dit juste avant : vérifier "
+                            "qu'elle porte sur ce passage de la vidéo")
+    video = iv.get("video") or {}
+    files = video.get("files") or []
+    tracks = [t for t in (video.get("textTracks") or {}).get("videoTrack") or [] if (t or {}).get("track")]
+    if files and not tracks and not any((f or {}).get("mime") in STREAMING_MIMES for f in files):
+        vtt = to_vtt(cues).encode()
+        name = f"files/transcript-{hashlib.sha256(vtt).hexdigest()[:12]}.vtt"
+        ctx.media.files[name] = vtt
+        video.setdefault("textTracks", {})["videoTrack"] = [{
+            "label": TRACK_LABELS.get(ctx.lang, ctx.lang), "kind": "subtitles", "srcLang": ctx.lang,
+            "track": {"path": name, "mime": "text/vtt", "copyright": {"license": "U"}}}]
 
 
 def ar_pattern(data):
@@ -528,3 +611,54 @@ def _ar_distinct(p, ctx, path):
             ctx.error(path + ["markers", i, "markerImage"], f"même image que le marqueur {seen[pat]} : "
                                                             "la caméra ne pourrait pas les distinguer")
         seen.setdefault(pat, i)
+
+
+@fixup("H5P.PersonalityQuiz")
+def _personality_names(p, ctx, path):
+    """The player splits an answer's personalities on ', ' exactly: normalise the separators."""
+    for q in p.get("questions") or []:
+        for a in (q or {}).get("answers") or []:
+            if isinstance(a, dict) and isinstance(a.get("personality"), str):
+                a["personality"] = ", ".join(x.strip() for x in a["personality"].split(",") if x.strip())
+
+
+@rule("H5P.PersonalityQuiz")
+def _personality_quiz(p, ctx, path):
+    names = [(x or {}).get("name", "") for x in p.get("personalities") or []]
+    used = set()
+    if not p.get("questions"):
+        ctx.error(path + ["questions"], "au moins une question")
+    for qi, q in enumerate(p.get("questions") or []):
+        for ai, a in enumerate((q or {}).get("answers") or []):
+            for n in str((a or {}).get("personality", "")).split(", "):
+                if n and n not in names:
+                    ctx.error(path + ["questions", qi, "answers", ai, "personality"],
+                              f"profil « {n} » inconnu (profils : {', '.join(names)})")
+                used.add(n)
+    for n in names:
+        if n not in used:
+            ctx.warn(path + ["personalities"], f"le profil « {n} » n'est associé à aucune réponse : "
+                                               "il ne peut jamais être le résultat")
+
+    def images(v, where):
+        if isinstance(v, dict):
+            img = v.get("image")
+            if isinstance(img, dict) and img.get("file") and not img.get("alt"):
+                ctx.error(where + ["image", "alt"], "texte alternatif requis pour l'image")
+            for k, x in v.items():
+                images(x, where + [k])
+        elif isinstance(v, list):
+            for i, x in enumerate(v):
+                images(x, where + [i])
+    images(p, path)
+
+
+@rule("H5P.Bingo")
+def _bingo(p, ctx, path):
+    if p.get("mode") == "words":
+        words = [w for w in str(p.get("words") or "").split("\n") if w.strip()]
+        size = int(p.get("size") or 5)
+        cells = size * size - (1 if (p.get("behaviour") or {}).get("joker") else 0)
+        if len(words) < cells:
+            ctx.warn(path + ["words"], f"{len(words)} mot(s) pour une grille de {size}×{size} : des cases se "
+                                       f"répéteront (en prévoir au moins {cells}, davantage pour des grilles variées)")

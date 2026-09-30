@@ -196,6 +196,20 @@
   "files": 51,
   "sha256": "ab91a79c70290e31204e1f9f92be776a2f9e1709f73f74c9b0660178152c51c5"
  },
+ "H5P.Bingo-0.3": {
+  "machineName": "H5P.Bingo",
+  "majorVersion": 0,
+  "minorVersion": 3,
+  "patchVersion": 4,
+  "runnable": 1,
+  "repo": "https://github.com/otacke/h5p-bingo",
+  "ref": "heads/master",
+  "commit": "733de7d0d043c3f2bbca7fd5e8c391069ec845a9",
+  "built": true,
+  "requiredBy": "racine",
+  "files": 21,
+  "sha256": "055ba55e8966a7f218e78283d20d21f23fcc4edef9ddbe162e812053182d15f6"
+ },
  "H5P.Blanks-1.14": {
   "machineName": "H5P.Blanks",
   "majorVersion": 1,
@@ -1153,6 +1167,20 @@
   "files": 49,
   "sha256": "0b822bc6b65c1c0090e60deda4bc3f379c753168a6977fc1a843f1ff5bd5eb6b"
  },
+ "H5P.PersonalityQuiz-1.0": {
+  "machineName": "H5P.PersonalityQuiz",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 7,
+  "runnable": 1,
+  "repo": "https://github.com/h5p/h5p-personality-quiz",
+  "ref": "heads/master",
+  "commit": "a06bff73f808962b5c280a83bee686c2b07b2014",
+  "built": false,
+  "requiredBy": "racine",
+  "files": 6,
+  "sha256": "83d31f8be2c55c9921773dc4c86437ef171573eaa72bdc3e46b0d46f3b635d75"
+ },
  "H5P.Question-1.4": {
   "machineName": "H5P.Question",
   "majorVersion": 1,
@@ -1768,6 +1796,20 @@
   "requiredBy": "H5P.Collage-0.3",
   "files": 35,
   "sha256": "a39cdfa0873712bb9aa0e1342dd8083622cf01f772560503e9d7ced374a85335"
+ },
+ "H5PEditor.ColorSelector-1.0": {
+  "machineName": "H5PEditor.ColorSelector",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 3,
+  "runnable": 0,
+  "repo": "https://github.com/h5p/h5p-editor-color-selector",
+  "ref": "tags/1.0.3",
+  "commit": "58c980de01c76b47a3717fb0f9084afbe174ec25",
+  "built": false,
+  "requiredBy": "H5P.PersonalityQuiz-1.0",
+  "files": 5,
+  "sha256": "45d3cee849c98ea928ca2d3654a27ff42cc043189aa14026c13f6d8a17eca919"
  },
  "H5PEditor.ColorSelector-1.3": {
   "machineName": "H5PEditor.ColorSelector",

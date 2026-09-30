@@ -68,9 +68,14 @@ def cmd_build(args, write=True):
         if r.warnings and not args.quiet:
             print("  avertissement(s): " + " | ".join(r.warnings[:3]) +
                   (f" (+{len(r.warnings) - 3})" if len(r.warnings) > 3 else ""))
+        for h in r.hints:
+            print(f"  piste: {h}")
+        if r.ok and r.out and getattr(args, "moodle", None) is not None:
+            code = max(code, _deposit(r, args))
     if args.json:
         print(json.dumps([{"source": str(r.source), "ok": r.ok, "package": str(r.out) if r.out else None,
-                           "errors": r.errors, "warnings": r.warnings, "bytes": r.size} for r in results],
+                           "errors": r.errors, "warnings": r.warnings, "hints": r.hints, "bytes": r.size}
+                          for r in results],
                          ensure_ascii=False, indent=1))
     if code == 0 and write and getattr(args, "publish", False):
         from .publish import PublishError, publish
@@ -82,6 +87,25 @@ def cmd_build(args, write=True):
             print(f"ECHEC_PUBLICATION {e} (paquet(s) construit(s) localement; ne pas régénérer le contenu)")
             return 2
     return code
+
+
+def _deposit(r, args):
+    """Create or update the Moodle activity/page of this source; one short line for the agent."""
+    from .build import seed_for
+    from .moodle import MoodleError, deploy, target
+    try:
+        t = target(r.meta, {"course": args.moodle, "section": args.section, "as": args.as_, "page": args.page,
+                            "hidden": args.hidden})
+        d = deploy(r.out, key=seed_for(r.source), name=r.title, course=t["course"], section=t["section"],
+                   as_=t["as"], page=t["page"], hidden=t["hidden"], moodle_dir=args.moodle_dir)
+    except MoodleError as e:
+        print(f"ECHEC_MOODLE {e} (paquet construit : {_rel(r.out)} ; ne pas régénérer le contenu)")
+        return 2
+    what = "activité H5P" if d["as"] == "activity" else "page"
+    print(f"MOODLE {what} {'créée' if d['action'] == 'created' else 'mise à jour'} : {d['url']}")
+    for w in d.get("warnings") or []:
+        print(f"  avertissement: {w}")
+    return 0
 
 
 def cmd_types(args):
@@ -122,6 +146,23 @@ def cmd_specs(args):
     return 0
 
 
+def cmd_transcript(args):
+    """Compact timestamped transcript: what an agent reads before writing the video's questions."""
+    from .media import Media, MediaError
+    from .transcript import TranscriptError, clock, compact, parse
+    try:
+        data, _ = Media(Path.cwd())._read(args.file)
+        cues = parse(data)
+    except (MediaError, TranscriptError) as e:
+        print(f"ERREUR {args.file}: {e}")
+        return 1
+    for line in compact(cues, args.step):
+        print(line)
+    print(f"-- fin {clock(cues[-1].end)} ; déclarer « transcript: <chemin du fichier> » dans l'en-tête et "
+          "placer chaque interaction « ## m:ss type » après le passage qui y répond")
+    return 0
+
+
 def cmd_libs(args):
     from .library import Registry
     reg = Registry()
@@ -143,19 +184,32 @@ def main(argv=None):
         p.add_argument("-q", "--quiet", action="store_true", help="masquer les avertissements")
         if name == "build":
             p.add_argument("--publish", action="store_true", help="git add + commit + push des sources")
+            m = p.add_argument_group("dépôt dans un Moodle installé sur cette machine")
+            m.add_argument("--moodle", nargs="?", const="", metavar="COURS",
+                           help="déposer dans ce cours (id ou nom abrégé ; défaut : « moodle: » de l'en-tête)")
+            m.add_argument("--as", dest="as_", choices=["activite", "activité", "page"],
+                           help="activité H5P dédiée (défaut) ou page qui intègre le contenu")
+            m.add_argument("--section", type=int, help="n° de section du cours (défaut 0)")
+            m.add_argument("--page", metavar="PAGE", help="ajouter à une page existante (id de module ou nom exact)")
+            m.add_argument("--hidden", action="store_true", help="cacher l'activité aux étudiants")
+            m.add_argument("--moodle-dir", help="dossier de Moodle (défaut : H5P_MOODLE_DIR ou emplacements usuels)")
     p = sub.add_parser("types", help="lister les types de contenu")
     p.add_argument("--json", action="store_true")
     p = sub.add_parser("spec", help="afficher la fiche d'un type")
     p.add_argument("type")
     sub.add_parser("specs", help="régénérer specs/")
     sub.add_parser("libs", help="versions des bibliothèques embarquées")
+    p = sub.add_parser("transcript", help="transcrit horodaté compact d'une vidéo (.vtt/.srt, chemin ou URL)")
+    p.add_argument("file")
+    p.add_argument("--step", type=int, default=30, help="secondes par ligne (défaut 30)")
     args = ap.parse_args(argv)
     try:
         if args.cmd == "build":
             return cmd_build(args)
         if args.cmd == "check":
             return cmd_build(args, write=False)
-        return {"types": cmd_types, "spec": cmd_spec, "specs": cmd_specs, "libs": cmd_libs}[args.cmd](args)
+        return {"types": cmd_types, "spec": cmd_spec, "specs": cmd_specs, "libs": cmd_libs,
+                "transcript": cmd_transcript}[args.cmd](args)
     except KeyboardInterrupt:
         return 2
     except OSError as e:

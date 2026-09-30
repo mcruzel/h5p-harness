@@ -15,6 +15,8 @@ FRONT_KEYS = {
     "source": "URL source",
     "year": "année",
     "description": "note libre (non publiée)",
+    "moodle": "dépôt dans un Moodle local : {course: id ou nom abrégé, section: n, as: activite|page, page: …}",
+    "transcript": "transcrit horodaté de la vidéo (.vtt/.srt), requis pour ajouter des interactions à une vidéo",
 }
 FENCE = re.compile(r"^(```|~~~)\s*(yaml|yml|h5p)\s*$", re.I)
 

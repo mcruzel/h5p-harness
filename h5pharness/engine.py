@@ -38,10 +38,16 @@ class Ctx:
     stack: list = dfield(default_factory=list)   # library machine names (innermost last)
     used: set = dfield(default_factory=set)      # Library objects used by the content
     quiet: bool = False                          # probing defaults: do not report
+    hints: list = dfield(default_factory=list)   # what the calling agent could do next (not a problem)
+    extra: dict = dfield(default_factory=dict)   # harness-only values popped from the author's input
 
     def error(self, path, msg):
         if not self.quiet:
             self.errors.append(f"{fmt(path)}: {msg}" if path else msg)
+
+    def hint(self, msg):
+        if not self.quiet and msg not in self.hints:
+            self.hints.append(msg)
 
     def warn(self, path, msg):
         if not self.quiet:

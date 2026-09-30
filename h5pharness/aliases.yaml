@@ -61,6 +61,8 @@ H5P.TrueFalse: [vf, vrai-faux]
 H5P.TwitterUserFeed: [twitter]
 H5P.XRay: [rayons-x]
 H5P.ChoiceExplorer: [explorateur-choix]
+H5P.PersonalityQuiz: [quiz-personnalite, test-personnalite]
+H5P.Bingo: [bingo]
 # sous-contenus fréquents (non autonomes)
 H5P.AdvancedText: [texte]
 H5P.Image: [image]

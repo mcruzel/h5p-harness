@@ -31,6 +31,8 @@ FIELD_PATCHES = {
         "neighbors": {"optional": True},        # default: a linear path (see rules.py)
     },
     "H5P.InfoWall": {"panelTitle": {"optional": True}},  # editor-only list title, never displayed
+    # images are optional (their alt text is checked in rules.py when an image is given)
+    "H5P.PersonalityQuiz": {"alt": {"optional": True}},
 }
 
 

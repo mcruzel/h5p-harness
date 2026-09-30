@@ -3,6 +3,7 @@ type: video-interactive
 title: Les états de l'eau – vidéo interactive
 language: fr
 preset: entrainement
+transcript: ../media/etats-eau.vtt
 ---
 ![Les états de l'eau](../media/clip.webm)
 Regarde la vidéo et réponds aux questions.

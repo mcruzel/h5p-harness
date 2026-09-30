@@ -127,6 +127,7 @@ def test_glisser_deposer_indexes(tmp_path):
 def test_video_interactive_times(tmp_path):
     c, _ = build(tmp_path, "video-interactive", """
         ![Vidéo](/tests/media/clip.webm)
+        transcrit: /tests/media/etats-eau.vtt
         ## 0:01 qcm
         Q ?
         - [x] a
@@ -170,3 +171,37 @@ def test_image_interactive_error_message(tmp_path, bad, message):
                    encoding="utf-8")
     res = build_one(src, REG, out_dir=tmp_path / "out", offline=True)
     assert not res.ok and any(message in e for e in res.errors)
+
+
+def test_personality_quiz(tmp_path):
+    c, _ = build(tmp_path, "quiz-personnalite", """
+        # Qui es-tu ?
+        ## Profil : Chat
+        Tu dors beaucoup.
+        ## Profil : Chien
+        Tu joues beaucoup.
+        ## Le matin ?
+        - je dors → Chat
+        - je cours → Chien,Chat
+    """)
+    assert [p["name"] for p in c["personalities"]] == ["Chat", "Chien"]
+    assert c["questions"][0]["answers"][1]["personality"] == "Chien, Chat"
+    assert c["titleScreen"]["image"] == {} and c["questions"][0]["image"] == {}   # the player reads image.file
+
+
+def test_personality_quiz_unknown_profile(tmp_path):
+    src = tmp_path / "q.md"
+    src.write_text("---\ntype: quiz-personnalite\ntitle: T\n---\n## Profil : A\nx\n## Profil : B\ny\n"
+                   "## Q ?\n- a → A\n- c → C\n", encoding="utf-8")
+    res = build_one(src, REG, out_dir=tmp_path / "out", offline=True)
+    assert not res.ok and any("profil « C » inconnu" in e for e in res.errors)
+
+
+def test_bingo_words(tmp_path):
+    c, res = build(tmp_path, "bingo", """
+        Coche les mots.
+        - nuage
+        - pluie
+    """)
+    assert c["mode"] == "words" and c["words"] == "nuage\npluie"
+    assert any("se répéteront" in w for w in res.warnings)
