@@ -1,0 +1,29 @@
+{
+  "libraryStrings": {
+    "browserCannotConvert": "Intentaches subir un ficheiro glTF sen activos incrustados. Este navegador non soporta a conversión inmediata a ficheiros .glb. Por favor, atopa un convertedor alternativo.",
+    "conversionError": "Non se puido converter ao formato glb.",
+    "dropFolderHere": "Solta o cartafol con todos os activos glTF aquí",
+    "fileDamaged": "Non se puido comprobar o ficheiro. Podería estar danado.",
+    "filetypeNotSupported": "Este ficheiro non parece ser un tipo de modelo 3D soportado.",
+    "noGLTFFound": "Non hai ningún ficheiro gITF neste cartafol",
+    "notAFolder": "Isto non era un cartafol.",
+    "onlyEmbeddedAssets": "Intentaches subir un ficheiro gITF sen activos incrustados. Debería estar nun cartafol con outros ficheiros. Solta o cartafol na zona de solta para crear un ficheiro único que poida usarse.",
+    "onlyVersionTwo": "Este ficheiro gITF ten a versión 1.0. Por favor, convérteo á versión 2.0 para poder usalo aquí.",
+    "placeAnnotation": "Place annotation in 3D model",
+    "sizeUp": "Size up",
+    "sizeDown": "Size down",
+    "front": "Front of 3D model",
+    "back": "Back of 3D model",
+    "left": "Left side of 3D model",
+    "right": "Right side of 3D model",
+    "upper-front": "Upper front of 3D model",
+    "upper-back": "Upper back of 3D model",
+    "upper-left": "Upper left side of 3D model",
+    "upper-right": "Upper right side of 3D model",
+    "lower-front": "Lower front of 3D model",
+    "lower-back": "Lower back of 3D model",
+    "lower-left": "Lower left side of 3D model",
+    "lower-right": "Lower right side of 3D model",
+    "interaction-prompt": "Use mouse, touch or arrow keys to move to interact with the 3D model."
+  }
+}

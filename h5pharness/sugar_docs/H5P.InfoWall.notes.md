@@ -1,0 +1,2 @@
+- `panelTitle` n'est **pas affiché** (il sert de titre dans l'éditeur ; le harnais le remplit avec la première entrée). Pour montrer un nom, en faire la première propriété (`properties`) et la première entrée de chaque panneau.
+- `entries` : une valeur par propriété, dans l'ordre de `properties`.

@@ -1,0 +1,29 @@
+{
+  "libraryStrings": {
+    "browserCannotConvert": "Enbotatutako aktiborik gabeko glTF fitxategi bat igotzen saiatu zara. Zure nabigatzailean ez dago onartuta .glb fitxategien berehalako bihurketa. Bilatu ezazu ordezko bihurtzaile bat.",
+    "conversionError": "Ezin izan da glb formatura bihurtu.",
+    "dropFolderHere": "Askatu hemen glTF aktiboak dituen karpeta",
+    "fileDamaged": "Ezin izan da fitxategi hau egiaztatu. Kaltetuta egon daiteke.",
+    "filetypeNotSupported": "Fitxategi hau onartutako 3D eredu-mota batekoa ez dela ematen du.",
+    "noGLTFFound": "Ez dago gITF fitxategirik karpeta honetan",
+    "notAFolder": "Hau ez zen karpeta bat.",
+    "onlyEmbeddedAssets": "Enbotatutako aktiborik gabeko glTF fitxategi bat igotzen saiatu zara. Karpeta baten barruan beste fitxategiekin batera egon beharko litzateke. Askatu karpeta hori askatze-eremuan erabili daitekeen fitxategi-bakar bat sortzeko.",
+    "onlyVersionTwo": "glTF fitxategi hau 1.0 bertsiokoa da. Hemen erabili ahal izateko bihurtu ezazu mesedez 2.0 bertsiora.",
+    "placeAnnotation": "Place annotation in 3D model",
+    "sizeUp": "Size up",
+    "sizeDown": "Size down",
+    "front": "Front of 3D model",
+    "back": "Back of 3D model",
+    "left": "Left side of 3D model",
+    "right": "Right side of 3D model",
+    "upper-front": "Upper front of 3D model",
+    "upper-back": "Upper back of 3D model",
+    "upper-left": "Upper left side of 3D model",
+    "upper-right": "Upper right side of 3D model",
+    "lower-front": "Lower front of 3D model",
+    "lower-back": "Lower back of 3D model",
+    "lower-left": "Lower left side of 3D model",
+    "lower-right": "Lower right side of 3D model",
+    "interaction-prompt": "Use mouse, touch or arrow keys to move to interact with the 3D model."
+  }
+}

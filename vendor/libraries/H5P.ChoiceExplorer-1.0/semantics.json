@@ -1,0 +1,250 @@
+[
+  {
+    "name": "media",
+    "type": "group",
+    "label": "Media",
+    "importance": "medium",
+    "fields": [
+      {
+        "name": "type",
+        "type": "library",
+        "label": "Type",
+        "importance": "medium",
+        "options": [
+          "H5P.Image 1.1",
+          "H5P.Video 1.6",
+          "H5P.Audio 1.5"
+        ],
+        "optional": true,
+        "description": "Optional media to display above the question."
+      },
+      {
+        "name": "disableImageZooming",
+        "type": "boolean",
+        "label": "Disable image zooming",
+        "importance": "low",
+        "default": false,
+        "optional": true,
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "type",
+              "equals": "H5P.Image 1.1"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "taskDescription",
+    "label": "Task description",
+    "type": "text",
+    "widget": "html",
+    "importance": "high",
+    "description": "Describe the task for the learners",
+    "enterMode": "div",
+    "tags": [
+      "strong",
+      "em",
+      "u",
+      "a",
+      "ul",
+      "ol",
+      "h2",
+      "h3",
+      "hr",
+      "pre",
+      "code"
+    ]
+  },
+  {
+    "name": "decisions",
+    "label": "Decision parameters",
+    "type": "list",
+    "entity": "parameter",
+    "widgets": [
+      {
+        "name": "VerticalTabs",
+        "label": "Default"
+      }
+    ],
+    "min": 1,
+    "field": {
+      "name": "decisions",
+      "type": "group",
+      "label": "Decision parameters",
+      "fields": [
+        {
+          "name": "label",
+          "type": "text",
+          "label": "Label"
+        },
+        {
+          "name": "id",
+          "type": "text",
+          "label": "Id",
+          "widget": "autouuid"
+        },
+        {
+          "name": "unit",
+          "type": "text",
+          "label": "Unit",
+          "optional": true
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "label": "Minimum value",
+          "decimals": 3,
+          "min": 0,
+          "optional": true
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "label": "Maximum value",
+          "decimals": 3,
+          "min": 0,
+          "optional": true
+        }
+      ]
+    }
+  },
+  {
+    "name": "targets",
+    "label": "Target parameters",
+    "type": "list",
+    "widgets": [
+      {
+        "name": "VerticalTabs",
+        "label": "Default"
+      }
+    ],
+    "min": 1,
+    "max": 5,
+    "field": {
+      "name": "targets",
+      "type": "group",
+      "label": "Target parameters",
+      "fields": [
+        {
+          "name": "label",
+          "type": "text",
+          "label": "Label"
+        },
+        {
+          "name": "id",
+          "type": "text",
+          "label": "Id",
+          "widget": "autouuid"
+        },
+        {
+          "name": "unit",
+          "type": "text",
+          "label": "Unit",
+          "optional": true
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "label": "Minimum value",
+          "decimals": 3,
+          "optional": true
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "label": "Maximum value",
+          "decimals": 3,
+          "optional": true
+        }
+      ]
+    }
+  },
+  {
+    "name": "weights",
+    "type": "list",
+    "label": "Weights",
+    "description": "For each decision item, set how much 1 unit of the decision item affects each of the target items.",
+    "widget": "choiceexplorerweights",
+    "field": {
+      "name": "decision",
+      "type": "group",
+      "label": "Decision",
+      "fields": [
+        {
+          "name": "decisionId",
+          "type": "text",
+          "label": "Id"
+        },
+        {
+          "name": "targets",
+          "type": "list",
+          "label": "Targets",
+          "field": {
+            "name": "target",
+            "type": "group",
+            "label": "Target",
+            "fields": [
+              {
+                "name": "targetId",
+                "type": "text",
+                "label": "Id"
+              },
+              {
+                "name": "weight",
+                "type": "number",
+                "label": "Weight",
+                "decimals": 3
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "behaviour",
+    "type": "group",
+    "label": "Behavioural settings",
+    "importance": "low",
+    "description": "These options will let you control how the task behaves.",
+    "fields": [
+      {
+        "name": "maxTotalDecisions",
+        "type": "number",
+        "label": "Maximum number of decision items in total",
+        "optional": true,
+        "min": 0
+      },
+      {
+        "name": "givesLiveFeedback",
+        "type": "boolean",
+        "label": "Give live feedback",
+        "description": "If checked, the target values will be highlighted indicating whether they are in range or not."
+      }
+    ]
+  },
+  {
+    "name": "l10n",
+    "type": "group",
+    "label": "User interface",
+    "common": true,
+    "fields": [
+      {
+        "name": "missingParameters",
+        "type": "text",
+        "label": "Missing parameters",
+        "default": "There are missing decision parameters and/or target parameters."
+      },
+      {
+        "name": "done",
+        "type": "text",
+        "label": "Done",
+        "default": "Done"
+      }
+    ]
+  }
+]

@@ -1,0 +1,2 @@
+- `template` = nombre d'images par rangée séparé par des tirets (`"2-1"` : 2 images puis 1) ; fournir autant de `clips` que la somme (avertissement sinon).
+- `offset` décale l'image dans son cadre, `scale` l'agrandit (1 = taille ajustée).

@@ -1,0 +1,2 @@
+- Reconnaissance vocale du navigateur (Web Speech API) : fonctionne dans Chrome et Edge, pas dans Firefox ; l'élève autorise le micro.
+- `inputLanguage` = langue de la réponse attendue (défaut : langue du document, `fr` → `fr-FR`) ; pour une réponse en anglais : `en-GB` ou `en-US`.

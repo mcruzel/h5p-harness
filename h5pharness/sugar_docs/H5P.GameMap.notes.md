@@ -1,0 +1,4 @@
+- Chaque étape : `label` + `contentsList` (ses exercices). Le harnais complète comme l'éditeur de carte : identifiants, positions (`telemetry`, étapes réparties le long d'un chemin sinueux si absentes), voisinage symétrique (parcours linéaire dans l'ordre si aucun `neighbors`), chemins (`paths`) et étape de départ (la première).
+- `neighbors` : indices des étapes voisines, **à partir de 0**.
+- Étape spéciale (fin, vie ou temps en plus, lien, téléportation) : uniquement avec `specialStageType` ; toute valeur rend l'étape spéciale et ses exercices sont ignorés.
+- Une image de fond (`mapOptions.backgroundSettings.backgroundImage`) donne sa forme à la carte ; `telemetry` x, y, width, height sont des textes en % de cette image.

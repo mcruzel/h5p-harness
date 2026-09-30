@@ -1,0 +1,156 @@
+{
+  "semantics": [
+    {
+      "fields": [
+        {
+          "label": "Záhlaví",
+          "description": "Volitelné záhlaví pro informační zeď."
+        },
+        {
+          "label": "Vlastnosti",
+          "fields": [
+            {
+              "label": "Vlastnosti",
+              "description": "Vlastnosti pro záznamy",
+              "entity": "vlastnost",
+              "widgets": [
+                {
+                  "label": "Výchozí"
+                }
+              ],
+              "field": {
+                "label": "Položky vlastnosti",
+                "fields": [
+                  {
+                    "label": "Popisek",
+                    "default": "Bezejmený"
+                  },
+                  {
+                    "label": "Zobrazit popisek vlastnosti"
+                  },
+                  {
+                    "label": "Povolit vyhledávání ve vlastnosti"
+                  },
+                  {
+                    "label": "Přepsání stylu",
+                    "fields": [
+                      {
+                        "label": "Tučně"
+                      },
+                      {
+                        "label": "Kurzíva"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {}
+          ]
+        },
+        {
+          "label": "Panely",
+          "description": "Panely pro zeď",
+          "entity": "panel",
+          "widgets": [
+            {
+              "label": "Výchozí"
+            }
+          ],
+          "field": {
+            "label": "Vstupní položky",
+            "fields": [
+              {
+                "label": "Název panelu"
+              },
+              {
+                "label": "Obrázek"
+              },
+              {
+                "label": "Záznamy",
+                "description": "Záznamy pro vlastnosti",
+                "entity": "hodnota",
+                "widgets": [
+                  {
+                    "label": "Výchozí"
+                  }
+                ],
+                "field": {
+                  "label": "Popisek se automaticky změní"
+                }
+              },
+              {
+                "label": "Additional keywords",
+                "description": "Add additional keywords separated by a blank space that will be used for filtering but not be visible to the user."
+              }
+            ]
+          }
+        },
+        {
+          "label": "Nastavení chování",
+          "description": "Tyto možnosti vám umožní řídit, jak se úloha chová.",
+          "fields": [
+            {
+              "label": "Pro chybějící obrázky použijte záložní"
+            },
+            {
+              "label": "Obrázek"
+            },
+            {
+              "label": "Šířka obrázku",
+              "description": "Šířka obrázku v px."
+            },
+            {
+              "label": "Výška obrázku",
+              "description": "Výška obrázku v px."
+            },
+            {
+              "label": "Alternativní pozadí panelu",
+              "description": "Pokud je zaškrtnuto, každý 2. panel bude mít o něco tmavší pozadí než ostatní."
+            },
+            {
+              "label": "Nabídka filtru pole",
+              "description": "Pokud je zaškrtnuto, uživatelé budou moci informační zeď filtrovat."
+            },
+            {
+              "label": "Mode for filter field",
+              "description": "Choose whether the filter should narrow down or broaden the search with every new keyword.",
+              "options": [
+                {
+                  "label": "Narrow down"
+                },
+                {
+                  "label": "Broaden"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Uživatelské rozhraní",
+          "fields": [
+            {
+              "label": "Nebyl zadán žádný obsah",
+              "default": "Autor nic nezadal."
+            },
+            {
+              "label": "Nebyly nalezeny žádné shody",
+              "description": "@query je zástupný symbol a bude nahrazen příslušným dotazem, který byl zadán.",
+              "default": "Pro @query nebyly nalezeny žádné shody."
+            },
+            {
+              "label": "Zadejte pro filtrování",
+              "description": "Zpráva pro čtečky obrazovky.",
+              "default": "Zadejte dotaz pro filtrování obsahu pro relevantní položky."
+            },
+            {
+              "label": "Seznam změněn.",
+              "description": "Zpráva pro čtečky obrazovky. @visible a @total jsou zástupné symboly a budou nahrazeny příslušnými hodnotami.",
+              "default": "Seznam změněn. Zobrazuje se @visible z @total položek."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

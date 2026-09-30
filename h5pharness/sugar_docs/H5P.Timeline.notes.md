@@ -1,0 +1,2 @@
+- En YAML, les dates peuvent s'écrire `1789-07-14`, `14/07/1789` ou `1789` : le harnais les convertit au format TimelineJS `AAAA,MM,JJ`.
+- `language` vaut `fr` par défaut.

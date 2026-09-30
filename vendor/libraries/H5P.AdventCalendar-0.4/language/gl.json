@@ -1,0 +1,207 @@
+{
+  "semantics": [
+    {
+      "label": "Modo para imaxes de portas",
+      "description": "Selecciona se queres configurar cada imaxe de porta personalizada por ti mesmo ou deixar que H5P faga o traballo por ti en función da imaxe de fondo do calendario definida na configuración do comportamento.",
+      "options": [
+        {
+          "label": "Quero configurar cada imaxe de porta eu mesmo"
+        },
+        {
+          "label": "H5P establecerá as imaxes da porta en función da imaxe de fondo"
+        }
+      ]
+    },
+    {
+      "label": "Portas",
+      "entity": "porta",
+      "field": {
+        "fields": [
+          {
+            "label": "Tipo de contido",
+            "description": "Tipo de contido que debería aparecer opcionalmente cando se abra a porta.",
+            "options": [
+              {
+                "label": "Audio"
+              },
+              {
+                "label": "Imaxe"
+              },
+              {
+                "label": "Enlace"
+              },
+              {
+                "label": "Texto"
+              },
+              {
+                "label": "Vídeo"
+              }
+            ]
+          },
+          {
+            "label": "Audio"
+          },
+          {
+            "label": "Imaxe"
+          },
+          {
+            "label": "Enlace"
+          },
+          {
+            "label": "Texto"
+          },
+          {
+            "label": "Vídeo"
+          },
+          {
+            "label": "Reproducir automaticamente"
+          },
+          {
+            "label": "Imaxe da porta",
+            "description": "Imaxe usada para a porta. Ten que ter unha proporción de 1:1 se queres que a metade esquerda encaixe coa metade dereita."
+          },
+          {
+            "label": "Imaxe de fondo",
+            "description": "Imaxe que aparecerá dentro da porta. Será o número por defecto da porta."
+          }
+        ]
+      },
+      "widgets": [
+        {
+          "label": "Por defecto"
+        }
+      ]
+    },
+    {
+      "label": "Configuración visual",
+      "description": "Estas opcións permitiranche configurar o aspecto visual.",
+      "fields": [
+        {
+          "label": "Imaxe de fondo do calendario"
+        },
+        {
+          "label": "Modelo da imaxe da porta",
+          "description": "Se configuramos unha imaxe, usarase como imaxe por defecto para todas as portas a non ser que se configure unha imaxe específica para unha porta en particular."
+        },
+        {
+          "label": "Agachar bordos das portas"
+        },
+        {
+          "label": "Agachar números das portas"
+        },
+        {
+          "label": "Agochar pomos das portas"
+        },
+        {
+          "label": "Agachar marcos das portas"
+        },
+        {
+          "label": "Que neve",
+          "description": "Engade unha nevarada diante do calendario."
+        }
+      ]
+    },
+    {
+      "label": "Configuración de son",
+      "description": "Estas opcións permítenche configurar a aparencia do audio.",
+      "fields": [
+        {
+          "label": "Música de fondo"
+        },
+        {
+          "label": "Reproducir música de fondo automaticamente",
+          "description": "Cando activamos esta opción, a música de fondo reproducirase automáticamente cando se abra o contido. Por favor, lembra que a política de medios de certos navegadores poden impedir que isto suceda."
+        }
+      ]
+    },
+    {
+      "label": "Configuración de comportamento",
+      "description": "Estas opcións permiten modificar a configuración do comportamento.",
+      "fields": [
+        {
+          "label": "Modo de colocación da porta",
+          "description": "Seleccione se desexa establecer un número fixo de columnas e filas para as portas ou se H5P debe decidir de forma dinámica dependendo do espazo dispoñible. Teña en conta que isto último pode interferir coa posición da imaxe de fondo e das imaxes de portada personalizadas que deberían estar nunha posición determinada.",
+          "options": [
+            {
+              "label": "Fixo"
+            },
+            {
+              "label": "Dinámico"
+            }
+          ]
+        },
+        {
+          "label": "Relación fila a columna",
+          "description": "Seleccione cantas columnas e filas debe usar o calendario.",
+          "options": [
+            {
+              "label": "6 × 4"
+            },
+            {
+              "label": "4 × 6"
+            }
+          ]
+        },
+        {
+          "label": "Ordear ao chou",
+          "description": "Facer aleatoria a orde das portas. Se está activa a opción \"gardar o estado do contido\" na configuración H5P, manterase esa orde cando o usuario regrese máis tarde."
+        },
+        {
+          "label": "Manter orde de imaxes",
+          "description": "Facer aleatoria a orde das portas pero manter as imaxes da cuberta nas súas posicións fixas, empezando polo 1 na parte superior esquerda ata o 24 na parte inferior dereita."
+        },
+        {
+          "label": "Modo de deseño",
+          "description": "En modo de deseño pódense abrir todas as portas. En caso contrario, as portas só poden abrirse en decembro, no día indicado pola porta e en días posteriores."
+        }
+      ]
+    },
+    {
+      "label": "Adaptación local",
+      "fields": [
+        {
+          "label": "Nada que ver",
+          "default": "Non hai nada que ver aquí!🎄"
+        },
+        {
+          "label": "Moneco",
+          "default": "Moneco"
+        }
+      ]
+    },
+    {
+      "label": "Accesibilidade",
+      "fields": [
+        {
+          "label": "Porta",
+          "default": "Porta"
+        },
+        {
+          "label": "Pechada",
+          "default": "Pechada. Aínda non é hora de abrir esta porta."
+        },
+        {
+          "description": "Anuncia o contido. @door é unha variable que se substituirá pola descrición da porta á que fai referencia.",
+          "label": "Contido de",
+          "default": "Contido de @door"
+        },
+        {
+          "label": "Silenciar audio",
+          "default": "Silenciar audio"
+        },
+        {
+          "label": "Activar audio",
+          "default": "Activar audio"
+        },
+        {
+          "label": "Pechar xanela",
+          "default": "Pechar xanela"
+        },
+        {
+          "label": "Loading",
+          "default": "Loading..."
+        }
+      ]
+    }
+  ]
+}

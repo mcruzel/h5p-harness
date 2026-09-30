@@ -1,0 +1,29 @@
+{
+  "libraryStrings": {
+    "conversionError": "Neizdevās konvertēt uz glb formātu.",
+    "dropFolderHere": "Nometiet mapi ar visiem glTF līdzekļiem šeit",
+    "filetypeNotSupported": "Šķiet, ka šis fails nav atbalstīts 3D modeļa veids.",
+    "notAFolder": "Šī nebija mape.",
+    "onlyVersionTwo": "Šī ir glTF faila 1.0 versija. Lai failu izmantotu šeit, lūdzu, konvertējiet to uz versiju 2.0.",
+    "browserCannotConvert": "Jūs mēģinājāt augšupielādēt glTF failu bez iegultiem līdzekļiem. Šajā pārlūkprogrammā netiek atbalstīta tūlītēja konvertēšana uz .glb failiem. Lūdzu, meklējiet alternatīvu pārveidotāju.",
+    "fileDamaged": "Neizdevās pārbaudīt failu. Tas varētu būt bojāts.",
+    "noGLTFFound": "Šajā mapē nav glTF faila",
+    "onlyEmbeddedAssets": "Jūs mēģinājāt augšupielādēt glTF failu bez iegultiem līdzekļiem. Tam jāatrodas mapē ar citiem failiem. Nometiet šo mapi uz nomešanas zonas, lai izveidotu vienu failu, ko var izmantot.",
+    "placeAnnotation": "Place annotation in 3D model",
+    "sizeUp": "Size up",
+    "sizeDown": "Size down",
+    "front": "Front of 3D model",
+    "back": "Back of 3D model",
+    "left": "Left side of 3D model",
+    "right": "Right side of 3D model",
+    "upper-front": "Upper front of 3D model",
+    "upper-back": "Upper back of 3D model",
+    "upper-left": "Upper left side of 3D model",
+    "upper-right": "Upper right side of 3D model",
+    "lower-front": "Lower front of 3D model",
+    "lower-back": "Lower back of 3D model",
+    "lower-left": "Lower left side of 3D model",
+    "lower-right": "Lower right side of 3D model",
+    "interaction-prompt": "Use mouse, touch or arrow keys to move to interact with the 3D model."
+  }
+}

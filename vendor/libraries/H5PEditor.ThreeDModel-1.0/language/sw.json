@@ -1,0 +1,29 @@
+{
+  "libraryStrings": {
+    "browserCannotConvert": "Ulijaribu kupakia faili la Umbizo la Usambazaji wa GL (glTF) bila faili zilizoingia. Ubadilishaji wa haraka kuwa.glb hauauni kwenye kivinjari hiki. Tafadhali tafuta kibadilishaji cha ziada.",
+    "conversionError": "Haikuweza kubadilisha kuwa muundo wa Usambazaji ya Umbizo la glb.",
+    "dropFolderHere": "Weka folda na mali zote za Umbizo la Usambazaji wa glTF hapa",
+    "fileDamaged": "Imeshindwa kuhakiki faili. Inaweza kuwa imeharibika.",
+    "filetypeNotSupported": "Faili hili halionekani kuwa aina ya modeli ya 3D inayouani.",
+    "noGLTFFound": "Hakuna faili la Umbizo la Usambazaji wa glTF kwenye folda hili",
+    "notAFolder": "Hili halikuwa kabrasha.",
+    "onlyEmbeddedAssets": "Ulijaribu kupakia faili la Umbizo la Usambazaji wa GL (glTF) bila faili zilizoingia. Inapaswa kuwa ndani ya folda na mafaili mengine. Weka folda hilo kwenye eneo la kushuka ili kuunda faili moja ambalo linaweza kutumika.",
+    "onlyVersionTwo": "Faili hili la Umbizo la Usambazaji wa glTF ni la toleo 1.0. Tafadhali kubadilisha kwa toleo 2.0 ili kutumia hapa.",
+    "placeAnnotation": "Place annotation in 3D model",
+    "sizeUp": "Size up",
+    "sizeDown": "Size down",
+    "front": "Front of 3D model",
+    "back": "Back of 3D model",
+    "left": "Left side of 3D model",
+    "right": "Right side of 3D model",
+    "upper-front": "Upper front of 3D model",
+    "upper-back": "Upper back of 3D model",
+    "upper-left": "Upper left side of 3D model",
+    "upper-right": "Upper right side of 3D model",
+    "lower-front": "Lower front of 3D model",
+    "lower-back": "Lower back of 3D model",
+    "lower-left": "Lower left side of 3D model",
+    "lower-right": "Lower right side of 3D model",
+    "interaction-prompt": "Use mouse, touch or arrow keys to move to interact with the 3D model."
+  }
+}

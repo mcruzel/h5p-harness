@@ -1,0 +1,75 @@
+{
+  "_comment": "Compléments/corrections du registre h5p-cli (github.com/h5p/h5p-registry), appliqués par tools/vendor_libraries.py",
+  "H5P.FindTheWords": {
+    "id": "H5P.FindTheWords",
+    "title": "Find The Words",
+    "runnable": true,
+    "repo": {
+      "type": "github",
+      "url": "https://github.com/otacke/h5p-find-the-words"
+    }
+  },
+  "H5P.ChoiceExplorer": {
+    "id": "H5P.ChoiceExplorer",
+    "title": "Choice Explorer",
+    "runnable": false,
+    "repo": {
+      "type": "github",
+      "url": "https://github.com/otacke/h5p-choice-explorer"
+    }
+  },
+  "H5PEditor.AdvancedBlanks": {
+    "id": "H5PEditor.AdvancedBlanks",
+    "title": "Advanced Blanks editor",
+    "runnable": false,
+    "repo": {
+      "type": "github",
+      "url": "https://github.com/NDLANO/h5p-editor-advanced-blanks"
+    }
+  },
+  "flowplayer": {
+    "id": "flowplayer",
+    "title": "Flowplayer",
+    "runnable": false,
+    "repo": {
+      "type": "github",
+      "url": "https://github.com/h5p/flowplayer"
+    }
+  },
+  "Drop": {
+    "id": "Drop",
+    "title": "Drop",
+    "runnable": false,
+    "repo": {
+      "type": "github",
+      "url": "https://github.com/h5p/drop"
+    }
+  },
+  "H5PEditor.ChoiceExplorer": {
+    "id": "H5PEditor.ChoiceExplorer",
+    "title": "Choice Explorer editor",
+    "runnable": false,
+    "repo": {
+      "type": "github",
+      "url": "https://github.com/otacke/h5p-editor-choice-explorer"
+    }
+  },
+  "H5P.PersonalityQuiz": {
+    "id": "H5P.PersonalityQuiz",
+    "title": "Personality Quiz",
+    "runnable": true,
+    "repo": {
+      "type": "github",
+      "url": "https://github.com/h5p/h5p-personality-quiz"
+    }
+  },
+  "H5P.Bingo": {
+    "id": "H5P.Bingo",
+    "title": "Bingo",
+    "runnable": true,
+    "repo": {
+      "type": "github",
+      "url": "https://github.com/otacke/h5p-bingo"
+    }
+  }
+}

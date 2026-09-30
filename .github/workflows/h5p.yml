@@ -1,0 +1,43 @@
+name: Paquets H5P
+
+# Volontairement minimal (pas de tests ici : voir h5p-tests.yml, lancé à la main) :
+# ne tourne que lorsqu'une activité change dans sources/, reconstruit les paquets et les attache à la
+# release de la branche. Pour le désactiver : variable de dépôt H5P_RELEASES = off.
+on:
+  push:
+    paths:
+      - "sources/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: h5p-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  paquets:
+    if: vars.H5P_RELEASES != 'off'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Dépendances
+        run: pip install -r requirements.txt
+
+      - name: Construire les paquets (sources/)
+        run: |
+          python -m h5pharness build sources/ --offline -q
+          python -m h5pharness build sources/ --offline --content-only -o dist-lite -q
+
+      - name: Publier dans la release de la branche
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python tools/release.py dist/ dist-lite/

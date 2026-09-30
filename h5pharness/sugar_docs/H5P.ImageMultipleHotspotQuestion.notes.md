@@ -1,0 +1,2 @@
+- Zones comme `trouver-zone` : `computedSettings: {x, y, width, height, figure}` (coin haut-gauche et taille en % de l'image ; `figure` = `rectangle` ou `circle`).
+- Le retour d'une zone correcte ne s'affiche que si `hotspotName` est renseigné. La bibliothèque affiche « N of M » en anglais (texte codé en dur).

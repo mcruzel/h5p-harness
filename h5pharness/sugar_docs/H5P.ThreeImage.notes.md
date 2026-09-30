@@ -1,0 +1,3 @@
+- Chaque scène a un `sceneId` (nombre) ; une interaction « aller à la scène » pointe vers `gotoscene.nextSceneId`.
+- `cameraStartPosition` (obligatoire) et `interactionpos` : `"lacet,tangage"` en **radians** pour une scène 360 (ex. `"-2.1,0.3"`), `"x%,y%"` pour une scène statique (ex. `"45%,30%"`).
+- Image de scène 360 : panorama équirectangulaire (rapport 2:1).

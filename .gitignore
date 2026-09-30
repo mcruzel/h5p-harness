@@ -1,0 +1,9 @@
+# paquets construits: reconstruits à l'identique par la CI (voir README)
+/dist/
+__pycache__/
+*.pyc
+*.tmp
+.pytest_cache/
+node_modules/
+/build-examples/
+/dist-lite/

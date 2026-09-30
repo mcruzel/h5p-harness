@@ -1,0 +1,182 @@
+{
+  "semantics": [
+    {
+      "label": "Vyombo vya habari",
+      "fields": [
+        {
+          "label": "Aina",
+          "description": "Vyombo vya habari vya hiari vya kuonyesha juu ya swali."
+        },
+        {
+          "label": "Zima ukuzaji wa picha"
+        }
+      ]
+    },
+    {
+      "label": "Maelezo ya kazi",
+      "description": "Waeleze wanafunzi wako kile kinachotarajiwa kutoka kwao."
+    },
+    {
+      "label": "Sehemu",
+      "entity": "sehemu",
+      "widgets": [
+        {
+          "label": "Chaguo-msingi"
+        }
+      ],
+      "field": {
+        "label": "Vigezo vya sehemu",
+        "fields": [
+          {
+            "label": "Mada"
+          },
+          {
+            "label": "Vidokezo",
+            "description": "Ongeza vidokezo au maagizo maalum ya sehemu hii kwa hiari."
+          },
+          {
+            "label": "Uzito",
+            "description": "Ingiza uzito wa sehemu hii kuhusiana na sehemu zingine. Uzito huamua ni muda gani sehemu inatarajiwa kulinganishwa na sehemu zingine."
+          },
+          {
+            "label": "Rangi ya Mandharinyuma"
+          },
+          {
+            "label": "Rangi ya maandishi"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Mipangilio ya tabia",
+      "description": "Chaguzi hizi zitakuwezesha kudhibiti jinsi kazi inavyofanya.",
+      "fields": [
+        {
+          "label": "Wezesha \"Jaribu tena\""
+        },
+        {
+          "label": "Washa kitufe cha \"Suluhisho\""
+        },
+        {
+          "label": "Ulegevu",
+          "description": "Asilimia ya ulegevu ambayo inakubalika kwa urefu wa sehemu."
+        },
+        {
+          "label": "Urefu wa chini wa maandishi",
+          "description": "Bainisha urefu wa maandishi kamili wa kima cha chini kabisa. Tafadhali kumbuka kuwa uzito wa sehemu ikilinganishwa na sehemu zingine ndiyo kiendeshi kikuu cha ujumbe wa maoni, siyo thamani hii ya chini."
+        },
+        {
+          "label": "Urefu wa juu wa maandishi",
+          "description": "Bainisha urefu wa maandishi kamili wa kima cha juu kabisa. Tafadhali kumbuka kuwa uzito wa sehemu ikilinganishwa na sehemu zingine ndiyo kiendeshi kikuu cha ujumbe wa maoni, siyo thamani hii ya juu."
+        },
+        {
+          "label": "Njia ya maoni",
+          "description": "Amua ikiwa ungependa kuonyesha maoni unapoandika au mwanafunzi anapoomba tu.",
+          "options": [
+            {
+              "label": "Kwa ombi"
+            },
+            {
+              "label": "Wakati wa kuandika"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Kiolesura cha mtumiaji",
+      "fields": [
+        {
+          "label": "Kitufe cha maandishi ya \"nakili\"",
+          "default": "Nakili"
+        },
+        {
+          "label": "Maandishi ya kitufe cha \"Weka alama\"",
+          "default": "Weka alama"
+        },
+        {
+          "label": "Maandishi kwa kitufe cha \"Jaribu tena\"",
+          "default": "Jaribu tena"
+        },
+        {
+          "label": "Maandishi kwa kitufe cha \"Onyesha suluhisho\"",
+          "default": "Onyesha suluhisho"
+        },
+        {
+          "label": "Sehemu zote ni nzuri",
+          "description": "Maandishi ya maoni yanaonyeshwa wakati sehemu zote ni za urefu unaoweza kuvumiliwa.",
+          "default": "Urefu wa sehemu zako zote ni sawa."
+        },
+        {
+          "label": "Sehemu ni fupi mno",
+          "description": "Maandishi ya maoni yanayoonyeshwa kwa sehemu ambazo ni fupi mno (@title nafasi yake itachukuliwa na kichwa cha sehemu, @charsnafasi yake itachukuliwa na idadi ya herufi zinazokosekana).",
+          "default": "Sehemu yako \"@title\" ni fupi mno. Unahitaji angalau @charsherufi zaidi."
+        },
+        {
+          "label": "Sehemu ni ndefu mno",
+          "description": "Maandishi ya maoni yanayoonyeshwa kwa sehemu ambazo ni ndefu mno (@title yatabadilishwa na mada ya sehemu, @charsyatabadilishwa na idadi ya herufi zinazohitaji kuondolewa).",
+          "default": "Sehemu yako \"@title\" ni ndefu mno. Ondoa angalau@chars herufi."
+        },
+        {
+          "label": "Sehemu ni fupi mno (wakati wa kuchapa)",
+          "description": "Hali inayoonyeshwa wakati wa kuchapa kwa sehemu ambazo ni fupi mno (@chars nafasi yake itachukuliwa na idadi ya herufi zinazokosekana).",
+          "default": "@charsherufi ni fupi mno"
+        },
+        {
+          "label": "Sehemu ni ndefu mno (wakati wa kuchapa)",
+          "description": "Hali inayoonyeshwa wakati wa kuchapa kwa sehemu ambazo ni ndefu mno (@chars nafasi yake itachukuliwa na idadi ya herufi zinazohitaji kuondolewa).",
+          "default": "@charsherufi ni ndefu mno"
+        },
+        {
+          "label": "Maandishi yamenakiliwa kwenye ubao wa kunakili",
+          "default": "Maandishi yako yamenakiliwa kwenye ubao wa kunakili"
+        },
+        {
+          "label": "Haiwezi kunakili kwenye ubao wa kunakili",
+          "default": "Maandishi yako hayakuweza kunakiliwa kwenye ubao wa kunakili"
+        },
+        {
+          "label": "Sehemu",
+          "default": "Sehemu"
+        },
+        {
+          "label": "Maandishi ya ujumbe \"Hakuna sehemu\"",
+          "default": "Hakukuwa na sehemu iliyotolewa kwa ukanda huu wa muundo."
+        },
+        {
+          "label": "Maandishi ya kitufe cha \"Wasilisha\"",
+          "default": "Wasilisha"
+        }
+      ]
+    },
+    {
+      "label": "Kisoma maandishi",
+      "fields": [
+        {
+          "label": "Maelezo ya teknolojia ya usaidizi kwa kitufe cha \"Weka alama\"",
+          "default": "Weka alama majibu. Majibu yatatiwa alama kuwa sahihi, siyo sahihi au haijajibiwa."
+        },
+        {
+          "label": "Maelezo ya teknolojia ya usaidizi kwa kitufe cha \"Jaribu tena\"",
+          "default": "Jaribu tena kazi hiyo. Weka upya majibu yote na uanze kazi tena."
+        },
+        {
+          "label": "Maoni (maandishi kwa visoma maandishi)",
+          "default": "Maoni"
+        },
+        {
+          "label": "Nakili maandishi yako kwenye ubao wa kunakili (maandishi kwa visoma maandishi)",
+          "default": "Nakili maandishi kwenye ubao wa kunakili"
+        },
+        {
+          "label": "Funga dirisha (maandishi kwa visoma maandishi)",
+          "default": "Funga dirisha"
+        },
+        {
+          "label": "Onyesha vidokezo (maandishi kwa visoma maandishi)",
+          "default": "Onyesha vidokezo"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "semantics": [
+    {
+      "label": "Medien",
+      "fields": [
+        {
+          "label": "Typ",
+          "description": "Medium, das wahlweise oberhalb der Aufgabe angezeigt wird."
+        },
+        {
+          "label": "Bild-Zoom deaktivieren"
+        }
+      ]
+    },
+    {
+      "label": "Aufgabenbeschreibung",
+      "description": "Beschreibe hier die Aufgabe für die Lernenden."
+    },
+    {
+      "label": "Abschnitte",
+      "entity": "Abschnitt",
+      "widgets": [
+        {
+          "label": "Voreinstellung"
+        }
+      ],
+      "field": {
+        "label": "Einstellungen für den Abschnitt",
+        "fields": [
+          {
+            "label": "Titel"
+          },
+          {
+            "label": "Hinweise",
+            "description": "Füge hier wahlweise Hinweise oder besondere Anweisungen für den Abschnitt ein."
+          },
+          {
+            "label": "Gewichtung",
+            "description": "Lege fest, wie lang ein Abschnitt im Verhältnis zu den anderen Abschnitten sein soll. Beispiel: Abschnitt 1 = 1; Abschnitt 2 = 3 (dreifache Länge von 1); Abschnitt 3 = 1 (dieselbe Länge wie 1)."
+          },
+          {
+            "label": "Hintergrundfarbe"
+          },
+          {
+            "label": "Textfarbe"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Verhaltenseinstellungen",
+      "description": "Diese Optionen kontrollieren, wie sich die Aufgabe verhält.",
+      "fields": [
+        {
+          "label": "\"Wiederholen\" aktivieren"
+        },
+        {
+          "label": "\"Lösung anzeigen\" ermöglichen"
+        },
+        {
+          "label": "Spielraum",
+          "description": "Der Spielraum definiert eine gewisse Flexibilität bei der Länge eines Abschnitts und wird in Prozent berechnet."
+        },
+        {
+          "label": "Minimale Textlänge",
+          "description": "Lege eine absolute Untergrenze für die Textlänge fest. Please note that a section's weight compared to other sections is the main driver for the feedback message, not this minimum value."
+        },
+        {
+          "label": "Maximale Textlänge",
+          "description": "Lege eine absolute Obergrenze für die Textlänge fest. Please note that a section's weight compared to other sections is the main driver for the feedback message, not this maximum value."
+        },
+        {
+          "label": "Modus der Rückmeldung",
+          "description": "Entscheide, ob es direkt bei der Eingabe Rückmeldung geben soll oder erst auf Wunsch.",
+          "options": [
+            {
+              "label": "Auf Wunsch"
+            },
+            {
+              "label": "Bei der Eingabe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Bedienoberfläche",
+      "fields": [
+        {
+          "label": "Beschriftung des \"Kopieren\"-Buttons",
+          "default": "Kopieren"
+        },
+        {
+          "label": "Beschriftung des \"Überprüfen\"-Buttons",
+          "default": "Überprüfen"
+        },
+        {
+          "label": "Beschriftung des \"Wiederholen\"-Buttons",
+          "default": "Wiederholen"
+        },
+        {
+          "label": "Beschriftung des \"Lösung anzeigen\"-Buttons",
+          "default": "Lösung anzeigen"
+        },
+        {
+          "label": "Alle Abschnitte in Ordnung",
+          "description": "Rückmeldungstext, der angezeigt wird, wenn alle Abschnitte eine passende Länge haben.",
+          "default": "Alle deine Abschnitte haben eine gute Länge."
+        },
+        {
+          "label": "Abschnitt zu kurz",
+          "description": "Rückmeldungstext für Abschnitte, die zu kurz sind (@title wird durch den Abschnittstitel ersetzt, @chars wird durch die Anzahl zu ergänzender Zeichen ersetzt).",
+          "default": "Dein Abschnitt \"@title\" ist zu kurz. Füge mindestens @chars Zeichen hinzu."
+        },
+        {
+          "label": "Abschnitt zu lang",
+          "description": "Rückmeldungstext für Abschnitte, die zu lang sind (@title wird durch den Abschnittstitel ersetzt, @chars wird durch die Anzahl überschüssiger Zeichen ersetzt).",
+          "default": "Dein Abschnitt \"@title\" ist zu lang. Entferne mindestens @chars Zeichen."
+        },
+        {
+          "label": "Abschnitt zu kurz (bei Eingabe)",
+          "description": "Status bei Eingabe für Abschnitte, die zu kurz sind (@chars wird durch die Anzahl zu ergänzender Zeichen ersetzt).",
+          "default": "@chars Zeichen zu kurz"
+        },
+        {
+          "label": "Abschnitt zu lang (bei Eingabe)",
+          "description": "Status bei Eingabe für Abschnitte, die zu lang sind (@chars wird durch die Anzahl überschüssiger Zeichen ersetzt).",
+          "default": "@chars Zeichen zu lang"
+        },
+        {
+          "label": "Text in die Zwischenablage kopiert",
+          "default": "Dein Text wurde in die Zwischenablage kopiert"
+        },
+        {
+          "label": "Kann nicht in die Zwischenablage kopieren",
+          "default": "Dein Text konnte nicht in die Zwischenablage kopiert werden"
+        },
+        {
+          "label": "Abschnitt",
+          "default": "Abschnitt"
+        },
+        {
+          "label": "Kein Abschnitt angegeben",
+          "default": "Es wurde kein Abschnitt für den Strukturstreifen angegeben."
+        },
+        {
+          "label": "Beschriftung des \"Absenden\"-Buttons",
+          "default": "Absenden"
+        }
+      ]
+    },
+    {
+      "label": "Vorlesewerkzeug (Barrierefreiheit)",
+      "fields": [
+        {
+          "label": "Vorlesewerkzeug-Beschreibung für den \"Überprüfen\"-Button",
+          "default": "Die Antworten überprüfen. Die Eingaben werden als richtig, falsch oder unbeantwortet markiert."
+        },
+        {
+          "label": "Vorlesewerkzeug-Beschreibung für den \"Wiederholen\"-Button",
+          "default": "Die Aufgabe wiederholen. Alle Eingaben werden zurückgesetzt und die Aufgabe wird erneut gestartet."
+        },
+        {
+          "label": "Rückmeldung (Text für Vorlesewerkzeuge)",
+          "default": "Rückmeldung"
+        },
+        {
+          "label": "Kopiere Text in die Zwischenablage (Text für Vorlesewerkzeuge)",
+          "default": "Kopiere Text in die Zwischenablage"
+        },
+        {
+          "label": "Fenster schließen (Text für Vorlesewerkzeuge)",
+          "default": "Fenster schließen"
+        },
+        {
+          "label": "Hinweise anzeigen (Text für Vorlesewerkzeuge)",
+          "default": "Hinweise anzeigen"
+        }
+      ]
+    }
+  ]
+}
