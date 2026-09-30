@@ -17,21 +17,21 @@ Remets les étapes de la mitose dans l'ordre.
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- media : groupe — Média
-  - type : sous-contenu, library: image | video | audio — Type (Média facultatif pour afficher au-dessus de la question.)
-  - disableImageZooming : booléen, défaut false, conditionnel — Bloquer le zoom d’image
-- taskDescription* : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul) — Description de la tâche (Ce que vos élèves devraient savoir.)
-- paragraphs* : liste (min 3) — Paragraphes
-  chaque élément = texte riche (Markdown: code em h2 h3 hr li ol pre strong u ul) — Paragraphe
-- overallFeedback : groupe — Feedback général (groupe à un champ: écrire directement la valeur)
-  - overallFeedback : liste (min 1) — Définir un feedback personnalisé pour n'importe quelle gamme de note (Cliquez sur la touche « Ajouter une gamme » pour ajouter autant de gammes que nécessaire. Exemple : 0-20 % ma…)
+- media : groupe — Media
+  - type : sous-contenu, library: image | video | audio — Type (Optional media to display above the question.)
+  - disableImageZooming : booléen, défaut false, si type = H5P.Image — Disable image zooming
+- taskDescription* : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul) — Task description (What your students should know.)
+- paragraphs* : liste (min 3) — Paragraphs
+  chaque élément = texte riche (Markdown: code em h2 h3 hr li ol pre strong u ul) — Paragraph
+- overallFeedback : groupe — Overall Feedback (groupe à un champ: écrire directement la valeur)
+  - overallFeedback : liste (min 1) — Define custom feedback for any score range (Click the "Add range" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!)
     chaque élément :
-      - from : nombre, min 0, max 100, défaut 0 — Gamme de notes
+      - from : nombre, min 0, max 100, défaut 0 — Score Range
       - to : nombre, min 0, max 100, défaut 100
-      - feedback : texte — Feedback pour une gamme de notes définie
-- behaviour : réglages — Paramètres comportementaux (Ces options vous permettront de contrôler le déroulement de la tâche.)
+      - feedback : texte — Feedback for defined score range
+- behaviour : réglages — Behavioural settings (These options will let you control how the task behaves.)
   scoringMode=positions (positions|transitions), applyPenalties=true, duplicatesInterchangeable=true, addButtonsForMovement=true, enableRetry=true, enableSolutionsButton=true
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n, a11y.

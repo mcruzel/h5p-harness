@@ -161,7 +161,25 @@ def timeline_date(text, field, ctx, path):
     return t
 
 
+CHAPTER = re.compile(r"^\s*(?:(\d{1,2}):)?(\d{1,2}):(\d{2})(\.\d{1,3})?\s+(\S.*)$")
+
+
+def chapter_marks(text, field, ctx, path):
+    """H5P.Transcript reads mp4chaps lines 'hh:mm:ss Titre' only: complete m:ss / mm:ss times."""
+    if field.get("widget") != "textarea":  # l10n.chapterMarks is a plain label
+        return str(text).strip()
+    out = []
+    for n, line in enumerate(str(text).strip("\n").split("\n"), 1):
+        m = CHAPTER.match(line)
+        if m:
+            out.append(f"{int(m.group(1) or 0):02d}:{int(m.group(2)):02d}:{m.group(3)}{m.group(4) or ''} {m.group(5)}")
+        elif line.strip():
+            ctx.error(path, f"ligne {n} « {line.strip()} » : écrire « hh:mm:ss Titre du chapitre »")
+    return "\n".join(out)
+
+
 TEXT_HOOKS.update({
+    ("H5P.Transcript", "chapterMarks"): chapter_marks,
     ("H5P.MarkTheLetters", "textField"): marktheletters_text,
     ("H5P.Timeline", "startDate"): timeline_date,
     ("H5P.Timeline", "endDate"): timeline_date,

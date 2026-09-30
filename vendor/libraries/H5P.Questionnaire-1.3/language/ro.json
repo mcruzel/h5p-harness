@@ -1,101 +1,101 @@
 {
   "semantics": [
     {
-      "label": "Elemente chestionar",
+      "label": "Questionnaire elements",
       "widgets": [
         {
-          "label": "Implicit"
+          "label": "Default"
         }
       ],
       "entity": "element",
       "field": {
-        "label": "Alegeți biblioteca",
+        "label": "Choose library",
         "fields": [
           {
-            "label": "Bibliotecă",
-            "description": "Alegeți o bibliotecă"
+            "label": "Library",
+            "description": "Choose a library"
           },
           {
-            "label": "Câmp obligatoriu"
+            "label": "Required field"
           }
         ]
       }
     },
     {
-      "label": "Opțiuni ecran de succes",
+      "label": "Success screen options",
       "fields": [
         {
-          "label": "Activează ecranul de succes"
+          "label": "Enable success screen"
         },
         {
-          "label": "Adaugă imagine pentru ecranul de succes",
+          "label": "Add success screen image",
           "fields": [
             {
-              "label": "Înlocuiește pictograma de succes cu o imagine"
+              "label": "Replace success icon with image"
             }
           ]
         },
         {
-          "label": "Text de afișat la trimitere",
-          "default": "Ați completat chestionarul."
+          "label": "Text to display on submit",
+          "default": "You have completed the questionnaire."
         }
       ]
     },
     {
-      "label": "Elemente UI",
+      "label": "UI Elements",
       "fields": [
         {
-          "label": "Etichete butoane",
+          "label": "Button labels",
           "fields": [
             {
-              "label": "Etichetă buton Anterior",
-              "default": "Înapoi"
+              "label": "Previous button label",
+              "default": "Back"
             },
             {
-              "label": "Etichetă buton Continuă",
-              "default": "Continuă"
+              "label": "Continue button label",
+              "default": "Continue"
             },
             {
-              "label": "Etichetă buton Următorul",
-              "default": "Următorul"
+              "label": "Next button label",
+              "default": "Next"
             },
             {
-              "label": "Etichetă buton Trimitere",
-              "default": "Trimite"
+              "label": "Submit button label",
+              "default": "Submit"
             }
           ]
         },
         {
-          "label": "Accesibilitate",
+          "label": "Accessibility",
           "fields": [
             {
-              "label": "Etichetă buton de închidere mesaj de eroare",
-              "default": "Închide mesajul de eroare"
+              "label": "Required message exit button label",
+              "default": "Close error message"
             },
             {
-              "label": "Text bară de progres",
-              "default": "Întrebarea %current din %max",
-              "description": "Folosit pentru a informa tehnologiile asistive despre întrebarea curentă. Variabile: [ %current, %max ]"
+              "label": "Progress bar text",
+              "default": "Question %current of %max",
+              "description": "Used to tell assistive technologies what question it is. Variables: [ %current, %max ]"
             }
           ]
         },
         {
-          "label": "Mesaj de obligativitate",
-          "default": "Această întrebare necesită un răspuns",
-          "description": "Se va afișa dacă acest câmp este fără răspuns și este obligatoriu pentru un tip de conținut cadru"
+          "label": "Required message",
+          "default": "This question requires an answer",
+          "description": "Will display if this field is unanswered and required by a wrapper content type"
         },
         {
-          "label": "Text pentru simbolul de obligativitate",
-          "default": "obligatoriu",
-          "description": "Text care va însoți un asterisc pentru a semnala că o întrebare este obligatorie"
+          "label": "Required symbol text",
+          "default": "required",
+          "description": "Text that will accompany an asterisk to signal that a question is required"
         },
         {
-          "label": "Titlu pentru ecranul de trimitere",
-          "default": "Ați răspuns cu succes la toate întrebările"
+          "label": "Title for the submit screen",
+          "default": "You successfully answered all of the questions"
         },
         {
-          "label": "Subtitlu pentru ecranul de trimitere",
-          "default": "Faceți clic mai jos pentru a trimite răspunsurile"
+          "label": "Subtitle for the submit screen",
+          "default": "Click below to submit your answers"
         }
       ]
     }

@@ -13,6 +13,27 @@ LIBRARIES = ROOT / "vendor" / "libraries"
 L10N = PKG / "l10n"
 
 
+def _special(kind):
+    return {"widget": "showWhen", "showWhen": {"rules": [{"field": "specialStageType", "equals": kind}],
+                                               "nullWhenHidden": True}}
+
+
+# What the H5P editor enforces differently from semantics.json (custom widgets decide what is shown/required).
+FIELD_PATCHES = {
+    "H5P.GameMap": {
+        # a stage is "special" as soon as specialStageType has a value (its exercises are then ignored)
+        "specialStageType": {"optional": True},
+        "specialStageExtraLives": _special("extra-life"),
+        "specialStageExtraTime": _special("extra-time"),
+        "specialStageLinkURL": _special("link"),
+        "specialStageLinkTarget": _special("link"),
+        "specialStageTeleportTarget": _special("teleport"),
+        "neighbors": {"optional": True},        # default: a linear path (see rules.py)
+    },
+    "H5P.InfoWall": {"panelTitle": {"optional": True}},  # editor-only list title, never displayed
+}
+
+
 def kebab(machine: str) -> str:
     name = machine.split(".", 1)[-1]
     return re.sub(r"(?<=[a-z0-9])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])", "-", name).lower()
@@ -70,40 +91,58 @@ class Library:
             for d in self.meta.get(kind, []) or []:
                 yield d["machineName"], int(d["majorVersion"]), int(d["minorVersion"])
 
-    def localized_semantics(self, lang):
-        """semantics.json with defaults (and labels) taken from language/<lang>.json + harness overrides."""
-        if lang not in self._localized:
+    def localized_semantics(self, lang, labels=True):
+        """semantics.json with defaults (and labels) taken from language/<lang>.json + harness overrides.
+
+        labels=False keeps the English labels/descriptions of semantics.json: upstream translations are
+        sometimes stale (a label translated for another field), which misleads a reader of the specs.
+        """
+        key = (lang, labels)
+        if key not in self._localized:
             sem = copy.deepcopy(self.semantics)
+            _patch(sem, FIELD_PATCHES.get(self.machine, {}))
             tr = self.language(lang)
             if tr:
-                _overlay(sem, tr)
+                _overlay(sem, tr, labels)
             overrides = load_overrides(lang).get(self.machine, {})
             if overrides:
                 _apply_overrides(sem, overrides)
-            self._localized[lang] = sem
-        return self._localized[lang]
+            self._localized[key] = sem
+        return self._localized[key]
 
 
-def _overlay(fields, tr_fields):
-    """language/xx.json mirrors semantics.json by position: copy translated defaults and labels."""
+def _patch(fields, patches):
+    if not patches:
+        return
+    for f in fields:
+        if isinstance(f, dict):
+            f.update(patches.get(f.get("name"), {}))
+            if f.get("type") == "group":
+                _patch(f.get("fields", []), patches)
+            elif f.get("type") == "list" and isinstance(f.get("field"), dict):
+                _patch([f["field"]], patches)
+
+
+def _overlay(fields, tr_fields, labels=True):
+    """language/xx.json mirrors semantics.json by position: copy translated defaults (and labels)."""
     if not isinstance(tr_fields, list):
         return
     for f, t in zip(fields, tr_fields):
         if not isinstance(t, dict) or not isinstance(f, dict):
             continue
-        for k in ("label", "description", "entity", "placeholder"):
+        for k in ("label", "description", "entity", "placeholder") if labels else ("entity",):
             if k in t and isinstance(t[k], str) and "\ufffd" not in t[k]:
                 f[k] = t[k]
         if "default" in t and _same_kind(f, t["default"]):
             f["default"] = t["default"]
-        if "options" in t and isinstance(t["options"], list) and isinstance(f.get("options"), list):
+        if labels and "options" in t and isinstance(t["options"], list) and isinstance(f.get("options"), list):
             for fo, to in zip(f["options"], t["options"]):
                 if isinstance(fo, dict) and isinstance(to, dict) and "label" in to:
                     fo["label"] = to["label"]
         if f.get("type") == "group" and "fields" in t:
-            _overlay(f.get("fields", []), t["fields"])
+            _overlay(f.get("fields", []), t["fields"], labels)
         if f.get("type") == "list" and isinstance(t.get("field"), dict):
-            _overlay([f["field"]], [t["field"]])
+            _overlay([f["field"]], [t["field"]], labels)
 
 
 def _same_kind(field, value):

@@ -18,7 +18,6 @@
     },
     {
       "label": "Onartutako erantzunak",
-      "entity": "answer",
       "field": {
         "label": "Onartutako erantzuna"
       }

@@ -8,7 +8,7 @@ Consigne, puis les images **dans l'ordre correct**, une par ligne `- ![descripti
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
 - taskDescription : texte, défaut Faites glisser les images pou… — Task Description (A guide telling the user how to solve this task.)
 - altTaskDescription : texte, défaut Remettez la liste suivante da… — Alternate Task Description (A guide intended for visually impaired users on how to solve this task.)

@@ -4,11 +4,11 @@ H5P.DocumentationTool 1.8 · alias : outil-documentation, documentationtool, doc
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- taskDescription : texte, défaut Outil de documentation — En-tête (Titre de l'outil de documentation.)
-- pagesList* : liste (min 1) — Eléments
-  chaque élément = sous-contenu, library: page-standard | goalspage | goalsassessmentpage | documentexportpage — Type de Page (Bibliothèque pour cette page.)
+- taskDescription : texte, défaut Outil de documentation — Heading (Title for the documentation tool.)
+- pagesList* : liste (min 1) — Elements
+  chaque élément = sous-contenu, library: page-standard | goalspage | goalsassessmentpage | documentexportpage — Page type (Library for this slide.)
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : i10n.
 

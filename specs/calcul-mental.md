@@ -4,14 +4,14 @@ H5P.ArithmeticQuiz 1.1 · alias : calcul-mental, arithmeticquiz, arithmetic-quiz
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- intro : texte — Introduction (Le texte d'introduction (maximum 100 caractères))
-- quizType : choix arithmetic|linearEquation, défaut arithmetic — Type du quiz
-- arithmeticType : choix addition|subtraction|multiplication|division, défaut addition, conditionnel — Type d'opération
-- equationType : choix basic|intermediate|advanced, défaut intermediate, conditionnel — Type d'équation
-- useFractions : booléen, défaut false, conditionnel — Activer les fractions (Aurotiser les fractions dans les équations.)
-- maxQuestions : nombre, min 2, max 100, défaut 20 — Nombre maximum de questions
+- intro : texte — Intro (The intro text (maximum 100 characters))
+- quizType : choix arithmetic|linearEquation, défaut arithmetic — Quiz type
+- arithmeticType : choix addition|subtraction|multiplication|division, défaut addition, si quizType = arithmetic — Arithmetic type
+- equationType : choix basic|intermediate|advanced, défaut intermediate, si quizType = linearEquation — Equation type
+- useFractions : booléen, défaut false, si quizType = linearEquation — Enable fractions (Enable to allow fractions in equations.)
+- maxQuestions : nombre, min 2, max 100, défaut 20 — Max number of questions
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : UI.
 

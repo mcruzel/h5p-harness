@@ -20,21 +20,21 @@ Choisis l'affirmation correcte dans chaque série.
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- intro : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul), défaut Choisissez l'affirmation exac… — Texte d'introduction (Il sera affiché au-dessus de l'activité Résumé.)
-- summaries* : liste (min 1, max 100) — Résumé
+- intro : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul), défaut Choisissez l'affirmation exac… — Introduction text (Will be displayed above the summary task.)
+- summaries* : liste (min 1, max 100) — Summary
   chaque élément :
-    - summary* : liste (min 2) — Liste des affirmations pour le résumé - la première affirmation de la…
-      chaque élément = texte riche (Markdown) — affirmation
-    - tip : groupe — Indice (groupe à un champ: écrire directement la valeur)
-      - tip : texte riche (Markdown: code em strong) — Indice
-- overallFeedback : groupe — Feedback général (groupe à un champ: écrire directement la valeur)
-  - overallFeedback : liste (min 1) — Définissez le feedback pour chaque intervalle de score (Cliquez sur "Ajouter Intervalle" pour ajouter autant d'intervalles de score que vous le souhaitez. Exemple : …)
+    - summary* : liste (min 2) — List of statements for the summary - the first statement is correct.
+      chaque élément = texte riche (Markdown) — Statement
+    - tip : groupe — Tip (groupe à un champ: écrire directement la valeur)
+      - tip : texte riche (Markdown: code em strong) — Tip text
+- overallFeedback : groupe — Overall Feedback (groupe à un champ: écrire directement la valeur)
+  - overallFeedback : liste (min 1) — Define custom feedback for any score range (Click the "Add range" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!)
     chaque élément :
-      - from : nombre, min 0, max 100, défaut 0 — Intervalle de score
+      - from : nombre, min 0, max 100, défaut 0 — Score Range
       - to : nombre, min 0, max 100, défaut 100
-      - feedback : texte — Feedback pour l'intervalle de score défini
+      - feedback : texte — Feedback for defined score range
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : solvedLabel, scoreLabel, resultLabel, labelCorrect, labelIncorrect, alternativeIncorrectLabel, labelCorrectAnswers, tipButtonLabel, scoreBarLabel, progressText.
 

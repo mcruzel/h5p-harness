@@ -4,7 +4,7 @@ H5P.InteractiveVideo 1.28 · alias : video-interactive, interactivevideo, intera
 
 ## Syntaxe Markdown
 
-Une ligne `![titre](vidéo)` (fichier MP4/WebM, URL, ou lien YouTube/Vimeo), une courte description facultative, puis une section par moment de la vidéo : `## <temps> <type>` avec le temps en `m:ss` (ou secondes). Types : questions (`qcm`, `vf: faux`, `trous`, `glisser-mots`, `marquer-mots`, `choix-unique`, `resume`…) affichées en carte et mettant la vidéo en pause ; `texte` (bouton d'information, sans pause) ; `signet: Titre` (chapitre) ; `fin: Titre` (écran de fin). Positions et durées fines : bloc ```yaml (`interactiveVideo.assets.interactions[n]`).
+Une ligne `![titre](vidéo)` (fichier MP4/WebM, URL, ou lien YouTube/Vimeo), une courte description facultative, puis une section par moment de la vidéo : `## <temps> <type>` avec le temps en `m:ss` (ou secondes). Types : questions (`qcm`, `vf: faux`, `trous`, `glisser-mots`, `marquer-mots`, `choix-unique`, `resume`…) affichées en carte et mettant la vidéo en pause ; `texte` (bouton d'information, sans pause) ; `signet: Titre` (chapitre) ; `fin: Titre` (écran de fin). Une interaction reste affichée 10 s, ou jusqu'à l'apparition de la suivante. Positions et durées fines : bloc ```yaml (`interactiveVideo.assets.interactions[n]` : temps en secondes ou `m:ss`, x/y en % de la vidéo, width/height en em, facultatifs). Un bloc ```yaml peut aussi compléter le raccourci (ex. `summary`).
 
 ```markdown
 ![La photosynthèse](videos/photosynthese.mp4)
@@ -23,56 +23,57 @@ Quel gaz est rejeté ?
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- interactiveVideo : groupe — Éditeur de vidéo interactive
-  - video : groupe — Téléverser / intégrer une vidéo
-    - files : vidéo (URL YouTube/Vimeo, chemin ou URL) — Ajouter une vidéo (Cliquez ci-dessous pour ajouter une vidéo que vous souhaitez utiliser dans votre vidéo interactive. Vous pouv…)
-    - startScreenOptions : groupe — Options de l'écran de démarrage (cette option n'est pas disponible po…
-      - title : texte, défaut Vidéo interactive — Titre de la vidéo interactive (Utilisé dans les résumés, statistiques, etc.)
-      - hideStartTitle : booléen, défaut false — Cacher le titre sur l'écran de lancement de la vidéo
-      - shortStartDescription : texte — Courte description (Optionnel. Afficher une courte description sur l'écran de lancement de la vidéo. Cette option n'est pas dispo…)
-      - poster : image (chemin ou URL) — Image à la une (Optionnel. Cette image est affichée avant que l'utilisateur ne lance la vidéo. Cette option n'est pas disponi…)
-    - textTracks : groupe — Pistes de textes (ne fonctionne pas avec les vidéos YouTube)
-      - videoTrack : liste (min 0) — Pistes de textes disponibles
+- interactiveVideo : groupe — Interactive Video Editor
+  - video : groupe — Upload/embed video
+    - files : vidéo (URL YouTube/Vimeo, chemin ou URL) — Add a video (Click below to add a video you wish to use in your interactive video. You can add a video link or upload video files. It is possible to add several versions of the video with different qualities. To ensure maximum suppo…)
+    - startScreenOptions : groupe — Start screen options (unsupported for YouTube videos)
+      - title : texte, défaut Vidéo interactive — The title of this interactive video (Used in summaries, statistics etc.)
+      - hideStartTitle : booléen, défaut false — Hide title on video start screen
+      - shortStartDescription : texte — Short description (Optional) (Optional. Display a short description text on the video start screen. Does not work for YouTube videos.)
+      - poster : image (chemin ou URL) — Poster image (Image displayed before the user launches the video. Does not work for YouTube Videos.)
+    - textTracks : groupe — Text tracks (unsupported for YouTube videos)
+      - videoTrack : liste (min 0) — Available text tracks
         chaque élément :
-          - label : texte, défaut Sous-titres — Intitulé de la piste (Utilisé si vous proposez plusieurs pistes et que l'utilisateur doit choisir une piste. Par exemple, 'sous-tit…)
-          - kind : choix subtitles|captions|descriptions, défaut subtitles — Type de texte
-          - srcLang : texte, défaut en — Langue source, obligatoire pour les sous-titres (Doit correspondre à la balise de langue BCP 47. Si "Sous-titres" est un type de texte sélectionné, il est ind…)
-          - track : fichier (chemin ou URL) — Source de texte (fichier WebVTT)
-      - defaultTrackLabel : texte — Texte par défaut de la première piste (Si elle est vide ou qu'elle ne correspond à aucune piste de texte existante, cette première piste sera utilis…)
-  - assets : groupe — Ajouter des activités
+          - label : texte, défaut Sous-titres — Track label (Used if you offer multiple tracks and the user has to choose a track. For instance 'Spanish subtitles' could be the label of a Spanish subtitle track.)
+          - kind : choix subtitles|captions|descriptions, défaut subtitles — Type of text track
+          - srcLang : texte, défaut en — Source language, must be defined for subtitles (Must be a valid BCP 47 language tag. If 'Subtitles' is the type of text track selected, the source language of the track must be defined.)
+          - track : fichier (chemin ou URL) — Track source (WebVTT file)
+      - defaultTrackLabel : texte — Default text track (If left empty or not matching any of the text tracks the first text track will be used as the default.)
+  - assets : groupe — Add interactions
     - interactions : liste
       chaque élément :
-        - duration : groupe — Plage d'apparition
+        - duration : groupe — Display time
           - from* : nombre
           - to* : nombre
-        - pause : booléen — Mettre la vidéo sur pause
-        - displayType : choix button|poster, défaut button — Afficher sous forme de (Bouton : l'utilisateur doit appuyer dessus pour faire apparaître l'activité. Cadre : l'activité est affichée …)
-        - buttonOnMobile : booléen, défaut false — Devient Bouton sur de petits écrans
-        - label : texte riche (Markdown) — Étiquette (L'étiquette est affichée à côté de l'icône d'interaction.)
+        - pause : booléen — Pause video
+        - displayType : choix button|poster, défaut button — Display as (Button is a collapsed interaction the user must press to open. Poster is an expanded interaction displayed directly on top of the video)
+        - buttonOnMobile : booléen, défaut false — Turn into button on small screens
+        - label : texte riche (Markdown) — Label (Label displayed next to interaction icon.)
+        - x, y, width, height : nombre, facultatif — x, y en % de la vidéo ; width, height en em ; défaut : carte centrée (poster) ou bouton au centre
         - action* : sous-contenu, library: nil | texte-simple | tableau | lien | image | resume | choix-unique | qcm | vf | trous | glisser-deposer | marquer-mots | glisser-mots | aller-a-question | zone-video | questionnaire | question-libre | choix-images
-        - adaptivity : groupe — Adaptativité
-          - correct : groupe — Action sur une bonne réponse
-            - seekTo* : nombre — Aller vers (Veuillez saisir le temps au format M:SS)
-            - allowOptOut : booléen — Autoriser l'utilisateur à se retirer et continuer
+        - adaptivity : groupe — Adaptivity
+          - correct : groupe — Action on all correct
+            - seekTo* : nombre — Seek to (Enter timecode in the format M:SS)
+            - allowOptOut : booléen — Allow the user to opt out and continue
             - message* : texte riche (Markdown: a code del em s strong) — Message
-            - seekLabel* : texte — Étiquette pour le bouton "Aller vers"
-          - wrong : groupe — Action sur mauvaise réponse
-            - seekTo* : nombre — Aller vers (Veuillez saisir le temps au format M:SS)
-            - allowOptOut : booléen — Autoriser l'utilisateur à se retirer et continuer
+            - seekLabel* : texte — Label for seek button
+          - wrong : groupe — Action on wrong
+            - seekTo* : nombre — Seek to (Enter timecode in the format M:SS)
+            - allowOptOut : booléen — Allow the user to opt out and continue
             - message* : texte riche (Markdown: a code del em s strong) — Message
-            - seekLabel* : texte — Étiquette pour le bouton "Aller vers"
-          - requireCompletion : booléen — Exiger la complétude de la tâche avant d'avancer (Pour un meilleur fonctionnement cette option doit être utilisée avec l'option "Désactiver le saut en avant da…)
-        - visuals : réglages — Images
+            - seekLabel* : texte — Label for seek button
+          - requireCompletion : booléen — Require full score for task before proceeding (For best functionality this option should be used in conjunction with the "Disable navigation forward in a video" option of Interactive Video.)
+        - visuals : réglages — Visuals
           backgroundColor=rgb(255, 255, 255), boxShadow=true
-        - goto : groupe — Au clic, aller vers
-          - type : choix timecode|url — Type de média
-          - time : nombre — Aller à (Le moment de vidéo où l'utilisateur va arriver en cliquant le bouton "Hotspot". Veuillez saisir le temps au f…)
+        - goto : groupe — Go to on click
+          - type : choix timecode|url — Type
+          - time : nombre — Go To (The target time the user will be taken to upon pressing the hotspot. Enter timecode in the format M:SS.)
           - url : groupe — URL
-            - protocol : choix http://|https://|/|other, défaut http:// — Protocole
+            - protocol : choix http://|https://|/|other, défaut http:// — Protocol
             - url : texte — URL
-          - visualize : booléen — Aperçu (Pour montrer que l'interaction est cliquable, ajouter une bordure et une icône.)
+          - visualize : booléen — Visualize (Show that interaction can be clicked by adding a border and an icon)
     - bookmarks : liste
       chaque élément :
         - time* : nombre
@@ -81,20 +82,20 @@ Quel gaz est rejeté ?
       chaque élément :
         - time* : nombre
         - label* : texte
-  - summary : groupe — Récapitulatif
+  - summary : groupe — Summary task
     - task : sous-contenu, library: resume, défaut {'library': 'H5P.Summary 1.10…
-    - displayAt : nombre, défaut 3 — Afficher à (Nombre de secondes avant la fin de la vidéo.)
-- override : groupe — Options générales
-  - startVideoAt : nombre — Démarrer la vidéo à (Veuillez saisir le temps au format M:SS)
-  - autoplay : booléen, défaut false — Démarrage automatique (Démarrer la vidéo automatiquement)
-  - loop : booléen, défaut false — Vidéo en boucle (Cochez cette case pour que la vidéo tourne en boucle)
+    - displayAt : nombre, défaut 3 — Display at (Number of seconds before the video ends.)
+- override : groupe — Behavioural settings
+  - startVideoAt : nombre — Start video at (Enter timecode in the format M:SS)
+  - autoplay : booléen, défaut false — Auto-play video (Start playing the video automatically)
+  - loop : booléen, défaut false — Loop the video (Check if video should run in a loop)
   - hasNoAutoPause : booléen, défaut false — Deactivate auto-pause (Prevents video from pausing automatically if video gets hidden.)
-  - showSolutionButton : choix on|off — Cacher le bouton "Voir la solution" (Cette option détermine si le bouton "Voir la solution" sera affiché ou masqué pour toutes les questions, ou c…)
-  - retryButton* : choix on|off — Cacher le bouton "Recommencer" (Cette option détermine si le bouton "Recommencer" sera affiché ou masqué pour toutes les questions, ou config…)
-  - showBookmarksmenuOnLoad : booléen, défaut false — Démarrer avec le menu des Signets ouvert (Cette fonction n'est pas disponible sur iPad si la vidéo source est hébergée sur Youtube)
-  - showRewind10 : booléen, défaut false — Afficher le bouton pour revenir en arrière de 10 secondes
-  - preventSkippingMode : choix none|forward|both, défaut none — Désactiver la navigation (Cette option désactive la navigation de l’utilisateur dans la vidéo.)
-  - deactivateSound : booléen, défaut false — Désactiver le son (Cette option désactive le son de la vidéo.)
+  - showSolutionButton : choix on|off — Override "Show Solution" button (This option determines if the "Show Solution" button will be shown for all questions, disabled for all or configured for each question individually.)
+  - retryButton* : choix on|off — Override "Retry" button (This option determines if the "Retry" button will be shown for all questions, disabled for all or configured for each question individually.)
+  - showBookmarksmenuOnLoad : booléen, défaut false — Start with bookmarks menu open (This function is not available on iPad when using YouTube as video source.)
+  - showRewind10 : booléen, défaut false — Show button for rewinding 10 seconds
+  - preventSkippingMode : choix none|forward|both, défaut none — Disable navigation (These options will disable user video navigation as specified.)
+  - deactivateSound : booléen, défaut false — Deactivate sound (Enabling this option will deactivate the video's sound and prevent it from being switched on.)
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n.
 
@@ -109,62 +110,31 @@ title: Les états de l'eau – vidéo interactive
 language: fr
 preset: entrainement
 ---
+![Les états de l'eau](../media/clip.webm)
+Regarde la vidéo et réponds aux questions.
+
+## 0:00 signet: Introduction
+
+## 0:00 texte
+L'eau existe sous trois états : **solide**, **liquide** et **gazeux**.
+
+## 0:01 signet: Questions
+
+## 0:01 qcm
+À quelle température l'eau pure bout-elle (au niveau de la mer) ?
+- [x] 100 °C
+- [ ] 0 °C
+  > Non : 0 °C est la température de fusion de la glace.
+- [ ] 50 °C
+
+## 0:02 vf
+La glace est de l'eau à l'état solide.
+- [x] Vrai
+- [ ] Faux
+
 ```yaml
+# ce que le raccourci ne couvre pas s'ajoute dans un bloc yaml (fusionné avec le Markdown)
 interactiveVideo:
-  video:
-    files: ../media/clip.webm
-    startScreenOptions:
-      title: Les états de l'eau
-      shortStartDescription: Regarde la vidéo et réponds aux questions.
-  assets:
-    bookmarks:
-      - time: 0
-        label: Introduction
-      - time: 1
-        label: Question
-    # temps en secondes ; x, y en % de la vidéo ; width, height en em (sinon : coin bas-gauche)
-    interactions:
-      - duration: {from: 0, to: 1}
-        x: 3
-        y: 5
-        width: 12
-        height: 6
-        pause: false
-        displayType: poster
-        label: Rappel
-        action:
-          library: texte-simple
-          text: "L'eau existe sous trois états : **solide**, **liquide** et **gazeux**."
-      - duration: {from: 1, to: 2}
-        x: 3
-        y: 5
-        width: 20
-        height: 17
-        pause: true
-        displayType: poster
-        action:
-          library: qcm
-          md: |
-            À quelle température l'eau pure bout-elle (au niveau de la mer) ?
-            - [x] 100 °C
-            - [ ] 0 °C
-              > Non : 0 °C est la température de fusion de la glace.
-            - [ ] 50 °C
-        adaptivity:
-          correct: {seekTo: 2, message: "**Bravo !** Tu peux continuer.", seekLabel: Continuer}
-          wrong: {seekTo: 0, message: Revois le début de la vidéo., seekLabel: Revoir la vidéo}
-      - duration: {from: 1, to: 2}
-        x: 80
-        y: 10
-        pause: false
-        displayType: button
-        label: Vrai ou faux ?
-        action:
-          library: vf
-          md: |
-            La glace est de l'eau à l'état solide.
-            - [x] Vrai
-            - [ ] Faux
   summary:
     displayAt: 1
     task:
@@ -176,3 +146,5 @@ interactiveVideo:
         - [ ] La vapeur d'eau est de l'eau à l'état liquide.
 ```
 ````
+
+Même activité entièrement en YAML (positions explicites) : `tests/examples/video-interactive.yaml.md`.

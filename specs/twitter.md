@@ -2,13 +2,15 @@
 
 H5P.TwitterUserFeed 1.0 · alias : twitter, twitteruserfeed, twitter-user-feed · syntaxe Markdown simplifiée : non (bloc ```yaml)
 
+> **Attention — type obsolète : X (Twitter) a fermé l'intégration des fils, le contenu n'affichera qu'un message d'obsolescence (en anglais).** À ne pas utiliser pour une nouvelle activité.
+
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- userName* : texte — Nom d'utilisateur sur Twitter (Nom qui est affiché lors de vos tweets)
-- showReplies : booléen — Montrer les réponses
-- numTweets : nombre, min 1, max 20, défaut 5 — Nombre de tweets
+- userName* : texte — Username on Twitter (The username we'll be fetching tweets from)
+- showReplies : booléen — Show replies
+- numTweets : nombre, min 1, max 20, défaut 5 — Number of tweets
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 

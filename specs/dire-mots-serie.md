@@ -4,22 +4,22 @@ H5P.SpeakTheWordsSet 1.3 · alias : dire-mots-serie, speakthewordsset, speak-the
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
 - introduction : groupe — Introduction
-  - showIntroPage : booléen, défaut false — Montrer l'introduction
-  - introductionImage : image (chemin ou URL), conditionnel — Image d'introduction
-  - introductionImageAltText : texte, conditionnel — Texte alternatif pour l'image d'introduction
-  - introductionTitle : texte, conditionnel — Titre
-  - introductionText : texte riche (Markdown: code em strong sub sup), conditionnel — Texte d'introduction (Ce texte apparaît en-dessous du titre.)
+  - showIntroPage : booléen, défaut false — Display introduction
+  - introductionImage : image (chemin ou URL), si showIntroPage = True — Introduction image
+  - introductionImageAltText : texte, si showIntroPage = True — Alternative text for introduction image
+  - introductionTitle : texte, si showIntroPage = True — Title
+  - introductionText : texte riche (Markdown: code em strong sub sup), si showIntroPage = True — Introduction text (This title will be displayed above the introduction text.)
 - questions* : liste (min 1) — Questions
   chaque élément = sous-contenu, library: dire-mots — Question
-- overallFeedback : groupe — Feedback global (groupe à un champ: écrire directement la valeur)
-  - overallFeedback : liste (min 1) — Définissez le feedback pour chaque intervalle de score (Cliquez sur le bouton "Ajouter Intervalle" pour ajouter autant d'intervalles que vous le souhaitez. Exemple :…)
+- overallFeedback : groupe — Overall Feedback (groupe à un champ: écrire directement la valeur)
+  - overallFeedback : liste (min 1) — Define custom feedback for any score range (Click the "Add range" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!)
     chaque élément :
-      - from : nombre, min 0, max 100, défaut 0 — Intervalle de score
+      - from : nombre, min 0, max 100, défaut 0 — Score Range
       - to : nombre, min 0, max 100, défaut 100
-      - feedback : texte — Feedback une intervalle de score
+      - feedback : texte — Feedback for defined score range
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n.
 

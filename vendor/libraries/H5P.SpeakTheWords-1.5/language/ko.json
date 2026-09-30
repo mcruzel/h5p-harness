@@ -18,7 +18,6 @@
     },
     {
       "label": "정확한 답변",
-      "entity": "answer",
       "field": {
         "label": "정확한 답변"
       }

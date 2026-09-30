@@ -47,10 +47,14 @@ La photosynthèse produit du {{dioxygène|oxygène}} et du {{glucose::un sucre}}
 ```
 
 Le format est décrit dans [`specs/README.md`](specs/README.md) ; chaque type a sa fiche dans
-`specs/` (générée depuis les schémas officiels, libellés en français). Deux écritures, combinables :
-une **syntaxe Markdown simplifiée** (34 types, dont présentation, vidéo interactive et glisser-déposer
-avec mise en page automatique) et un **bloc YAML** qui donne accès à tous les champs de **tous** les
-types (60 types de contenu + sous-contenus).
+`specs/` (générée depuis les schémas officiels : champs, valeurs par défaut en français, points
+d'attention et un **exemple complet validé** pour chacun des 61 types). Deux écritures, combinables :
+une **syntaxe Markdown simplifiée** (36 types, dont présentation, vidéo interactive, glisser-déposer
+et scénario, avec mise en page automatique) et un **bloc YAML** qui donne accès à tous les champs de
+**tous** les types (61 types de contenu + sous-contenus). En YAML aussi, le harnais complète ce que
+l'éditeur H5P aurait calculé : positions absentes (diapos, glisser-déposer, vidéo, carte de jeu),
+enchaînements d'un scénario, identifiants et chemins d'une carte, motifs des marqueurs de réalité
+augmentée.
 
 ### Contrat de sortie (pensé pour les agents)
 
@@ -80,16 +84,19 @@ agents ; il ne charge qu'une description courte tant qu'il ne sert pas.
   qui ont déjà les bonnes versions et une limite de dépôt faible.
 - **Réseau des élèves** : la frise (`frise`) charge jQuery et des polices depuis les serveurs de
   Google à l'affichage (comportement de la bibliothèque officielle TimelineJS).
+- **Réalité augmentée** (`chasse-ar`) : les marqueurs à imprimer se téléchargent dans l'éditeur H5P
+  de Moodle (en modifiant l'activité) ; `twitter` est obsolète (X a fermé l'intégration).
 
 ## Où sont les paquets ? (poids de l'historique git)
 
 Les `.h5p` ne sont **pas** versionnés : un paquet complet pèse 1 à 5 Mo, git compresse mal les zip,
 et chaque régénération alourdirait définitivement l'historique. Comme la construction est
 **reproductible** (même source ⇒ même paquet à l'octet près), seules les sources sont versionnées :
-`--publish` pousse le `.md` et ses médias, puis la CI (`.github/workflows/h5p.yml`) reconstruit,
-valide avec le cœur PHP officiel d'H5P et attache les paquets à la release GitHub
-**`h5p-<branche>`** (onglet *Releases* du dépôt ; aussi en artefact de workflow 30 jours). Le paquet
-est aussi disponible immédiatement en local dans `dist/`.
+`--publish` pousse le `.md` et ses médias ; un workflow GitHub volontairement minimal
+(`.github/workflows/h5p.yml` : déclenché seulement par un changement dans `sources/`, sans tests,
+désactivable avec la variable de dépôt `H5P_RELEASES=off`) reconstruit les paquets et les attache à
+la release **`h5p-<branche>`** (onglet *Releases*). Le paquet est aussi disponible immédiatement en
+local dans `dist/`.
 
 ## Médias
 
@@ -107,10 +114,11 @@ Vidéos : lien YouTube/Vimeo conservé tel quel, ou fichier MP4/WebM.
    autorisées champ par champ (H5P les supprimerait en silence), syntaxes des trous, règles propres
    aux types (au moins une bonne réponse, mots croisés constructibles, indices de zones…) ;
 2. contrôle structurel du paquet (liste blanche de fichiers, dépendances) ;
-3. en CI : **validateur officiel `h5p-php-library`** (le code qu'embarque Moodle), en droits
-   gestionnaire et enseignant, et vérification que le filtre d'affichage ne modifie rien ;
-4. en local : `python tools/qa.py dist/ --render` joue aussi chaque paquet dans Chromium
-   (h5p-standalone) et signale toute erreur JavaScript.
+3. `python tools/qa.py dist/` : **validateur officiel `h5p-php-library`** (le code qu'embarque
+   Moodle), en droits gestionnaire et enseignant, et vérification que le filtre d'affichage ne
+   modifie rien ; avec `--render`, chaque paquet est aussi joué dans Chromium (h5p-standalone) et
+   toute erreur JavaScript est signalée. Ces contrôles tournent en local ; sur GitHub, seulement à la
+   demande (workflow manuel « Tests du harnais »), pour ne pas consommer de minutes d'Actions.
 
 ## Maintenance
 
@@ -122,10 +130,13 @@ Vidéos : lien YouTube/Vimeo conservé tel quel, ou fichier MP4/WebM.
 | contrôle complet | `python tools/qa.py dist/ --render` |
 | ajouter des lignes aux commits de `--publish` | variable `H5P_COMMIT_TRAILERS` (ex. `Co-Authored-By: …`) |
 
-Les bibliothèques (`vendor/libraries`, 171 bibliothèques pour 60 types, 54 Mo) viennent des dépôts
+Les bibliothèques (`vendor/libraries`, 172 bibliothèques pour 61 types, 55 Mo) viennent des dépôts
 GitHub listés par le registre officiel `h5p-cli` (`vendor/registry.json`, corrections dans
-`vendor/registry-extra.json`), compilées si nécessaire. Le Hub H5P (`api.h5p.org`) serait la source
-canonique mais il était inaccessible depuis l'environnement de développement.
+`vendor/registry-extra.json`), compilées si nécessaire. Pour chaque dépôt, la branche `release` (ce
+que publie le Hub H5P, donc ce qu'installe Moodle) est préférée à la branche de développement quand
+elle est tenue à jour ; `vendor/libraries.lock.json` enregistre dépôt, branche et commit de chacune.
+Le Hub H5P (`api.h5p.org`) serait la source canonique mais il était inaccessible depuis
+l'environnement de développement.
 
 ## Arborescence
 

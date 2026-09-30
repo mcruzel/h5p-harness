@@ -18,7 +18,6 @@
     },
     {
       "label": "Hyväksytyt vastaukset",
-      "entity": "answer",
       "field": {
         "label": "Hyväksytty vastaus"
       }

@@ -1,0 +1,2 @@
+- `width` et `height` en **px** (ex. `800px`, `600px`) : H5P en déduit le rapport hauteur/largeur ; un % déforme le cadre (le harnais le refuse).
+- La page intégrée doit accepter l'intégration (beaucoup de sites l'interdisent par X-Frame-Options/CSP) et être en `https://` (Moodle est en HTTPS).

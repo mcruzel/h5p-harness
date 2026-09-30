@@ -19,20 +19,20 @@ Une section `## question` par question, avec exactement une réponse `[x]` (l'or
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- choices* : liste (min 1) — Liste des questions
+- choices* : liste (min 1) — List of questions
   chaque élément :
     - question* : texte riche (Markdown: code em strong) — Question
-    - answers* : liste (min 2, max 4) — Réponses possibles - la première de la liste est celle qui est juste.
-      chaque élément = texte riche (Markdown: code em strong) — Réponse possible
-- overallFeedback : groupe — Opacité des étiquettes (groupe à un champ: écrire directement la valeur)
-  - overallFeedback : liste (min 1) — Définissez le feedback pour chaque intervalle de score (Cliquez le bouton "Ajouter Intervalle" pour ajouter autant d'intervalles que vous le souhaitez. Exemple : 0-2…)
+    - answers* : liste (min 2, max 4) — Alternatives - first alternative is the correct one.
+      chaque élément = texte riche (Markdown: code em strong) — Alternative
+- overallFeedback : groupe — Overall Feedback (groupe à un champ: écrire directement la valeur)
+  - overallFeedback : liste (min 1) — Define custom feedback for any score range (Click the "Add range" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!)
     chaque élément :
-      - from : nombre, min 0, max 100, défaut 0 — Intervalle de score
+      - from : nombre, min 0, max 100, défaut 0 — Score Range
       - to : nombre, min 0, max 100, défaut 100
-      - feedback : texte — Feedback pour l'intervalle de score défini
-- behaviour : réglages — Paramètres comportementaux
+      - feedback : texte — Feedback for defined score range
+- behaviour : réglages — Behavioural settings
   autoContinue=true, timeoutCorrect=2000, timeoutWrong=3000, soundEffectsEnabled=true, enableRetry=true, enableSolutionsButton=true, passPercentage=100
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n.

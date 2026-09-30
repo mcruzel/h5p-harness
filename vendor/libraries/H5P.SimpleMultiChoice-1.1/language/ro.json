@@ -1,24 +1,24 @@
 {
   "semantics": [
     {
-      "label": "Întrebare"
+      "label": "Question"
     },
     {
-      "label": "Tip răspuns multiplu",
+      "label": "Multiple choice type",
       "options": [
         {
-          "label": "Răspunsuri multiple"
+          "label": "Multiple answers"
         },
         {
-          "label": "Un singur răspuns"
+          "label": "Single answer"
         }
       ]
     },
     {
-      "label": "Alternative de răspuns",
-      "entity": "Alternativă",
+      "label": "Answer alternatives",
+      "entity": "Alternative",
       "field": {
-        "label": "Alternativă",
+        "label": "Alternative",
         "fields": [
           {
             "label": "Text"
@@ -27,12 +27,12 @@
             "label": "Feedback",
             "fields": [
               {
-                "label": "Mesaj afișat dacă răspunsul este selectat",
-                "description": "Mesajul va apărea sub răspuns la apăsarea butonului „continuă” dacă acest răspuns este selectat."
+                "label": "Message displayed if answer is selected",
+                "description": "Message will appear below the answer on \"continue\" if this answer is selected."
               },
               {
-                "label": "Mesaj afișat dacă răspunsul nu este selectat",
-                "description": "Mesajul va apărea sub răspuns la apăsarea butonului „continuă” dacă acest răspuns nu este selectat."
+                "label": "Message displayed if answer is not selected",
+                "description": "Message will appear below the answer on \"continue\" if this answer is not selected."
               }
             ]
           }

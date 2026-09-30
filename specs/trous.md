@@ -16,21 +16,21 @@ L'ADN se trouve dans le {{noyau}}.
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- media : groupe — Média
-  - type : sous-contenu, library: image | video | audio — Type (Média à afficher au-dessus de la question (facultatif).)
-  - disableImageZooming : booléen, défaut false, conditionnel — Désactiver l'agrandissement de l'image
-- text : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul), défaut Complétez les mots manquants — Description de la tâche (Un guide expliquant à l'utilisateur comment répondre à cette tâche.)
-- questions* : liste (min 1, max 31) — Blocs de texte
-  chaque élément = texte riche (Markdown: code del em s strong u) — Ligne de texte
-- overallFeedback : groupe — Retour général (groupe à un champ: écrire directement la valeur)
-  - overallFeedback : liste (min 1) — Définissez des feedbacks pour différents intervalles de scores (Cliquez sur le bouton "Ajouter Intervalle" pour ajouter autant d'intervalles de score que vous souhaitez. Exe…)
+- media : groupe — Media
+  - type : sous-contenu, library: image | video | audio — Type (Optional media to display above the question.)
+  - disableImageZooming : booléen, défaut false, si type = H5P.Image — Disable image zooming
+- text : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul), défaut Complétez les mots manquants — Task description (A guide telling the user how to answer this task.)
+- questions* : liste (min 1, max 31) — Text blocks
+  chaque élément = texte riche (Markdown: code del em s strong u) — Line of text
+- overallFeedback : groupe — Overall Feedback (groupe à un champ: écrire directement la valeur)
+  - overallFeedback : liste (min 1) — Define custom feedback for any score range (Click the "Add range" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!)
     chaque élément :
-      - from : nombre, min 0, max 100, défaut 0 — Fourchette de score
+      - from : nombre, min 0, max 100, défaut 0 — Score Range
       - to : nombre, min 0, max 100, défaut 100
-      - feedback : texte — Retour pour cet intervalle de score
-- behaviour : réglages — Options générales (Ces options vous permettent de paramétrer le déroulement de l'exercice.)
+      - feedback : texte — Feedback for defined score range
+- behaviour : réglages — Behavioural settings. (These options will let you control how the task behaves.)
   enableRetry=true, allowRetryIfCorrect=false, enableSolutionsButton=true, autoCheck=false, caseSensitive=true, showSolutionsRequiresInput=true, separateLines=false, confirmCheckDialog=false, confirmRetryDialog=false, acceptSpellingErrors=false
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : showSolutions, tryAgain, checkAnswer, submitAnswer, notFilledOut, answerIsCorrect, answerIsWrong, answeredCorrectly, answeredIncorrectly, solutionLabel, inputLabel, inputHasTipLabel, tipLabel, confirmCheck, confirmRetry, scoreBarLabel, a11yCheck, a11yShowSolution, a11yRetry, a11yCheckingModeHeader.

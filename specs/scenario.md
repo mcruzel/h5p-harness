@@ -8,6 +8,8 @@ Nœuds **nommés** (plus d'indices à gérer). `# Titre` et sous-titre (+ image 
 - nœud de contenu `## identifiant` : texte Markdown, **ou** une image/vidéo `![…](…)`, **ou** un bloc `::: type` … `:::` ; ligne `→ identifiant` pour la suite (par défaut : le nœud suivant), `→ fin` ou `→ fin: Titre de fin (score)` pour terminer ;
 - nœud question `## identifiant ? Question posée` : choix `- texte → identifiant` (ou `→ fin: …`), retour facultatif en ligne indentée `> …`.
 
+En YAML, `nextContentId` est l'indice du contenu suivant dans `content` (0 = premier, -1 = écran de fin) ; absent, c'est le contenu suivant.
+
 ```markdown
 # Accident au labo de chimie
 Fais les bons choix pour la sécurité de tous.
@@ -32,36 +34,38 @@ On ne touche jamais un produit chimique à mains nues.
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- branchingScenario : groupe — Éditeur de scénario
-  - title* : texte — Titre
-  - startScreen : groupe — Écran de départ
-    - startScreenTitle : texte riche (Markdown: a code del em s strong) — Titre de l’écran d'accueil
-    - startScreenSubtitle : texte riche (Markdown: a code del em s strong) — Sous-titre de l’écran d'accueil
-    - startScreenImage : image (chemin ou URL) — Image de l’écran d'accueil
-    - startScreenAltText : texte — Texte alternatif pour l'image
-  - endScreens : liste — Liste des écrans de fin
+- branchingScenario : groupe — Branching Scenario Editor
+  - title* : texte — Title
+  - startScreen : groupe — Start screen
+    - startScreenTitle : texte riche (Markdown: a code del em s strong) — Course Title
+    - startScreenSubtitle : texte riche (Markdown: a code del em s strong) — Course Details
+    - startScreenImage : image (chemin ou URL) — Course image
+    - startScreenAltText : texte — Image alternative text
+  - endScreens : liste — List of end screens
     chaque élément :
-      - endScreenTitle : texte riche (Markdown: a code del em s strong) — Titre
-      - endScreenSubtitle : texte riche (Markdown: a code del em s strong) — Texte
+      - endScreenTitle : texte riche (Markdown: a code del em s strong) — Title
+      - endScreenSubtitle : texte riche (Markdown: a code del em s strong) — Text
       - endScreenImage : image (chemin ou URL) — Image
-      - endScreenScore : nombre, défaut 0 — Score (Le score sera envoyé à tout LMS, LRS ou tout autre service qui reçoit des résultats depuis H5P pour des utili…)
-  - content* : liste (min 1) — Liste de contenus de scénario de branchement
+      - endScreenScore : nombre, défaut 0 — Score (The score will be sent to any LMS, LRS or any other connected service that receives scores from H5P for users who reach the default end scenario.)
+      - contentId : nombre, facultatif — laisser -1 (défaut)
+  - content* : liste (min 1) — List of branching scenario content
     chaque élément :
       - type* : sous-contenu, library: question-embranchement | presentation | texte | image | image-interactive | video-interactive | video
-      - showContentTitle : booléen — Voir le titre du contenu dans la vue (Si sélectionné, l'utilisateur verra le titre du contenu dans la barre supérieure en haut de ce contenu)
+      - showContentTitle : booléen — Show content title in view (If selected, the user will see the content title in the top bar above this content.)
       - proceedButtonText : texte, défaut Continuer — Text for the proceed button (max length: 50 characters)
-      - forceContentFinished : choix useBehavioural|enabled|disabled, défaut useBehavioural — Identifiant de contenu suivant (les écrans de fin sont définis par de… (Contourner les options personnelles exigeant la complétion du contenu avant d’activer le bouton « Continuer »…)
+      - forceContentFinished : choix useBehavioural|enabled|disabled, défaut useBehavioural — Override require content finished (Override the individual settings for requiring the content to be finished before activating the "Proceed" button. Will not have any effect if the content doesn't indicate if it was "finished", e.g. images or course pres…)
+      - nextContentId : nombre, facultatif — indice du contenu suivant dans `content` (0 = premier), -1 = écran de fin ; défaut : le contenu suivant (-1 pour le dernier)
       - feedback : groupe — Feedback
         - title : texte riche (Markdown: a code del em s strong) — Feedback title
         - subtitle : texte riche (Markdown: a code del em s strong) — Feedback text
         - image : image (chemin ou URL) — Feedback image
-        - endScreenScore : nombre — Score for this scenario (The score will be sent to any LMS, LRS or any other connected service that receives scores from H5P for users…)
-      - contentBehaviour : choix useBehavioural|enabled|disabled, défaut useBehavioural — Navigate back (This will allow the user to go back and see the previous content/question in the scenario.)
-  - scoringOptionGroup : réglages — Options de notation
+        - endScreenScore : nombre — Score for this scenario (The score will be sent to any LMS, LRS or any other connected service that receives scores from H5P for users who reach this scenario)
+      - contentBehaviour : choix useBehavioural|enabled|disabled, défaut useBehavioural — Navigate back (This will allow user to go back and see the previous content/question in the scenario.)
+  - scoringOptionGroup : réglages — Scoring options
     scoringOption=no-score (static-end-score|dynamic-scor…, includeInteractionsScores=true
-  - behaviour : réglages — Options comportementales
+  - behaviour : réglages — Behavioural settings
     enableBackwardsNavigation=false, forceContentFinished=false, randomizeBranchingQuestions=false
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n.
@@ -70,62 +74,34 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 Fichier `tests/examples/scenario.md` (médias dans `tests/media/`).
 
-````markdown
+```markdown
 ---
 type: scenario
 title: Accident au labo de chimie – scénario
 language: fr
 ---
-```yaml
-branchingScenario:
-  title: Accident au labo de chimie
-  startScreen:
-    startScreenTitle: Accident au labo de chimie
-    startScreenSubtitle: Fais les bons choix pour garder tout le monde en sécurité.
-    startScreenImage: ../media/paysage.jpg
-    startScreenAltText: Illustration
-  endScreens:
-    - endScreenTitle: Fin du scénario
-      endScreenSubtitle: Retiens les **règles de sécurité** au laboratoire.
-      endScreenScore: 0
-      contentId: -1
-  content:
-    # 1 (id 0)
-    - type:
-        library: texte
-        text: |
-          ## La situation
-          En TP de chimie, ton voisin renverse un flacon d'**acide chlorhydrique dilué**
-          sur la paillasse. Quelques gouttes tombent sur sa blouse.
-      nextContentId: 1
-    # 2 (id 1)
-    - type:
-        library: question-embranchement
-        branchingQuestion:
-          question: Que fais-tu **en premier** ?
-          alternatives:
-            - text: Je préviens immédiatement le professeur.
-              nextContentId: 2
-              feedback:
-                title: Bon réflexe !
-            - text: J'essuie tout de suite avec mon mouchoir.
-              nextContentId: 3
-    # 3 (id 2)
-    - type:
-        library: image
-        file: ../media/etoile-orange.png
-        alt: Une étoile orange, symbole de réussite
-      nextContentId: -1
-      feedback:
-        title: Bravo
-        subtitle: Le professeur sécurise la zone et fait rincer la blouse à l'eau.
-    # 4 (id 3)
-    - type:
-        library: texte
-        text: |
-          ## Mauvaise idée !
-          On ne touche **jamais** un produit chimique à mains nues.
-          Il faut d'abord prévenir l'adulte responsable.
-      nextContentId: 1
+# Accident au labo de chimie
+Fais les bons choix pour garder tout le monde en sécurité.
+![Illustration](../media/paysage.jpg)
+
+## situation
+**La situation.** En TP de chimie, ton voisin renverse un flacon d'**acide chlorhydrique dilué**
+sur la paillasse. Quelques gouttes tombent sur sa blouse.
+→ choix
+
+## choix ? Que fais-tu en premier ?
+- Je préviens immédiatement le professeur. → bravo
+  > Bon réflexe !
+- J'essuie tout de suite avec mon mouchoir. → erreur
+
+## bravo
+![Une étoile orange, symbole de réussite](../media/etoile-orange.png)
+→ fin: Bravo, le professeur sécurise la zone et fait rincer la blouse. (10)
+
+## erreur
+**Mauvaise idée !** On ne touche **jamais** un produit chimique à mains nues.
+Il faut d'abord prévenir l'adulte responsable.
+→ choix
 ```
-````
+
+Même activité entièrement en YAML (positions explicites) : `tests/examples/scenario.yaml.md`.

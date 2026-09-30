@@ -4,17 +4,17 @@ H5P.Questionnaire 1.3 · alias : questionnaire · syntaxe Markdown simplifiée :
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- questionnaireElements* : liste (min 1) — Eléments du questionnaire
+- questionnaireElements* : liste (min 1) — Questionnaire elements
   chaque élément :
-    - library* : sous-contenu, library: question-ouverte | choix-simple — Bibliothèque (Choisir une bibliothèque)
-    - requiredField : booléen, défaut false — Champ requis
-- successScreenOptions : groupe — Ecran en cas de réussite
-  - enableSuccessScreen : booléen, défaut true — Activer l'écran
-  - successScreenImage : groupe — Ajouter une image à l'écran (groupe à un champ: écrire directement la valeur)
-    - successScreenImage : sous-contenu, library: image — Rempacez l'icône de la réussite avec une image
-  - successMessage : texte, défaut Vous avez terminé le question… — Texte affiché à l'envoi des réponses
+    - library* : sous-contenu, library: question-ouverte | choix-simple — Library (Choose a library)
+    - requiredField : booléen, défaut false — Required field
+- successScreenOptions : groupe — Success screen options
+  - enableSuccessScreen : booléen, défaut true — Enable success screen
+  - successScreenImage : groupe — Add success screen image (groupe à un champ: écrire directement la valeur)
+    - successScreenImage : sous-contenu, library: image — Replace success icon with image
+  - successMessage : texte, défaut Vous avez terminé le question… — Text to display on submit
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : uiElements.
 

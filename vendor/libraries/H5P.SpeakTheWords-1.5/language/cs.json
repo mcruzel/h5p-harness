@@ -18,7 +18,6 @@
     },
     {
       "label": "Přijaté odpovědi",
-      "entity": "answer",
       "field": {
         "label": "Přijaté odpovědi"
       }

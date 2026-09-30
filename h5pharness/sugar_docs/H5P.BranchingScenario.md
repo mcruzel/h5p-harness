@@ -2,6 +2,8 @@ Nœuds **nommés** (plus d'indices à gérer). `# Titre` et sous-titre (+ image 
 - nœud de contenu `## identifiant` : texte Markdown, **ou** une image/vidéo `![…](…)`, **ou** un bloc `::: type` … `:::` ; ligne `→ identifiant` pour la suite (par défaut : le nœud suivant), `→ fin` ou `→ fin: Titre de fin (score)` pour terminer ;
 - nœud question `## identifiant ? Question posée` : choix `- texte → identifiant` (ou `→ fin: …`), retour facultatif en ligne indentée `> …`.
 
+En YAML, `nextContentId` est l'indice du contenu suivant dans `content` (0 = premier, -1 = écran de fin) ; absent, c'est le contenu suivant.
+
 ```markdown
 # Accident au labo de chimie
 Fais les bons choix pour la sécurité de tous.

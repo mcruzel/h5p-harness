@@ -8,6 +8,7 @@ Inside a container, content is a flow of blocks:
 """
 import yaml
 
+from ..document import load_yaml
 from . import adapter, parse_sugar
 from .common import DIRECTIVE, IMAGE, join, lines_of, media_library, split_headings
 
@@ -53,7 +54,7 @@ def parse_blocks(numbered, s):
                 continue
             if rest.lower() == "yaml":
                 try:
-                    params = yaml.safe_load(join(inner)) or {}
+                    params = load_yaml(join(inner)) or {}
                 except yaml.YAMLError as e:
                     s.error(ln, f"YAML invalide dans le bloc ({getattr(e, 'problem', e)})")
                     params = {}

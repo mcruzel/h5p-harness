@@ -58,9 +58,9 @@ def global_playwright():
 
 
 def php_check(pkg, mode):
-    res = subprocess.run(["php", str(ROOT / "tools" / "official_validator.php"), str(pkg),
-                          str(ROOT / "vendor" / "libraries"), str(ensure_core()), mode],
-                         capture_output=True, text=True, timeout=300)
+    libs = os.environ.get("H5P_LIBRARIES", str(ROOT / "vendor" / "libraries"))
+    res = subprocess.run(["php", str(ROOT / "tools" / "official_validator.php"), str(pkg), libs,
+                          str(ensure_core()), mode], capture_output=True, text=True, timeout=300)
     try:
         return json.loads(res.stdout)
     except json.JSONDecodeError:

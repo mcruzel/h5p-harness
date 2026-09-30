@@ -8,15 +8,15 @@ Consigne, puis une paire par ligne : `- ![a](image1) = ![b](image2)` (ou `- ![a]
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
 - taskDescription : texte, défaut Faites glisser les images de … — Task Description (A guide telling the user how to solve this task.)
 - cards* : liste (min 2, max 100) — Cards
   chaque élément :
     - image : image (chemin ou URL) — Image
-    - imageAlt* : texte — Alternative text for Image (Describe what can be seen in the photo. The text is read by text-to-speech tools needed by visually impaired …)
+    - imageAlt* : texte — Alternative text for Image (Describe what can be seen in the photo. The text is read by text-to-speech tools needed by visually impaired users.)
     - match : image (chemin ou URL) — Matching Image (An optional image to match against instead of using two cards with the same image.)
-    - matchAlt : texte — Alternative text for Matching Image (Describe what can be seen in the photo. The text is read by text-to-speech tools needed by visually impaired …)
+    - matchAlt : texte — Alternative text for Matching Image (Describe what can be seen in the photo. The text is read by text-to-speech tools needed by visually impaired users.)
 - behaviour : réglages — Behavioural settings (These options will let you control how the game behaves.)
   allowRetry=true
 

@@ -1,0 +1,3 @@
+- Une image par marqueur (`markerImage`) : carrée, contrastée, **différente pour chaque marqueur**. Le harnais en calcule le motif ARToolKit (`markerPattern`) exactement comme l'éditeur H5P : ne pas le fournir.
+- Les marqueurs à imprimer (image entourée d'un cadre noir) se téléchargent dans l'éditeur H5P de Moodle (bouton sous chaque marqueur, en modifiant l'activité).
+- L'élève doit autoriser la caméra (page en HTTPS) ; sans caméra, le lecteur affiche « Impossible d'accéder à la caméra ».

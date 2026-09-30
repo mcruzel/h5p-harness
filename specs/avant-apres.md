@@ -8,16 +8,16 @@ Consigne facultative, puis deux lignes d'image : `![Avant](image1)` puis `![Apr�
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- taskDescription : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul) — Consigne (Put the heading/instructions you'd like to show above the before/after image here.)
-- imageBefore : groupe — Première image
-  - imageBefore* : sous-contenu, library: image — Première image (La première image. Assurez-vous qu'elle a les mêmes dimensions que la deuxième image.)
-  - labelBefore : texte — Label pour la première image (Label à afficher au dessus de la première image.)
-- imageAfter : groupe — Deuxième image
-  - imageAfter* : sous-contenu, library: image — Deuxième image (La deuxième image. Assurez-vous qu'elle a les mêmes dimensions que la première image.)
-  - labelAfter : texte — Label pour la deuxième image (Label à afficher au dessus de la deuxième image.)
-- behavior : réglages — Paramètres de comportement (Position de démarrage du curseur en %)
+- taskDescription : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul) — Task description (Put the heading/instructions you'd like to show above the before/after image here.)
+- imageBefore : groupe — First image
+  - imageBefore* : sous-contenu, library: image — First image (The first image. Please make sure that it has the same size as the second image.)
+  - labelBefore : texte — Label for first image (Label to put over first image)
+- imageAfter : groupe — Second image
+  - imageAfter* : sous-contenu, library: image — Second image (The second image. Please make sure that it has the same size as the first image.)
+  - labelAfter : texte — Label for second image (Label to put over second image)
+- behavior : réglages — Behavioral settings (These options will let you set some details)
   startingPosition=50, sliderOrientation=horizontal (horizontal|vertical), sliderColor=#f3f3f3
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : a11y.

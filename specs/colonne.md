@@ -31,12 +31,12 @@ Quel gaz est absorbé ?
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- content* : liste (min 1) — Liste des contenus empilés
+- content* : liste (min 1) — List of Column Content
   chaque élément :
-    - content* : sous-contenu, library: accordeon | agamotto | audio | enregistreur-audio | trous | graphique | collage | presentation | cartes | outil-documentation | glisser-deposer | glisser-mots | redaction | devinette | tableau | texte | iframe | image | image-interactive | trouver-zone | carrousel | video-interactive | lien | marquer-mots | memory | qcm | questionnaire | quiz | row | choix-unique | resume | frise | vf | video | choix-images — Contenu
-    - useSeparator : choix auto|disabled|enabled, défaut auto — Séparer le contenu avec un délimiteur horizontal
+    - content* : sous-contenu, library: accordeon | agamotto | audio | enregistreur-audio | trous | graphique | collage | presentation | cartes | outil-documentation | glisser-deposer | glisser-mots | redaction | devinette | tableau | texte | iframe | image | image-interactive | trouver-zone | carrousel | video-interactive | lien | marquer-mots | memory | qcm | questionnaire | quiz | row | choix-unique | resume | frise | vf | video | choix-images — Content
+    - useSeparator : choix auto|disabled|enabled, défaut auto — Separate content with a horizontal ruler
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 

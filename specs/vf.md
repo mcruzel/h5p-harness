@@ -16,21 +16,21 @@ La mitochondrie contient de la chlorophylle.
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- media : groupe — Média
-  - type : sous-contenu, library: image | video | audio — Type (Média à afficher au-dessus de la question (facultatif).)
-  - disableImageZooming : booléen, défaut false, conditionnel — Désactiver la possibilité d'agrandir l'image
+- media : groupe — Media
+  - type : sous-contenu, library: image | video | audio — Type (Optional media to display above the question.)
+  - disableImageZooming : booléen, défaut false, si type = H5P.Image — Disable image zooming
 - question* : texte riche (Markdown: code em h2 h3 pre strong sub sup) — Question
-- correct : choix true|false, défaut true — Bonne réponse
-- behaviour : groupe — Options générales (Ces options vous permettent de paramétrer le déroulement de l'exercice.)
-  - enableRetry : booléen, défaut true — Activer le bouton "Recommencer"
-  - enableSolutionsButton : booléen, défaut true — Activer le bouton "Voir la solution"
-  - confirmCheckDialog : booléen, défaut false — Afficher la fenêtre de confirmation pour "Vérifier"
-  - confirmRetryDialog : booléen, défaut false — Afficher la fenêtre de confirmation pour "Recommencer"
-  - autoCheck : booléen, défaut false — Vérifier automatiquement la réponse cochée (Noter que l'accessibilité sera pénalisée si cette option est activée)
-  - feedbackOnCorrect : texte — Commentaire pour une réponse correcte (Ceci remplacera le commentaire par défaut. Variables disponibles: @score et @total)
-  - feedbackOnWrong : texte — Commentaire pour une mauvaise réponse (Ceci remplacera le commentaire par défaut. Variables disponibles: @score et @total)
+- correct : choix true|false, défaut true — Correct answer
+- behaviour : groupe — Behavioural settings (These options will let you control how the task behaves.)
+  - enableRetry : booléen, défaut true — Enable "Retry" button
+  - enableSolutionsButton : booléen, défaut true — Enable "Show Solution" button
+  - confirmCheckDialog : booléen, défaut false — Show confirmation dialog on "Check"
+  - confirmRetryDialog : booléen, défaut false — Show confirmation dialog on "Retry"
+  - autoCheck : booléen, défaut false — Automatically check answer (Note that accessibility will suffer if enabling this option)
+  - feedbackOnCorrect : texte — Feedback on correct answer (This will override the default feedback text. Variables available: @score and @total)
+  - feedbackOnWrong : texte — Feedback on wrong answer (This will override the default feedback text. Variables available: @score and @total)
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n, confirmCheck, confirmRetry.
 

@@ -4,31 +4,31 @@ H5P.AdventCalendar 0.4 · alias : calendrier-avent, adventcalendar, advent-calen
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- modeDoorImage : choix manual|automatic, défaut automatic — Mode for door images (Select whether you want to set each custom door image yourself or let H5P do the work for you based on the ca…)
+- modeDoorImage : choix manual|automatic, défaut automatic — Mode for door images (Select whether you want to set each custom door image yourself or let H5P do the work for you based on the calendar background image set in the behavioural settings.)
 - doors* : liste (min 24, max 24) — Doors
   chaque élément :
     - type* : choix audio|image|link|text|video — Content type (Content type that shoud optionally pop up when the door is opened.)
-    - audio : audio (chemin ou URL), conditionnel — Audio
-    - image : sous-contenu, library: image, conditionnel — Image
-    - link : sous-contenu, library: lien, conditionnel — Link
-    - text : sous-contenu, library: texte, conditionnel — Text
-    - video : vidéo (URL YouTube/Vimeo, chemin ou URL), conditionnel — Video
-    - autoplay : booléen, défaut false, conditionnel — Autoplay
-    - doorCover : image (chemin ou URL), conditionnel — Door image (Image that will be used for the door. Needs to have a size ratio of 1:1 if you want the left half fit the rig…)
+    - audio : audio (chemin ou URL), si type = audio — Audio
+    - image : sous-contenu, library: image, si type = image — Image
+    - link : sous-contenu, library: lien, si type = link — Link
+    - text : sous-contenu, library: texte, si type = text — Text
+    - video : vidéo (URL YouTube/Vimeo, chemin ou URL), si type = video — Video
+    - autoplay : booléen, défaut false, si type = audio et type = video — Autoplay
+    - doorCover : image (chemin ou URL), si modeDoorImage = manual — Door image (Image that will be used for the door. Needs to have a size ratio of 1:1 if you want the left half fit the right half.)
     - previewImage : image (chemin ou URL) — Background image (Image that should appear inside the door. Will be the door's number by default.)
 - visuals : groupe — Visual settings (These options will let you configure the visual appearance.)
   - backgroundImage : image (chemin ou URL) — Calendar background image
-  - doorImageTemplate : image (chemin ou URL), conditionnel — Door image template (If an image is set, it will be used for every door unless a specific door image is set for a single door.)
+  - doorImageTemplate : image (chemin ou URL), si modeDoorImage = manual — Door image template (If an image is set, it will be used for every door unless a specific door image is set for a single door.)
   - hideDoorBorder : booléen, défaut false — Hide door border
   - hideNumbers : booléen, défaut false — Hide door numbers
   - hideDoorKnobs : booléen, défaut false — Hide door knobs
   - hideDoorFrame : booléen, défaut false — Hide door frame
-  - snow : booléen, défaut false — Let it snow (Will add some snow falling in front of the calendar. It never rains in Southern California, it never snows on…)
+  - snow : booléen, défaut false — Let it snow (Will add some snow falling in front of the calendar. It never rains in Southern California, it never snows on IE11.)
 - audio : groupe — Audio settings (These options will let you configure the audio appearance.)
   - backgroundMusic : audio (chemin ou URL) — Background music
-  - autoplay : booléen, défaut false — Autoplay background music (If set, the background music will play automatically once the content is opened. Please note: Some browsers' …)
+  - autoplay : booléen, défaut false — Autoplay background music (If set, the background music will play automatically once the content is opened. Please note: Some browsers' media policy may prevent autoplay.)
 - behaviour : réglages — Behavioural settings (These options will let you override behaviour settings.)
   modeDoorPlacement=dynamic (fixed|dynamic), doorPlacementRatio=6x4 (6x4|4x6), randomize=false, keepImageOrder=false, designMode=true
 

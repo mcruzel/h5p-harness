@@ -1,133 +1,133 @@
 {
   "semantics": [
     {
-      "label": "Bevezető",
-      "description": "Bevezető szöveg (maximum 100 karakter)"
+      "label": "Intro",
+      "description": "The intro text (maximum 100 characters)"
     },
     {
-      "label": "Kvíz típus",
+      "label": "Quiz type",
       "options": [
         {
-          "label": "Alapműveletek kvíz"
+          "label": "Arithmetic Operations Quiz"
         },
         {
-          "label": "Lineáris egyenletek kvíz"
+          "label": "Linear Equations Quiz"
         }
       ]
     },
     {
-      "label": "Művelet típusa",
+      "label": "Arithmetic type",
       "options": [
         {
-          "label": "Összeadás"
+          "label": "Addition"
         },
         {
-          "label": "Kivonás"
+          "label": "Subtraction"
         },
         {
-          "label": "Szorzás"
+          "label": "Multiplication"
         },
         {
-          "label": "Osztás"
+          "label": "Division"
         }
       ]
     },
     {
-      "label": "Egyenlet fajtája",
+      "label": "Equation type",
       "options": [
         {
-          "label": "Alapszint [ 3x = 12 ]"
+          "label": "Basic [ 3x = 12 ]"
         },
         {
-          "label": "Középszint [ 4x - 3 = 13 ]"
+          "label": "Intermediate [ 4x - 3 = 13 ]"
         },
         {
-          "label": "Haladó [ 5x + 3 = 3x + 15 ]"
+          "label": "Advanced [ 5x + 3 = 3x + 15 ]"
         }
       ]
     },
     {
-      "label": "Törtek engedélyezése",
-      "description": "Lehetnek törtek az egyenletekben."
+      "label": "Enable fractions",
+      "description": "Enable to allow fractions in equations."
     },
     {
-      "label": "Kérdések maximális száma"
+      "label": "Max number of questions"
     },
     {
-      "label": "Felhasználói felület fordításai",
+      "label": "User interface translations",
       "fields": [
         {
-          "label": "Pontozás a kvíz során",
-          "default": "Pontszám:"
+          "label": "Scoring during quiz",
+          "default": "Score:"
         },
         {
-          "label": "Idő",
-          "default": "Idő: @time"
+          "label": "Time",
+          "default": "Time: @time"
         },
         {
-          "label": "Eredménykijelzés felirata",
-          "default": "Vége!"
+          "label": "Result page header",
+          "default": "Finished!"
         },
         {
-          "label": "Rajt felirat",
-          "default": "RAJT!"
+          "label": "Go label",
+          "default": "GO!"
         },
         {
-          "label": "Start gomb felirata",
+          "label": "Start button label",
           "default": "Start"
         },
         {
-          "label": "Újra gomb címkéje",
-          "default": "Újra próbálkozás"
+          "label": "Retry button label",
+          "default": "Retry"
         },
         {
-          "label": "Szövegfelolvasás helyes válasz esetén",
-          "default": "Helyes"
+          "label": "Readspeaker text for correct answer",
+          "default": "Correct"
         },
         {
-          "label": "Szövegfelolvasás helytelen válasz esetén",
-          "default": "Helytelen. A helyes válasz a(z) :num lett volna"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect. Correct answer was :num"
         },
         {
-          "label": "Szövegfelolvasó cimke az időjelzőhöz",
-          "default": "Időtartam órákban, percekben és másodpercekben."
+          "label": "Readspeaker label for the timer",
+          "default": "Duration in hours, minutes and seconds."
         },
         {
-          "label": "Szövegfelolvasó szöveg a kérdéshez",
-          "default": "Mennyi :arithmetic eredménye?"
+          "label": "Readspeaker text for question",
+          "default": "What does :arithmetic equal?"
         },
         {
-          "label": "Szövegfelolasó szöveg az egyenlet kérdéshez",
-          "default": ":equation egyenlet esetén mennyi a(z) :item eredménye?"
+          "label": "Readspeaker text for equation question",
+          "default": "For the equation :equation, what does :item equal?"
         },
         {
-          "label": "Szövegfelolvasó szöveg az egyenlet gyökéhez",
-          "default": "Mennyi a(z) :item eredménye?"
+          "label": "Readspeaker text for equation variable",
+          "default": "What does :item equal?"
         },
         {
-          "label": "Összeadásjel szövege",
-          "default": "plusz"
+          "label": "Plus operator text",
+          "default": "plus"
         },
         {
-          "label": "Kivonásjel szövege",
-          "default": "minusz"
+          "label": "Subtraction operator text",
+          "default": "minus"
         },
         {
-          "label": "Szorzásjel szövege",
-          "default": "szorozva"
+          "label": "Multiplication operator text",
+          "default": "times"
         },
         {
-          "label": "Osztásjel szövege",
-          "default": "osztva"
+          "label": "Division operator text",
+          "default": "divided by"
         },
         {
-          "label": "Egyenlőségjel szövege",
-          "default": "egyenlő"
+          "label": "Equality sign text",
+          "default": "equals"
         },
         {
-          "label": "Feladatszám szövege",
-          "description": "Bemondja az aktuális dia és az összes dia sorszámát, ahol a változók: :num (aktuális dia) és :total (összes dia)",
-          "default": "Aktuális dia :num Összes dia: :total"
+          "label": "Slide number text",
+          "description": "Announces current slide and total number of slides, variables are :num and :total",
+          "default": "Slide :num of :total"
         }
       ]
     }

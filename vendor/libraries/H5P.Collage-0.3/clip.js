@@ -8,8 +8,9 @@
    * @param {H5P.jQuery} $container
    * @param {Object} content
    * @param {number} contentId
+   * @param {H5P.Collage} parent
    */
-  Collage.Clip = function ($container, content, contentId) {
+  Collage.Clip = function ($container, content, contentId, parent) {
     var self = this;
 
     // Initialize event inheritance
@@ -26,6 +27,9 @@
 
     // Always available
     self.content = content;
+
+    // Instance of H5P.Collage
+    self.parent = parent;
 
     // Keep track of image has been positioned
     let isPositioned = false;
@@ -63,21 +67,31 @@
     };
     /**
      * Decode html
-     */ 
+     */
     self.decodeHTML = value => ($('<textarea/>').html(value).text());
 
     /**
      * Triggers the loading of the image.
      */
     self.load = function () {
-      // No image set, use placeholder only if H5PEditor is not defined. Else use empty class.
-      if (self.empty() && typeof H5PEditor === 'undefined') {
-        self.$wrapper[0].appendChild(H5P.Components.PlaceholderImg());
-        return;
-      } else if (self.empty()) {
+      if (self.empty()) {
         self.$wrapper.addClass('h5p-collage-empty');
-        return;
-      } else {
+
+        // Workaround to trigger an event when the image set as background
+        // via CSS finishes loading
+        if (
+          typeof self.parent?.getLibraryFilePath === 'function' &&
+          self.parent?.libraryInfo
+        ) {
+          const img = new Image();
+          img.src = self.parent.getLibraryFilePath('h5p.svg')
+          img.onload = () => {
+            self.trigger('loaded');
+          };
+        }
+        return; // No image set
+      }
+      else {
         self.$wrapper.removeClass('h5p-collage-empty');
       }
 
@@ -91,7 +105,14 @@
         on: {
           load: function () {
             // Make sure it's in the correct position
-            self.positionImage();
+            $(this).get(0).style.removeProperty('width');
+            $(this).get(0).style.removeProperty('height');
+            isPositioned = false;
+            requestAnimationFrame(() => {
+              self.positionImage();
+            });
+
+            self.trigger('loaded');
           }
         }
       });

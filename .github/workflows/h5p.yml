@@ -1,15 +1,12 @@
 name: Paquets H5P
 
+# Volontairement minimal (pas de tests ici : voir h5p-tests.yml, lancé à la main) :
+# ne tourne que lorsqu'une activité change dans sources/, reconstruit les paquets et les attache à la
+# release de la branche. Pour le désactiver : variable de dépôt H5P_RELEASES = off.
 on:
   push:
     paths:
       - "sources/**"
-      - "h5pharness/**"
-      - "vendor/**"
-      - "tools/**"
-      - "tests/**"
-      - "requirements*.txt"
-      - ".github/workflows/h5p.yml"
   workflow_dispatch:
 
 permissions:
@@ -21,8 +18,9 @@ concurrency:
 
 jobs:
   paquets:
+    if: vars.H5P_RELEASES != 'off'
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v6
 
@@ -32,36 +30,14 @@ jobs:
           cache: pip
 
       - name: Dépendances
-        run: pip install -r requirements-dev.txt
-
-      - name: Tests du harnais
-        run: python -m pytest
+        run: pip install -r requirements.txt
 
       - name: Construire les paquets (sources/)
         run: |
-          python -m h5pharness build sources/ --offline
+          python -m h5pharness build sources/ --offline -q
           python -m h5pharness build sources/ --offline --content-only -o dist-lite -q
 
-      - name: Validation officielle H5P (droits Moodle gestionnaire et enseignant)
-        run: |
-          if ! php -m 2>/dev/null | grep -qi '^zip$' || ! php -m | grep -qi '^mbstring$'; then
-            sudo apt-get update -qq && sudo apt-get install -y -qq php-cli php-zip php-mbstring
-          fi
-          python tools/qa.py dist/
-
-      - name: Valider un exemple de chaque type de contenu (tests/examples)
-        run: |
-          python -m h5pharness build tests/examples -o build-examples --offline -q
-          python tools/qa.py build-examples
-
       - name: Publier dans la release de la branche
-        if: github.event_name == 'push'
         env:
           GH_TOKEN: ${{ github.token }}
         run: python tools/release.py dist/ dist-lite/
-
-      - uses: actions/upload-artifact@v6
-        with:
-          name: paquets-h5p
-          path: dist/**/*.h5p
-          retention-days: 30

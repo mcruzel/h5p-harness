@@ -18,7 +18,6 @@
       },
       {
         "label": "Accepted answers",
-        "entity": "answer",
         "field": {
           "label": "Accepted answer"
         }

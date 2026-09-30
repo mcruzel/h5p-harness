@@ -4,10 +4,10 @@ H5P.CombinationLock 1.0 · alias : cadenas, combinationlock, combination-lock ·
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
 - introduction : texte riche (Markdown: a code col colgroup del em figcaption figure h1 h2 h3 h4 h5 h6 hr li ol pre s strong sub sup table tbody td tfoot th thead tr u ul), défaut  — Introduction (Optionally set some introduction.)
-- solution : texte, défaut 0123 — Solution (Enter the desired solution for the lock. Please note that using long solutions may be suboptimal on small dev…)
+- solution : texte, défaut 0123 — Solution (Enter the desired solution for the lock. Please note that using long solutions may be suboptimal on small devices.)
 - alphabet : texte, défaut 0123456789 — Symbols for each segment (Choose the symbols that each segment should bear. The symbols will appear in the order defined here.)
 - behaviour : réglages — Behavioural settings
   autoCheck=true, maxAttempts=…, enableRetry=true, enableSolutionsButton=true
@@ -34,7 +34,7 @@ introduction: |
   2. un carré ;
   3. un hexagone ;
   4. un octogone.
-# codes entre guillemets (non cité, 0472 serait lu comme un nombre octal : 314)
+# un code peut commencer par 0 (0472 reste « 0472 »)
 solution: "3468"
 alphabet: "0123456789"
 behaviour:

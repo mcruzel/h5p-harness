@@ -18,28 +18,28 @@ Elle produit l'énergie de la cellule.
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- image : image (chemin ou URL) — Image d'arrière-plan (Image affichée en arrière-plan.)
-- backgroundImageAltText : texte — Texte alternatif pour l'image d'arrière-plan (Si le navigateur ne peut pas charger l'image, ce texte sera affiché à la place. Également utilisé par les tec…)
+- image* : image (chemin ou URL) — Background image (Image shown on background.)
+- backgroundImageAltText : texte — Alternative text for background image (If the browser can't load the image this text will be displayed instead. Also used by assistive technologies.)
 - globalIconType : choix icon|image|numbers, défaut icon — Global hotspot Icon
-- globalIcon : choix plus|minus|times|check|question|info|exclamation, défaut plus, conditionnel — Predefined icon (Using a predefined icon for the hotspots.)
-- globalIconImage : image (chemin ou URL), conditionnel — Uploaded image (Use your own image for the hotspots icon. 75px by 75px is recommended for your image.)
-- globalColor : texte, défaut #981d99, conditionnel — Hotspot color (The color of the hotspots)
-- hotspots* : liste (min 1) — Puce cliquable
+- globalIcon : choix plus|minus|times|check|question|info|exclamation, défaut plus, si globalIconType = icon — Predefined icon (Using a predefined icon for the hotspots.)
+- globalIconImage : image (chemin ou URL), si globalIconType = image — Uploaded image (Use your own image for the hotspots icon. 75px by 75px is recommended for your image.)
+- globalColor : texte, défaut #981d99, si globalIconType = icon|numbers — Hotspot color (The color of the hotspots)
+- hotspots* : liste (min 1) — Hotspots
   chaque élément :
-    - position : groupe — Position de la puce cliquable (Cliquez sur la miniature pour positionner la puce cliquable.)
+    - position : groupe — Hotspot position (Click on the thumbnail image to place the hotspot)
       - x* : nombre
       - y* : nombre
       - legacyPositioning : booléen
     - hotspotIconType : choix default|icon|image, défaut default — Custom hotspot icon
-    - hotspotIcon : choix plus|minus|times|check|question|info|exclamation, défaut plus, conditionnel — Predefined icon (Using a predefined icon for the hotspot.)
-    - hotspotIconImage : image (chemin ou URL), conditionnel — Uploaded image (Use your own image for the hotspot icon. 75px by 75px is recommended for your image.)
-    - hotspotColor : texte, défaut #981d99, conditionnel — Hotspot color (The color of the hotspot)
-    - alwaysFullscreen : booléen — Recouvrir toute l'image d'arrière-plan (Quand l'utilisateur cliquera sur la puce cliquable, le popup recouvrira toute l'image d'arrière-plan.)
+    - hotspotIcon : choix plus|minus|times|check|question|info|exclamation, défaut plus, si hotspotIconType = icon — Predefined icon (Using a predefined icon for the hotspot.)
+    - hotspotIconImage : image (chemin ou URL), si hotspotIconType = image — Uploaded image (Use your own image for the hotspot icon. 75px by 75px is recommended for your image.)
+    - hotspotColor : texte, défaut #981d99, si hotspotIconType = icon — Hotspot color (The color of the hotspot)
+    - alwaysFullscreen : booléen — Cover entire background image (When the user clicks the hotspot the popup will cover the entire background image)
     - header : texte — Header (Optional header for the popup. This is used by assistive technologies.)
-    - content : liste — Contenu du popup
-      chaque élément = sous-contenu, library: texte-simple | video | image | audio — Type de contenu
+    - content : liste — Popup content
+      chaque élément = sous-contenu, library: texte-simple | video | image | audio — Content Item
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : untitledHotspotLabel, closeButtonLabel, containsAudioVideoLabel.
 

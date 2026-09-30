@@ -18,7 +18,6 @@
     },
     {
       "label": "Risposte accettate",
-      "entity": "answer",
       "field": {
         "label": "Risposta accettata"
       }

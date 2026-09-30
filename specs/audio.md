@@ -8,13 +8,13 @@ Une ou plusieurs lignes `![titre](fichier .mp3/.m4a/.ogg/.wav ou URL)`.
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- files : audio (chemin ou URL) — Fichiers sources
-- playerMode : choix minimalistic|full|transparent, défaut minimalistic — Mode d'affichage du lecteur (Selectionnez le mode d'affichage du lecteur.)
-- fitToWrapper : booléen, défaut false, conditionnel — Remplir le contenant
-- controls : booléen, défaut true, conditionnel — Activer les contrôles (Les contrôles permettent, par exemple, à l'utilisateur de mettre le son sur pause)
-- autoplay : booléen — Activer le démarrage automatique (Avec la lecture automatique, l'audio démarre immédiatement. Noter que cela n'est pas compatible avec tous les…)
+- files* : audio (chemin ou URL) — Source files
+- playerMode : choix minimalistic|full|transparent, défaut minimalistic — Player mode (Select the layout of the player.)
+- fitToWrapper : booléen, défaut false, si playerMode = minimalistic et playerMode = full — Fit to wrapper
+- controls : booléen, défaut true, si playerMode = full — Enable controls (Controls allow the user to for instance pause the audio)
+- autoplay : booléen — Enable autoplay (With autoplay the audio starts to play immediately. Do note that this is not supported by all browsers)
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : playAudio, pauseAudio, contentName, audioNotSupported.
 

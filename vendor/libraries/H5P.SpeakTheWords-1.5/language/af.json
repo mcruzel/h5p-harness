@@ -18,7 +18,6 @@
     },
     {
       "label": "Aanvaarde antwoorde",
-      "entity": "answer",
       "field": {
         "label": "Aanvaarde antwoord"
       }

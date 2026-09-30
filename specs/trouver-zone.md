@@ -9,26 +9,26 @@ H5P.ImageHotspotQuestion 1.8 · alias : trouver-zone, imagehotspotquestion, imag
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- imageHotspotQuestion : groupe — Editeur de questions de l'image interactive
-  - backgroundImageSettings : groupe — Image d'arrière-plan (groupe à un champ: écrire directement la valeur)
-    - backgroundImage : image (chemin ou URL) — Image d'arrière-plan (Sélectionner une image à utiliser comme fond pour la question de la zone réactive de l'image.)
-  - hotspotSettings : groupe — Zones sensibles (Sélectionnez la forme de votre choix pour votre zone sensible, redimensionnez-la en l'étirant et placez-la au…)
-    - taskDescription : texte — Consigne (Consigne pour l'utilisateur.)
-    - hotspot : liste — Zone sensible
+- imageHotspotQuestion : groupe — Image Hotspot Question Editor
+  - backgroundImageSettings : groupe — Background image (groupe à un champ: écrire directement la valeur)
+    - backgroundImage* : image (chemin ou URL) — Background image (Select an image to use as background for the image hotspot question.)
+  - hotspotSettings : groupe — Hotspots (Drag and drop the desired figure from the toolbar to create a new hotspot. Double-click to edit an existing hotspot. Drag the hotspot to move it. Pull the resize handler in the lower right corner to resize.)
+    - taskDescription : texte — Task description (Instructions to the user.)
+    - hotspot : liste — Hotspot
       chaque élément :
-        - userSettings : groupe — Réglages manuels
-          - correct : booléen — Correct (Il peut y avoir plusieurs zones sensibles à trouver. Toutefois, l'utilisateur est averti de la justesse ou no…)
-          - feedbackText : texte — Commentaire de retour
-        - computedSettings : groupe — Réglages calculés automatiquement
+        - userSettings : groupe — userSettings
+          - correct : booléen — Correct (There can be multiple correct hotspots. However, the user gets correct/incorrect feedback immediately after first click.)
+          - feedbackText : texte — Feedback
+        - computedSettings : groupe — computedSettings
           - x : nombre
           - y : nombre
           - width : nombre
           - height : nombre
           - figure : texte
-    - noneSelectedFeedback : texte — Commentaire si l'utilisateur sélectionne une zone vide :
-    - showFeedbackAsPopup : booléen, défaut true — Afficher un feedback sur la zone
+    - noneSelectedFeedback : texte — Feedback if the user selects an empty spot:
+    - showFeedbackAsPopup : booléen, défaut true — Show feedback as a popup
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n, scoreBarLabel, a11yRetry.
 

@@ -1,4 +1,4 @@
-var H5P = window.H5P = window.H5P || {};
+var H5P = H5P || {};
 
 /**
  * H5P audio module
@@ -211,7 +211,7 @@ H5P.Audio.prototype.attach = function ($wrapper) {
   audio.style.display = 'block';
 
   if (this.params.fitToWrapper === undefined || this.params.fitToWrapper) {
-    audio.classList.add('h5p-audio--fit-to-wrapper');
+    audio.style.width = '100%';
     if (!this.isRoot()) {
       // Only set height if this isn't a root
       audio.style.height = '100%';

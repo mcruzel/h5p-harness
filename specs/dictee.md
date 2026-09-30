@@ -14,25 +14,25 @@ Consigne, puis une phrase par ligne : `- ![](audio.mp3) Phrase attendue` (le son
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- media : groupe — Média
-  - type : sous-contenu, library: image | video | audio — Type (Média à afficher au-dessus de la question (facultatif).)
-  - disableImageZooming : booléen, défaut false, conditionnel — Désactiver le zoom sur les images
-- taskDescription* : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul) — Consigne (Décrivez votre tâche ici.)
-- sentences* : liste (min 1) — Phrases
+- media : groupe — Media
+  - type : sous-contenu, library: image | video | audio — Type (Optional media to display above the question.)
+  - disableImageZooming : booléen, défaut false, si type = H5P.Image — Disable image zooming
+- taskDescription* : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul) — Task description (Describe your task here.)
+- sentences* : liste (min 1) — Sentences
   chaque élément :
-    - description : texte — Description (Vous pouvez éventuellement placer une simple description au-dessus du champ de saisie de texte, utile par exe…)
-    - sample : audio (chemin ou URL) — Échantillon sonore (Phrase prononcée à vitesse normale)
-    - sampleAlternative : audio (chemin ou URL) — Échantillon sonore lent (Phrase prononcée à vitesse lente)
-    - text* : texte — Texte (Texte qui doit être écrit. Vous pouvez ajouter des orthographes alternatives à un mot en ajoutant une ligne v…)
-- overallFeedback : groupe — Feedback général (groupe à un champ: écrire directement la valeur)
-  - overallFeedback : liste (min 1) — Définissez le feedback pour chaque intervalle de score (Cliquez sur le bouton "Ajouter Intervalle" pour ajouter autant d'intervalles de score que vous souhaitez. Exe…)
+    - description : texte — Description (You can optionally put a simple description above the text input field, useful e.g. for dialogues.)
+    - sample* : audio (chemin ou URL) — Sound sample (Sentence spoken in normal speed)
+    - sampleAlternative : audio (chemin ou URL) — Sound sample slow (Sentence spoken in slow speed)
+    - text* : texte — Text (Text that should be written. You can add alternate spellings to a word by adding a vertical line (|) behind followed by an alternative.)
+- overallFeedback : groupe — Overall Feedback (groupe à un champ: écrire directement la valeur)
+  - overallFeedback : liste (min 1) — Define custom feedback for any score range (Click the "Add range" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!)
     chaque élément :
-      - from : nombre, min 0, max 100, défaut 0 — Intervalle de scores
+      - from : nombre, min 0, max 100, défaut 0 — Score Range
       - to : nombre, min 0, max 100, défaut 100
-      - feedback : texte — Feedback pour l'intervalle de score défini
-- behaviour : réglages — Paramètres de comportement (Ces options vous permettent de contrôler le déroulement de vos activités.)
+      - feedback : texte — Feedback for defined score range
+- behaviour : réglages — Behavioural settings (These options will let you control how the task behaves.)
   tries=…, triesAlternative=…, disablePause=false, playButtonDelay=…, shuffleSentences=never (never|once|onRetry), enableRetry=true, enableSolutionsButton=true, enableSolutionOnCheck=false
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n, a11y.

@@ -17,13 +17,13 @@ La cellule est l'unité du vivant.
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- panels* : liste (min 1, max 100) — Panneaux
+- panels* : liste (min 1, max 100) — Panels
   chaque élément :
-    - title* : texte — Titre
-    - content* : sous-contenu, library: texte — Type de contenu
-- hTag : choix h2|h3|h4, défaut h2 — Balise H pour les sections (ne modifie pas la taille du bloc de l'en-… (La balise H définit le titre de chaque section, qui est en H2 par défaut. Utiliser H3 si ce titre est imbriqu…)
+    - title* : texte — Title
+    - content* : sous-contenu, library: texte — Content type
+- hTag : choix h2|h3|h4, défaut h2 — H tags for labels (does not affect the size of the label) (The h tag used on the labels. Normally H2 but if this belongs under an H2 heading use H3. Does not affect the size of the labels, only used for semantical purposes.)
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 

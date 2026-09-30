@@ -9,20 +9,20 @@ H5P.Collage 0.3 · alias : collage · syntaxe Markdown simplifiée : non (bloc `
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- collage : groupe — Aperçu (Vous pouvez déplacer chaque image en la faisant glisser. Après avoir sélectionné une image, vous pouvez appuy…)
-  - template : choix 1|1-1|2|2-1|1-2|2-2|3-1|1-3|2-3|3-2|…, défaut 2-1 — Modèle
-  - options : réglages — Options d'affichage
+- collage : groupe — Preview (You can move(pan) the images around by dragging them. You can also select an image and then use the + or - keys on your keyboard to zoom or simply hold down the Z key while moving your mouse wheel.)
+  - template : choix 1|1-1|2|2-1|1-2|2-2|3-1|1-3|2-3|3-2|…, défaut 2-1 — Layout
+  - options : réglages — Display options
     heightRatio=0.75, spacing=0.5, frame=true
-  - clips* : liste (min 1) — Découpes
+  - clips* : liste (min 1) — Clips
     chaque élément :
       - image : image (chemin ou URL) — Image
-      - offset : réglages — Décalage (offset)
+      - offset : réglages — Offset
         top=0, left=0
       - alt* : texte — Alternative text (Required. If the browser can't load the image this text will be displayed instead. Also used by readspeakers.)
       - title : texte — Hover text (Optional. This text is displayed when the user hovers his pointing device over the image.)
-      - scale : nombre, min 0.01, défaut 1 — Echelle
+      - scale : nombre, min 0.01, défaut 1 — Scale
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 

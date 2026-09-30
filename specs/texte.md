@@ -8,6 +8,6 @@ Tout le corps est du Markdown : gras, italique, barré, liens, listes, titres `#
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- text* : texte riche (Markdown: a code del em h2 h3 hr li ol pre s strong ul) — Texte
+- text* : texte riche (Markdown: a code del em h2 h3 hr li ol pre s strong ul) — Text

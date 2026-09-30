@@ -426,7 +426,8 @@ def main():
     LOCK.write_text(json.dumps(dict(sorted(lock_data.items())), indent=1, ensure_ascii=False) + "\n")
     report = CACHE / "vendor-report.json"
     report.write_text(json.dumps(failures, indent=1, ensure_ascii=False))
-    log(f"\n{len(lock_data)} bibliothèques dans {OUT.relative_to(ROOT)}; {len(failures)} échec(s) -> {report}")
+    shown = OUT.relative_to(ROOT) if OUT.is_relative_to(ROOT) else OUT
+    log(f"\n{len(lock_data)} bibliothèques dans {shown}; {len(failures)} échec(s) -> {report}")
     for k, v in sorted(failures.items()):
         log(f"  - {k}: {v.splitlines()[0][:220]}")
     return 1 if failures else 0

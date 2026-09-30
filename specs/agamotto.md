@@ -8,16 +8,16 @@ H5P.Agamotto 1.7 · alias : agamotto · syntaxe Markdown simplifiée : oui
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- title : texte — Rubrique (La rubrique que vous souhaiteriez afficher au-dessus de l'image)
-- items* : liste (min 2, max 50) — Éléments
+- title : texte — Heading (The heading you'd like to show above the image)
+- items* : liste (min 2, max 50) — Items
   chaque élément :
     - image* : sous-contenu, library: image — Image
-    - labelText : texte — Vignette (Vignette facultative pour une coche. Assurez-vous qu'elle n'est pas trop longue, sinon elle sera cachée.)
-    - description : texte riche (Markdown: a code em h3 h4 li ol pre strong sub sup ul) — Description (Description facultative pour l’image)
-    - audio : audio (chemin ou URL) — Audio (Audio facultatif qui joue lorsqu'une image est affichée.)
-- behaviour : réglages — Paramètres comportementaux (Ces options vous permettront de contrôler le déroulement de la tâche.)
+    - labelText : texte — Label (Optional label for a tick. Please make sure it's not too long, or it will be hidden.)
+    - description : texte riche (Markdown: a code em h3 h4 li ol pre strong sub sup ul) — Description (Optional description for the image)
+    - audio : audio (chemin ou URL) — Audio (Optional audio that plays when an image is shown.)
+- behaviour : réglages — Behavioural settings (These options will let you control how the task behaves.)
   startImage=1, snap=true, ticks=false, labels=false, transparencyReplacementColor=#000000, imagesDescriptionsRatio=70
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : a11y.

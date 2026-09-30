@@ -16,29 +16,29 @@ Retrouve les termes.
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- taskDescription : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul) — Consigne (Décrivez votre tâche ici.)
-- words* : liste (min 2) — mots
+- taskDescription : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul) — Task description (Describe your task here.)
+- words* : liste (min 2) — words
   chaque élément :
-    - clue* : texte — Indice (Indice permettant de trouver la réponse.)
-    - answer* : texte — Réponse (Réponse correspondant à l'indice.)
-    - extraClue : sous-contenu, library: texte | image | audio | video — Indice supplémentaire
-    - fixWord : booléen, défaut false — Fixer le mot sur la grille (Cochez si vous souhaitez fixer le mot à une position particulière sur la grille. Les mots avec le même aligne…)
-    - row : nombre, min 1, max 100, conditionnel — Ligne (Index de la ligne où la réponse doit commencer.)
-    - column : nombre, min 1, max 100, conditionnel — Colonne (Index de la colonne où la réponse doit commencer.)
-    - orientation : choix across|down, défaut across, conditionnel — Orientation (Orientation de la réponse.)
-- solutionWord : texte — Mot solution (Ajouter un mot solution optionnel qui peut être découvert à partir de certaines lettres sur la grille. Sera s…)
-- overallFeedback : groupe — Feedback général (groupe à un champ: écrire directement la valeur)
-  - overallFeedback : liste (min 1) — Définissez le feedback pour chaque intervalle de score (Cliquez sur le bouton "Ajouter Intervalle" pour ajouter autant d'intervalles de score que vous souhaitez. Exe…)
+    - clue* : texte — Clue (Clue that should point to the answer.)
+    - answer* : texte — Answer (Answer to the clue.)
+    - extraClue : sous-contenu, library: texte | image | audio | video — Extra clue
+    - fixWord : booléen, défaut false — Fix word on grid (Check if you want to fix the word to a particular position on the grid. Words with the same alignment may not be placed touching each other.)
+    - row : nombre, min 1, max 100, si fixWord = True — Row (Row index where the answer should start.)
+    - column : nombre, min 1, max 100, si fixWord = True — Column (Column index where the answer should start.)
+    - orientation : choix across|down, défaut across, si fixWord = True — Orientation (Orientation for the answer.)
+- solutionWord : texte — Overall solution word (Optionally add a solution word that can be derived from particular characters on the grid. It will only be visible if all its characters can be found in the crossword. Please note: There's no accessibility support for t…)
+- overallFeedback : groupe — Overall Feedback (groupe à un champ: écrire directement la valeur)
+  - overallFeedback : liste (min 1) — Define custom feedback for any score range (Click the "Add range" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!)
     chaque élément :
-      - from : nombre, min 0, max 100, défaut 0 — Intervalle de score
+      - from : nombre, min 0, max 100, défaut 0 — Score Range
       - to : nombre, min 0, max 100, défaut 100
-      - feedback : texte — Feedback pour l'intervalle de score défini
-- theme : groupe — Thème
-  - backgroundImage : image (chemin ou URL) — Image d'arrière-plan (Sélectionnez une image d'arrière-plan pour votre activité (facultatif). Elle sera mise à l’échelle pour s'ada…)
-  - backgroundColor : couleur #rrggbb, défaut #173354 — Couleur d'arrière-plan (Choisir une couleur d'arrière-plan. Elle sera utilisée soit pour remplacer l'image de fond ou comme arrière-p…)
-- behaviour : réglages — Paramètres de comportement (Ces options permettent de contrôler le comportement de l'activité.)
+      - feedback : texte — Feedback for defined score range
+- theme : groupe — Theme
+  - backgroundImage : image (chemin ou URL) — Background image (Select an optional background image. It will be scaled to fit the background without stretching it.)
+  - backgroundColor : couleur #rrggbb, défaut #173354 — Background color (Choose a background color. It will either be used instead of a background image or as background for transparent areas.)
+- behaviour : réglages — Behavioural settings (These options will let you control how the task behaves.)
   poolSize=…, enableInstantFeedback=false, scoreWords=true, applyPenalties=false, enableRetry=true, enableSolutionsButton=true, keepCorrectAnswers=false, addExtraMarkerForEmptyCells=false
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n, a11y.

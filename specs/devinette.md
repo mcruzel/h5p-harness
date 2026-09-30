@@ -14,13 +14,13 @@ Réponse: Le cœur.
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- taskDescription : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul) — Description de l'activité (Décrire comment l'utilisateur devrait réaliser l'activité.)
+- taskDescription : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul) — Task description (Describe how the user should solve the task.)
 - media : groupe — Media (groupe à un champ: écrire directement la valeur)
-  - type : sous-contenu, library: image | video — Type (Média à afficher en option au dessus de la question.)
-- solutionLabel : texte multiligne, défaut Cliquer pour voir la réponse. — Intitulé de la description de la solution (Zone de texte cliquable pour afficher la solution.)
-- solutionText* : texte multiligne — Texte de la Solution (Un texte utilisable comme exemple de solution pour cette activité.)
+  - type : sous-contenu, library: image | video — Type (Optional media to display above the question.)
+- solutionLabel : texte multiligne, défaut Cliquer pour voir la réponse. — Descriptive solution label (Clickable text area where the solution will be displayed.)
+- solutionText* : texte multiligne — Solution text (The solution for the picture.)
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 

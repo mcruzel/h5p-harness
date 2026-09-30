@@ -9,13 +9,13 @@ H5P.XRay 0.1 · alias : rayons-x, xray, x-ray · syntaxe Markdown simplifiée : 
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- imageBackground* : sous-contenu, library: image — Image (Image à utiliser en fond.)
-- imageForeground* : sous-contenu, library: image — Image (Image à utiliser en premier plan.)
-- visual : réglages — Paramètres visuels (Ces options vous permettront de contrôler les aspects visuels.)
+- imageBackground* : sous-contenu, library: image — Image (Image to be used in the background.)
+- imageForeground* : sous-contenu, library: image — Image (Image to be used in the foreground.)
+- visual : réglages — Visual settings (These options will let you control visual aspects.)
   imageWidth=100% (35%|50%|75%|100%|natural), imageAlignment=center (flex-start|center|flex-end), xRayLensWidth=20 %, xRayLensHeight=25 %, darkenImageOnXRay=true
-- behaviour : réglages — Paramètres comportementaux (Ces options vous permettront de contrôler le déroulement de la tâche.)
+- behaviour : réglages — Behavioural settings (These options will let you control how the task behaves.)
   autoXRay=true, hideXRayIndicator=false
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : a11y.

@@ -2,15 +2,20 @@
 
 H5P.IFrameEmbed 1.0 · alias : iframe, iframeembed, i-frame-embed · syntaxe Markdown simplifiée : non (bloc ```yaml)
 
+## Points d'attention
+
+- `width` et `height` en **px** (ex. `800px`, `600px`) : H5P en déduit le rapport hauteur/largeur ; un % déforme le cadre (le harnais le refuse).
+- La page intégrée doit accepter l'intégration (beaucoup de sites l'interdisent par X-Frame-Options/CSP) et être en `https://` (Moodle est en HTTPS).
+
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- width* : texte — Largeur (Largeur du cadre au format CSS standard. Défaut: "500px")
-- minWidth* : texte — Largeur minimale (Largeur minimale du cadre au format CSS standard. Défaut: "300px")
-- height* : texte — Hauteur (Hauteur du cadre au format CSS standard. Défaut: "500px")
-- source* : texte — Source (URL du document externe, ou chemin vers un document H5P (dans /content))
-- resizeSupported : booléen, défaut true — Redimensionnement supporté (Si cette option est activée, un bouton "Plein écran" apparaîtra, et le contenu H5P sera redimensionné afin d'…)
+- width* : texte — Width (Width of iFrame in CSS compliant format. Default: "500px") — **en px (ex. 800px) : H5P en déduit le rapport hauteur/largeur**
+- minWidth* : texte — Minimum width (Minimum width of iFrame in CSS compliant format. Default: "300px")
+- height* : texte — Height (Height of iFrame in CSS compliant format. Default: "500px") — **en px (ex. 600px)**
+- source* : texte — Source (URI to external document, or path to document found inside H5P (under /content))
+- resizeSupported : booléen, défaut true — Resize supported (If enabled, fullscreen button will be displayed, and H5P will be resized to fit its surroundings)
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 

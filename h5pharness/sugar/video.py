@@ -6,6 +6,9 @@ from .common import IMAGE, join, lines_of, split_headings
 
 TIME = re.compile(r"^(?:(\d+):)?(\d{1,2}):(\d{2}(?:[.,]\d+)?)$|^(\d+(?:[.,]\d+)?)\s*s?$")
 TEXT_TYPES = {"H5P.Text", "H5P.Nil", "H5P.Image", "H5P.Link", "H5P.Table"}
+# x, y in % of the video; width, height in em
+POSTER_BOX = {"x": 12.5, "y": 8, "width": 30, "height": 19}     # centred card the student answers directly
+BUTTON_BOX = {"x": 47.8, "y": 46.1, "width": 10, "height": 10}  # button opening the content
 
 
 def seconds(text):
@@ -66,11 +69,17 @@ def interactive_video(text, s, arg=None):
         item = {"duration": {"from": t, "to": t + 10}, "pause": question,
                 "displayType": "poster" if question else "button",
                 "action": {"library": machine, **sub}}
-        if question:  # centred card the student answers directly (sizes in em, positions in %)
-            item.update({"x": 12.5, "y": 8, "width": 30, "height": 19})
-        else:
-            item.update({"x": 47.8, "y": 46.1, "width": 10, "height": 10})
+        item.update(POSTER_BOX if question else BUTTON_BOX)
         interactions.append(item)
+    starts = sorted({it["duration"]["from"] for it in interactions})
+    for it in interactions:   # shown 10 s, but gone when the next one appears (same place on screen)
+        t = it["duration"]["from"]
+        later = [x for x in starts if x > t]
+        if later:
+            it["duration"]["to"] = min(it["duration"]["to"], later[0])
+    for t in starts:
+        if sum(1 for it in interactions if it["duration"]["from"] == t) > 1:
+            s.warn(None, f"plusieurs interactions à {t:g} s : elles se superposent à l'écran (les décaler)")
     out = {"interactiveVideo": {"video": {"files": [video.group(2)], "startScreenOptions": start},
                                 "assets": {"interactions": interactions}}}
     if bookmarks:

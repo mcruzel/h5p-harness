@@ -31,6 +31,8 @@ Règles communes aux champs :
 - **YAML** : mettre entre guillemets tout texte contenant « : » suivi d'un espace (fréquent en
   français : `question: "Vrai ou faux : …"`), et, dans la notation `{…}` / `[…]`, tout texte
   contenant une virgule ; pour un texte sur plusieurs lignes, `champ: |` puis les lignes indentées.
+  Seuls `12`, `-3`, `1.5` sont lus comme des nombres et `true`/`false` comme des booléens : `0472`,
+  `1:20`, `yes`, `no` restent du texte tel qu'écrit. Durées : secondes ou `m:ss` (`1:30` = 90 s).
 - **retours à la ligne** : un simple retour à la ligne dans un paragraphe est conservé (`<br>`) ;
   une ligne vide sépare les paragraphes.
 - **média** (image, audio, vidéo, fichier) : chemin relatif au `.md` ou à la racine du dépôt, ou
@@ -58,73 +60,74 @@ python -m h5pharness spec qcm                                 # fiche d'un type
 
 Sortie : `OK <paquet>` (code 0) ; `ERREUR` + au plus 8 lignes `- emplacement: problème` (code 1 :
 corriger seulement ces points) ; code 2 = problème d'environnement (git, réseau) : ne pas
-régénérer le contenu, signaler. Les emplacements comptent à partir de 1 (`answers[2]` = 2e réponse).
+régénérer le contenu, signaler. Les emplacements comptent à partir de 0 (`answers[1]` = 2e réponse),
+comme les références entre éléments (`correctElements`, `neighbors`, `nextContentId`).
 
 ## Types disponibles
 
 Cible : Moodle 4.5 ou plus récent (API H5P 1.28).
 
 <!-- index -->
-| type | nom | bibliothèque | syntaxe |
-|---|---|---|---|
-| `chasse-ar` | AR Scavenger (beta) | H5P.ARScavenger 1.6 | yaml |
-| `accordeon` | Accordion | H5P.Accordion 1.0 | Markdown |
-| `trous-avances` | Advanced Fill in the Blanks | H5P.AdvancedBlanks 1.4 | Markdown |
-| `calendrier-avent` | Advent Calendar (beta) | H5P.AdventCalendar 0.4 | yaml |
-| `agamotto` | Agamotto | H5P.Agamotto 1.7 | Markdown |
-| `calcul-mental` | Arithmetic Quiz | H5P.ArithmeticQuiz 1.1 | yaml |
-| `audio` | Audio | H5P.Audio 1.5 | Markdown |
-| `enregistreur-audio` | Audio Recorder | H5P.AudioRecorder 1.0 | yaml |
-| `trous` | Fill in the Blanks | H5P.Blanks 1.14 | Markdown |
-| `scenario` | Branching Scenario | H5P.BranchingScenario 1.11 | Markdown |
-| `graphique` | Chart | H5P.Chart 1.2 | Markdown |
-| `explorateur-choix` | ChoiceExplorer | H5P.ChoiceExplorer 1.0 | yaml |
-| `collage` | Collage | H5P.Collage 0.3 | yaml |
-| `colonne` | Page | H5P.Column 1.22 | Markdown |
-| `cadenas` | Combination Lock | H5P.CombinationLock 1.0 | yaml |
-| `cornell` | Cornell Notes | H5P.Cornell 0.5 | yaml |
-| `presentation` | Course Presentation | H5P.CoursePresentation 1.27 | Markdown |
-| `mots-croises` | Crossword | H5P.Crossword 0.7 | Markdown |
-| `cartes` | Dialog Cards | H5P.Dialogcards 1.9 | Markdown |
-| `dictee` | Dictation | H5P.Dictation 1.4 | Markdown |
-| `outil-documentation` | Documentation Tool | H5P.DocumentationTool 1.8 | yaml |
-| `glisser-deposer` | Drag and Drop | H5P.DragQuestion 1.15 | Markdown |
-| `glisser-mots` | Drag the Words | H5P.DragText 1.10 | Markdown |
-| `redaction` | Essay | H5P.Essay 1.6 | Markdown |
-| `mots-meles` | Find The Words | H5P.FindTheWords 1.4 | Markdown |
-| `flashcards` | Flashcards | H5P.Flashcards 1.7 | Markdown |
-| `carte-jeu` | Game Map | H5P.GameMap 1.9 | yaml |
-| `devinette` | Guess the Answer | H5P.GuessTheAnswer 1.5 | Markdown |
-| `iframe` | Iframe Embedder | H5P.IFrameEmbed 1.0 | yaml |
-| `trouver-zone` | Find the Hotspot | H5P.ImageHotspotQuestion 1.8 | yaml |
-| `image-interactive` | Image Hotspots | H5P.ImageHotspots 1.11 | Markdown |
-| `avant-apres` | Image Juxtaposition | H5P.ImageJuxtaposition 1.6 | Markdown |
-| `trouver-zones` | Find Multiple Hotspots | H5P.ImageMultipleHotspotQuestion 1.0 | yaml |
-| `paires-images` | Image Pair | H5P.ImagePair 1.4 | Markdown |
-| `sequence-images` | Image Sequencing | H5P.ImageSequencing 1.1 | Markdown |
-| `carrousel` | Image Slider | H5P.ImageSlider 1.1 | Markdown |
-| `mur-infos` | Information Wall | H5P.InfoWall 0.6 | yaml |
-| `livre` | Interactive Book | H5P.InteractiveBook 1.15 | Markdown |
-| `video-interactive` | Interactive Video | H5P.InteractiveVideo 1.28 | Markdown |
-| `qr-code` | KewAr Code | H5P.KewArCode 1.7 | yaml |
-| `marquer-lettres` | Mark the Letters | H5P.MarkTheLetters 1.1 | yaml |
-| `marquer-mots` | Mark the Words | H5P.MarkTheWords 1.11 | Markdown |
-| `memory` | Memory Game | H5P.MemoryGame 1.3 | Markdown |
-| `qcm` | Multiple Choice | H5P.MultiChoice 1.16 | Markdown |
-| `choix-images` | Multimedia Choice | H5P.MultiMediaChoice 0.3 | Markdown |
-| `quiz` | Question Set | H5P.QuestionSet 1.21 | Markdown |
-| `questionnaire` | Questionnaire | H5P.Questionnaire 1.3 | yaml |
-| `choix-unique` | Single Choice Set | H5P.SingleChoiceSet 1.11 | Markdown |
-| `trier-paragraphes` | Sort the Paragraphs | H5P.SortParagraphs 0.12 | Markdown |
-| `dire-mots` | Speak the Words | H5P.SpeakTheWords 1.5 | yaml |
-| `dire-mots-serie` | Speak the Words Set | H5P.SpeakTheWordsSet 1.3 | yaml |
-| `bande-structure` | Structure Strip | H5P.StructureStrip 1.1 | yaml |
-| `resume` | Summary | H5P.Summary 1.10 | Markdown |
-| `onglets` | Tabs | H5P.Tabs 1.3 | Markdown |
-| `modele-3d` | 3D Model | H5P.ThreeDModel 1.0 | yaml |
-| `visite-360` | Virtual Tour (360) | H5P.ThreeImage 0.5 | yaml |
-| `frise` | Timeline | H5P.Timeline 1.1 | Markdown |
-| `transcription` | Transcript | H5P.Transcript 1.3 | yaml |
-| `vf` | True/False Question | H5P.TrueFalse 1.8 | Markdown |
-| `twitter` | Twitter User Feed | H5P.TwitterUserFeed 1.0 | yaml |
-| `rayons-x` | X-Ray | H5P.XRay 0.1 | yaml |
+| type | nom | bibliothèque | syntaxe | exemple validé |
+|---|---|---|---|---|
+| `chasse-ar` | AR Scavenger (beta) | H5P.ARScavenger 1.6 | yaml | ✓ |
+| `accordeon` | Accordion | H5P.Accordion 1.0 | Markdown | ✓ |
+| `trous-avances` | Advanced Fill in the Blanks | H5P.AdvancedBlanks 1.4 | Markdown | ✓ |
+| `calendrier-avent` | Advent Calendar (beta) | H5P.AdventCalendar 0.4 | yaml | ✓ |
+| `agamotto` | Agamotto | H5P.Agamotto 1.7 | Markdown | ✓ |
+| `calcul-mental` | Arithmetic Quiz | H5P.ArithmeticQuiz 1.1 | yaml | ✓ |
+| `audio` | Audio | H5P.Audio 1.5 | Markdown | ✓ |
+| `enregistreur-audio` | Audio Recorder | H5P.AudioRecorder 1.0 | yaml | ✓ |
+| `trous` | Fill in the Blanks | H5P.Blanks 1.14 | Markdown | ✓ |
+| `scenario` | Branching Scenario | H5P.BranchingScenario 1.11 | Markdown | ✓ |
+| `graphique` | Chart | H5P.Chart 1.2 | Markdown | ✓ |
+| `explorateur-choix` | ChoiceExplorer | H5P.ChoiceExplorer 1.0 | yaml | ✓ |
+| `collage` | Collage | H5P.Collage 0.3 | yaml | ✓ |
+| `colonne` | Page | H5P.Column 1.22 | Markdown | ✓ |
+| `cadenas` | Combination Lock | H5P.CombinationLock 1.0 | yaml | ✓ |
+| `cornell` | Cornell Notes | H5P.Cornell 0.5 | yaml | ✓ |
+| `presentation` | Course Presentation | H5P.CoursePresentation 1.27 | Markdown | ✓ |
+| `mots-croises` | Crossword | H5P.Crossword 0.7 | Markdown | ✓ |
+| `cartes` | Dialog Cards | H5P.Dialogcards 1.9 | Markdown | ✓ |
+| `dictee` | Dictation | H5P.Dictation 1.4 | Markdown | ✓ |
+| `outil-documentation` | Documentation Tool | H5P.DocumentationTool 1.8 | yaml | ✓ |
+| `glisser-deposer` | Drag and Drop | H5P.DragQuestion 1.15 | Markdown | ✓ |
+| `glisser-mots` | Drag the Words | H5P.DragText 1.10 | Markdown | ✓ |
+| `redaction` | Essay | H5P.Essay 1.6 | Markdown | ✓ |
+| `mots-meles` | Find The Words | H5P.FindTheWords 1.4 | Markdown | ✓ |
+| `flashcards` | Flashcards | H5P.Flashcards 1.7 | Markdown | ✓ |
+| `carte-jeu` | Game Map | H5P.GameMap 1.9 | yaml | ✓ |
+| `devinette` | Guess the Answer | H5P.GuessTheAnswer 1.5 | Markdown | ✓ |
+| `iframe` | Iframe Embedder | H5P.IFrameEmbed 1.0 | yaml | ✓ |
+| `trouver-zone` | Find the Hotspot | H5P.ImageHotspotQuestion 1.8 | yaml | ✓ |
+| `image-interactive` | Image Hotspots | H5P.ImageHotspots 1.11 | Markdown | ✓ |
+| `avant-apres` | Image Juxtaposition | H5P.ImageJuxtaposition 1.6 | Markdown | ✓ |
+| `trouver-zones` | Find Multiple Hotspots | H5P.ImageMultipleHotspotQuestion 1.0 | yaml | ✓ |
+| `paires-images` | Image Pair | H5P.ImagePair 1.4 | Markdown | ✓ |
+| `sequence-images` | Image Sequencing | H5P.ImageSequencing 1.1 | Markdown | ✓ |
+| `carrousel` | Image Slider | H5P.ImageSlider 1.1 | Markdown | ✓ |
+| `mur-infos` | Information Wall | H5P.InfoWall 0.6 | yaml | ✓ |
+| `livre` | Interactive Book | H5P.InteractiveBook 1.15 | Markdown | ✓ |
+| `video-interactive` | Interactive Video | H5P.InteractiveVideo 1.28 | Markdown | ✓ |
+| `qr-code` | KewAr Code | H5P.KewArCode 1.7 | yaml | ✓ |
+| `marquer-lettres` | Mark the Letters | H5P.MarkTheLetters 1.1 | yaml | ✓ |
+| `marquer-mots` | Mark the Words | H5P.MarkTheWords 1.11 | Markdown | ✓ |
+| `memory` | Memory Game | H5P.MemoryGame 1.3 | Markdown | ✓ |
+| `qcm` | Multiple Choice | H5P.MultiChoice 1.16 | Markdown | ✓ |
+| `choix-images` | Multimedia Choice | H5P.MultiMediaChoice 0.3 | Markdown | ✓ |
+| `quiz` | Question Set | H5P.QuestionSet 1.21 | Markdown | ✓ |
+| `questionnaire` | Questionnaire | H5P.Questionnaire 1.3 | yaml | ✓ |
+| `choix-unique` | Single Choice Set | H5P.SingleChoiceSet 1.11 | Markdown | ✓ |
+| `trier-paragraphes` | Sort the Paragraphs | H5P.SortParagraphs 0.12 | Markdown | ✓ |
+| `dire-mots` | Speak the Words | H5P.SpeakTheWords 1.5 | yaml | ✓ |
+| `dire-mots-serie` | Speak the Words Set | H5P.SpeakTheWordsSet 1.3 | yaml | ✓ |
+| `bande-structure` | Structure Strip | H5P.StructureStrip 1.1 | yaml | ✓ |
+| `resume` | Summary | H5P.Summary 1.10 | Markdown | ✓ |
+| `onglets` | Tabs | H5P.Tabs 1.3 | Markdown | ✓ |
+| `modele-3d` | 3D Model | H5P.ThreeDModel 1.0 | yaml | ✓ |
+| `visite-360` | Virtual Tour (360) | H5P.ThreeImage 0.5 | yaml | ✓ |
+| `frise` | Timeline | H5P.Timeline 1.1 | Markdown | ✓ |
+| `transcription` | Transcript | H5P.Transcript 1.3 | yaml | ✓ |
+| `vf` | True/False Question | H5P.TrueFalse 1.8 | Markdown | ✓ |
+| `twitter` | Twitter User Feed ⚠ obsolète | H5P.TwitterUserFeed 1.0 | yaml | ✓ |
+| `rayons-x` | X-Ray | H5P.XRay 0.1 | yaml | ✓ |

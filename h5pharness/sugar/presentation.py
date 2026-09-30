@@ -53,62 +53,74 @@ def _element(action, x, y, w, h, **extra):
     return el
 
 
-def layout(title, blocks, s, line):
-    elements = []
-    title_h = 12 if len(title) <= 45 else 20
-    elements.append(_element({"library": "H5P.AdvancedText", "text": f"## {title}"}, MARGIN, TOP, 100 - 2 * MARGIN,
-                             title_h))
-    top = TOP + title_h + 1
-    texts = [b for b in blocks if b.get("library") == "H5P.AdvancedText"]
-    media = [b for b in blocks if b.get("library") in MEDIA]
-    interactions = [b for b in blocks if b.get("library") not in MEDIA and b.get("library") != "H5P.AdvancedText"]
-    avail = 100 - top - 3
-    text_md = "\n\n".join(b["text"] for b in texts)
-    text_w = 100 - 2 * MARGIN
-    if media and texts:
-        text_w = 52
+def arrange(title, texts, ratios, n_interactions, warn):
+    """Boxes (x, y, width, height in % of the slide) for a title, stacked texts (Markdown or plain text),
+    media (height/width ratios) and interactions. Interactions go inline under the text when there are
+    at most two and enough room, else they become buttons (as_button=True)."""
+    geo = {"title": None, "texts": [], "media": [], "interactions": []}
+    top = TOP
+    if title is not None:
+        title_h = 12 if len(title) <= 45 else 20
+        geo["title"] = (MARGIN, TOP, 100 - 2 * MARGIN, title_h)
+        top = TOP + title_h + 1
+    text_w = 52 if ratios and texts else 100 - 2 * MARGIN
     y = top
-    if texts:
-        h = min(_text_height(text_md, text_w), avail)
-        if _text_height(text_md, text_w) > avail:
-            s.warn(line, f"diapo « {title[:30]} » : texte probablement trop long pour une diapo (la couper en deux)")
-        elements.append(_element({"library": "H5P.AdvancedText", "text": text_md}, MARGIN, y, text_w, h))
-        text_bottom = y + h
-    else:
-        text_bottom = y
-    if media:
-        if len(media) > 1:
-            s.warn(line, f"diapo « {title[:30]} » : une seule image/vidéo par diapo en mise en page automatique "
-                         "(les suivantes sont empilées)")
+    for text in texts:
+        need, room = _text_height(text, text_w), 100 - y - 3
+        if need > room:
+            warn("texte probablement trop long pour une diapo (la couper en deux)")
+        h = max(min(need, room), 5)
+        geo["texts"].append((MARGIN, y, text_w, h))
+        y += h + 1
+    text_bottom = y - 1 if texts else top
+    if ratios:
+        if len(ratios) > 1:
+            warn("une seule image/vidéo par diapo en mise en page automatique (les suivantes sont empilées)")
         col_x = 58 if texts else MARGIN
         col_w = 38 if texts else 100 - 2 * MARGIN
         my = top
-        for m in media:
-            ratio = _media_ratio(m, s)
+        for ratio in ratios:
             w = col_w
             h = w * ratio * SLIDE_RATIO
             room = 100 - my - 3
             if h > room:
-                h = room
+                h = max(room, 5)
                 w = h / (ratio * SLIDE_RATIO)
-            x = col_x + (col_w - w) / 2
-            elements.append(_element(m, x, my, w, h))
+            geo["media"].append((col_x + (col_w - w) / 2, my, w, h))
             my += h + 2
         text_bottom = max(text_bottom, my - 2)
-    if interactions:
+    if n_interactions:
         room = 100 - text_bottom - 4
-        n = len(interactions)
-        if n <= 2 and room >= 40:
-            col_w = (100 - 2 * MARGIN - (n - 1) * 3) / n
-            for i, act in enumerate(interactions):
-                elements.append(_element(act, MARGIN + i * (col_w + 3), text_bottom + 2, col_w, room))
+        if n_interactions <= 2 and room >= 40:
+            col_w = (100 - 2 * MARGIN - (n_interactions - 1) * 3) / n_interactions
+            for i in range(n_interactions):
+                geo["interactions"].append(((MARGIN + i * (col_w + 3), text_bottom + 2, col_w, room), False))
         else:
             size = 12
-            for i, act in enumerate(interactions):
-                label = act.get("metadata", {}).get("title") or f"Question {i + 1}"
-                elements.append(_element(act, MARGIN + i * (size + 3), 100 - size * SLIDE_RATIO - 3, size,
-                                         size * SLIDE_RATIO, displayAsButton=True, buttonSize="big",
-                                         title=label))
+            for i in range(n_interactions):
+                geo["interactions"].append(((MARGIN + i * (size + 3), 100 - size * SLIDE_RATIO - 3, size,
+                                             size * SLIDE_RATIO), True))
+    return geo
+
+
+def layout(title, blocks, s, line):
+    texts = [b for b in blocks if b.get("library") == "H5P.AdvancedText"]
+    media = [b for b in blocks if b.get("library") in MEDIA]
+    interactions = [b for b in blocks if b.get("library") not in MEDIA and b.get("library") != "H5P.AdvancedText"]
+    text_md = "\n\n".join(b["text"] for b in texts)
+    geo = arrange(title, [text_md] if texts else [], [_media_ratio(m, s) for m in media], len(interactions),
+                  lambda msg: s.warn(line, f"diapo « {title[:30]} » : {msg}"))
+    elements = [_element({"library": "H5P.AdvancedText", "text": f"## {title}"}, *geo["title"])]
+    if texts:
+        elements.append(_element({"library": "H5P.AdvancedText", "text": text_md}, *geo["texts"][0]))
+    for m, box in zip(media, geo["media"]):
+        elements.append(_element(m, *box))
+    for i, (act, (box, as_button)) in enumerate(zip(interactions, geo["interactions"])):
+        if as_button:
+            label = act.get("metadata", {}).get("title") or f"Question {i + 1}"
+            elements.append(_element(act, *box, displayAsButton=True, buttonSize="big", title=label))
+        else:
+            elements.append(_element(act, *box))
     return elements
 
 

@@ -13,22 +13,22 @@ Une carte par ligne : `- ![description](image)` (paire identique) ou `- ![a](ima
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- cards* : liste (min 2, max 100) — Cartes
+- cards* : liste (min 2, max 100) — Cards
   chaque élément :
-    - image : image (chemin ou URL) — Image
-    - imageAlt* : texte — Texte alternatif pour l'image (Décrivez ce que représente l'image. Le texte est lu par la synthèse vocale.)
+    - image* : image (chemin ou URL) — Image
+    - imageAlt* : texte — Alternative text for Image (Describe what can be seen in the photo. The text is read by text-to-speech tools needed by visually impaired users.)
     - audio : audio (chemin ou URL) — Audio Track (An optional sound that plays when the card is turned.)
-    - match : image (chemin ou URL) — Image correspondante (Une image facultative à comparer au lieu d'utiliser deux cartes avec la même image.)
-    - matchAlt : texte — Texte alternatif pour l'image correspondante (Décrivez ce que représente l'image correspondante. Le texte est lu par la synthèse vocale.)
+    - match : image (chemin ou URL) — Matching Image (An optional image to match against instead of using two cards with the same image.)
+    - matchAlt : texte — Alternative text for Matching Image (Describe what can be seen in the photo. The text is read by text-to-speech tools needed by visually impaired users.)
     - matchAudio : audio (chemin ou URL) — Matching Audio Track (An optional sound that plays when the second card is turned.)
-    - description : texte — Description (Un texte court optionnel qui apparaîtra une fois que les deux cartes correspondantes auront été trouvées.)
-- behaviour : réglages — Paramètres comportementaux (Ces options vous permettent de définir le "comportement" du jeu de mémoire.)
+    - description : texte — Description (An optional short text that will pop up once the two matching cards are found.)
+- behaviour : réglages — Behavioural settings (These options will let you control how the game behaves.)
   useGrid=true, numCardsToUse=…, allowRetry=true
-- lookNFeel : groupe — Apparence (Définissez l'apparence visuelle des éléments dans le jeu.)
-  - themeColor : couleur #rrggbb, défaut #707070 — Couleur du thème (Choisissez une couleur pour créer un thème pour votre jeu de cartes.)
-  - cardBack : image (chemin ou URL) — Dos des cartes (Utilisez un dos personnalisé pour vos cartes.)
+- lookNFeel : groupe — Look and feel (Control the visuals of the game.)
+  - themeColor : couleur #rrggbb, défaut #707070 — Theme Color (Choose a color to create a theme for your card game.)
+  - cardBack : image (chemin ou URL) — Card Back (Use a custom back for your cards.)
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n.
 

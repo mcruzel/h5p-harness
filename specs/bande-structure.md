@@ -4,20 +4,20 @@ H5P.StructureStrip 1.1 · alias : bande-structure, structurestrip, structure-str
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- media : groupe — Média
-  - type : sous-contenu, library: image | video | audio — Type (Média facultatif pour afficher au-dessus de la question.)
-  - disableImageZooming : booléen, défaut false, conditionnel — Bloquer le zoom d’image
-- taskDescription : texte riche (Markdown: a em h2 h3 hr li ol strong u ul) — Description de la tâche (Expliquez à vos élèves ce qu'on attend d'eux.)
+- media : groupe — Media
+  - type : sous-contenu, library: image | video | audio — Type (Optional media to display above the question.)
+  - disableImageZooming : booléen, défaut false, si type = H5P.Image — Disable image zooming
+- taskDescription : texte riche (Markdown: a em h2 h3 hr li ol strong u ul) — Task description (Explain to your students what's expected of them.)
 - sections* : liste (min 1) — Sections
   chaque élément :
-    - title* : texte — Titre
-    - description : texte riche (Markdown: a em h2 h3 hr li ol strong u ul) — Indices (Ajouter éventuellement des indices ou des instructions particulières pour cette section.)
-    - weight : nombre, min 1, défaut 1 — Poids (Saisir le poids de cette section par rapport aux autres sections. Le poids détermine la longueur qu'une secti…)
-    - colorBackground : couleur #rrggbb, défaut #96ceb4 — Couleur de fond
-    - colorText : couleur #rrggbb, défaut #1c1c1c — Couleur du texte
-- behaviour : réglages — Paramètres comportementaux (Ces options vous permettront de contrôler le déroulement de la tâche.)
+    - title* : texte — Title
+    - description : texte riche (Markdown: a em h2 h3 hr li ol strong u ul) — Hints (Optionally add hints or particular instructions for this section.)
+    - weight : nombre, min 1, défaut 1 — Weight (Determine how long each section is expected to be in relation to the other sections. Example: Section 1 = 1; Section 2 = 3 (triple the length of 1); Section 3 = 1 (same length as section 1).)
+    - colorBackground : couleur #rrggbb, défaut #96ceb4 — Background color
+    - colorText : couleur #rrggbb, défaut #1c1c1c — Text color
+- behaviour : réglages — Behavioural settings (These options will let you control how the task behaves.)
   enableRetry=true, slack=10, textLengthMin=…, textLengthMax=…, feedbackMode=onRequest (onRequest|whileTyping)
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n, a11y.

@@ -23,38 +23,38 @@ Symbole de la fin de l'Ancien Régime.
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- timeline : groupe — Chronologie
-  - headline* : texte — Titre (Entrez ici le titre principal de la chronologie (première page))
-  - text : texte riche (Markdown: a code del em hr li ol s strong ul) — Corps du texte (Entrez ici le corps de texte principal de la chronologie (première page).)
-  - defaultZoomLevel : texte, défaut 0 — Niveau de zoom par défaut (Cela va modifier le niveau de zoom par défaut. Equivalent à appuyer sur le bouton zoom avant ou zoom arrière …)
-  - backgroundImage : image (chemin ou URL) — Image d'arrière-plan' (Affiche une image de fond.)
-  - height : nombre, défaut 600 — Hauteur (La hauteur en pixels)
-  - asset : groupe — Média (Here you can add an asset to your timeline "front page")
-    - media : texte — Adresse URL du média (Lien vers l'URL du fichier média (Twitter, YouTube, Flickr, Vimeo, Google Maps et SoundCloud sont autorisés à…)
-    - credit : texte — Crédits (Crédits du fichier média)
-    - caption : texte — Légende (Saisissez ici la légende du fichier média)
-  - date* : liste (min 1) — Dates (Ajoutez des dates à votre chronologie !)
+- timeline : groupe — Timeline
+  - headline* : texte — Headline (Main timeline heading goes here (first page))
+  - text : texte riche (Markdown: a code del em hr li ol s strong ul) — Body Text (The main timeline body goes here (first page).)
+  - defaultZoomLevel : texte, défaut 0 — Default zoom level (This will tweak the default zoom level. Equivilent to pressing the zoom in or zoom out button the specified number of times. Negative numbers zoom out. default is 0)
+  - backgroundImage : image (chemin ou URL) — Background image (An image to display as background.)
+  - height : nombre, défaut 600 — Height (The height in pixels)
+  - asset : groupe — Asset (Here you can add an asset to your timeline "front page")
+    - media : texte — Media (Link to media URL (Twitter, YouTube, Flickr, Vimeo, Google Maps and SoundCloud are currently supported))
+    - credit : texte — Credits (Credits to the media)
+    - caption : texte — Caption (Caption description goes here)
+  - date* : liste (min 1) — Dates (Add some dates to your timeline!)
     chaque élément :
-      - startDate* : texte — Date de début (AAAA,MM,JJ (AAAA est un minimum obligatoire))
-      - endDate : texte — Date de fin (AAAA,MM,JJ (AAAA est un minimum obligatoire))
-      - headline* : texte — Titre (Titre de l'événement)
-      - text : texte riche (Markdown: a code del em h2 h3 hr li ol pre s strong ul) — Texte (Texte associé à l'événement)
-      - tag : texte — Etiquettes (Saisissez les étiquettes (catégories))
-      - asset : groupe — Média
-        - media : texte — Adresse URL du média (Lien vers l'URL du fichier média (Twitter, YouTube, Flickr, Vimeo, Wikipedia, Google Maps et SoundCloud sont …)
-        - thumbnail : image (chemin ou URL) — Image miniature (Ajoutez au besoin une miniature 32x32)
-        - credit : texte — Crédits (Crédits du fichier média)
-        - caption : texte — Légende (Légende du fichier média)
-  - era : liste (min 0) — Périodes (Ajoutez une période à votre chronologie)
+      - startDate* : texte — Start date (YYYY,MM,DD (Minimum YYYY required))
+      - endDate : texte — End date (YYYY,MM,DD (Minimum YYYY required))
+      - headline* : texte — Headline (Headline for the date entry)
+      - text : texte riche (Markdown: a code del em h2 h3 hr li ol pre s strong ul) — Body text (Body for the date entry)
+      - tag : texte — Tags (Enter Tags (categories))
+      - asset : groupe — Asset
+        - media : texte — Media (URL to the media (Twitter, YouTube, Flickr, Vimeo, Wikipedia, Google Maps and SoundCloud are currently supported).)
+        - thumbnail : image (chemin ou URL) — Thumbnail (Add a thumbnail if needed, 32x32)
+        - credit : texte — Credit (Credits to the media)
+        - caption : texte — Caption (Caption text)
+  - era : liste (min 0) — Eras (Add an era to your timeline)
     chaque élément :
-      - startDate* : texte — Date de début (AAAA,MM,JJ (AAAA est un minimum obligatoire))
-      - endDate : texte — Date de fin (AAAA,MM,JJ (AAAA est un minimum obligatoire))
-      - headline* : texte — Titre (Titre de la période)
-      - text : texte riche (Markdown: a code del em hr li ol s strong ul) — Contenu (Contenu de la période)
-      - tag : texte — Etiquette (Etiquettes de la période (catégories))
-  - language : choix af|ar|hy|eu|bg|ca|zh-cn|hr|cz|da|…, défaut en — Langue (Choisissez la langue de l'interface)
+      - startDate* : texte — Start date (YYYY,MM,DD (Minimum YYYY required))
+      - endDate : texte — End date (YYYY,MM,DD (Minimum YYYY required))
+      - headline* : texte — Headline (Era headline)
+      - text : texte riche (Markdown: a code del em hr li ol s strong ul) — Text (Era body)
+      - tag : texte — Tag (Era tags (categories))
+  - language : choix af|ar|hy|eu|bg|ca|zh-cn|hr|cz|da|…, défaut en — Language (The language of the user interface)
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 

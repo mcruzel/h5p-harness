@@ -24,51 +24,51 @@ L'ADN se trouve dans le {{noyau}}.
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- introPage : groupe — Introduction du Quiz
-  - showIntroPage : booléen — Afficher l'introduction
-  - title : texte — Titre (Ce titre sera affiché au-dessus de votre texte d'introduction.)
-  - introduction : texte riche (Markdown: code em strong sub sup) — Texte d'introduction (Ce texte sera affiché avant le démarrage du quiz.)
-  - startButtonText : texte, défaut Commencer — Texte du bouton de démarrage
-  - backgroundImage : image (chemin ou URL) — Image d'arrière-plan (Image d'arrière-plan optionnelle pour l'introduction.)
-  - backgroundImageAltText : texte — Alternative text (If the browser can't load the image this text will be displayed instead. Also used by "text-to-speech" reader…)
-- progressType : choix textual|dots, défaut dots — Indicateur de progression (Question set progress indicator style. Will be Textual if backwards navigation is disabled.)
-- passPercentage : nombre, min 0, max 100, défaut 50 — Pourcentage de réussite (Pourcentage exigé pour considérer que le quiz est réussi.)
+- introPage : groupe — Quiz introduction
+  - showIntroPage : booléen — Display introduction
+  - title : texte — Title (This title will be displayed above the introduction text.)
+  - introduction : texte riche (Markdown: code em strong sub sup) — Introduction text (This text will be displayed before the quiz starts.)
+  - startButtonText : texte, défaut Commencer — Start button text
+  - backgroundImage : image (chemin ou URL) — Cover image (Optional image to display on the cover.)
+  - backgroundImageAltText : texte — Alternative text (If the browser can't load the image this text will be displayed instead. Also used by "text-to-speech" readers.)
+- progressType : choix textual|dots, défaut dots — Progress indicator (Question set progress indicator style. Will be Textual if backwards navigation is disabled.)
+- passPercentage : nombre, min 0, max 100, défaut 50 — Pass percentage (Percentage of Total score required for passing the quiz.)
 - questions* : liste (min 1) — Questions
-  chaque élément = sous-contenu, library: qcm | glisser-deposer | trous | marquer-mots | glisser-mots | vf | redaction | choix-images — Type de question (Types possibles pour cette question.)
-- disableBackwardsNavigation : booléen, défaut false — Désactiver la possibilité de naviguer en arrière (Cette option ne permettra plus que la navigation en avant au sein du module Question Set.)
-- randomQuestions : booléen, défaut false — Afficher les questions dans un ordre aléatoire (Activer pour choisir aléatoirement l'ordre des questions à l'affichage.)
-- poolSize : nombre, min 1 — Nombre de questions à afficher : (Génère aléatoirement un jeu de questions parmi toutes les questions disponibles.)
-- endGame : groupe — Quiz terminé
-  - showResultPage : booléen, défaut true — Afficher les résultats
-  - showSolutionButton : booléen, défaut true — Afficher le bouton "Solution".
-  - showRetryButton : booléen, défaut true — Afficher le bouton "Recommencer".
-  - noResultMessage : texte, défaut Terminé — Message si pas de résultats (Texte affiché sur la page finale si l'option "Afficher les résultats" est désactivée.)
+  chaque élément = sous-contenu, library: qcm | glisser-deposer | trous | marquer-mots | glisser-mots | vf | redaction | choix-images — Question type (Library for this question.)
+- disableBackwardsNavigation : booléen, défaut false — Disable backwards navigation (This option will only allow you to move forward in Question Set)
+- randomQuestions : booléen, défaut false — Randomize questions (Enable to randomize the order of questions on display.)
+- poolSize : nombre, min 1 — Number of questions to be shown: (Create a randomized batch of questions from the total.)
+- endGame : groupe — Quiz finished
+  - showResultPage : booléen, défaut true — Display results
+  - showSolutionButton : booléen, défaut true — Display solution button
+  - showRetryButton : booléen, défaut true — Display retry button
+  - noResultMessage : texte, défaut Terminé — No results message (Text displayed on end page when "Display results" is disabled)
   - message : texte, défaut Résultats — Results heading (This heading will be displayed at the end of the quiz when the user has answered all questions.)
   - amountCorrect : texte, défaut Réponses correctes : @finals … — Amount correct heading (Header to show the final score to the user on the end screen)
-  - scoreBarLabel : texte, défaut Vous avez obtenu @finals sur … — Score announcer (Cette vignette sera utilisée pour annoncer la note finale à l'utilisateur sur l'écran de fin)
+  - scoreBarLabel : texte, défaut Vous avez obtenu @finals sur … — Score announcer (This label will be used for announcing the final score to the user on the end screen)
   - scoreHeader : texte, défaut Score — Score heading (Header for the score part of the results table)
-  - overallFeedback : groupe — Feedback général (groupe à un champ: écrire directement la valeur)
-    - overallFeedback : liste (min 1) — Définir un retour personnalisé pour chaque tranche de score (Exemple : 0-20 % mauvaise note, 21-91 % note moyenne, 91-100 % excellente note !)
+  - overallFeedback : groupe — Overall Feedback (groupe à un champ: écrire directement la valeur)
+    - overallFeedback : liste (min 1) — Define custom feedback for any score range (Click the "Add range" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!)
       chaque élément :
-        - from : nombre, min 0, max 100, défaut 0 — Tranche de score
+        - from : nombre, min 0, max 100, défaut 0 — Score Range
         - to : nombre, min 0, max 100, défaut 100
-        - feedback : texte — Retour pour cette tranche de score
-  - solutionButtonText : texte, défaut Voir la solution — Texte du bouton "Solution" (Texte pour le bouton de solution.)
-  - retryButtonText : texte, défaut Recommencer — Texte du bouton "Recommencer" (Texte pour le bouton Recommencer.)
-  - finishButtonText : texte, défaut Terminer — Texte pour le bouton "Terminer"
+        - feedback : texte — Feedback for defined score range
+  - solutionButtonText : texte, défaut Voir la solution — Solution button label (Text for the solution button.)
+  - retryButtonText : texte, défaut Recommencer — Retry button label (Text for the retry button.)
+  - finishButtonText : texte, défaut Terminer — Finish button text
   - submitButtonText : texte, défaut Soumettre — Submit button text
-  - showAnimations : booléen — Afficher une vidéo avant l'affichage des résultats du quiz
-  - skippable : booléen — Activer le bouton "Passer la vidéo"
-  - skipButtonText : texte, défaut Passer la vidéo — Texte du bouton "Passer la vidéo"
-  - successVideo : vidéo (URL YouTube/Vimeo, chemin ou URL) — Vidéo en cas de succès (Vidéo affichée si l'utilisateur réussit le quiz.)
-  - failVideo : vidéo (URL YouTube/Vimeo, chemin ou URL) — Vidéo en cas d'échec (Vidéo affichée si l'utilisateur échoue au quiz.)
+  - showAnimations : booléen — Display video before quiz results
+  - skippable : booléen — Enable skip video button
+  - skipButtonText : texte, défaut Passer la vidéo — Skip video button label
+  - successVideo : vidéo (URL YouTube/Vimeo, chemin ou URL) — Passed video (This video will be played if the user successfully passed the quiz.)
+  - failVideo : vidéo (URL YouTube/Vimeo, chemin ou URL) — Fail video (This video will be played if the user fails the quiz.)
 - override : groupe — Behavioural settings
-  - checkButton : booléen, défaut true — Montrer les boutons "Vérifier" (Cette option determine si le bouton "Vérifier" va apparaître pour toutes les questions.)
-  - showSolutionButton : choix on|off, conditionnel — Cacher le bouton "Voir la correction" (Cette option détermine si le bouton "Voir la correction" sera affiché pour toutes les questions, désactivé po…)
-  - retryButton : choix on|off, conditionnel — Cacher le bouton "Recommencer" (Cette option détermine si le bouton "Recommencer" sera affiché pour toutes les questions, désactivé pour tout…)
-  - backgroundImage : image (chemin ou URL) — Image d'arrière-plan (Image d'arrière-plan optionnelle pour la série de questions.)
+  - checkButton : booléen, défaut true — Show "Check" buttons (This option determines if the "Check" button will be shown for all questions.)
+  - showSolutionButton : choix on|off, si checkButton = True — Override "Show Solution" button (This option determines if the "Show Solution" button will be shown for all questions, disabled for all or configured for each question individually.)
+  - retryButton : choix on|off, si checkButton = True — Override "Retry" button (This option determines if the "Retry" button will be shown for all questions, disabled for all or configured for each question individually.)
+  - backgroundImage : image (chemin ou URL) — Background image (An optional background image for the Question set.)
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : texts.
 

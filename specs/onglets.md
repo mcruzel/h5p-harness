@@ -8,7 +8,7 @@ Un onglet par section `## Titre`, avec un contenu comme une colonne : texte Mark
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
 - tabs* : liste (min 1, max 100) — Tabs
   chaque élément = sous-contenu, library: colonne — Content
@@ -23,49 +23,37 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 Fichier `tests/examples/onglets.md` (médias dans `tests/media/`).
 
-````markdown
+```markdown
 ---
 type: onglets
 title: Les trois états de l'eau
 language: fr
 preset: entrainement
 ---
-```yaml
-tabs:
-  # metadata.title = titre de l'onglet
-  - library: colonne
-    metadata: {title: Solide}
-    md: |
-      ## L'état solide
-      La **glace** a une forme propre : elle ne coule pas.
-      L'eau devient solide en dessous de 0 °C.
+## Solide
+La **glace** a une forme propre : elle ne coule pas. L'eau devient solide en dessous de 0 °C.
 
-      ![Un cube de glace (schéma)](../media/carre-rouge.png)
-  - library: colonne
-    metadata: {title: Liquide}
-    md: |
-      ## L'état liquide
-      L'eau **liquide** n'a pas de forme propre : elle prend la forme du récipient.
+![Un cube de glace (schéma)](../media/carre-rouge.png)
 
-      ::: qcm
-      Quelle est la particularité de l'eau liquide ?
-      - [x] Elle prend la forme du récipient.
-      - [ ] Elle garde toujours la même forme.
-      - [ ] Elle est invisible.
-      :::
-  - library: colonne
-    metadata: {title: Gazeux}
-    md: |
-      ## L'état gazeux
-      La **vapeur d'eau** est un gaz invisible.
+## Liquide
+L'eau **liquide** n'a pas de forme propre : elle prend la forme du récipient.
 
-      ::: vf
-      La buée sur une vitre est de la vapeur d'eau.
-      - [ ] Vrai
-        > Non : la buée est formée de fines gouttelettes d'eau liquide.
-      - [x] Faux
-      :::
-behaviour:
-  tabPlacement: top
+::: qcm
+Quelle est la particularité de l'eau liquide ?
+- [x] Elle prend la forme du récipient.
+- [ ] Elle garde toujours la même forme.
+- [ ] Elle est invisible.
+:::
+
+## Gazeux
+La **vapeur d'eau** est un gaz invisible.
+
+::: vf
+La buée sur une vitre est de la vapeur d'eau.
+- [ ] Vrai
+  > Non : la buée est formée de fines gouttelettes d'eau liquide.
+- [x] Faux
+:::
 ```
-````
+
+Même activité entièrement en YAML (positions explicites) : `tests/examples/onglets.yaml.md`.

@@ -1,0 +1,35 @@
+name: Tests du harnais (manuel)
+
+# Uniquement à la demande (onglet Actions > « Tests du harnais » > Run workflow) : les mêmes contrôles
+# se lancent en local (python -m pytest ; python tools/qa.py dist/ --render).
+on:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Dépendances
+        run: |
+          pip install -r requirements-dev.txt
+          if ! php -m 2>/dev/null | grep -qi '^zip$' || ! php -m | grep -qi '^mbstring$'; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq php-cli php-zip php-mbstring
+          fi
+
+      - name: Tests et lint
+        run: |
+          python -m pytest
+          python -m ruff check .
+
+      - name: Validation officielle H5P des sources et des exemples de chaque type
+        run: |
+          python -m h5pharness build sources/ tests/examples -o build-all --offline -q
+          python tools/qa.py build-all

@@ -43,7 +43,7 @@ H5P.Collage = (function ($, EventDispatcher) {
       }
 
       // Add new clip
-      var clip = new Collage.Clip($col, content.clips[clipIndex], contentId);
+      var clip = new Collage.Clip($col, content.clips[clipIndex], contentId, self);
       self.clips.push(clip);
 
       self.trigger('clipAdded', clip);
@@ -89,7 +89,7 @@ H5P.Collage = (function ($, EventDispatcher) {
       }
 
       // Add to DOM
-      $container.addClass('h5p-collage h5p-theme').html('').append($wrapper);
+      $container.addClass('h5p-collage').html('').append($wrapper);
     };
 
     /**

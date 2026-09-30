@@ -1,133 +1,133 @@
 {
   "semantics": [
     {
-      "label": "Introducere",
-      "description": "Textul introductiv (maximum 100 de caractere)"
+      "label": "Intro",
+      "description": "The intro text (maximum 100 characters)"
     },
     {
-      "label": "Tip de test",
+      "label": "Quiz type",
       "options": [
         {
-          "label": "Test de operații aritmetice"
+          "label": "Arithmetic Operations Quiz"
         },
         {
-          "label": "Test de ecuații liniare"
+          "label": "Linear Equations Quiz"
         }
       ]
     },
     {
-      "label": "Tip de operație aritmetică",
+      "label": "Arithmetic type",
       "options": [
         {
-          "label": "Adunare"
+          "label": "Addition"
         },
         {
-          "label": "Scădere"
+          "label": "Subtraction"
         },
         {
-          "label": "Înmulțire"
+          "label": "Multiplication"
         },
         {
-          "label": "Împărțire"
+          "label": "Division"
         }
       ]
     },
     {
-      "label": "Tip de ecuație",
+      "label": "Equation type",
       "options": [
         {
-          "label": "De bază [ 3x = 12 ]"
+          "label": "Basic [ 3x = 12 ]"
         },
         {
-          "label": "Intermediar [ 4x - 3 = 13 ]"
+          "label": "Intermediate [ 4x - 3 = 13 ]"
         },
         {
-          "label": "Avansat [ 5x + 3 = 3x + 15 ]"
+          "label": "Advanced [ 5x + 3 = 3x + 15 ]"
         }
       ]
     },
     {
-      "label": "Activează fracțiile",
-      "description": "Bifați pentru a permite fracții în ecuații."
+      "label": "Enable fractions",
+      "description": "Enable to allow fractions in equations."
     },
     {
-      "label": "Număr maxim de întrebări"
+      "label": "Max number of questions"
     },
     {
-      "label": "Traduceri pentru interfața utilizatorului",
+      "label": "User interface translations",
       "fields": [
         {
-          "label": "Punctaj în timpul testului",
-          "default": "Scor:"
+          "label": "Scoring during quiz",
+          "default": "Score:"
         },
         {
-          "label": "Timp",
-          "default": "Timp: @time"
+          "label": "Time",
+          "default": "Time: @time"
         },
         {
-          "label": "Antet pagină de rezultate",
-          "default": "Finalizat!"
+          "label": "Result page header",
+          "default": "Finished!"
         },
         {
-          "label": "Etichetă Start rapid",
-          "default": "START!"
+          "label": "Go label",
+          "default": "GO!"
         },
         {
-          "label": "Etichetă buton Start",
+          "label": "Start button label",
           "default": "Start"
         },
         {
-          "label": "Etichetă buton Reîncearcă",
-          "default": "Reîncearcă"
+          "label": "Retry button label",
+          "default": "Retry"
         },
         {
-          "label": "Text cititor de ecran pentru răspuns corect",
-          "default": "Corect"
+          "label": "Readspeaker text for correct answer",
+          "default": "Correct"
         },
         {
-          "label": "Text cititor de ecran pentru răspuns incorect",
-          "default": "Incorect. Răspunsul corect era :num"
+          "label": "Readspeaker text for incorrect answer",
+          "default": "Incorrect. Correct answer was :num"
         },
         {
-          "label": "Etichetă cititor de ecran pentru cronometru",
-          "default": "Durata în ore, minute și secunde."
+          "label": "Readspeaker label for the timer",
+          "default": "Duration in hours, minutes and seconds."
         },
         {
-          "label": "Text cititor de ecran pentru întrebare",
-          "default": "Cât fac :arithmetic?"
+          "label": "Readspeaker text for question",
+          "default": "What does :arithmetic equal?"
         },
         {
-          "label": "Text cititor de ecran pentru întrebare cu ecuație",
-          "default": "Pentru ecuația :equation, cu cât este egal :item?"
+          "label": "Readspeaker text for equation question",
+          "default": "For the equation :equation, what does :item equal?"
         },
         {
-          "label": "Text cititor de ecran pentru variabila ecuației",
-          "default": "Cu cât este egal :item?"
+          "label": "Readspeaker text for equation variable",
+          "default": "What does :item equal?"
         },
         {
-          "label": "Text pentru operatorul plus",
+          "label": "Plus operator text",
           "default": "plus"
         },
         {
-          "label": "Text pentru operatorul minus",
+          "label": "Subtraction operator text",
           "default": "minus"
         },
         {
-          "label": "Text pentru operatorul de înmulțire",
-          "default": "ori"
+          "label": "Multiplication operator text",
+          "default": "times"
         },
         {
-          "label": "Text pentru operatorul de împărțire",
-          "default": "împărțit la"
+          "label": "Division operator text",
+          "default": "divided by"
         },
         {
-          "label": "Text pentru semnul egal",
-          "default": "egal cu"
+          "label": "Equality sign text",
+          "default": "equals"
         },
         {
-          "label": "Text pentru numărul diapozitivului",
-          "description": "Anunță diapozitivul curent și numărul total de diapozitive, variabilele sunt :num și :total",
-          "default": "Diapozitivul :num din :total"
+          "label": "Slide number text",
+          "description": "Announces current slide and total number of slides, variables are :num and :total",
+          "default": "Slide :num of :total"
         }
       ]
     }

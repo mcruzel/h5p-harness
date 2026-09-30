@@ -51,7 +51,7 @@ page.on('response', r => {
   const u = r.url().replace(/^http:\/\/[^/]+/, '');
   if (r.status() >= 400 && !u.endsWith('favicon.ico')) missing.push(r.status() + ' ' + u);
 });
-let initError = null, text = '', media = 0;
+let initError = null, text = '', media = 0, probe;
 try {
   await page.goto(`http://127.0.0.1:${port}/index.html`);
   await page.waitForFunction(() => window.__h5pReady || window.__h5pError, null, { timeout: 30000 });
@@ -59,14 +59,19 @@ try {
   await page.waitForTimeout(2000);
   const frame = page.frames().find(f => f !== page.mainFrame());
   text = frame ? (await frame.locator('body').innerText()).replace(/\s+/g, ' ').trim().slice(0, 300) : '';
-  media = frame ? await frame.evaluate(() => [...document.querySelectorAll('img, canvas, video, svg, audio, button')]
+  media = frame ? await frame.evaluate(() => [...document.querySelectorAll('img, canvas, video, svg, audio, button, iframe')]
     .filter(e => { const r = e.getBoundingClientRect(); return e.tagName === 'AUDIO' || (r.width > 20 && r.height > 20); })
     .length) : 0;
+  // H5P_RENDER_PROBE='css selector': boxes of the matching elements (layout debugging)
+  if (frame && process.env.H5P_RENDER_PROBE) probe = await frame.evaluate(sel => [...document.querySelectorAll(sel)]
+    .map(e => { const r = e.getBoundingClientRect();
+      return [String(e.className).slice(0, 40), ...[r.x, r.y, r.width, r.height].map(Math.round)]; }),
+    process.env.H5P_RENDER_PROBE);
   if (shot) await page.screenshot({ path: shot, fullPage: true });
 } catch (e) {
   initError = String(e).split('\n')[0];
 }
-console.log(JSON.stringify({ initError, errors: [...new Set(errors)], missing, text, media }));
+console.log(JSON.stringify({ initError, errors: [...new Set(errors)], missing, text, media, probe }));
 await browser.close();
 server.close();
 fs.rmSync(root, { recursive: true, force: true });

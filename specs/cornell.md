@@ -4,11 +4,11 @@ H5P.Cornell 0.5 · alias : cornell, notes-cornell · syntaxe Markdown simplifié
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- headline : texte — Instructions (Les élèves verront ces instructions au-dessus des remarques.)
-- instructions : texte riche (Markdown: a em h2 h3 hr li ol strong u ul) — Contenu de l'exercice (Les élèves verront ces instructions au-dessus des notes.)
-- exerciseContent* : sous-contenu, library: modele-3d | audio | image | texte | video — Champs de remarques
+- headline : texte — Headline (If set, will be used for the headline of the exercise instead of the content title.)
+- instructions : texte riche (Markdown: a em h2 h3 hr li ol strong u ul) — Instructions (Students will see these instructions on top of the notes.)
+- exerciseContent* : sous-contenu, library: modele-3d | audio | image | texte | video — Exercise content
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : notesFields, l10n, a11y.
 

@@ -48,7 +48,6 @@
     "label": "Accepted answers",
     "type": "list",
     "min": 1,
-    "entity": "answer",
     "field": {
       "name": "acceptedAnswer",
       "label": "Accepted answer",

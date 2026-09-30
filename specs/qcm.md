@@ -18,27 +18,27 @@ Quel organite est le siège de la **photosynthèse** ?
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- media : groupe — Média
-  - type : sous-contenu, library: image | video | audio — Type (Média à afficher au-dessus de la question (facultatif).)
-  - disableImageZooming : booléen, défaut false, conditionnel — Désactiver le zoom sur image pour l'image de la question
+- media : groupe — Media
+  - type : sous-contenu, library: image | video | audio — Type (Optional media to display above the question.)
+  - disableImageZooming : booléen, défaut false, si type = H5P.Image — Disable image zooming
 - question* : texte riche (Markdown: code em h2 h3 pre strong sub sup) — Question
-- answers* : liste (min 1) — Options disponibles
+- answers* : liste (min 1) — Available options
   chaque élément :
-    - text* : texte riche (Markdown: code em strong sub sup) — Réponse
-    - correct : booléen — Réponse correcte
-    - tipsAndFeedback : groupe — Aide et retour
-      - tip : texte riche (Markdown: a code em strong) — Indice (Indication pour l'utilisateur. Ce texte s'affiche avant que l'utilisateur ne valide la/les réponse(s).)
-      - chosenFeedback : texte riche (Markdown: a code em strong sub sup) — Commentaire (si cette réponse a été sélectionnée) (Cette indication s'affiche sous la réponse quand l'utilisateur clique sur "Vérifier".)
-      - notChosenFeedback : texte riche (Markdown: a code em strong sub sup) — Commentaire (si cette réponse n'a pas été sélectionnée) (Après vérification par l'utilisateur, s'affiche sous la réponse si celle-ci n'a pas été sélectionnée.)
-- overallFeedback : groupe — Retour général (groupe à un champ: écrire directement la valeur)
-  - overallFeedback : liste (min 1) — Définir un retour personnalisé pour chaque tranche de score (Cliquez sur le bouton "Ajouter Intervalle" pour ajouter autant d'intervalles de score que vous souhaitez. Exe…)
+    - text* : texte riche (Markdown: code em strong sub sup) — Text
+    - correct : booléen — Correct
+    - tipsAndFeedback : groupe — Tips and feedback
+      - tip : texte riche (Markdown: a code em strong) — Tip text (Hint for the user. This will appear before user checks his answer/answers.)
+      - chosenFeedback : texte riche (Markdown: a code em strong sub sup) — Message displayed if answer is selected (Message will appear below the answer on "check" if this answer is selected.)
+      - notChosenFeedback : texte riche (Markdown: a code em strong sub sup) — Message displayed if answer is not selected (Message will appear below the answer on "check" if this answer is not selected.)
+- overallFeedback : groupe — Overall Feedback (groupe à un champ: écrire directement la valeur)
+  - overallFeedback : liste (min 1) — Define custom feedback for any score range (Click the "Add range" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!)
     chaque élément :
-      - from : nombre, min 0, max 100, défaut 0 — Fourchette de score
+      - from : nombre, min 0, max 100, défaut 0 — Score Range
       - to : nombre, min 0, max 100, défaut 100
-      - feedback : texte — Retour pour cet intervalle de score
-- behaviour : réglages — Paramètres comportementaux (Ces options vous permettent de gérer le comportement de l'activité.)
+      - feedback : texte — Feedback for defined score range
+- behaviour : réglages — Behavioural settings (These options will let you control how the task behaves.)
   enableRetry=true, enableSolutionsButton=true, type=auto (auto|multi|single), singlePoint=false, randomAnswers=true, showSolutionsRequiresInput=true, confirmCheckDialog=false, confirmRetryDialog=false, autoCheck=false, passPercentage=100, showScorePoints=true
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : UI, confirmCheck, confirmRetry.

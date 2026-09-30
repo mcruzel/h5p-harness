@@ -149,11 +149,12 @@
   "patchVersion": 25,
   "runnable": 1,
   "repo": "https://github.com/h5p/h5p-arithmetic-quiz",
-  "ref": "heads/master",
-  "commit": "a840cfbdb8693d6561ed2ed83d8e68212f1b000e",
+  "ref": "heads/release",
+  "commit": "3b4c53b31767ce45ac4457905a5e80512a0048b4",
   "built": false,
+  "requiredBy": "H5P.KewArCode-1.7",
   "files": 79,
-  "sha256": "feecfd2e2506054efc662766281cc006c629398669ef14c0ea31f070f2afadc0"
+  "sha256": "de53ff53d211278f74b7db39ca9132231ba2dc7dc18ac5ef8252844139a82ec6"
  },
  "H5P.Audio-1.2": {
   "machineName": "H5P.Audio",
@@ -172,14 +173,15 @@
   "machineName": "H5P.Audio",
   "majorVersion": 1,
   "minorVersion": 5,
-  "patchVersion": 29,
+  "patchVersion": 27,
   "runnable": 1,
   "repo": "https://github.com/h5p/h5p-audio",
-  "ref": "heads/master",
-  "commit": "45e184a2e2784d3b08d937a0de4a17e55920cd4f",
+  "ref": "heads/release",
+  "commit": "ad1367003d4bc75cd99e08af2dfeff543504b42c",
   "built": false,
+  "requiredBy": "H5P.TrueFalse-1.8",
   "files": 55,
-  "sha256": "643fa68c11897ac3f8599472726dfc427229f3a26279f22c9ef7b852e8cf7609"
+  "sha256": "bcae8508061d75c7adf630caaf95f666324878055500df76eb33208619d99415"
  },
  "H5P.AudioRecorder-1.0": {
   "machineName": "H5P.AudioRecorder",
@@ -201,9 +203,10 @@
   "patchVersion": 37,
   "runnable": 1,
   "repo": "https://github.com/h5p/h5p-blanks",
-  "ref": "heads/master",
-  "commit": "e6d8858d74d628c4dd78924fd306a06cbbcdc90e",
+  "ref": "heads/release",
+  "commit": "adcc9f886dd3cf219c7bfc42a12b4389b63eee73",
   "built": false,
+  "requiredBy": "H5P.InteractiveVideo-1.27",
   "files": 56,
   "sha256": "03d0b205a87fba90982b3b8701e24f03266572da496cf27feddd12967d714a0f"
  },
@@ -214,11 +217,26 @@
   "patchVersion": 20,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-branching-question",
-  "ref": "heads/master",
-  "commit": "c90f668fe10d642ca0c6bf0b9531ac28e7e5e91c",
+  "ref": "heads/release",
+  "commit": "daad55fcd40e07010f77604e6fd7c3c0879cf6f0",
   "built": false,
-  "files": 38,
-  "sha256": "2a265e88121bc7b11513083a65ee19bf5e4be4ebf7b18e33f7f015830222955f"
+  "requiredBy": "H5P.BranchingScenario-1.11",
+  "files": 37,
+  "sha256": "52cfe19910eb0462d04555dac8a568a7778d0cc5b0d54eb49d7a513d25d89328"
+ },
+ "H5P.BranchingScenario-1.10": {
+  "machineName": "H5P.BranchingScenario",
+  "majorVersion": 1,
+  "minorVersion": 10,
+  "patchVersion": 1,
+  "runnable": 1,
+  "repo": "https://github.com/h5p/h5p-branching-scenario",
+  "ref": "tags/1.10.1",
+  "commit": "b682e108c6c942888477f6287cbf1a155adb6e87",
+  "built": true,
+  "requiredBy": "H5P.BranchingScenario-1.11",
+  "files": 54,
+  "sha256": "309fc8968b91f62cea6663be60c2cc653fa210ad10cdc143ed58fc2562ca299e"
  },
  "H5P.BranchingScenario-1.11": {
   "machineName": "H5P.BranchingScenario",
@@ -227,11 +245,12 @@
   "patchVersion": 1,
   "runnable": 1,
   "repo": "https://github.com/h5p/h5p-branching-scenario",
-  "ref": "heads/master",
-  "commit": "54bd4422cc657cb0aeafa8c2108ae0f8b955f06d",
+  "ref": "heads/release",
+  "commit": "b71cec66c8286006ec92fb3eb5ba859bce380a93",
   "built": true,
+  "requiredBy": "racine",
   "files": 54,
-  "sha256": "a525699f6af425fa07ab552043290941c0dcb86151f0be0a56f22dd0b29cc27f"
+  "sha256": "3f8941d1874413748b0d229cdb2eaa81a592c671fc0648837dfaa1fab9cd4803"
  },
  "H5P.CKEditor-1.0": {
   "machineName": "H5P.CKEditor",
@@ -277,14 +296,15 @@
   "machineName": "H5P.Collage",
   "majorVersion": 0,
   "minorVersion": 3,
-  "patchVersion": 30,
+  "patchVersion": 25,
   "runnable": 1,
   "repo": "https://github.com/h5p/h5p-collage",
-  "ref": "heads/master",
-  "commit": "a4dc194acb8878efead24524fdc7bd1a73c93c2b",
+  "ref": "heads/release",
+  "commit": "4c7362fed56b63dfeb75472bd4c31cfa9094defa",
   "built": false,
-  "files": 44,
-  "sha256": "587d075e0de9535b93feae6d401e989e666171e2df4e948ddb3fcca9c3694bac"
+  "requiredBy": "H5P.Column-1.21",
+  "files": 43,
+  "sha256": "5100564f74a067949f15468b841dd822799697f57f5b3fa45d60d8ce3685b080"
  },
  "H5P.Column-1.20": {
   "machineName": "H5P.Column",
@@ -358,11 +378,12 @@
   "patchVersion": 16,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-continuous-text",
-  "ref": "heads/master",
-  "commit": "0721d4f5d3b25a474e3ca9f8b73efeb93bd20d16",
+  "ref": "heads/release",
+  "commit": "73dfc334c9482eaeb1ae7a40be6756ee6dcc9166",
   "built": false,
+  "requiredBy": "H5P.CoursePresentation-1.27",
   "files": 47,
-  "sha256": "ca52e5f571b1025b5121666f6ee9fd29c6892210126f93391cd27c41d397838a"
+  "sha256": "3ef95a86a35fd9f80f82b01b230ad28a7c5d1a6665e029bc9084c8646d00cce8"
  },
  "H5P.Cornell-0.5": {
   "machineName": "H5P.Cornell",
@@ -446,14 +467,15 @@
   "machineName": "H5P.Dialogcards",
   "majorVersion": 1,
   "minorVersion": 9,
-  "patchVersion": 40,
+  "patchVersion": 36,
   "runnable": 1,
   "repo": "https://github.com/h5p/h5p-dialogcards",
-  "ref": "heads/master",
-  "commit": "4e995d59eeeee1dc57ca9a3cc180c065b67fac93",
+  "ref": "heads/release",
+  "commit": "2a5a631dea4f070a821d97ea9e8d3c92156a9232",
   "built": true,
+  "requiredBy": "H5P.CoursePresentation-1.27",
   "files": 52,
-  "sha256": "cee217251f0d2015aba68d91056cbabfa51f0e0f99d26b8caea2eb059f65870c"
+  "sha256": "09663f3882d94fae7139bdb4e609d0f956cd0f2a28b6bc3b7cec51306199081f"
  },
  "H5P.Dictation-1.4": {
   "machineName": "H5P.Dictation",
@@ -514,11 +536,12 @@
   "patchVersion": 5,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-drag-n-drop",
-  "ref": "heads/master",
-  "commit": "2de43e81e49be522e1f5b4b548dde372079e309f",
+  "ref": "heads/release",
+  "commit": "6c3ba7c7778c41033626a6e17c0c7df8e1e9d913",
   "built": false,
+  "requiredBy": "H5P.DragNBar-1.5",
   "files": 2,
-  "sha256": "cc30cce1db5f5decb7a223d50e7d145e1306b0542456c643d015d0cc394e7fd7"
+  "sha256": "62bfdb8f8ac8cd563c49f9a87342e97bce68a77aaa97a4526c9a4b35854937c2"
  },
  "H5P.DragNResize-1.2": {
   "machineName": "H5P.DragNResize",
@@ -527,9 +550,10 @@
   "patchVersion": 6,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-drag-n-resize",
-  "ref": "heads/master",
-  "commit": "fa3e26b693f69dac9b6a8f7211e7d8b879f3b72f",
+  "ref": "heads/release",
+  "commit": "4c4187894bd4f00601e109f4a580e6f1473b1062",
   "built": false,
+  "requiredBy": "H5P.DragNBar-1.5",
   "files": 3,
   "sha256": "a58b02c2403a1adab8cd77fc76155b0aaa7c57b47bb1fb1650ceac48fd3f8607"
  },
@@ -566,9 +590,10 @@
   "patchVersion": 52,
   "runnable": 1,
   "repo": "https://github.com/h5p/h5p-drag-text",
-  "ref": "heads/master",
-  "commit": "043aedd9d1f5a0a2ff9e525363514729d388caa7",
+  "ref": "heads/release",
+  "commit": "3d3eb6d759b3ed65862c3048fbe02b989cbb7110",
   "built": true,
+  "requiredBy": "H5P.InteractiveVideo-1.27",
   "files": 57,
   "sha256": "f259fc62e8a3800b5a69c71131d06ee66ce7aa108947824cc9fd9aaff6efc863"
  },
@@ -645,9 +670,10 @@
   "patchVersion": 6,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-font-icons",
-  "ref": "heads/master",
-  "commit": "316028634ddcda542ac9f5a8a9eda2b9ad1d22d9",
+  "ref": "heads/release",
+  "commit": "33ecab3068973740ba4c6ccb96548022fc4bf310",
   "built": false,
+  "requiredBy": "H5P.JoubelUI-1.3",
   "files": 6,
   "sha256": "343a9ffb875efe25d565c5e2c5334904b6c5f476f28a5bf2c9eb0a3272da7379"
  },
@@ -720,14 +746,15 @@
   "machineName": "H5P.GoalsPage",
   "majorVersion": 1,
   "minorVersion": 5,
-  "patchVersion": 32,
+  "patchVersion": 31,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-goals-page",
-  "ref": "heads/master",
-  "commit": "4401134ba5f32c1294d0a762a5bed039b2a4a01d",
+  "ref": "heads/release",
+  "commit": "ebde9c2004d6c7a3a10d89fecc5c0344c009fb3c",
   "built": false,
+  "requiredBy": "H5P.DocumentationTool-1.8",
   "files": 40,
-  "sha256": "de28e125e21bc0d5900ff9757d9309bb8a9334fcc102d21aeadf61b77ad0a429"
+  "sha256": "5a7d9c0bb38f20bf72886dd03ba9efc06ed7afdcb6684bc64d8e3a51b9a2a915"
  },
  "H5P.GuessTheAnswer-1.5": {
   "machineName": "H5P.GuessTheAnswer",
@@ -762,11 +789,12 @@
   "patchVersion": 29,
   "runnable": 1,
   "repo": "https://github.com/h5p/h5p-iframe-embed",
-  "ref": "heads/master",
-  "commit": "bd010b55bd42b00b8a49e976635d9005c9c70658",
+  "ref": "heads/release",
+  "commit": "1fb6005497ee02f81170c7e93fed060ce5c556c3",
   "built": false,
-  "files": 42,
-  "sha256": "0e9ca67387468a677b0251be504fe78d02ee8a62e5cd2fbae297f82f4482974d"
+  "requiredBy": "H5P.RowColumn-1.0",
+  "files": 40,
+  "sha256": "d60ddd2045b8f34bed2d538d15939b6fa721caab5a193f2f06dca7e8c82f2568"
  },
  "H5P.IVHotspot-1.2": {
   "machineName": "H5P.IVHotspot",
@@ -827,9 +855,10 @@
   "patchVersion": 6,
   "runnable": 1,
   "repo": "https://github.com/h5p/h5p-image-hotspots",
-  "ref": "heads/master",
-  "commit": "adc855f17f2c86e8741c9299f6d834f8fabc7417",
+  "ref": "heads/release",
+  "commit": "41ae62bfe368948e04bd1397f347d1abe144203b",
   "built": false,
+  "requiredBy": "H5P.Column-1.21",
   "files": 57,
   "sha256": "29ef35b2f9c4f45eb72a274e546c491d93e77fce23cd250e39ff86490d6076d6"
  },
@@ -892,11 +921,12 @@
   "patchVersion": 4,
   "runnable": 0,
   "repo": "https://github.com/falcon-git/h5p-image-slide",
-  "ref": "heads/master",
-  "commit": "dd5696133fa0c0a4ee146eefb06b9338b83af13c",
+  "ref": "heads/release",
+  "commit": "97984f727d2410db0a0ad8298d30fd57ca8814bc",
   "built": false,
-  "files": 34,
-  "sha256": "5b8144a093e33851bbedebd306cf3b5c74d5612c4929c744b337f59a096c22ec"
+  "requiredBy": "H5P.ImageSlider-1.1",
+  "files": 32,
+  "sha256": "728c8753ed84994ff0ab7a2ee6e52ab62ea1da4b5734026716421010747a67d0"
  },
  "H5P.ImageSlider-1.1": {
   "machineName": "H5P.ImageSlider",
@@ -970,9 +1000,10 @@
   "patchVersion": 37,
   "runnable": 1,
   "repo": "https://github.com/h5p/h5p-interactive-video",
-  "ref": "heads/master",
-  "commit": "0e9f997c2d19a8c7be043a84ebf9a1f32008e38b",
+  "ref": "heads/release",
+  "commit": "bcfa06d2b057cddc583fb922a75038981084be62",
   "built": true,
+  "requiredBy": "H5P.CoursePresentation-1.27",
   "files": 71,
   "sha256": "05badd9f7f26a159e75cad597c430d4ff8b053049d9aafa3ff69d5a56fd4e4b8"
  },
@@ -1061,11 +1092,12 @@
   "patchVersion": 51,
   "runnable": 1,
   "repo": "https://github.com/h5p/h5p-memory-game",
-  "ref": "heads/master",
-  "commit": "f39e9ac8a2125111162f13649871a1a3f39cfdb6",
+  "ref": "heads/release",
+  "commit": "8f3591a2df181d71e4b6c5ca1a606134204e489f",
   "built": false,
+  "requiredBy": "H5P.RowColumn-1.0",
   "files": 64,
-  "sha256": "e2dd9d22f28dfaf375c008f44e654e7fce9eb32054a589df8b0c047ca8841f01"
+  "sha256": "39286a424f2b476833db964c9f69b3dd1d56e8b11289c32fd230813ed8ad0777"
  },
  "H5P.MultiChoice-1.16": {
   "machineName": "H5P.MultiChoice",
@@ -1100,9 +1132,10 @@
   "patchVersion": 14,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-nil",
-  "ref": "heads/master",
-  "commit": "03f76188c6d0a89c6dac23dedd0fdc5b6a38ac2e",
+  "ref": "heads/release",
+  "commit": "70fe7e57a6a5395b86c75d823803af94b5d1cd4d",
   "built": false,
+  "requiredBy": "H5P.InteractiveVideo-1.27",
   "files": 2,
   "sha256": "5830baae5149b6bdaf722bd949acd614edd7301fa4afa528cbf4a0dfa27b9ee1"
  },
@@ -1113,11 +1146,12 @@
   "patchVersion": 28,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-open-ended-question",
-  "ref": "heads/master",
-  "commit": "6ed1b3e76c7901bbea1604f6de4eaa38c39fd2cf",
+  "ref": "heads/release",
+  "commit": "93d3b3e5e939453afd88913026c0daceeb0711d1",
   "built": true,
+  "requiredBy": "H5P.Questionnaire-1.3",
   "files": 49,
-  "sha256": "383f08d5b3e2030dd5572724b2e1c2153ad99e47520a2ed89cb59e12c196d250"
+  "sha256": "0b822bc6b65c1c0090e60deda4bc3f379c753168a6977fc1a843f1ff5bd5eb6b"
  },
  "H5P.Question-1.4": {
   "machineName": "H5P.Question",
@@ -1136,14 +1170,15 @@
   "machineName": "H5P.Question",
   "majorVersion": 1,
   "minorVersion": 5,
-  "patchVersion": 56,
+  "patchVersion": 52,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-question",
-  "ref": "heads/master",
-  "commit": "559309aa01c8da9ab9796433aadd13c1a27e902d",
+  "ref": "heads/release",
+  "commit": "c82426d43b648095cc21d65b6bc27fa5fbd1c217",
   "built": false,
+  "requiredBy": "H5P.XRay-0.1",
   "files": 10,
-  "sha256": "b3f8acfacf003dc9b4b9eddc3d470d9b01853cba6d8958ebab915a5ac538c1cd"
+  "sha256": "b729ef7d12728376c508e1637b15fbe1000064ea79a2980ee392312ce340c947"
  },
  "H5P.QuestionSet-1.20": {
   "machineName": "H5P.QuestionSet",
@@ -1178,11 +1213,12 @@
   "patchVersion": 11,
   "runnable": 1,
   "repo": "https://github.com/h5p/h5p-questionnaire",
-  "ref": "heads/master",
-  "commit": "b83a031d32c86476015b4df6f659b14446f34e12",
+  "ref": "heads/release",
+  "commit": "feeff48ad3f709e1c452e28d851235e126c6c1f8",
   "built": true,
+  "requiredBy": "H5P.InteractiveVideo-1.27",
   "files": 54,
-  "sha256": "624cf670f93ecfdea9ee4567dd31b89a2d1fb16d985de5ca15f29abc25438670"
+  "sha256": "2692d50323e96cc8e36cf5ec7fb01c513a085f8c2574eaefaa39dd15463b60ad"
  },
  "H5P.Row-1.0": {
   "machineName": "H5P.Row",
@@ -1256,11 +1292,12 @@
   "patchVersion": 5,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-shape",
-  "ref": "heads/master",
-  "commit": "e7412ac7eaa6bb811efc640ff51a555a6852d2b7",
+  "ref": "heads/release",
+  "commit": "66b614b87af7b8722edce5692a0c5825f37c2ba7",
   "built": false,
-  "files": 20,
-  "sha256": "921c72523ec317a4267d43495506e40abb999da31407aef923134393f84a9c7c"
+  "requiredBy": "H5P.CoursePresentation-1.27",
+  "files": 19,
+  "sha256": "73fbf8c762888d3a446b3956aa8f9dcdb33860cb085b9c9871c6a8ecc1ad6eda"
  },
  "H5P.SimpleMultiChoice-1.1": {
   "machineName": "H5P.SimpleMultiChoice",
@@ -1269,11 +1306,12 @@
   "patchVersion": 22,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-simple-multiple-choice",
-  "ref": "heads/master",
-  "commit": "46fc778f2b82232ba9ef22cc2bcab563037723bb",
+  "ref": "heads/release",
+  "commit": "67440d9b7472cebf3e787fa2cae97c844a70d0f3",
   "built": true,
-  "files": 51,
-  "sha256": "a1e9a7bdb5b393e7c29c3ba96c8bbe5132a5f33e510275382f39f9d445275524"
+  "requiredBy": "H5P.Questionnaire-1.3",
+  "files": 50,
+  "sha256": "41b8db022560d8cc31f2164b75327412ef32565f80804f295ea95f92a723c050"
  },
  "H5P.SingleChoiceSet-1.11": {
   "machineName": "H5P.SingleChoiceSet",
@@ -1321,11 +1359,12 @@
   "patchVersion": 2,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-soundjs",
-  "ref": "heads/master",
-  "commit": "0649f79c27bf00cd030efbef812c2bde6af12b72",
+  "ref": "heads/release",
+  "commit": "82e626df838993ebf4664a07079621adace5b3e2",
   "built": false,
+  "requiredBy": "H5P.GameMap-1.9",
   "files": 2,
-  "sha256": "4db90847638f551ac7d8d2ee571ee470dc4bc17f2622e2a5a2754880cfddb2bf"
+  "sha256": "cd0e5826a9555a54ab0bad4c1e7695cb32f219994f8bd03f958e5a7c611fce0e"
  },
  "H5P.SpeakTheWords-1.5": {
   "machineName": "H5P.SpeakTheWords",
@@ -1334,11 +1373,12 @@
   "patchVersion": 7,
   "runnable": 1,
   "repo": "https://github.com/h5p/h5p-speak-the-words",
-  "ref": "heads/master",
-  "commit": "0d71cf9fee6ce9b4727e5237f7e4f1e03f328381",
+  "ref": "heads/release",
+  "commit": "46d26aa5225bad70bc5f388730e55edb4e8ecd93",
   "built": true,
-  "files": 43,
-  "sha256": "2d3fa453353b74175c24776042158964739caf69de912ede567772e0184f6f8c"
+  "requiredBy": "H5P.SpeakTheWordsSet-1.3",
+  "files": 42,
+  "sha256": "bd6d943b57c2137dadff0e193da7642897b7cb45cb06ee73694ac8fed1df081f"
  },
  "H5P.SpeakTheWordsSet-1.3": {
   "machineName": "H5P.SpeakTheWordsSet",
@@ -1347,11 +1387,12 @@
   "patchVersion": 4,
   "runnable": 1,
   "repo": "https://github.com/h5p/h5p-speak-the-words-set",
-  "ref": "heads/master",
-  "commit": "27c468356fed2365befb96c12257bd5f03171caa",
+  "ref": "heads/release",
+  "commit": "eca5aaf715b164cbc4da2f0d373a3d39e597fded",
   "built": true,
-  "files": 43,
-  "sha256": "95bcb27d3e9e070599adb095d210757b0c3c0f92ba424a6a0d75fa6937a13dbf"
+  "requiredBy": "racine",
+  "files": 42,
+  "sha256": "9c8f2b6c2ce8f4951d88f74584e093ac2a508244ebcb8f476c4daf157bc0a8ef"
  },
  "H5P.StandardPage-1.5": {
   "machineName": "H5P.StandardPage",
@@ -1451,11 +1492,12 @@
   "patchVersion": 0,
   "runnable": 0,
   "repo": "https://github.com/otacke/h5p-text-utilities",
-  "ref": "heads/master",
-  "commit": "b92bc8c91762f2d3254e6ff32660b15af6db7e68",
+  "ref": "heads/release",
+  "commit": "e5bffbe458dd2626aae7650c32fde236bd2f0e54",
   "built": false,
+  "requiredBy": "H5P.Blanks-1.14",
   "files": 3,
-  "sha256": "e288fb5635922461223138747ce4b251068de60433d8031925a7ad4e919a41cd"
+  "sha256": "cbaf898518dda4bb2b9a10c3565a0c7ec9710afb18d97d3fcebe3c97340af07c"
  },
  "H5P.ThreeDModel-1.0": {
   "machineName": "H5P.ThreeDModel",
@@ -1490,11 +1532,12 @@
   "patchVersion": 108,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-three-js",
-  "ref": "heads/master",
-  "commit": "6f17fbbd4f97f6bedd845b18c63e9eb740a91330",
+  "ref": "heads/release",
+  "commit": "1805c9b245a076e065ab0b31dcf89d33d28d6b88",
   "built": true,
+  "requiredBy": "H5P.ThreeSixty-0.3",
   "files": 3,
-  "sha256": "85d2643d1c1408c2da640ddf2d9b19bd4eeb7817d5aef652485ba73e32dbf684"
+  "sha256": "943a886b60d3b730791a9da40ca2474535be41ce240891573ef48faa98f2b288"
  },
  "H5P.ThreeSixty-0.3": {
   "machineName": "H5P.ThreeSixty",
@@ -1529,11 +1572,12 @@
   "patchVersion": 2,
   "runnable": 0,
   "repo": "https://github.com/otacke/h5p-timer",
-  "ref": "heads/master",
-  "commit": "092e89409072e4592443b227deddd2f789033791",
+  "ref": "heads/release",
+  "commit": "c3645cee23aa80ecef493cfc80f22ad5da485ad0",
   "built": false,
+  "requiredBy": "H5P.MemoryGame-1.3",
   "files": 3,
-  "sha256": "36ee0bbc3de7478c32f05315cd6360f8878ab62e6166640966707d81a6735740"
+  "sha256": "0bf89b8b6b75e15212059b63eac6b9d73d0ef51d8ac047c1427a077be79d3cb4"
  },
  "H5P.Transcript-1.3": {
   "machineName": "H5P.Transcript",
@@ -1568,24 +1612,26 @@
   "patchVersion": 4,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-transition",
-  "ref": "heads/master",
-  "commit": "ee4941848f935d380c4e6be3a718c6e758efd688",
+  "ref": "heads/release",
+  "commit": "d47cf2c534e8a41cae67c552f231daae4768ae8a",
   "built": false,
+  "requiredBy": "H5P.JoubelUI-1.3",
   "files": 2,
-  "sha256": "aa22bb922358d81f0aca2af1f4e83bd7f4c1d742e6d0bd8e251412f2d7950484"
+  "sha256": "00927b6b021d646acff35e9c2cf6e25ba54f591308fea88f95d58b43aebddda2"
  },
  "H5P.TrueFalse-1.8": {
   "machineName": "H5P.TrueFalse",
   "majorVersion": 1,
   "minorVersion": 8,
-  "patchVersion": 24,
+  "patchVersion": 21,
   "runnable": 1,
   "repo": "https://github.com/h5p/h5p-true-false",
-  "ref": "heads/master",
-  "commit": "99454a26aec9fea0621146b90893cc612976c20e",
+  "ref": "heads/release",
+  "commit": "531f7295054975a693998b8880348968a4e983f1",
   "built": false,
+  "requiredBy": "racine",
   "files": 58,
-  "sha256": "edb5be07160272c43e3b285dddade8d509a43b293207da83dd87cbf440a503b6"
+  "sha256": "113d5d045e01d6cfd91cb49c8f9831214af30dc3f6bd39d03f71873584ee1e56"
  },
  "H5P.TwitterUserFeed-1.0": {
   "machineName": "H5P.TwitterUserFeed",
@@ -1594,11 +1640,12 @@
   "patchVersion": 21,
   "runnable": 1,
   "repo": "https://github.com/h5p/h5p-twitter-user-feed",
-  "ref": "heads/master",
-  "commit": "dde1872e4e3492263c49fb433b58355e0fe47abe",
+  "ref": "heads/release",
+  "commit": "9794120dbc272c692415fac25a886e381dc42699",
   "built": false,
-  "files": 34,
-  "sha256": "dfebac5ddae835528f0ebedce2a71b7d4f2e9c193c8dce949163d17cc8a1038f"
+  "requiredBy": "racine",
+  "files": 30,
+  "sha256": "148d950c51142509f96a981154cd22a7cf41b1750877ada62c24a54350c32f53"
  },
  "H5P.Video-1.6": {
   "machineName": "H5P.Video",
@@ -1607,11 +1654,12 @@
   "patchVersion": 80,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-video",
-  "ref": "heads/master",
-  "commit": "e44dd2f081d053ce51bc0755a911d2569b667773",
+  "ref": "heads/release",
+  "commit": "af25aef6e9eb8f84db037d564d82494c7d44e267",
   "built": false,
+  "requiredBy": "H5P.TrueFalse-1.8",
   "files": 59,
-  "sha256": "4bbe5cd05415a558648e91fc2f1134be5f67e76977a1bfc51ffde9fc72b1ac41"
+  "sha256": "662d7dc40ba52feae2710e24ed4d5261780945e53abebe8cc74e0ab8c670a875"
  },
  "H5P.XRay-0.1": {
   "machineName": "H5P.XRay",
@@ -1673,11 +1721,12 @@
   "patchVersion": 5,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-editor-branching-question",
-  "ref": "heads/master",
-  "commit": "cded891a410889d0e938d428e3300a4809510c09",
+  "ref": "heads/release",
+  "commit": "dfcc6a55ecb389d9ffff2a16d1af7ec2f18014ad",
   "built": false,
-  "files": 27,
-  "sha256": "eef9000429e3b3eef4d5da297e6a4b625152621e76e30f91e0f4e52717a0a0cd"
+  "requiredBy": "H5P.BranchingQuestion-1.0",
+  "files": 26,
+  "sha256": "acdfee8be6f0f59c85ab2e3e9e1d0f142eb4acf8055ff44cc31c4c14869619f1"
  },
  "H5PEditor.BranchingScenario-1.5": {
   "machineName": "H5PEditor.BranchingScenario",
@@ -1713,11 +1762,12 @@
   "patchVersion": 22,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-editor-collage",
-  "ref": "heads/master",
-  "commit": "9e62afb9ad9558d522b004e6a2f158ea9d053987",
+  "ref": "heads/release",
+  "commit": "47ab17367fddbc541cec58df7044402e7e1ada5f",
   "built": false,
-  "files": 36,
-  "sha256": "cf83c7e2d6e67efebcc99613b047cc064a6f7ab40957a05e6825dcc27c93ce96"
+  "requiredBy": "H5P.Collage-0.3",
+  "files": 35,
+  "sha256": "a39cdfa0873712bb9aa0e1342dd8083622cf01f772560503e9d7ced374a85335"
  },
  "H5PEditor.ColorSelector-1.3": {
   "machineName": "H5PEditor.ColorSelector",
@@ -1791,11 +1841,12 @@
   "patchVersion": 14,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-editor-duration",
-  "ref": "heads/master",
-  "commit": "7d4e857489fb681c32fce30d8342259bab3c8595",
+  "ref": "heads/release",
+  "commit": "3661c92e072c85648100cd1187419be0c9667075",
   "built": false,
-  "files": 36,
-  "sha256": "37884c51acdbdd052780a4574fb1374836a70536250f0d1efee5ae8f0510da97"
+  "requiredBy": "H5PEditor.InteractiveVideo-1.25",
+  "files": 35,
+  "sha256": "6a1d6c6fbfb57e9125537eaad33d3f8a6214c241771f63ed9ffc6885b185cc6c"
  },
  "H5PEditor.GameMap-1.5": {
   "machineName": "H5PEditor.GameMap",
@@ -1817,11 +1868,12 @@
   "patchVersion": 7,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-editor-image-coordinate-selector",
-  "ref": "heads/master",
-  "commit": "94e0b9910dd858c95d3bd2f4c5311971628aa21f",
+  "ref": "heads/release",
+  "commit": "53bd59035df3193d60de571b18be16827ca94c41",
   "built": false,
-  "files": 39,
-  "sha256": "4f7a2bd4041f6095abcb85b2e5e93d75c759ab6e845c1cfbd6fa1b4a8eca4893"
+  "requiredBy": "H5P.ImageHotspots-1.11",
+  "files": 37,
+  "sha256": "dca29e0bc3f2f4ca0ebbe5f1bca1611043aa1b76d4e2db2887a6e2ad4299a97b"
  },
  "H5PEditor.ImageHotspotQuestion-1.8": {
   "machineName": "H5PEditor.ImageHotspotQuestion",
@@ -1830,11 +1882,12 @@
   "patchVersion": 12,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-editor-image-hotspot-question",
-  "ref": "heads/master",
-  "commit": "78f687ed69367e0d594ad119f7f0c2dd2162a216",
+  "ref": "heads/release",
+  "commit": "a8a959bbd942c2a2232e165e2ec9abbb94c71fd1",
   "built": false,
-  "files": 38,
-  "sha256": "08f5758229535d14b8ef507f4f13f7c83b24e6598989c8d79fb801ce7fbd7070"
+  "requiredBy": "H5P.ImageHotspotQuestion-1.8",
+  "files": 37,
+  "sha256": "9fd3c4ea90c407d88c935ab605b4e0bff826651c111f5c78919592232e63fbf2"
  },
  "H5PEditor.ImageMultipleHotspotQuestion-1.0": {
   "machineName": "H5PEditor.ImageMultipleHotspotQuestion",
@@ -1947,11 +2000,12 @@
   "patchVersion": 18,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-editor-question-set-textual-editor",
-  "ref": "heads/master",
-  "commit": "750361219e1195d26c3b24add9078be43091dc18",
+  "ref": "heads/release",
+  "commit": "fad138d32eebd7d0a90848448fae9650797a1fde",
   "built": true,
-  "files": 36,
-  "sha256": "d12224396382876c754f8fdc8bab49b06530a3ee7b9ad0428882bf447c458828"
+  "requiredBy": "H5P.QuestionSet-1.21",
+  "files": 35,
+  "sha256": "fb80704f3941087fe2e2e37d3737d95e9ef96caba78b21c2800e9c01e32264ca"
  },
  "H5PEditor.RadioGroup-1.1": {
   "machineName": "H5PEditor.RadioGroup",
@@ -1960,9 +2014,10 @@
   "patchVersion": 4,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-editor-radio-group",
-  "ref": "heads/master",
-  "commit": "305eb2ce1779232ed03a79c2553b92c6ef9c5e3d",
+  "ref": "heads/release",
+  "commit": "c36baa757abc0ec327a3bb9e487e50a593ad9afc",
   "built": false,
+  "requiredBy": "H5P.TrueFalse-1.8",
   "files": 3,
   "sha256": "d3e7e53aba7339041bfe7656dbd0f02974944efe2731cba8332e83e312788ce6"
  },
@@ -1973,9 +2028,10 @@
   "patchVersion": 2,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-editor-radio-selector",
-  "ref": "heads/master",
-  "commit": "1fe647ee1b9adf79d4d04f2fade408e108b31116",
+  "ref": "heads/release",
+  "commit": "94f15cb41b447c0270645965fc0366628bcec78f",
   "built": false,
+  "requiredBy": "H5PEditor.CoursePresentation-1.26",
   "files": 3,
   "sha256": "d43e25eb3ea24aa40c3386d46ddac692dec340c9721d91a4e589968c06d36e28"
  },
@@ -1986,11 +2042,12 @@
   "patchVersion": 13,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-editor-range-list",
-  "ref": "heads/master",
-  "commit": "3f8910b290cc5efa6dacbfb081a478524aa3f18d",
+  "ref": "heads/release",
+  "commit": "d1e1118999cedb86bd4f746f8db9dbde8ccbf05c",
   "built": false,
-  "files": 39,
-  "sha256": "95b4ba08fdb44e1e3c712d8a8ad11209b9f03d4e7dfb68067596971cb00cebbf"
+  "requiredBy": "H5P.MultiMediaChoice-0.3",
+  "files": 38,
+  "sha256": "70bfa9a8306b1b2279b9e5cd3224ecc32bdf23f550db1728608490dee36022c8"
  },
  "H5PEditor.SelectToggleFields-1.1": {
   "machineName": "H5PEditor.SelectToggleFields",
@@ -1999,9 +2056,10 @@
   "patchVersion": 1,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-editor-select-toggle-fields",
-  "ref": "heads/master",
-  "commit": "8bf789b546964b083e27ff37caa929ec26b7abb6",
+  "ref": "heads/release",
+  "commit": "4cd72386d2b60c9c30572e102549b0a10ba4dc8d",
   "built": false,
+  "requiredBy": "H5P.IVHotspot-1.2",
   "files": 3,
   "sha256": "4b661410f96dabc063b0c856b543c0b8ad003099e42087a5805e57982134b9ad"
  },
@@ -2038,11 +2096,12 @@
   "patchVersion": 10,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-editor-single-choice-set-textual-editor",
-  "ref": "heads/master",
-  "commit": "ed78d955075efc57f3a2f73836ae0527ec161dd4",
+  "ref": "heads/release",
+  "commit": "c32ebb9790616142fb7d28bdd8c8082342e2ba11",
   "built": false,
-  "files": 35,
-  "sha256": "d1a8b6e0a27eba25ac8f0ebf390014fb08d55d4147c4fde9cd15e2485213983f"
+  "requiredBy": "H5P.SingleChoiceSet-1.11",
+  "files": 34,
+  "sha256": "5421d2d19472a1e71e4e69cf77cfa5e1b39a10738638af491f0d57907ad9c078"
  },
  "H5PEditor.SummaryTextualEditor-1.1": {
   "machineName": "H5PEditor.SummaryTextualEditor",
@@ -2051,11 +2110,12 @@
   "patchVersion": 12,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-editor-summary-textual-editor",
-  "ref": "heads/master",
-  "commit": "9683c666ae645467957c7a2f4cb319b1d18fc219",
+  "ref": "heads/release",
+  "commit": "18f50660c6b682374b91a0e53d93b8edc6a72b0f",
   "built": false,
-  "files": 36,
-  "sha256": "b43c737f78144710b4bab10daa69cd4af33120bc95b0a514e341b8fce02226f3"
+  "requiredBy": "H5P.Summary-1.10",
+  "files": 35,
+  "sha256": "4bb1750a35190ea4dc46813e750e1ea6cfc1fb74e21375800a56f57c23c98231"
  },
  "H5PEditor.TableList-1.0": {
   "machineName": "H5PEditor.TableList",
@@ -2064,9 +2124,10 @@
   "patchVersion": 4,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-editor-table-list",
-  "ref": "heads/master",
-  "commit": "0309d50fe50b008a2c35e5674b0bbedec1785c7e",
+  "ref": "heads/release",
+  "commit": "931ecdbe1ddd411e3afefaf13cdda675cff15b55",
   "built": false,
+  "requiredBy": "H5PEditor.RangeList-1.0",
   "files": 4,
   "sha256": "402e9395a10a1c654a12f35e4a4e59e44d3855c9193b2604873de9e553d8925a"
  },
@@ -2129,11 +2190,12 @@
   "patchVersion": 14,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-editor-timecode",
-  "ref": "heads/master",
-  "commit": "369b4df22c41d6f88fb52f2fa8b2276a5859e39a",
+  "ref": "heads/release",
+  "commit": "0b32f41f9900daff4cf05b1345db390d0ebb4965",
   "built": false,
-  "files": 38,
-  "sha256": "c00e7c46532d666355a0fb9f2d4bd3d3d5422eca7bcdda430bada56ed9859c4b"
+  "requiredBy": "H5P.IVHotspot-1.2",
+  "files": 37,
+  "sha256": "e4e6bc83b4d12dbf4ea24158c18f848e04ec22f593edeca4aaed150b78717e3a"
  },
  "H5PEditor.UrlField-1.2": {
   "machineName": "H5PEditor.UrlField",
@@ -2142,9 +2204,10 @@
   "patchVersion": 2,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-editor-url-field",
-  "ref": "heads/master",
-  "commit": "fc63292e3e8f59121476eaccc3da97a5ba6f22b1",
+  "ref": "heads/release",
+  "commit": "27892c33addfe84936e60f94e99c94906e7b652d",
   "built": false,
+  "requiredBy": "H5P.IVHotspot-1.2",
   "files": 3,
   "sha256": "f5f33763adb1b710333f2783a328d781231880f8394203c83f89b10ae464b594"
  },
@@ -2168,11 +2231,12 @@
   "patchVersion": 17,
   "runnable": 0,
   "repo": "https://github.com/h5p/h5p-editor-wizard",
-  "ref": "heads/master",
-  "commit": "a9b0023aabf232945acf4bd81ec6d3d83aa0f88e",
+  "ref": "heads/release",
+  "commit": "4cdf5d26d998daf10191fa4dcc1fb9b2192f3dd6",
   "built": false,
-  "files": 35,
-  "sha256": "3b20b83d27fdc9752c9365a2a30094d3eb5dbaf145aa2527b78364144659c224"
+  "requiredBy": "H5PEditor.DragQuestion-1.10",
+  "files": 33,
+  "sha256": "5980a52bff1cc9843e6fbcba6062a263036c8bab37a35d0b5ea828c5859318f8"
  },
  "Shepherd-1.0": {
   "machineName": "Shepherd",
@@ -2181,9 +2245,10 @@
   "patchVersion": 7,
   "runnable": 0,
   "repo": "https://github.com/h5p/shepherd",
-  "ref": "heads/master",
-  "commit": "4074593bf9f5fc67fdd26c8b1b529e2431183423",
+  "ref": "heads/release",
+  "commit": "50bd07f43145c0b350c87581647366f1fb85cf86",
   "built": false,
+  "requiredBy": "H5P.GuidedTour-1.0",
   "files": 7,
   "sha256": "657e0cbbcba74c50a42bfa3f003c1e2ca0efcb1c2e7cccdd775b3cc4d4facf23"
  },
@@ -2194,11 +2259,12 @@
   "patchVersion": 1,
   "runnable": 0,
   "repo": "https://github.com/h5p/timelinejs",
-  "ref": "heads/master",
-  "commit": "442c1a7f089b1f793b73da0fd9681941113e24b4",
+  "ref": "heads/release",
+  "commit": "110ffaf808874888bf2c8a8f8ca0225b2910d7d5",
   "built": false,
+  "requiredBy": "H5P.Timeline-1.1",
   "files": 91,
-  "sha256": "4536805e5458a9141bff6ad73f591d7946e8df723ae756e6a10fc1894d1a050f"
+  "sha256": "6e3dab31686c987cb441aedf8680661af7794b7ed8e8124a62c488d275202b3f"
  },
  "flowplayer-1.0": {
   "machineName": "flowplayer",
@@ -2207,8 +2273,8 @@
   "patchVersion": 5,
   "runnable": 0,
   "repo": "https://github.com/h5p/flowplayer",
-  "ref": "heads/master",
-  "commit": "e64d6d2a792491f9d749b20a5a98a8e2a769ddb9",
+  "ref": "heads/release",
+  "commit": "7960f83451184ed957220f076f55db1885484d31",
   "built": false,
   "requiredBy": "H5P.Audio-1.2",
   "files": 2,

@@ -9,7 +9,7 @@ H5P.ImageMultipleHotspotQuestion 1.0 · alias : trouver-zones, imagemultiplehots
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
 - imageMultipleHotspotQuestion : groupe — Image Multiple Hotspot Question Editor
   - backgroundImageSettings : groupe — Background image
@@ -17,12 +17,12 @@ H5P.ImageMultipleHotspotQuestion 1.0 · alias : trouver-zones, imagemultiplehots
     - backgroundImage : image (chemin ou URL) — Background image (Select an image to use as background the image hotspot question.)
   - hotspotSettings : groupe — Hotspots (Choose appropriate figure for your hotspot, configure it, then drag and resize it into place.)
     - taskDescription : texte — Task description (Instructions to the user.)
-    - hotspotName : texte — Hotspot Name (Please enter what the user is trying to find i.e. risks, objects, errors (this will be used in feedback state…)
+    - hotspotName : texte — Hotspot Name (Please enter what the user is trying to find i.e. risks, objects, errors (this will be used in feedback statements).)
     - numberHotspots : nombre — Number of correct hotspots that need to be found for question complet… (If left blank, will default to the number of correct hotspots created.)
     - hotspot : liste — Hotspot
       chaque élément :
         - userSettings : groupe — userSettings
-          - correct : booléen — Correct (There can be multiple correct hotspots. The user gets correct/incorrect feedback immediately after each click…)
+          - correct : booléen — Correct (There can be multiple correct hotspots. The user gets correct/incorrect feedback immediately after each click. The feedback will be displayed in the form of - (Text entered below) (Number of hotspots found) of (Correct …)
           - feedbackText : texte — Feedback
         - computedSettings : groupe — computedSettings
           - x : nombre

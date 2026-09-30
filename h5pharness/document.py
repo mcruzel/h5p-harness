@@ -19,6 +19,29 @@ FRONT_KEYS = {
 FENCE = re.compile(r"^(```|~~~)\s*(yaml|yml|h5p)\s*$", re.I)
 
 
+class Loader(yaml.SafeLoader):
+    """YAML with YAML 1.2 scalars: what the author wrote stays text unless it is plainly a number or
+    true/false. PyYAML (YAML 1.1) would silently turn a padlock code 0472 into 314 (octal), 1:20 into
+    80 (base 60) and yes/no/on/off (or the language code "no") into booleans."""
+
+
+Loader.yaml_implicit_resolvers = {
+    k: [(tag, rx) for tag, rx in v if tag not in ("tag:yaml.org,2002:bool", "tag:yaml.org,2002:int",
+                                                  "tag:yaml.org,2002:float")]
+    for k, v in yaml.SafeLoader.yaml_implicit_resolvers.items()}
+Loader.add_implicit_resolver("tag:yaml.org,2002:bool", re.compile(r"^(?:true|True|TRUE|false|False|FALSE)$"),
+                             list("tTfF"))
+Loader.add_implicit_resolver("tag:yaml.org,2002:int", re.compile(r"^[-+]?(?:0|[1-9][0-9]*)$"),
+                             list("-+0123456789"))
+Loader.add_implicit_resolver("tag:yaml.org,2002:float", re.compile(
+    r"^(?:[-+]?(?:0|[1-9][0-9]*)?\.[0-9]+(?:[eE][-+]?[0-9]+)?|[-+]?(?:0|[1-9][0-9]*)[eE][-+]?[0-9]+"
+    r"|[-+]?\.(?:inf|Inf|INF)|\.(?:nan|NaN|NAN))$"), list("-+0123456789."))
+
+
+def load_yaml(text):
+    return yaml.load(text, Loader=Loader)  # noqa: S506 (SafeLoader subclass)
+
+
 class DocumentError(Exception):
     def __init__(self, messages):
         super().__init__("; ".join(messages))
@@ -44,7 +67,7 @@ def load(path: Path) -> Document:
     if not m:
         raise DocumentError(["l.1: en-tête YAML manquant (--- type: … title: … ---)"])
     try:
-        meta = yaml.safe_load(m.group(1)) or {}
+        meta = load_yaml(m.group(1)) or {}
     except yaml.YAMLError as e:
         mark = getattr(e, "problem_mark", None)
         line = mark.line + 2 if mark else 1
@@ -73,7 +96,7 @@ def load(path: Path) -> Document:
                 break
             raw = "\n".join(lines[start + 1:j])
             try:
-                data = yaml.safe_load(raw) or {}
+                data = load_yaml(raw) or {}
                 if not isinstance(data, dict):
                     errors.append(f"l.{body_line + start}: le bloc yaml doit contenir des clés « champ: valeur »")
                 else:

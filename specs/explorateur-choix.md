@@ -4,11 +4,11 @@ H5P.ChoiceExplorer 1.0 · alias : explorateur-choix, choiceexplorer, choice-expl
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
 - media : groupe — Media
   - type : sous-contenu, library: image | video | audio — Type (Optional media to display above the question.)
-  - disableImageZooming : booléen, défaut false, conditionnel — Disable image zooming
+  - disableImageZooming : booléen, défaut false, si type = H5P.Image — Disable image zooming
 - taskDescription* : texte riche (Markdown: a code em h2 h3 hr li ol pre strong u ul) — Task description (Describe the task for the learners)
 - decisions* : liste (min 1) — Decision parameters
   chaque élément :

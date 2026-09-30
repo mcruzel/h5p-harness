@@ -8,12 +8,12 @@ Une image par ligne : `- ![description](image)` (au moins 2).
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
 - imageSlides : liste — Images
-  chaque élément = sous-contenu, library: imageslide — Diapositive
-- aspectRatioMode : choix auto|custom|notFixed, défaut auto — Ratio de l'affichage (Indiquez : "Automatique" pour un ratio d'affichage déterminé par celui des images de l'album nécessitant la p…)
-- aspectRatio : réglages — Paramétrages du ratio de l'affichage
+  chaque élément = sous-contenu, library: imageslide — Image Slide
+- aspectRatioMode : choix auto|custom|notFixed, défaut auto — Aspect ratio (Automatic means fixed aspect ratio automatically determined based on the images)
+- aspectRatio : réglages — Aspect Ratio Settings
   aspectWidth=4, aspectHeight=3
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : a11y.

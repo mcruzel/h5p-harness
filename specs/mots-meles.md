@@ -16,7 +16,7 @@ Trouve les noms d'organites.
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
 - taskDescription : texte, défaut Trouvez les mots dans la gril… — Task description (Description of the Game)
 - wordList : texte, défaut un,deux,trois — Word list (Comma Separated list of words. Special Characters, White Spaces and Numbers Not allowed)

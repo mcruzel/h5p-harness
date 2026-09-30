@@ -15,15 +15,15 @@ type: barres
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- graphMode : choix pieChart|barChart, défaut pieChart — Type de graphique
-- listOfTypes* : liste (min 1) — Données
+- graphMode : choix pieChart|barChart, défaut pieChart — Type of chart
+- listOfTypes* : liste (min 1) — Data elements
   chaque élément :
-    - text* : texte — Nom
-    - value : nombre, min 0.0001, défaut 1 — Valeur
-    - color : couleur #rrggbb, défaut #000 — Couleur
-    - fontColor : couleur #rrggbb, défaut #fff — Couleur de la police
+    - text* : texte — Name
+    - value : nombre, min 0.0001, défaut 1 — Value
+    - color : couleur #rrggbb, défaut #000 — Color
+    - fontColor : couleur #rrggbb, défaut #fff — Font Color
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : figureDefinition.
 

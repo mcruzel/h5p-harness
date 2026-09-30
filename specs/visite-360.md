@@ -10,33 +10,33 @@ H5P.ThreeImage 0.5 · alias : visite-360, threeimage, three-image · syntaxe Mar
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- threeImage : groupe — Editeur Three Image
-  - scenes : liste (min 0) — Scènes
+- threeImage : groupe — Three Image Editor
+  - scenes : liste (min 0) — Scenes
     chaque élément :
-      - sceneType : choix 360|static, défaut 360 — Type de scène
-      - showBackButton : booléen, défaut true, conditionnel — Afficher un bouton "Retour" (Affichez un bouton pour revenir à la scène précédente)
+      - sceneType : choix 360|static, défaut 360 — Scene type
+      - showBackButton : booléen, défaut true, si sceneType = static — Display "Back" button (Display button for navigating back to your previous scene)
       - sceneId* : nombre
-      - scenename* : texte — Titre de la scène (Utilisé pour identifier la scène)
-      - scenesrc : image (chemin ou URL) — Image de fond de la scène
-      - scenedescription : texte riche (Markdown: code em strong) — Description de la scène (Un texte pour décirire la scène à l'utilisateur final)
+      - scenename* : texte — Scene Title (Used to identify the scene)
+      - scenesrc* : image (chemin ou URL) — Scene Background
+      - scenedescription : texte riche (Markdown: code em strong) — Scene Description (A text that can describe the scene for the end-user)
       - cameraStartPosition* : texte
       - interactions : liste (min 0)
         chaque élément :
-          - labelText : texte — Vignette (If left blank no label will be displayed and we'll try to use the title field for screen readers)
+          - labelText : texte — Label (If left blank no label will be displayed and we'll try to use the title field for screen readers)
           - label : réglages — Label Settings
             labelPosition=inherit (inherit|right|left|top|bottom), showLabel=inherit (inherit|show|hide)
           - action* : sous-contenu, library: gotoscene | texte | image | audio | video | resume | choix-unique
           - interactionpos* : texte
-      - iconType : choix arrow|plus, défaut arrow — Style du bouton (Décidez à quoi devraient ressembler les boutons pointant vers cette scène. Pour les scènes statiques qui ne c…)
-      - audio : audio (chemin ou URL) — Piste audio (Ajoutez une piste audio spécifique à cette scène.)
+      - iconType : choix arrow|plus, défaut arrow — Button style (Decide how buttons pointing to this scene should look. For scenes that are static and does not lead to new scenes, we recommend the "More information" button.)
+      - audio : audio (chemin ou URL) — Audio Track (Add an audio track that's specific for this scene.)
   - startSceneId : nombre, défaut 0
-  - audio : audio (chemin ou URL) — Piste audio
-- behaviour : groupe — Paramètres comportementaux (Ces options vous permettront de contrôler comment le monde doit se comporter.)
-  - audio : audio (chemin ou URL) — Piste audio globale (Ajoutez une piste audio globale disponible par défaut pour toutes les scènes.)
-  - sceneRenderingQuality : choix high|medium|low, défaut high — Qualité de rendu de la scène (Choisissez la résolution pour le rendu d'une scène. Ceci affecte directement le niveau de qualité de la scène…)
-  - label : réglages — Paramètres de vignette
+  - audio : audio (chemin ou URL) — Audio track
+- behaviour : groupe — Behavioral settings (These options will let you control how the world behaves.)
+  - audio : audio (chemin ou URL) — Global Audio (Add an audio track that's available for all of the scenes by default.)
+  - sceneRenderingQuality : choix high|medium|low, défaut high — Scene rendering quality (Choose the amount of width and height segments used to render a scene. This directly affects the quality level of the scene, try increasing the quality if a scene looks "blocky" or "waves" are seen within the scenes. No…)
+  - label : réglages — Label settings
     labelPosition=right (right|left|top|bottom), showLabel=true
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n.

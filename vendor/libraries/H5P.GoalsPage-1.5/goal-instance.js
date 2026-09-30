@@ -1,10 +1,11 @@
-var H5P = window.H5P = window.H5P || {};
+var H5P = H5P || {};
 H5P.GoalsPage = H5P.GoalsPage || {};
 
 /**
  * Goal Instance module
  */
 H5P.GoalsPage.GoalInstance = (function () {
+
   /**
    * Initialize module.
    * @param {String} defineGoalPlaceholder Placeholder for Goal Instance
@@ -105,7 +106,7 @@ H5P.GoalsPage.GoalInstance = (function () {
       textualAnswer: this.getTextualAnswer(),
       text: this.text,
       placeholder: this.placeholder,
-      goalTypeDescription: this.goalTypeDescription,
+      goalTypeDescription: this.goalTypeDescription
     };
   };
 

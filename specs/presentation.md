@@ -4,7 +4,7 @@ H5P.CoursePresentation 1.27 · alias : presentation, diaporama, coursepresentati
 
 ## Syntaxe Markdown
 
-Une diapo par section `# Titre`. Contenu = blocs comme dans une colonne : texte Markdown, une ligne `![description](image ou vidéo)`, interactions `::: type` … `:::` (`::: qcm`, `::: vf: faux`, `::: trous`…). **Mise en page automatique** (diapo 16:9) : titre en haut ; texte à gauche et image à droite s'il y a les deux ; une ou deux interactions sous le texte (côte à côte), au-delà en boutons. Garder ≈ 8 lignes de texte par diapo (avertissement sinon). Positions fines : bloc ```yaml (`presentation.slides[n].elements`, x/y/width/height en % de la diapo).
+Une diapo par section `# Titre`. Contenu = blocs comme dans une colonne : texte Markdown, une ligne `![description](image ou vidéo)`, interactions `::: type` … `:::` (`::: qcm`, `::: vf: faux`, `::: trous`…). **Mise en page automatique** (diapo 16:9) : titre en haut ; texte à gauche et image à droite s'il y a les deux ; une ou deux interactions sous le texte (côte à côte), au-delà en boutons. Garder ≈ 8 lignes de texte par diapo (avertissement sinon). En bloc ```yaml (`presentation.slides[n].elements`) : x/y/width/height en % de la diapo, facultatifs — une diapo sans aucune position reçoit la même mise en page automatique.
 
 ```markdown
 # La photosynthèse
@@ -24,40 +24,41 @@ Quel gaz est rejeté ?
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
 - presentation : groupe
   - slides : liste
     chaque élément :
       - elements : liste
         chaque élément :
+          - x, y, width, height : nombre, facultatif — position et taille en % de la diapo 16:9 ; aucun élément positionné sur une diapo = mise en page automatique (texte à gauche, image à droite, interactions dessous ou en boutons)
           - action : sous-contenu, library: texte | lien | image | forme | video | audio | trous | choix-unique | qcm | vf | glisser-deposer | resume | glisser-mots | marquer-mots | cartes | texte-continu | zone-texte | tableau | video-interactive | twitter | enregistreur-audio | choix-images
-          - solution : texte riche (Markdown: a code del em h2 h3 hr li ol pre s strong ul) — Commentaires (Les commentaires sont affichés pour aider les utilisateurs lors de la présentation.)
-          - alwaysDisplayComments : booléen — Toujours afficher les commentaires
-          - backgroundOpacity : nombre, min 0, max 100, défaut 0 — Opacité
-          - displayAsButton : booléen, défaut false — Afficher sous forme de bouton
-          - buttonLabel : texte — Étiquette de bouton facultative
-          - buttonSize : choix small|big, défaut big — La taille de bouton
-          - title : texte — Titre
-          - goToSlideType : choix specified|next|previous, défaut specified — Aller vers
-          - goToSlide : nombre, min 1 — Aller à la diapositive (N'est applicable que si le bouton 'Le numéro de diapositive spécifique' est sélectionné)
-          - invisible : booléen, défaut false — Invisible (Curseur par défaut, pas de titre, pas d'onglets. Attention : Les utilisateurs ayant des handicaps ou ceux qui…)
+          - solution : texte riche (Markdown: a code del em h2 h3 hr li ol pre s strong ul) — Comments (The comments are shown when the user displays the suggested answers for all slides.)
+          - alwaysDisplayComments : booléen — Always display comments
+          - backgroundOpacity : nombre, min 0, max 100, défaut 0 — Background Opacity
+          - displayAsButton : booléen, défaut false — Display as button
+          - buttonLabel : texte — Optional button label
+          - buttonSize : choix small|big, défaut big — Button size
+          - title : texte — Title
+          - goToSlideType : choix specified|next|previous, défaut specified — Go to
+          - goToSlide : nombre, min 1 — Specific slide number (Only applicable when 'Specific slide number' is selected)
+          - invisible : booléen, défaut false — Invisible (Default cursor, no title and no tab index. Warning: Users with disabilities or keyboard only users will have trouble using this element.)
       - keywords : liste
         chaque élément :
           - main : texte
           - subs : liste
             chaque élément = texte
       - slideBackgroundSelector : groupe
-        - imageSlideBackground : image (chemin ou URL) — Image (Pour que l'image d'arrière-plan ne soit pas déformée, elle doit avoir un ratio largeur/hauteur de 2 pour 1. L…)
-        - fillSlideBackground : couleur #rrggbb — Sélectionnez une couleur
-  - keywordListEnabled : booléen, défaut true — Liste des mots-clés
-  - keywordListAlwaysShow : booléen, défaut false — Toujours l'afficher
-  - keywordListAutoHide : booléen, défaut false — La cacher automatiquement
-  - keywordListOpacity : nombre, min 0, max 100, défaut 100 — Opacité
+        - imageSlideBackground : image (chemin ou URL) — Image (Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens.)
+        - fillSlideBackground : couleur #rrggbb — Pick a color
+  - keywordListEnabled : booléen, défaut true — Keyword list
+  - keywordListAlwaysShow : booléen, défaut false — Always show
+  - keywordListAutoHide : booléen, défaut false — Auto hide
+  - keywordListOpacity : nombre, min 0, max 100, défaut 100 — Opacity
   - globalBackgroundSelector : groupe
-    - imageGlobalBackground : image (chemin ou URL) — Image d'arrière-plan (Pour que l'image d'arrière-plan ne soit pas déformée, elle doit avoir un ratio largeur/hauteur de 2 pour 1. L…)
-    - fillGlobalBackground : couleur #rrggbb — Sélectionnez une couleur
-- override : réglages — Réglages généraux (Ces options vous permettent d'enlever certains réglages.)
+    - imageGlobalBackground : image (chemin ou URL) — Image (Image background should have a 2:1 width to height ratio to avoid stretching. High resolution images will display better on larger screens.)
+    - fillGlobalBackground : couleur #rrggbb — Pick a color
+- override : réglages — Behaviour settings. (These options will let you override behaviour settings.)
   activeSurface=false, hideSummarySlide=false, showSolutionButton= (on|off), retryButton= (on|off), summarySlideSolutionButton=true, summarySlideRetryButton=true, enablePrintButton=false
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n.
@@ -66,100 +67,43 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 Fichier `tests/examples/presentation.md` (médias dans `tests/media/`).
 
-````markdown
+```markdown
 ---
 type: presentation
 title: Les formes géométriques – diaporama de révision
 language: fr
 preset: entrainement
 ---
-```yaml
-presentation:
-  keywordListEnabled: true
-  globalBackgroundSelector:
-    fillGlobalBackground: "#f5f7fa"
-  slides:
-    # x, y, width, height : en % de la diapo (obligatoires en YAML, sinon l'élément est invisible)
-    - keywords:
-        - main: Introduction
-      elements:
-        - x: 5
-          y: 5
-          width: 55
-          height: 85
-          action:
-            library: texte
-            text: |
-              ## Les figures planes
+# Les figures planes
+Une **figure plane** est une forme dessinée sur une surface plate. Dans ce diaporama, tu vas revoir :
 
-              Une **figure plane** est une forme dessinée sur une surface plate.
-              Dans ce diaporama, tu vas revoir :
+- le **cercle** ;
+- le **triangle**.
 
-              - le **cercle** ;
-              - le **carré** ;
-              - le **triangle**.
-        - x: 62
-          y: 20
-          width: 33
-          height: 49
-          action:
-            library: image
-            file: ../media/cercle-bleu.png
-            alt: Un cercle bleu
-    - keywords:
-        - main: Le cercle
-      slideBackgroundSelector:
-        fillSlideBackground: "#eef6ff"
-      elements:
-        - x: 3
-          y: 4
-          width: 62
-          height: 92
-          action:
-            library: qcm
-            md: |
-              Quelles affirmations sont vraies pour un **cercle** de rayon 3 cm ?
-              - [x] Son diamètre mesure 6 cm.
-              - [ ] Son diamètre mesure 1,5 cm.
-                > Non : le diamètre est le double du rayon.
-              - [x] Tous ses points sont à 3 cm du centre.
-        - x: 72
-          y: 28
-          width: 22
-          height: 43
-          action:
-            library: forme
-            type: circle
-            shape:
-              fillColor: "#3b82f6"
-              borderColor: "#1e3a8a"
-              borderWidth: 2
-    - keywords:
-        - main: Le triangle
-      slideBackgroundSelector:
-        fillSlideBackground: "#fff8e6"
-      elements:
-        - x: 3
-          y: 4
-          width: 46
-          height: 92
-          action:
-            library: vf
-            md: |
-              La somme des angles d'un triangle est égale à 180°.
-              - [x] Vrai
-                > Exact : c'est une propriété de tous les triangles.
-              - [ ] Faux
-        - x: 51
-          y: 4
-          width: 46
-          height: 92
-          action:
-            library: trous
-            md: |
-              Complète.
+![Un cercle bleu](../media/cercle-bleu.png)
 
-              Un triangle qui a trois côtés de même longueur est {{équilatéral}}.
-          solution: Un triangle **équilatéral** a aussi trois angles de 60°.
+# Le cercle
+::: qcm
+Quelles affirmations sont vraies pour un **cercle** de rayon 3 cm ?
+- [x] Son diamètre mesure 6 cm.
+- [ ] Son diamètre mesure 1,5 cm.
+  > Non : le diamètre est le double du rayon.
+- [x] Tous ses points sont à 3 cm du centre.
+:::
+
+# Le triangle
+::: vf
+La somme des angles d'un triangle est égale à 180°.
+- [x] Vrai
+  > Exact : c'est une propriété de tous les triangles.
+- [ ] Faux
+:::
+
+::: trous
+Complète.
+
+Un triangle qui a trois côtés de même longueur est {{équilatéral}}.
+:::
 ```
-````
+
+Même activité entièrement en YAML (positions explicites) : `tests/examples/presentation.yaml.md`.

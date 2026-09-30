@@ -21,7 +21,9 @@ RESERVED = {"library", "params", "metadata", "subContentId", "md"}
 MEDIA_NAMES = {"image": "image", "audio": "fichier audio", "video": "vidéo", "file": "fichier"}
 REQUIRED_MEDIA = {("H5P.Image", "file"), ("H5P.Video", "sources"), ("H5P.Audio", "files"), ("H5P.MemoryGame", "image"),
                   ("H5P.ImageHotspots", "image"), ("H5P.ImageHotspotQuestion", "backgroundImage"),
-                  ("H5P.ImageJuxtaposition", "image"), ("H5P.ThreeImage", "scenesrc"), ("H5P.Dictation", "sample")}
+                  ("H5P.ImageJuxtaposition", "image"), ("H5P.ThreeImage", "scenesrc"), ("H5P.Dictation", "sample"),
+                  ("H5P.Transcript", "transcriptFile")}
+TIME = re.compile(r"^(?:(\d+):)?(\d{1,2}):(\d{2}(?:[.,]\d+)?)$")
 
 
 @dataclass
@@ -48,11 +50,12 @@ class Ctx:
                 self.warnings.append(line)
 
 
-def fmt(path):
+def fmt(path, base=0):
+    """Location shown in messages: list indexes start at 0, like the references (correctElements…)."""
     out = ""
     for seg in path:
         if isinstance(seg, int):
-            out += f"[{seg + 1}]"
+            out += f"[{seg + base}]"
         else:
             out += ("." if out else "") + seg
     return out
@@ -68,8 +71,9 @@ def is_flat_group(field):
 def build_content(lib: Library, values, ctx: Ctx):
     ctx.used.add(lib)
     ctx.stack.append(lib.machine)
-    from .rules import PATCH_DEFAULTS
+    from .rules import PATCH_DEFAULTS, prepare_raw
     values = deep_merge(PATCH_DEFAULTS.get(lib.machine, {}), values if isinstance(values, dict) else {})
+    values = prepare_raw(lib.machine, values, ctx, [])
     try:
         fields = lib.localized_semantics(ctx.lang)
         params = build_group({"type": "group", "fields": fields}, values, ctx, [], top=True)
@@ -109,8 +113,8 @@ def build_group(field, value, ctx, path, siblings=None, hidden=False, top=False)
         value = {k: v for k, v in field["default"].items() if k in known_names}
     if value is MISSING:
         value = {}
-        if field.get("optional"):
-            hidden = True  # optional group left out by the author: defaults only, nothing is required inside
+        if field.get("optional") or field.get("widget") == "none":
+            hidden = True  # group left out (optional, or filled by an editor widget): nothing is required inside
     if not isinstance(value, dict):
         ctx.error(path, f"objet attendu (clés possibles: {', '.join(f['name'] for f in fields)})")
         value = {}
@@ -203,6 +207,10 @@ def default_or_missing(field, ctx, path, hidden, kind):
     name = field.get("name")
     if name in ctx.preset and _compatible(field, ctx.preset[name]):
         return ctx.preset[name]
+    from .rules import lang_default
+    by_lang = lang_default(ctx.stack[-1] if ctx.stack else None, field, ctx.lang)
+    if by_lang is not None:
+        return by_lang
     if "default" in field:
         # a null default means "no value": omit it (H5P would turn it into "")
         return MISSING if field["default"] is None else field["default"]
@@ -263,7 +271,10 @@ def build_text(field, value, ctx, path, siblings, hidden):
 def build_number(field, value, ctx, path, siblings, hidden):
     if value is MISSING:
         return default_or_missing(field, ctx, path, hidden, "number")
-    if isinstance(value, str):
+    if isinstance(value, str) and TIME.match(value.strip()):  # durations written m:ss or h:mm:ss -> seconds
+        m = TIME.match(value.strip())
+        value = int(m.group(1) or 0) * 3600 + int(m.group(2)) * 60 + float(m.group(3).replace(",", "."))
+    elif isinstance(value, str):
         try:
             value = float(value.replace(",", ".")) if re.search(r"[.,]", value) else int(value)
         except ValueError:
@@ -287,9 +298,9 @@ def build_number(field, value, ctx, path, siblings, hidden):
 def build_boolean(field, value, ctx, path, siblings, hidden):
     if value is MISSING:
         return default_or_missing(field, ctx, path, hidden, "boolean")
-    if isinstance(value, str) and value.strip().lower() in ("true", "vrai", "oui", "yes", "1", "false", "faux",
-                                                            "non", "no", "0"):
-        return value.strip().lower() in ("true", "vrai", "oui", "yes", "1")
+    if isinstance(value, str) and value.strip().lower() in ("true", "vrai", "oui", "yes", "on", "1", "false", "faux",
+                                                            "non", "no", "off", "0"):
+        return value.strip().lower() in ("true", "vrai", "oui", "yes", "on", "1")
     if not isinstance(value, bool):
         ctx.error(path, "booléen attendu (true/false)")
         return MISSING
@@ -355,7 +366,7 @@ def build_media(field, value, ctx, path, siblings, hidden):
 # sub-content
 
 def sub_id(ctx, path):
-    return str(uuid.uuid5(NAMESPACE, f"{ctx.seed}:{fmt(path)}"))
+    return str(uuid.uuid5(NAMESPACE, f"{ctx.seed}:{fmt(path, base=1)}"))  # base 1: keeps the ids of earlier builds
 
 
 def build_library(field, value, ctx, path, siblings, hidden):
@@ -397,8 +408,9 @@ def build_library(field, value, ctx, path, siblings, hidden):
         raw = deep_merge(sugar, raw)
     ctx.used.add(lib)
     ctx.stack.append(lib.machine)
-    from .rules import PATCH_DEFAULTS
+    from .rules import PATCH_DEFAULTS, prepare_raw
     raw = deep_merge(PATCH_DEFAULTS.get(lib.machine, {}), raw if isinstance(raw, dict) else {})
+    raw = prepare_raw(lib.machine, raw, ctx, path)
     try:
         params = build_group({"type": "group", "fields": lib.localized_semantics(ctx.lang)}, raw, ctx,
                              path, top=True, hidden=hidden)

@@ -4,9 +4,9 @@ H5P.AudioRecorder 1.0 · alias : enregistreur-audio, audiorecorder, audio-record
 
 ## Champs (bloc ```yaml, noms H5P)
 
-`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs.
+`*` = obligatoire ; les autres champs ont une valeur par défaut ou sont facultatifs. Libellés et descriptions : ceux de la bibliothèque (anglais) ; valeurs par défaut : en français.
 
-- title : texte multiligne — Consigne (Texte facultatif affiché au dessus de l'enregistreur audio)
+- title : texte multiligne — Task Description (Optional text to display above the audio recorder)
 
 Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n.
 
