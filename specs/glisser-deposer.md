@@ -72,7 +72,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : scor
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/glisser-deposer.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/glisser-deposer.md` (médias dans `sources/exemples/media/`).
 
 ```markdown
 ---
@@ -84,13 +84,13 @@ preset: entrainement
 Classe chaque figure : un polygone n'a que des côtés **droits**.
 
 ## Polygones
-- ![Un carré rouge](../media/carre-rouge.png)
-- ![Un triangle vert](../media/triangle-vert.png)
+- ![Un carré rouge](media/carre-rouge.png)
+- ![Un triangle vert](media/triangle-vert.png)
 - un losange
 
 ## Non polygones
-- ![Un disque bleu](../media/cercle-bleu.png)
+- ![Un disque bleu](media/cercle-bleu.png)
 - un ovale
 ```
 
-Même activité entièrement en YAML (positions explicites) : `tests/examples/glisser-deposer.yaml.md`.
+Même activité entièrement en YAML (positions explicites) : `tests/fixtures/glisser-deposer.yaml.md`.

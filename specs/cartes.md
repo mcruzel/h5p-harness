@@ -42,7 +42,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : answ
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/cartes.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/cartes.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -57,20 +57,20 @@ Lis le mot français, cherche le mot **anglais**, puis retourne la carte pour v�
 
 ## Un carré
 A *square*
-![Un carré rouge](../media/carre-rouge.png)
+![Un carré rouge](media/carre-rouge.png)
 
 ## Un cercle
 A *circle*
-![Un cercle bleu](../media/cercle-bleu.webp)
+![Un cercle bleu](media/cercle-bleu.webp)
 ? It is round.
 
 ## Une étoile
 A *star*
-![Une étoile orange](../media/etoile-orange.png)
+![Une étoile orange](media/etoile-orange.png)
 
 ## Un losange
 A *diamond* (or a *rhombus*)
-![Un losange violet](../media/losange-violet.png)
+![Un losange violet](media/losange-violet.png)
 ? Comme sur les cartes à jouer.
 
 ```yaml

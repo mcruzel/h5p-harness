@@ -21,7 +21,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/onglets.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/onglets.md` (médias dans `sources/exemples/media/`).
 
 ```markdown
 ---
@@ -33,7 +33,7 @@ preset: entrainement
 ## Solide
 La **glace** a une forme propre : elle ne coule pas. L'eau devient solide en dessous de 0 °C.
 
-![Un cube de glace (schéma)](../media/carre-rouge.png)
+![Un cube de glace (schéma)](media/carre-rouge.png)
 
 ## Liquide
 L'eau **liquide** n'a pas de forme propre : elle prend la forme du récipient.
@@ -56,4 +56,4 @@ La buée sur une vitre est de la vapeur d'eau.
 :::
 ```
 
-Même activité entièrement en YAML (positions explicites) : `tests/examples/onglets.yaml.md`.
+Même activité entièrement en YAML (positions explicites) : `tests/fixtures/onglets.yaml.md`.

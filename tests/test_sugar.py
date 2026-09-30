@@ -91,7 +91,7 @@ def test_presentation_layout_stays_on_slide(tmp_path):
         # Titre
         Du texte.
 
-        ![Image](/tests/media/paysage.jpg)
+        ![Image](/sources/exemples/media/paysage.jpg)
 
         # Questions
         ::: qcm
@@ -126,8 +126,8 @@ def test_glisser_deposer_indexes(tmp_path):
 
 def test_video_interactive_times(tmp_path):
     c, _ = build(tmp_path, "video-interactive", """
-        ![Vidéo](/tests/media/clip.webm)
-        transcrit: /tests/media/etats-eau.vtt
+        ![Vidéo](/sources/exemples/media/clip.webm)
+        transcrit: /sources/exemples/media/etats-eau.vtt
         ## 0:01 qcm
         Q ?
         - [x] a
@@ -167,7 +167,7 @@ def test_livre_chapters(tmp_path):
 ])
 def test_image_interactive_error_message(tmp_path, bad, message):
     src = tmp_path / "x.md"
-    src.write_text(f"---\ntype: image-interactive\ntitle: T\n---\n![f](/tests/media/paysage.jpg)\n{bad}\n",
+    src.write_text(f"---\ntype: image-interactive\ntitle: T\n---\n![f](/sources/exemples/media/paysage.jpg)\n{bad}\n",
                    encoding="utf-8")
     res = build_one(src, REG, out_dir=tmp_path / "out", offline=True)
     assert not res.ok and any(message in e for e in res.errors)

@@ -1,11 +1,22 @@
 ---
 type: mots-croises
-title: Vocabulaire de la cellule
+title: Mots croisés – Les cours d'eau
+language: fr
+license: CC BY-SA 4.0
 ---
-Retrouve les termes à partir des définitions.
+Complète la grille avec le vocabulaire des **cours d'eau**.
 
-- NOYAU : Contient l'essentiel de l'ADN
-- MITOCHONDRIE : Siège de la respiration cellulaire
-- CHLOROPLASTE : Siège de la photosynthèse
-- MEMBRANE : Enveloppe qui délimite la cellule
-- CYTOPLASME : Milieu intérieur de la cellule
+- SOURCE : Endroit où naît un cours d'eau
+- AFFLUENT : Cours d'eau qui se jette dans un autre
+- ESTUAIRE : Embouchure large où la mer remonte
+- DELTA : Embouchure en forme de triangle, divisée en plusieurs bras
+- MÉANDRE : Courbe décrite par un fleuve
+- CRUE : Montée des eaux d'un cours d'eau
+
+```yaml
+solutionWord: SEINE
+behaviour:
+  enableInstantFeedback: true
+theme:
+  backgroundColor: "#1d4e89"
+```

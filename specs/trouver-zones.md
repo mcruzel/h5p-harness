@@ -35,7 +35,7 @@ H5P.ImageMultipleHotspotQuestion 1.0 · alias : trouver-zones, imagemultiplehots
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/trouver-zones.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/trouver-zones.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -50,7 +50,7 @@ authors: Équipe d'histoire-géographie
 imageMultipleHotspotQuestion:
   backgroundImageSettings:
     questionTitle: Les éléments naturels d'un paysage
-    backgroundImage: ../media/paysage.jpg
+    backgroundImage: media/paysage.jpg
   hotspotSettings:
     taskDescription: Clique sur les trois éléments naturels de ce paysage (ceux qui ne sont pas construits par l'être humain).
     hotspotName: éléments naturels

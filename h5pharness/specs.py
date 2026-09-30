@@ -12,7 +12,8 @@ from .rules import DEPRECATED
 
 SPECS = ROOT / "specs"
 SUGAR_DOCS = PKG / "sugar_docs"
-EXAMPLES = ROOT / "tests" / "examples"
+EXAMPLES = ROOT / "sources" / "exemples"     # one validated example per type
+FIXTURES = ROOT / "tests" / "fixtures"      # the same activities written entirely in YAML
 L10N_NAMES = {"l10n", "a11y", "UI", "texts", "i10n", "labels", "localize", "translations", "dictionary"}
 KIND = {"text": "texte", "number": "nombre", "boolean": "booléen", "select": "choix", "group": "groupe",
         "list": "liste", "library": "sous-contenu", "image": "image (chemin ou URL)",
@@ -253,12 +254,12 @@ def render_spec(reg: Registry, lib):
         body = example.read_text(encoding="utf-8").strip()
         fence = "````" if "```" in body else "```"
         lines += ["", "## Exemple complet (validé : validateur officiel H5P + affichage)", "",
-                  f"Fichier `tests/examples/{example.name}` (médias dans `tests/media/`).", "",
+                  f"Fichier `sources/exemples/{example.name}` (médias dans `sources/exemples/media/`).", "",
                   f"{fence}markdown", body, fence]
-        variant = EXAMPLES / f"{name}.yaml.md"
+        variant = FIXTURES / f"{name}.yaml.md"
         if example_ok(variant, reg):
             lines += ["", "Même activité entièrement en YAML (positions explicites) : "
-                          f"`tests/examples/{variant.name}`."]
+                          f"`tests/fixtures/{variant.name}`."]
     return "\n".join(lines).rstrip() + "\n"
 
 

@@ -41,7 +41,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/mur-infos.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/mur-infos.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -81,7 +81,7 @@ infoWall:
         - "0"
       keywords: étoile du berger, effet de serre
     - panelTitle: La Terre
-      image: {library: image, file: ../media/cercle-bleu.png, alt: La planète bleue}
+      image: {library: image, file: media/cercle-bleu.png, alt: La planète bleue}
       entries:
         - La Terre
         - Planète rocheuse
@@ -89,7 +89,7 @@ infoWall:
         - 1 (la Lune)
       keywords: vie, eau liquide
     - panelTitle: Mars
-      image: {library: image, file: ../media/carre-rouge.png, alt: La planète rouge}
+      image: {library: image, file: media/carre-rouge.png, alt: La planète rouge}
       entries:
         - Mars
         - Planète rocheuse

@@ -65,7 +65,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/presentation.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/presentation.md` (médias dans `sources/exemples/media/`).
 
 ```markdown
 ---
@@ -80,7 +80,7 @@ Une **figure plane** est une forme dessinée sur une surface plate. Dans ce diap
 - le **cercle** ;
 - le **triangle**.
 
-![Un cercle bleu](../media/cercle-bleu.png)
+![Un cercle bleu](media/cercle-bleu.png)
 
 # Le cercle
 ::: qcm
@@ -106,4 +106,4 @@ Un triangle qui a trois côtés de même longueur est {{équilatéral}}.
 :::
 ```
 
-Même activité entièrement en YAML (positions explicites) : `tests/examples/presentation.yaml.md`.
+Même activité entièrement en YAML (positions explicites) : `tests/fixtures/presentation.yaml.md`.

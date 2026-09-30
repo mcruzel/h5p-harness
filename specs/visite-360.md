@@ -43,7 +43,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/visite-360.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/visite-360.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -61,7 +61,7 @@ threeImage:
     - sceneId: 0
       sceneType: 360
       scenename: Le belvédère
-      scenesrc: ../media/panorama.jpg
+      scenesrc: media/panorama.jpg
       scenedescription: Tourne-toi pour observer les **éléments du paysage** autour du belvédère.
       cameraStartPosition: "0,0"
       interactions:
@@ -74,14 +74,14 @@ threeImage:
               Il recule depuis la fin du XIXᵉ siècle.
         - labelText: Plan du site
           interactionpos: "-0.9,0"
-          action: {library: image, file: ../media/paysage.jpg, alt: Plan simplifié du village et de ses abords}
+          action: {library: image, file: media/paysage.jpg, alt: Plan simplifié du village et de ses abords}
         - labelText: Descendre au village
           interactionpos: "2.4,-0.1"
           action: {library: gotoscene, nextSceneId: 1}
     - sceneId: 1
       sceneType: static
       scenename: Le village
-      scenesrc: ../media/paysage.jpg
+      scenesrc: media/paysage.jpg
       scenedescription: Le village se trouve au fond de la vallée.
       cameraStartPosition: "0,0"
       showBackButton: true

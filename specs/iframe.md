@@ -19,7 +19,7 @@ H5P.IFrameEmbed 1.0 · alias : iframe, iframeembed, i-frame-embed · syntaxe Mar
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/iframe.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/iframe.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---

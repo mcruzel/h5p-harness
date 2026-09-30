@@ -25,7 +25,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/dire-mots.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/dire-mots.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -37,7 +37,7 @@ language: fr
 media:
   type:
     library: image
-    file: ../media/carre-rouge.png
+    file: media/carre-rouge.png
     alt: Un carré rouge
 question: Quelle est la couleur de ce carré ? Réponds à voix haute en anglais.
 acceptedAnswers:

@@ -61,7 +61,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/qr-code.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/qr-code.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---

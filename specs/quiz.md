@@ -74,7 +74,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : text
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/quiz.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/quiz.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---

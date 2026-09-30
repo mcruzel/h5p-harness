@@ -34,7 +34,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : chec
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/marquer-mots.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/marquer-mots.md` (médias dans `sources/exemples/media/`).
 
 ```markdown
 ---

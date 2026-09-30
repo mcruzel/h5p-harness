@@ -17,7 +17,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : UI.
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/calcul-mental.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/calcul-mental.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---

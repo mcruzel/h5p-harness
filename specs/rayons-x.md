@@ -22,7 +22,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : a11y
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/rayons-x.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/rayons-x.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -36,11 +36,11 @@ authors: Équipe d'histoire-géographie
 ```yaml
 imageForeground:   # image affichée
   library: image
-  file: ../media/apres.jpg
+  file: media/apres.jpg
   alt: Le quartier aujourd'hui, après sa rénovation
 imageBackground:   # image révélée sous la loupe
   library: image
-  file: ../media/avant.jpg
+  file: media/avant.jpg
   alt: Le même quartier avant sa rénovation
 visual:
   imageWidth: 75%

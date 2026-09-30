@@ -104,7 +104,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/video-interactive.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/video-interactive.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -112,9 +112,9 @@ type: video-interactive
 title: Les états de l'eau – vidéo interactive
 language: fr
 preset: entrainement
-transcript: ../media/etats-eau.vtt
+transcript: media/etats-eau.vtt
 ---
-![Les états de l'eau](../media/clip.webm)
+![Les états de l'eau](media/clip.webm)
 Regarde la vidéo et réponds aux questions.
 
 ## 0:00 signet: Introduction
@@ -151,4 +151,4 @@ interactiveVideo:
 ```
 ````
 
-Même activité entièrement en YAML (positions explicites) : `tests/examples/video-interactive.yaml.md`.
+Même activité entièrement en YAML (positions explicites) : `tests/fixtures/video-interactive.yaml.md`.

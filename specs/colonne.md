@@ -40,7 +40,7 @@ Quel gaz est absorbé ?
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/colonne.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/colonne.md` (médias dans `sources/exemples/media/`).
 
 ```markdown
 ---
@@ -54,7 +54,7 @@ Un son est produit par un objet qui **vibre**. La vibration se propage de proche
 
 Écoute ce signal sonore :
 
-![Bip sonore de 440 Hz](../media/bip.wav)
+![Bip sonore de 440 Hz](media/bip.wav)
 
 ::: vf: faux
 Le son peut se propager dans le vide.

@@ -72,7 +72,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/scenario.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/scenario.md` (médias dans `sources/exemples/media/`).
 
 ```markdown
 ---
@@ -82,7 +82,7 @@ language: fr
 ---
 # Accident au labo de chimie
 Fais les bons choix pour garder tout le monde en sécurité.
-![Illustration](../media/paysage.jpg)
+![Illustration](media/paysage.jpg)
 
 ## situation
 **La situation.** En TP de chimie, ton voisin renverse un flacon d'**acide chlorhydrique dilué**
@@ -95,7 +95,7 @@ sur la paillasse. Quelques gouttes tombent sur sa blouse.
 - J'essuie tout de suite avec mon mouchoir. → erreur
 
 ## bravo
-![Une étoile orange, symbole de réussite](../media/etoile-orange.png)
+![Une étoile orange, symbole de réussite](media/etoile-orange.png)
 → fin: Bravo, le professeur sécurise la zone et fait rincer la blouse. (10)
 
 ## erreur
@@ -104,4 +104,4 @@ Il faut d'abord prévenir l'adulte responsable.
 → choix
 ```
 
-Même activité entièrement en YAML (positions explicites) : `tests/examples/scenario.yaml.md`.
+Même activité entièrement en YAML (positions explicites) : `tests/fixtures/scenario.yaml.md`.

@@ -31,7 +31,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/modele-3d.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/modele-3d.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -44,7 +44,7 @@ authors: Équipe de physique-chimie
 ---
 ```yaml
 model:
-  file: ../media/modele-3d-cristal.glb
+  file: media/modele-3d-cristal.glb
   alt: Modèle 3D d'un cristal de sel gemme de forme cubique
 annotations:
   annotations:

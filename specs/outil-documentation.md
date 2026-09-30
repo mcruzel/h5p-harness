@@ -14,7 +14,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : i10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/outil-documentation.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/outil-documentation.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -46,7 +46,7 @@ pagesList:
         taskDescription: Cite trois informations importantes sur cette planète.
         inputFieldSize: "10"
       - library: image
-        file: ../media/cercle-bleu.png
+        file: media/cercle-bleu.png
         alt: Schéma d'une planète
     helpText: Utilise au moins **deux sources** différentes (manuel, CDI, site institutionnel).
   - library: goalsassessmentpage

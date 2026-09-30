@@ -38,7 +38,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/explorateur-choix.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/explorateur-choix.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -48,7 +48,7 @@ language: fr
 ---
 ```yaml
 media:
-  type: {library: image, file: ../media/paysage.jpg, alt: Illustration}
+  type: {library: image, file: media/paysage.jpg, alt: Illustration}
 taskDescription: |
   Compose ton **déjeuner** en choisissant le nombre de portions de chaque aliment.
   Objectif : un apport d'énergie, de protéines et de fibres **dans les intervalles conseillés**.

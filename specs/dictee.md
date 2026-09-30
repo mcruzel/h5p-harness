@@ -39,7 +39,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/dictee.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/dictee.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -52,9 +52,9 @@ authors: Équipe de lettres
 ---
 Écoute chaque phrase puis **écris-la** dans la zone de saisie. Attention aux accords du participe passé !
 
-- ![](../media/bip.wav) Les feuilles sont tombées dans la cour. :: participe passé employé avec « être »
-- ![](../media/bip.wav) Les pommes que j'ai cueillies étaient mûres. :: participe passé employé avec « avoir »
-- ![](../media/bip.wav) Fatiguées, les élèves se sont assises. :: participe passé employé comme adjectif
+- ![](media/bip.wav) Les feuilles sont tombées dans la cour. :: participe passé employé avec « être »
+- ![](media/bip.wav) Les pommes que j'ai cueillies étaient mûres. :: participe passé employé avec « avoir »
+- ![](media/bip.wav) Fatiguées, les élèves se sont assises. :: participe passé employé comme adjectif
 
 ```yaml
 overallFeedback:

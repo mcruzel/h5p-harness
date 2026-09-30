@@ -27,7 +27,7 @@ La cellule est l'unité du vivant.
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/accordeon.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/accordeon.md` (médias dans `sources/exemples/media/`).
 
 ```markdown
 ---

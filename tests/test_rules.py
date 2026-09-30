@@ -97,7 +97,7 @@ def test_slides_without_positions_are_laid_out(tmp_path):
           slides:
             - elements:
                 - action: {library: texte, text: Du texte}
-                - action: {library: image, file: /tests/media/paysage.jpg, alt: Paysage}
+                - action: {library: image, file: /sources/exemples/media/paysage.jpg, alt: Paysage}
                 - action: {library: vf, md: "Vrai ?\\n- [x] Vrai\\n- [ ] Faux"}
     """)
     els = c["presentation"]["slides"][0]["elements"]
@@ -137,9 +137,9 @@ def test_drag_and_drop_without_positions(tmp_path):
 
 def test_interactive_video_positions_and_times(tmp_path):
     c, _ = build(tmp_path, "video-interactive", """
-        transcript: /tests/media/etats-eau.vtt
+        transcript: /sources/exemples/media/etats-eau.vtt
         interactiveVideo:
-          video: {files: [/tests/media/clip.webm]}
+          video: {files: [/sources/exemples/media/clip.webm]}
           assets:
             interactions:
               - duration: {from: "0:01", to: "0:03"}
@@ -154,7 +154,7 @@ def test_interactive_video_positions_and_times(tmp_path):
 def test_ar_marker_pattern_generated(tmp_path):
     c, res = build(tmp_path, "chasse-ar", """
         markers:
-          - markerImage: /tests/media/triangle-vert.png
+          - markerImage: /sources/exemples/media/triangle-vert.png
             interaction:
               interaction: {library: vf, md: "Vrai ?\\n- [x] Vrai\\n- [ ] Faux"}
     """)
@@ -197,9 +197,9 @@ def test_info_wall_panel_titles(tmp_path):
 def test_transcript_chapter_marks_completed(tmp_path):
     c, _ = build(tmp_path, "transcription", """
         mediumGroup:
-          medium: {library: video, md: "![Clip](/tests/media/clip.webm)"}
+          medium: {library: video, md: "![Clip](/sources/exemples/media/clip.webm)"}
         transcriptFiles:
-          - {transcriptFile: /tests/media/transcription.vtt, label: Français}
+          - {transcriptFile: /sources/exemples/media/transcription.vtt, label: Français}
         chapters:
           chapterMarks: |
             0:00 Début
@@ -218,7 +218,7 @@ def test_locations_are_zero_based_but_ids_stable():
 def test_video_interactions_need_a_transcript(tmp_path):
     _, res = build(tmp_path, "video-interactive", """
         interactiveVideo:
-          video: {files: [/tests/media/clip.webm]}
+          video: {files: [/sources/exemples/media/clip.webm]}
           assets:
             interactions:
               - duration: {from: 1, to: 2}
@@ -230,16 +230,16 @@ def test_video_interactions_need_a_transcript(tmp_path):
 def test_video_without_interactions_invites_to_get_the_transcript(tmp_path):
     c, res = build(tmp_path, "video-interactive", """
         interactiveVideo:
-          video: {files: [/tests/media/clip.webm]}
+          video: {files: [/sources/exemples/media/clip.webm]}
     """)
     assert any("transcrit" in h for h in res.hints)
 
 
 def test_video_checked_against_its_transcript(tmp_path):
     c, res = build(tmp_path, "video-interactive", """
-        transcript: /tests/media/etats-eau.vtt
+        transcript: /sources/exemples/media/etats-eau.vtt
         interactiveVideo:
-          video: {files: [/tests/media/clip.webm]}
+          video: {files: [/sources/exemples/media/clip.webm]}
           assets:
             interactions:
               - duration: {from: 2, to: 3}
@@ -251,9 +251,9 @@ def test_video_checked_against_its_transcript(tmp_path):
     assert track["srcLang"] == "fr" and track["track"]["mime"] == "text/vtt"
     assert len([w for w in res.warnings if "sans mot commun" in w]) == 1
     _, res = build(tmp_path, "video-interactive", """
-        transcript: /tests/media/etats-eau.vtt
+        transcript: /sources/exemples/media/etats-eau.vtt
         interactiveVideo:
-          video: {files: [/tests/media/clip.webm]}
+          video: {files: [/sources/exemples/media/clip.webm]}
           assets:
             interactions:
               - duration: {from: 60, to: 70}

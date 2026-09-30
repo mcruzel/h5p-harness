@@ -63,7 +63,7 @@ Tu aimes les idées et les modèles.
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/quiz-personnalite.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/quiz-personnalite.md` (médias dans `sources/exemples/media/`).
 
 ```markdown
 ---
@@ -72,11 +72,11 @@ title: Quel scientifique es-tu ?
 language: fr
 ---
 # Quel scientifique es-tu ?
-![Paysage à explorer](../media/paysage.jpg)
+![Paysage à explorer](media/paysage.jpg)
 
 ## Profil : Explorateur
 Tu aimes le terrain, les expéditions et les découvertes au grand air : la géologie ou l'écologie t'attendent.
-![Un triangle vert](../media/triangle-vert.png)
+![Un triangle vert](media/triangle-vert.png)
 
 ## Profil : Expérimentateur
 Tu veux comprendre en manipulant : le laboratoire de chimie ou de physique est fait pour toi.

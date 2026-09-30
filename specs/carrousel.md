@@ -20,7 +20,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : a11y
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/carrousel.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/carrousel.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -31,10 +31,10 @@ preset: decouverte
 license: CC BY 4.0
 authors: Professeur d'histoire-géographie
 ---
-- ![Un paysage de campagne vallonnée](../media/paysage.jpg)
-- ![Le même quartier avant sa rénovation urbaine](../media/avant.jpg)
-- ![Le même quartier après sa rénovation urbaine](../media/apres.jpg)
-- ![Vue panoramique d'un site naturel](../media/panorama.jpg)
+- ![Un paysage de campagne vallonnée](media/paysage.jpg)
+- ![Le même quartier avant sa rénovation urbaine](media/avant.jpg)
+- ![Le même quartier après sa rénovation urbaine](media/apres.jpg)
+- ![Vue panoramique d'un site naturel](media/panorama.jpg)
 
 ```yaml
 aspectRatioMode: custom

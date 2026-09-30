@@ -14,7 +14,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : note
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/cornell.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/cornell.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---

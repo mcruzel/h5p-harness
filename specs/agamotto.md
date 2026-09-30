@@ -24,7 +24,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : a11y
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/agamotto.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/agamotto.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -38,22 +38,22 @@ authors: Équipe de mathématiques
 # Quand le nombre de côtés augmente…
 
 ## 3 côtés
-![Un triangle équilatéral vert](../media/triangle-vert.png)
+![Un triangle équilatéral vert](media/triangle-vert.png)
 
 Le **triangle équilatéral** est le polygone régulier qui a le moins de côtés. Chaque angle mesure 60°.
 
 ## 4 côtés
-![Un carré rouge](../media/carre-rouge.png)
+![Un carré rouge](media/carre-rouge.png)
 
 Le **carré** a 4 angles droits (90°).
 
 ## 6 côtés
-![Un hexagone régulier gris](../media/hexagone-gris.png)
+![Un hexagone régulier gris](media/hexagone-gris.png)
 
 Dans l'**hexagone régulier**, chaque angle mesure 120°. On en trouve dans les alvéoles des ruches.
 
 ## le cercle
-![Un cercle bleu](../media/cercle-bleu.png)
+![Un cercle bleu](media/cercle-bleu.png)
 
 Avec de plus en plus de côtés, le polygone régulier ressemble à un **cercle** :
 

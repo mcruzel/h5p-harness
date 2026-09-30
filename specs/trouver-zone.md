@@ -34,7 +34,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/trouver-zone.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/trouver-zone.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -47,7 +47,7 @@ authors: Équipe de SVT
 ---
 ```yaml
 imageHotspotQuestion:
-  backgroundImageSettings: ../media/paysage.jpg
+  backgroundImageSettings: media/paysage.jpg
   hotspotSettings:
     taskDescription: Clique sur la source d'énergie qui permet aux végétaux de réaliser la photosynthèse.
     hotspot:

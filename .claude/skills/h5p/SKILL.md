@@ -9,7 +9,8 @@ Ne jamais écrire de JSON H5P ni lire `vendor/` : le générateur s'en charge.
 
 1. **Choisir le type** dans le tableau de `specs/README.md` (colonne « type ») et lire sa fiche :
    `python -m h5pharness spec <type>` (syntaxe Markdown simplifiée si elle existe, champs YAML, exemple
-   complet validé). Au premier usage seulement, lire le haut de `specs/README.md` (règles communes).
+   complet validé, aussi dans `sources/exemples/<type>.md`). Au premier usage seulement, lire le haut
+   de `specs/README.md` (règles communes).
 2. **Écrire** `sources/<matière>/<nom-court>.md` : en-tête YAML (`type`, `title`, et au besoin `preset`,
    `license`, `authors`) puis le corps. Médias : chemin dans le dépôt ou URL complète.
    **Vidéo interactive** : des questions ou activités dans la vidéo seulement d'après son **transcrit

@@ -116,7 +116,7 @@ def test_mark_the_words_single_word():
 
 # ---- End to end ---------------------------------------------------------------------------------
 
-SOURCES = sorted((ROOT / "sources").rglob("*.md")) + sorted((ROOT / "tests" / "examples").glob("*.md"))
+SOURCES = sorted((ROOT / "sources").rglob("*.md")) + sorted((ROOT / "tests" / "fixtures").glob("*.md"))
 
 
 @pytest.mark.parametrize("src", SOURCES, ids=lambda p: p.stem)
@@ -130,7 +130,7 @@ def test_sources_build(src, tmp_path):
 
 
 def test_build_is_reproducible(tmp_path):
-    src = ROOT / "sources" / "exemples" / "quiz-cellule.md"
+    src = ROOT / "sources" / "exemples" / "quiz.md"
     a = build_one(src, REG, out_dir=tmp_path / "a", offline=True)
     b = build_one(src, REG, out_dir=tmp_path / "b", offline=True)
     digest = [hashlib.sha256(r.out.read_bytes()).hexdigest() for r in (a, b)]

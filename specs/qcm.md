@@ -45,7 +45,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : UI, 
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/qcm.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/qcm.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -56,7 +56,7 @@ license: CC BY-SA 4.0
 authors: Équipe SVT
 ---
 Parmi ces affirmations sur les **volcans effusifs**, lesquelles sont exactes ?
-![Schéma d'un volcan (illustration)](../media/triangle-vert.png)
+![Schéma d'un volcan (illustration)](media/triangle-vert.png)
 - [x] Leur lave est **fluide** et pauvre en gaz.
   > Oui : c'est ce qui permet les longues coulées.
 - [x] Ils forment souvent des coulées de lave.

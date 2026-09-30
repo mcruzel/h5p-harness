@@ -36,7 +36,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/vf.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/vf.md` (médias dans `sources/exemples/media/`).
 
 ```markdown
 ---
@@ -46,7 +46,7 @@ language: fr
 license: CC BY-SA 4.0
 ---
 Lors de l'**évaporation**, l'eau passe de l'état liquide à l'état *gazeux*.
-![Paysage avec lac et nuages](../media/paysage.jpg)
+![Paysage avec lac et nuages](media/paysage.jpg)
 - [x] Vrai
   > Exact : la chaleur du Soleil transforme l'eau liquide en vapeur d'eau.
 - [ ] Faux

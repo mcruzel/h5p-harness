@@ -49,6 +49,24 @@ La mitochondrie contient de la chlorophylle.
 La photosynthèse produit du {{dioxygène|oxygène}} et du {{glucose::un sucre}}.
 ```
 
+## Exemples : un par type
+
+[`sources/exemples/`](sources/exemples/) contient **un exemple validé pour chacun des 63 types**, nommé
+d'après le type (`qcm.md`, `glisser-deposer.md`, `video-interactive.md`, `quiz-personnalite.md`…),
+avec ses médias dans `sources/exemples/media/`. Ce sont à la fois des modèles à copier, les exemples
+affichés dans les fiches `specs/`, et les données des tests. La liste des types figure dans
+[`specs/README.md`](specs/README.md).
+
+```bash
+python -m h5pharness build sources/exemples                  # les 63 paquets -> dist/exemples/
+python -m h5pharness build sources/exemples --moodle essais --section 1   # tout essayer dans un cours de test
+```
+
+Les paquets correspondants sont aussi téléchargeables dans la release GitHub de la branche (voir
+« Où sont les paquets ? »).
+
+## Format des sources
+
 Le format est décrit dans [`specs/README.md`](specs/README.md) ; chaque type a sa fiche dans
 `specs/` (générée depuis les schémas officiels : champs, valeurs par défaut en français, points
 d'attention et un **exemple complet validé** pour chacun des 63 types). Deux écritures, combinables :
@@ -63,9 +81,9 @@ augmentée.
 
 | code | sortie | conduite à tenir |
 |---|---|---|
-| 0 | `OK dist/…h5p (1,4 Mo, 200 ms)` (+ `PUBLIÉ commit … poussé sur …`) | terminé |
-| 1 | `ERREUR fichier: n problème(s)` + au plus 8 lignes `- emplacement: problème` | corriger ces points seulement |
-| 2 | `ECHEC_PUBLICATION …` / `ECHEC_ENVIRONNEMENT …` | ne pas régénérer le contenu, signaler |
+| 0 | `OK dist/…h5p (1,4 Mo, 200 ms)` (+ `PUBLIÉ commit …`, `MOODLE activité H5P créée : <url>`) | terminé ; une ligne `piste:` signale une possibilité à proposer (ex. transcrit d'une vidéo) |
+| 1 | `ERREUR fichier: n problème(s)` + au plus 8 lignes `- emplacement: problème` | corriger ces points seulement (positions comptées à partir de 0) |
+| 2 | `ECHEC_PUBLICATION …` / `ECHEC_MOODLE …` / `ECHEC_ENVIRONNEMENT …` | le paquet est bon : ne pas régénérer le contenu, signaler |
 | 3 | `ECHEC_HARNAIS … (détails: dist/.harness-error.log)` | bogue du harnais |
 
 Le skill [`.claude/skills/h5p/SKILL.md`](.claude/skills/h5p/SKILL.md) donne cette procédure aux
@@ -91,9 +109,9 @@ contenant `config.php`, sinon recherche dans les emplacements usuels), `H5P_MOOD
 système propriétaire de moodledata, ex. `www-data`, via `sudo -n`/`runuser`), `H5P_MOODLE_USER` (compte
 Moodle utilisé ; défaut : l'administrateur principal, seul capable d'installer les bibliothèques H5P
 contenues dans le paquet), `H5P_MOODLE_PHP`. Vérifié de bout en bout sur Moodle 5.0 + PostgreSQL : les exemples
-des 63 types (68 activités) déposés en 32 s, puis ouverts sans erreur par un compte élève (bibliothèques
-installées par Moodle au premier affichage) ; page existante complétée, mise à jour sans doublon,
-dépôt au nom d'un enseignant et sous `www-data`.
+des 63 types et les 5 variantes YAML (68 activités) déposés en 32 s, puis ouverts sans erreur par un
+compte élève (bibliothèques installées par Moodle au premier affichage) ; page existante complétée,
+mise à jour sans doublon, dépôt au nom d'un enseignant et sous `www-data`.
 
 ## Moodle
 
@@ -126,8 +144,10 @@ et chaque régénération alourdirait définitivement l'historique. Comme la con
 `--publish` pousse le `.md` et ses médias ; un workflow GitHub volontairement minimal
 (`.github/workflows/h5p.yml` : déclenché seulement par un changement dans `sources/`, sans tests,
 désactivable avec la variable de dépôt `H5P_RELEASES=off`) reconstruit les paquets et les attache à
-la release **`h5p-<branche>`** (onglet *Releases*). Le paquet est aussi disponible immédiatement en
-local dans `dist/`.
+la release **`h5p-<branche>`** (onglet *Releases*), dont un paquet par type grâce à
+`sources/exemples/`. Seuls les paquets modifiés sont renvoyés (empreinte SHA-256 comparée à celle de la
+release), ce qui garde chaque passage court. Le paquet est aussi disponible immédiatement en local dans
+`dist/`.
 
 ## Médias
 
@@ -176,7 +196,8 @@ h5pharness/       moteur (engine, markdown, markers, media, package, sugar/, spe
 h5pharness/l10n/  traductions françaises manquantes dans les bibliothèques officielles
 specs/            fiches par type (générées)
 sources/          activités (Markdown) + sources/.media/ (médias téléchargés)
-tests/            tests + exemples de chaque type (tests/examples/) + médias de test
+sources/exemples/ un exemple validé par type (63) + media/ (leurs médias)
+tests/            tests ; tests/fixtures/ : cinq exemples réécrits entièrement en YAML
 tools/            vendoring, validateur officiel, rendu headless, publication des releases
 vendor/           bibliothèques H5P et verrou des versions
 ```

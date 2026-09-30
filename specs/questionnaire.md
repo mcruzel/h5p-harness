@@ -20,7 +20,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : uiEl
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/questionnaire.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/questionnaire.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---

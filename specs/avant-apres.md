@@ -24,7 +24,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : a11y
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/avant-apres.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/avant-apres.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -40,8 +40,8 @@ Fais glisser le curseur pour comparer le quartier **avant** et **après** sa ré
 - Quels bâtiments ont disparu ?
 - Quels nouveaux aménagements repères-tu ?
 
-![Avant (1990)](../media/avant.jpg)
-![Après (2020)](../media/apres.jpg)
+![Avant (1990)](media/avant.jpg)
+![Après (2020)](media/apres.jpg)
 
 ```yaml
 behavior:

@@ -32,7 +32,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/choix-images.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/choix-images.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -45,11 +45,11 @@ authors: Équipe de mathématiques
 ---
 Sélectionne **toutes** les figures qui sont des **quadrilatères**.
 
-- [x] ![Un carré rouge](../media/carre-rouge.png)
-- [x] ![Un losange violet](../media/losange-violet.png)
-- [ ] ![Un triangle vert](../media/triangle-vert.png)
-- [ ] ![Un hexagone gris](../media/hexagone-gris.png)
-- [ ] ![Un cercle bleu](../media/cercle-bleu.png)
+- [x] ![Un carré rouge](media/carre-rouge.png)
+- [x] ![Un losange violet](media/losange-violet.png)
+- [ ] ![Un triangle vert](media/triangle-vert.png)
+- [ ] ![Un hexagone gris](media/hexagone-gris.png)
+- [ ] ![Un cercle bleu](media/cercle-bleu.png)
 
 ```yaml
 overallFeedback:

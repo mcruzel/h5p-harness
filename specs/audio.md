@@ -20,7 +20,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : play
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/audio.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/audio.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -31,7 +31,7 @@ preset: decouverte
 license: CC BY-SA 4.0
 authors: Équipe de physique-chimie
 ---
-![Signal sonore de 440 Hz (la du diapason)](../media/bip.wav)
+![Signal sonore de 440 Hz (la du diapason)](media/bip.wav)
 
 ```yaml
 playerMode: full

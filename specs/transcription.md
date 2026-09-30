@@ -35,7 +35,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/transcription.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/transcription.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -47,9 +47,9 @@ language: fr
 mediumGroup:
   medium:
     library: video
-    md: "![Compte à rebours](../media/clip.webm)"
+    md: "![Compte à rebours](media/clip.webm)"
 transcriptFiles:
-  - transcriptFile: ../media/transcription.vtt
+  - transcriptFile: media/transcription.vtt
     label: Français
     languageCode: fr
 behaviour:

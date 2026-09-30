@@ -11,7 +11,7 @@ from h5pharness.moodle import deploy
 
 COURSE = os.environ.get("H5P_MOODLE_TEST_COURSE")
 pytestmark = pytest.mark.skipif(not COURSE, reason="pas de Moodle de test (H5P_MOODLE_TEST_COURSE)")
-EXAMPLE = Path(__file__).parent / "examples" / "vf.md"
+EXAMPLE = Path(__file__).parents[1] / "sources" / "exemples" / "vf.md"
 
 
 def test_activity_then_page_are_created_then_updated(tmp_path):

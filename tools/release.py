@@ -6,6 +6,8 @@ the release "h5p-<branch>" so they can be downloaded without bloating the git hi
 Requires the GitHub CLI (`gh`) with GH_TOKEN, GITHUB_REF_NAME and GITHUB_SHA (set by Actions).
 """
 import datetime as dt
+import hashlib
+import json
 import os
 import re
 import subprocess
@@ -18,6 +20,25 @@ def gh(*args, check=True):
     if check and res.returncode != 0:
         raise SystemExit(f"gh {' '.join(args[:3])}…: {res.stderr.strip()[-400:]}")
     return res
+
+
+def remote_assets(tag):
+    """{asset name: 'sha256:…' digest (None when GitHub does not report one)} of the release."""
+    res = gh("api", f"repos/{os.environ['GITHUB_REPOSITORY']}/releases/tags/{tag}", check=False)
+    if res.returncode != 0:
+        return {}
+    return {a["name"]: a.get("digest") for a in json.loads(res.stdout).get("assets", [])}
+
+
+def to_upload(packages, remote):
+    """Builds are byte-reproducible: only send a package whose content differs from the published one
+    (keeps each run short now that sources/exemples holds one package per type)."""
+    out = []
+    for name, path in packages.items():
+        digest = "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+        if remote.get(name) != digest:
+            out.append(name)
+    return out
 
 
 def main():
@@ -41,20 +62,22 @@ def main():
            "--target", os.environ.get("GITHUB_SHA", branch))
     else:
         gh("release", "edit", tag, "--notes", notes)
-    existing = set(filter(None, gh("release", "view", tag, "--json", "assets", "-q", ".assets[].name").stdout.split()))
+    remote = remote_assets(tag)
+    changed = to_upload(packages, remote)
     staging = dist / ".release"
     staging.mkdir(exist_ok=True)
     files = []
-    for name, path in packages.items():
+    for name in changed:
         target = staging / name
-        target.write_bytes(path.read_bytes())
+        target.write_bytes(packages[name].read_bytes())
         files.append(str(target))
-    if files:
-        gh("release", "upload", tag, *files, "--clobber")
-    for stale in sorted(existing - set(packages)):
-        gh("release", "delete-asset", tag, stale, "-y")
-    print(f"{len(packages)} paquet(s) publiés dans la release {tag}" +
-          (f", {len(existing - set(packages))} retiré(s)" if existing - set(packages) else ""))
+    for i in range(0, len(files), 20):
+        gh("release", "upload", tag, *files[i:i + 20], "--clobber")
+    stale = sorted(set(remote) - set(packages))
+    for name in stale:
+        gh("release", "delete-asset", tag, name, "-y")
+    print(f"release {tag} : {len(packages)} paquet(s), {len(changed)} envoyé(s) (les autres sont inchangés)"
+          + (f", {len(stale)} retiré(s)" if stale else ""))
 
 
 if __name__ == "__main__":

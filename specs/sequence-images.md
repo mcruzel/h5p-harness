@@ -24,7 +24,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/sequence-images.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/sequence-images.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -37,11 +37,11 @@ authors: Équipe de mathématiques
 ---
 Range les figures de celle qui a le moins de côtés à celle qui en a le plus.
 
-- ![Cercle (aucun côté)](../media/cercle-bleu.png)
-- ![Triangle (3 côtés)](../media/triangle-vert.png)
-- ![Carré (4 côtés)](../media/carre-rouge.png)
-- ![Hexagone (6 côtés)](../media/hexagone-gris.png)
-- ![Étoile (10 côtés)](../media/etoile-orange.png)
+- ![Cercle (aucun côté)](media/cercle-bleu.png)
+- ![Triangle (3 côtés)](media/triangle-vert.png)
+- ![Carré (4 côtés)](media/carre-rouge.png)
+- ![Hexagone (6 côtés)](media/hexagone-gris.png)
+- ![Étoile (10 côtés)](media/etoile-orange.png)
 
 ```yaml
 altTaskDescription: Range la liste suivante de la figure qui a le moins de côtés à celle qui en a le plus.

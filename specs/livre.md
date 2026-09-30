@@ -42,7 +42,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : read
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/livre.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/livre.md` (médias dans `sources/exemples/media/`).
 
 ```markdown
 ---
@@ -52,12 +52,12 @@ language: fr
 license: CC BY-SA 4.0
 ---
 Un petit livre pour découvrir et réviser les **paysages** de France.
-![Un paysage de campagne](../media/paysage.jpg)
+![Un paysage de campagne](media/paysage.jpg)
 
 # Les paysages ruraux
 La campagne française présente des paysages variés : **openfield** (champs ouverts) dans les grandes plaines, **bocage** (champs entourés de haies) dans l'Ouest.
 
-![Vue panoramique d'une vallée](../media/panorama.jpg)
+![Vue panoramique d'une vallée](media/panorama.jpg)
 
 ::: vf: vrai
 Le bocage est caractérisé par des champs entourés de haies.

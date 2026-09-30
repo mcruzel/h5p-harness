@@ -127,7 +127,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/carte-jeu.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/carte-jeu.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -148,7 +148,7 @@ gamemaps:
   - mapOptions:
       name: La vallée
       backgroundSettings:
-        backgroundImage: ../media/paysage.jpg
+        backgroundImage: media/paysage.jpg
         backgroundDescription: Une vallée avec une maison et un arbre
     # positions en % de l'image ; sans « neighbors », les étapes forment un parcours dans l'ordre
     elements:
@@ -187,7 +187,7 @@ gamemaps:
                 - [ ] Faux
           - contentType:
               library: image
-              file: ../media/etoile-orange.png
+              file: media/etoile-orange.png
               alt: Une étoile, récompense de fin de parcours
 endScreen:
   success:

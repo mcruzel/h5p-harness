@@ -50,7 +50,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : l10n
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/chasse-ar.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/chasse-ar.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -68,7 +68,7 @@ titleScreen:
     pour débloquer les questions.
 # le motif de chaque marqueur (markerPattern) est calculé à partir de son image
 markers:
-  - markerImage: ../media/triangle-vert.png
+  - markerImage: media/triangle-vert.png
     actionType: h5p
     interaction:
       interaction:
@@ -78,7 +78,7 @@ markers:
           - [x] 3
           - [ ] 4
           - [ ] 5
-  - markerImage: ../media/carre-rouge.png
+  - markerImage: media/carre-rouge.png
     actionType: h5p
     interaction:
       interaction:

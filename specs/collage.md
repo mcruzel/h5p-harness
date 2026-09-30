@@ -26,7 +26,7 @@ H5P.Collage 0.3 · alias : collage · syntaxe Markdown simplifiée : non (bloc `
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/collage.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/collage.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -42,13 +42,13 @@ collage:
   template: 1-2
   options: {heightRatio: 0.6, spacing: 0.5, frame: true}
   clips:
-    - image: ../media/paysage.jpg
+    - image: media/paysage.jpg
       alt: Le paysage rural d'origine, avec une maison et un arbre
       title: Le site en 1950
-    - image: ../media/avant.jpg
+    - image: media/avant.jpg
       alt: Le quartier avant sa rénovation
       title: Le quartier en 1990
-    - image: ../media/apres.jpg
+    - image: media/apres.jpg
       alt: Le quartier après sa rénovation
       title: Le quartier en 2020
       scale: 1.2

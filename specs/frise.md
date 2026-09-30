@@ -58,7 +58,7 @@ Symbole de la fin de l'Ancien Régime.
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/frise.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/frise.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---

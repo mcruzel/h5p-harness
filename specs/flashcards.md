@@ -39,7 +39,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : prog
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/flashcards.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/flashcards.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---
@@ -52,20 +52,20 @@ license: CC BY-SA 4.0
 
 ## Quadrilatère avec quatre côtés égaux et quatre angles droits
 carré
-![Un carré rouge](../media/carre-rouge.png)
+![Un carré rouge](media/carre-rouge.png)
 
 ## Polygone à six côtés
 hexagone
-![Un hexagone gris](../media/hexagone-gris.png)
+![Un hexagone gris](media/hexagone-gris.png)
 ? Comme les alvéoles d'une ruche.
 
 ## Quadrilatère avec quatre côtés égaux, sans angle droit
 losange
-![Un losange violet](../media/losange-violet.png)
+![Un losange violet](media/losange-violet.png)
 
 ## Polygone à trois côtés
 triangle
-![Un triangle vert](../media/triangle-vert.png)
+![Un triangle vert](media/triangle-vert.png)
 
 ```yaml
 randomCards: true

@@ -14,7 +14,7 @@ H5P.TwitterUserFeed 1.0 · alias : twitter, twitteruserfeed, twitter-user-feed �
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/twitter.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/twitter.md` (médias dans `sources/exemples/media/`).
 
 ````markdown
 ---

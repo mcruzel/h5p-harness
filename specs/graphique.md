@@ -29,7 +29,7 @@ Textes d'interface pré-remplis en français (ne pas fournir sauf besoin) : figu
 
 ## Exemple complet (validé : validateur officiel H5P + affichage)
 
-Fichier `tests/examples/graphique.md` (médias dans `tests/media/`).
+Fichier `sources/exemples/graphique.md` (médias dans `sources/exemples/media/`).
 
 ```markdown
 ---
