@@ -95,16 +95,26 @@ def _deposit(r, args):
     from .moodle import MoodleError, deploy, target
     try:
         t = target(r.meta, {"course": args.moodle, "section": args.section, "as": args.as_, "page": args.page,
-                            "hidden": args.hidden})
+                            "hidden": args.hidden, "bank": args.banque})
         d = deploy(r.out, key=seed_for(r.source), name=r.title, course=t["course"], section=t["section"],
-                   as_=t["as"], page=t["page"], hidden=t["hidden"], moodle_dir=args.moodle_dir)
+                   as_=t["as"], page=t["page"], hidden=t["hidden"], bank=t["bank"], moodle_dir=args.moodle_dir)
     except MoodleError as e:
         print(f"ECHEC_MOODLE {e} (paquet construit : {_rel(r.out)} ; ne pas régénérer le contenu)")
         return 2
-    what = "activité H5P" if d["as"] == "activity" else "page"
-    print(f"MOODLE {what} {'créée' if d['action'] == 'created' else 'mise à jour'} : {d['url']}")
+    done = "créé" if d["action"] == "created" else "mis à jour"
+    if d["as"] == "bank":
+        print(f"MOODLE contenu {done} dans la banque de contenus du cours : {d['url']}")
+    else:
+        what = "activité H5P" if d["as"] == "activity" else "page"
+        linked = f" (liée au contenu de la banque : {d['bank']['url']})" if d.get("linked") else ""
+        print(f"MOODLE {what} {done.replace('créé', 'créée').replace('mis à jour', 'mise à jour')} : {d['url']}"
+              f"{linked}")
     for w in d.get("warnings") or []:
         print(f"  avertissement: {w}")
+    if not d.get("bank") and d["action"] == "created":
+        print("  piste: contenu rangé dans l'activité, pas dans la banque de contenus du cours (ce n'est pas "
+              "nécessaire pour l'utiliser ni pour le modifier) ; --banque l'y range et y lie l'activité, pour le "
+              "réutiliser ailleurs ou le retrouver dans la banque")
     return 0
 
 
@@ -187,8 +197,12 @@ def main(argv=None):
             m = p.add_argument_group("dépôt dans un Moodle installé sur cette machine")
             m.add_argument("--moodle", nargs="?", const="", metavar="COURS",
                            help="déposer dans ce cours (id ou nom abrégé ; défaut : « moodle: » de l'en-tête)")
-            m.add_argument("--as", dest="as_", choices=["activite", "activité", "page"],
-                           help="activité H5P dédiée (défaut) ou page qui intègre le contenu")
+            m.add_argument("--as", dest="as_", choices=["activite", "activité", "page", "banque"],
+                           help="activité H5P dédiée (défaut), page qui intègre le contenu, "
+                                "ou banque de contenus seule")
+            m.add_argument("--banque", action="store_true",
+                           help="ranger aussi le contenu dans la banque de contenus du cours "
+                                "et y lier l'activité ou la page")
             m.add_argument("--section", type=int, help="n° de section du cours (défaut 0)")
             m.add_argument("--page", metavar="PAGE", help="ajouter à une page existante (id de module ou nom exact)")
             m.add_argument("--hidden", action="store_true", help="cacher l'activité aux étudiants")

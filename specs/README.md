@@ -61,7 +61,8 @@ python -m h5pharness transcript video.vtt                     # transcrit d'une 
 ```
 
 Dépôt Moodle : `--as activite` (activité H5P, défaut) ou `--as page` ; `--page "<nom>"` ajoute à une page
-existante ; `--section <n>`, `--hidden`. Relancer met à jour la même activité. Sortie `MOODLE … : <url>`,
+existante ; `--section <n>`, `--hidden` ; `--banque` range aussi le contenu dans la banque de contenus du
+cours et y lie l'activité (`--as banque` : banque seule). Relancer met à jour la même activité. Sortie `MOODLE … : <url>`,
 ou `ECHEC_MOODLE …` (code 2 : le paquet est bon, ne pas le régénérer).
 
 Sortie : `OK <paquet>` (code 0), éventuellement suivi de lignes `piste:` (possibilités à proposer) ; `ERREUR` + au plus 8 lignes `- emplacement: problème` (code 1 :

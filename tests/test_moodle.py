@@ -22,3 +22,14 @@ def test_activity_then_page_are_created_then_updated(tmp_path):
         again = deploy(res.out, key="tests/moodle-vf.md", name="Test du harnais", course=COURSE, as_=as_)
         assert again["cmid"] == first["cmid"] and again["action"] == "updated"
         assert again["url"].endswith(f"id={first['cmid']}")
+
+
+def test_content_bank_item_linked_and_updated(tmp_path):
+    res = build_one(EXAMPLE, Registry(), out_dir=tmp_path, offline=True)
+    assert res.ok
+    bank_only = deploy(res.out, key="tests/moodle-banque.md", name="Test banque", course=COURSE, as_="bank")
+    assert bank_only["as"] == "bank" and bank_only["cmid"] is None and "/contentbank/view.php" in bank_only["url"]
+    linked = deploy(res.out, key="tests/moodle-banque.md", name="Test banque", course=COURSE, bank=True)
+    assert linked["linked"] and linked["bank"]["id"] == bank_only["bank"]["id"]      # same bank item, now linked
+    again = deploy(res.out, key="tests/moodle-banque.md", name="Test banque", course=COURSE, bank=True)
+    assert again["cmid"] == linked["cmid"] and again["bank"]["action"] == "updated"
