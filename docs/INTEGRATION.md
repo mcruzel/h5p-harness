@@ -14,7 +14,7 @@ chemins réels. Le fonctionnement du harnais lui-même (format des sources, type
 | git | `--publish` (commit et push des sources), clone de `h5p-php-library` par le contrôle officiel | oui pour `--publish` et `tools/qa.py` |
 | accès réseau | téléchargement des médias par URL (une fois, dans `sources/.media/`, puis hors ligne) ; premier usage de `tools/qa.py` | selon les sources |
 | PHP CLI avec `zip` et `mbstring` | validateur officiel (`tools/qa.py`) et dépôt direct dans Moodle (`--moodle`) | facultatif (recommandé) |
-| node, npm, `unzip` | rendu des paquets dans Chromium (`tools/qa.py --render`) ; `h5p-standalone` et `playwright` sont installés dans `~/.cache/h5p-harness` au premier usage | facultatif |
+| node, npm, `unzip` | rendu des paquets dans Chromium et mesure de la hauteur des glisser-déposer (`tools/qa.py --render`) ; `h5p-standalone` et `playwright` sont installés dans `~/.cache/h5p-harness` au premier usage | facultatif |
 | Chromium (via playwright, ou `H5P_CHROMIUM`) | idem | facultatif |
 | `cairosvg` (pip) | conversion automatique des images SVG (Moodle refuse le SVG dans H5P) | facultatif |
 | un Moodle 4.5 ou plus sur la même machine | dépôt direct `--moodle` (API H5P 1.28, `h5plib_v128`) | facultatif |
@@ -36,9 +36,34 @@ pas déjà global) et pose `H5P_RENDER_MODULES` vers ce dossier : rien à faire.
 existant (le même que celui des autres chaînes), poser `H5P_RENDER_MODULES=<dossier>/node_modules` ; ce dossier contient
 `npm install playwright@^1.63 h5p-standalone@^3.8.2` (1.63.0 et 3.8.2 sur l'installation d'origine) et le Chromium de playwright
 (`npx playwright install chromium`), ou on pose `H5P_CHROMIUM`. Sur l'installation d'origine, ce dossier s'appelle `h5p-render` : sa
-recréation complète (dossier, versions, navigateur, variables qui y pointent, scripts de capture et de mesure sans équivalent dans ce dépôt)
+recréation complète (dossier, versions, navigateur, variables qui y pointent, scripts de capture sans équivalent dans ce dépôt ; la mesure de hauteur d'un glisser-déposer a le sien, voir ci-dessous)
 est décrite une fois pour les trois chaînes dans le dépôt `course-composer`, `docs/harnais.md`, section « `h5p-render` : le dossier
 d'outils node ».
+
+**Mesure de la hauteur des glisser-déposer.** Un glisser-déposer s'allonge après « Vérifier » (retours par zone, tableau de retours, score) :
+la mesure de cet allongement est celle qu'un projet exige avant de déposer l'activité (voir § 5). `tools/qa.py <paquet> --render` la fait seul pour
+chaque paquet dont la bibliothèque principale est `H5P.DragQuestion` (pas pour un glisser-déposer rangé dans un quiz ou une présentation). Il joue
+l'activité dans Chromium à deux largeurs, 400 px (écran étroit) et 760 px (colonne de contenu d'une page de cours) ; `--largeurs 400,760,1000` les
+change. À chaque largeur il mesure la hauteur de l'iframe, dépose les étiquettes selon un plan déduit des bonnes réponses du `content.json`,
+clique « Vérifier » et mesure de nouveau, dans deux cas : `juste` (chaque étiquette dans sa zone) et `tout faux` (chaque étiquette dans une zone
+fausse : le cas où les retours sont les plus longs, donc le pire cas). Sortie, hauteurs en pixels, entre parenthèses l'écart avec la hauteur initiale :
+
+~~~
+OK    dist/passeport-ia/3.2-planche-cinq-taches.h5p  « Eléments déplaçables 1 de 5. Lister les candidatures reçues sur un fic »
+      hauteur 400 px : avant 381 · juste 1718 (+1337) · tout faux 1775 (+1394)
+      hauteur 760 px : avant 653 · juste 1634 (+981) · tout faux 1711 (+1058)
+~~~
+
+- **Aucun seuil par défaut** : le harnais mesure, la règle de présentation est celle du projet. `--hauteur-max PX` fait échouer l'activité dont une hauteur
+  après « Vérifier » dépasse `PX` (code de sortie 1) ; `--no-mesure` supprime la mesure (le rendu seul est plus rapide : compter une trentaine de secondes par
+  glisser-déposer pour deux largeurs et deux plans).
+- `--shots <dossier>` ajoute les captures prises après « Vérifier » (`<paquet>-verifie-<largeur>-<plan>.png`) ; `--json` rend le détail dans
+  `mesure.runs` (largeur, plan, étiquettes déposées sur attendues, hauteurs de l'iframe et du document avant et après).
+- Une mesure qui ne peut pas être menée honnêtement est un échec, pas un chiffre : pas de bouton « Vérifier », étiquette qui ne se laisse pas déposer
+  (« 2 étiquette(s) déposée(s) sur 3, mesure incomplète »), erreur du navigateur.
+- Même résolution de `playwright` et de `h5p-standalone` que `tools/render.mjs` (`H5P_RENDER_MODULES`, `H5P_CHROMIUM`), aucune dépendance de plus.
+  Pour lancer le script seul : `node tools/measure_dnd.mjs <paquet>.h5p '{"widths":[760],"plans":{"juste":[[0,0],[1,1]]}}'` (couples
+  `[rang de l'étiquette dans la page, rang de la zone]`, à partir de 0 ; plan et sortie : `tools/dnd_measure.py`).
 
 ## 2. Configuration : variables d'environnement
 
@@ -110,7 +135,8 @@ d'écriture de JSON H5P à la main.
 
 1. `python -m h5pharness types` : 63 types ; `python -m h5pharness spec qcm` : une fiche.
 2. `python -m h5pharness build sources/exemples -o /tmp/essai --offline -q` : les 63 paquets se construisent (`OK`).
-3. `python tools/qa.py /tmp/essai/qcm.h5p --render` : `OK` (PHP, node et Chromium fonctionnent ; réseau au premier usage).
+3. `python tools/qa.py /tmp/essai/qcm.h5p --render` : `OK` (PHP, node et Chromium fonctionnent ; réseau au premier usage). Même commande sur
+   `/tmp/essai/glisser-deposer.h5p` : `OK` suivi de deux lignes `hauteur 400 px : …` et `hauteur 760 px : …` (mesure après « Vérifier »).
 4. `python -m pytest -q` et `python -m ruff check .`. Les tests de dépôt réel sont ignorés sans `H5P_MOODLE_TEST_COURSE`.
 5. Dépôt (si Moodle est sur la machine, avec `H5P_MOODLE_DIR` et `H5P_MOODLE_RUNAS` posés) : `build sources/exemples/vf.md --moodle <cours d'essai> --hidden` rend
    `MOODLE activité H5P créée : <url>` ; relancer rend `mise à jour` (pas de doublon).
@@ -124,7 +150,7 @@ d'écriture de JSON H5P à la main.
   `.gitignore` : ajouter `sources/<cours>/` à `.git/info/exclude`). L'identifiant d'une activité Moodle dérive du chemin de la source
   sous le harnais : garder le même chemin pour mettre à jour la même activité, ne jamais le renommer après dépôt.
 - **Les règles de conduite d'un projet** : types admis ou exclus, registre des énoncés et des retours, mesures de présentation
-  (hauteur de l'activité après « Vérifier »), numérotation, qui valide, qui dépose, quelle forme (activité dédiée plutôt que page),
+  (seuil de hauteur d'un glisser-déposer après « Vérifier » : le harnais la mesure, `--hauteur-max` l'applique), numérotation, qui valide, qui dépose, quelle forme (activité dédiée plutôt que page),
   usage de la banque de contenus, cours d'essai. Elles se déclarent dans la spécification du projet et dans les consignes de ses agents,
   pas dans le harnais.
 - **Le Moodle cible** : sa version (4.5 ou plus), son dossier, le compte de dépôt, les droits des enseignants (`moodle/h5p:updatelibraries`
