@@ -30,6 +30,16 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt -r requiremen
 .venv/bin/python -m pytest -q && .venv/bin/python -m ruff check .             # tests et lint
 ~~~
 
+**Rendu : où sont `playwright` et `h5p-standalone`.** `tools/qa.py --render` les installe lui-même au premier usage dans
+`$H5P_HARNESS_CACHE/render/node_modules` (`~/.cache/h5p-harness/render` par défaut : `npm i h5p-standalone@3.8.2`, plus `playwright` s'il n'est
+pas déjà global) et pose `H5P_RENDER_MODULES` vers ce dossier : rien à faire. Pour lancer `tools/render.mjs` seul avec un dossier d'outils node
+existant (le même que celui des autres chaînes), poser `H5P_RENDER_MODULES=<dossier>/node_modules` ; ce dossier contient
+`npm install playwright@^1.63 h5p-standalone@^3.8.2` (1.63.0 et 3.8.2 sur l'installation d'origine) et le Chromium de playwright
+(`npx playwright install chromium`), ou on pose `H5P_CHROMIUM`. Sur l'installation d'origine, ce dossier s'appelle `h5p-render` : sa
+recréation complète (dossier, versions, navigateur, variables qui y pointent, scripts de capture et de mesure sans équivalent dans ce dépôt)
+est décrite une fois pour les trois chaînes dans le dépôt `course-composer`, `docs/harnais.md`, section « `h5p-render` : le dossier
+d'outils node ».
+
 ## 2. Configuration : variables d'environnement
 
 Le harnais n'a **pas de fichier de configuration** : tout réglage propre à la machine passe par l'environnement du processus qui
@@ -83,6 +93,13 @@ l'agent ou de son espace de travail (ou un dossier déclaré dans sa configurati
 l'endroit où il lit ses skills (`name` et `description` du frontmatter suffisent). Un agent qui ne lit pas les skills peut recevoir le
 contenu du fichier comme consigne. Le skill d'origine `.claude/skills/h5p/SKILL.md` (écrit pour travailler dans le dépôt du harnais)
 reste en place ; `activite-h5p` en est la version portable, qui couvre aussi les sources d'un autre dépôt.
+
+**Une seule version de chaque skill visible par un agent.** Les skills de `skills/` sont des versions *portables* : elles servent à recréer
+les skills dans un environnement qui n'en a pas. Si l'environnement possède déjà une version adaptée du même skill, ne pas installer la
+version portable (l'agent verrait deux skills du même nom) : la version adaptée fait foi. Cas de l'installation d'origine (OpenClaw) :
+l'agent ne charge que le dossier `skills/course-composer` du dépôt `second-brain` (déclaré dans `skills.load.extraDirs` de `openclaw.json`),
+où les versions locales adaptées font foi ; les quatre skills de `skills/` ne servent là qu'à recréer les skills ailleurs. Le skill d'origine
+`.claude/skills/h5p/SKILL.md` et `activite-h5p` portent le même rôle : n'en exposer qu'un à un même agent.
 
 Garde-fous communs à tous les skills (à reprendre dans les consignes de l'agent, `AGENTS.md` du dépôt) : jamais de dépôt Moodle sans
 accord explicite de l'utilisateur ; jamais de `--publish` pour des sources qui vivent dans un autre dépôt ; jamais de fusion de pull
