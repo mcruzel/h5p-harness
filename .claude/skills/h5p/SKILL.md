@@ -38,3 +38,7 @@ Ne jamais écrire de JSON H5P ni lire `vendor/` : le générateur s'en charge.
 
 Vérifier sans écrire de paquet : `python -m h5pharness check <fichier.md>`.
 Si `import yaml`/`markdown_it` échoue : `pip install -r requirements.txt`.
+
+Nouvel environnement, autre agent ou sources dans un autre dépôt : `docs/INTEGRATION.md`. Les versions portables de ce skill
+(`activite-h5p`) et des skills de contrôle, de dépôt Moodle et de maintenance sont dans `skills/` ;
+`python -m h5pharness skills --exporter <dossier>` les écrit avec les chemins réels.

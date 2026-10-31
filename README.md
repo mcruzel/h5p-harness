@@ -26,6 +26,7 @@ python -m h5pharness build sources/svt/cellule.md        # -> dist/svt/cellule.h
 python -m h5pharness build sources/svt/cellule.md --publish   # + git add/commit/push des sources
 python -m h5pharness build sources/svt/cellule.md --moodle svt5e --section 2   # + dépôt dans Moodle
 python -m h5pharness transcript video.vtt                # transcrit compact (vidéo interactive)
+python -m h5pharness skills --exporter <dossier> [--projet <chemin>]   # skills portables, chemins réels (docs/INTEGRATION.md)
 ```
 
 Exemple de source (`type: quiz`) :
@@ -88,6 +89,12 @@ augmentée.
 
 Le skill [`.claude/skills/h5p/SKILL.md`](.claude/skills/h5p/SKILL.md) donne cette procédure aux
 agents ; il ne charge qu'une description courte tant qu'il ne sert pas.
+
+**Nouvel environnement** (autre machine, autre agent, sources dans un autre dépôt) :
+[`docs/INTEGRATION.md`](docs/INTEGRATION.md) donne l'installation (Python, PHP, node + Chromium), chaque variable d'environnement
+(`H5P_MOODLE_DIR`, `H5P_MOODLE_RUNAS`…), la liste des skills et la commande qui les recrée avec les chemins réels
+(`python -m h5pharness skills --exporter <dossier>`). Les quatre skills portables (produire, contrôler, déposer sur Moodle,
+maintenir le harnais) sont dans [`skills/`](skills/).
 
 ## Dépôt direct dans Moodle (même machine)
 
@@ -194,6 +201,7 @@ Vidéos : lien YouTube/Vimeo conservé tel quel, ou fichier MP4/WebM.
 | régénérer les fiches | `python -m h5pharness specs` |
 | tests | `python -m pytest` · `python -m ruff check .` |
 | contrôle complet | `python tools/qa.py dist/ --render` |
+| recréer les skills dans un nouvel environnement | `python -m h5pharness skills --exporter <dossier>` (voir `docs/INTEGRATION.md`) |
 | ajouter des lignes aux commits de `--publish` | variable `H5P_COMMIT_TRAILERS` (ex. `Co-Authored-By: …`) |
 
 Les bibliothèques (`vendor/libraries`, 175 bibliothèques pour 63 types, 55 Mo) viennent des dépôts
@@ -210,6 +218,8 @@ l'environnement de développement.
 h5pharness/       moteur (engine, markdown, markers, media, package, sugar/, specs, cli)
 h5pharness/l10n/  traductions françaises manquantes dans les bibliothèques officielles
 specs/            fiches par type (générées)
+skills/           skills portables des agents (<HARNAIS>, <PROJET>) ; `skills --exporter` les écrit avec les chemins réels
+docs/             INTEGRATION.md : nouvel environnement (installation, variables, skills)
 sources/          activités (Markdown) + sources/.media/ (médias téléchargés)
 sources/exemples/ un exemple validé par type (63) + media/ (leurs médias)
 tests/            tests ; tests/fixtures/ : cinq exemples réécrits entièrement en YAML

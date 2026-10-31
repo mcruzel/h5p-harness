@@ -1,4 +1,4 @@
-"""Command line: python -m h5pharness <build|check|types|spec|specs|libs> ...
+"""Command line: python -m h5pharness <build|check|types|spec|specs|libs|transcript|skills> ...
 
 Output contract (kept tiny for AI agents):
   exit 0  OK            -> "OK <paquet> (...)" [+ avertissements]
@@ -173,6 +173,25 @@ def cmd_transcript(args):
     return 0
 
 
+def cmd_skills(args):
+    """Skills portables du harnais (skills/<nom>/SKILL.md) : les lister ou les exporter avec les chemins réels."""
+    from . import skills
+    if not args.exporter:
+        for n in skills.names():
+            print(n)
+        print("  piste: python -m h5pharness skills --exporter <dossier> [--projet <chemin>]")
+        return 0
+    try:
+        done = skills.export(args.exporter, args.projet)
+    except skills.SkillsError as e:
+        print(f"ERREUR {e}")
+        return 1
+    for name, path in done:
+        print(f"OK {name} -> {path}")
+    print(f"  {len(done)} skill(s) écrit(s) : à recopier dans le dossier de skills de l'agent (docs/INTEGRATION.md)")
+    return 0
+
+
 def cmd_libs(args):
     from .library import Registry
     reg = Registry()
@@ -213,6 +232,10 @@ def main(argv=None):
     p.add_argument("type")
     sub.add_parser("specs", help="régénérer specs/")
     sub.add_parser("libs", help="versions des bibliothèques embarquées")
+    p = sub.add_parser("skills", help="skills portables du harnais : les exporter vers un nouvel environnement")
+    p.add_argument("--exporter", metavar="DOSSIER", help="écrire <dossier>/<nom>/SKILL.md avec les chemins réels")
+    p.add_argument("--projet", metavar="CHEMIN",
+                   help="dossier du projet (sources, spécification) ; défaut : le dossier courant")
     p = sub.add_parser("transcript", help="transcrit horodaté compact d'une vidéo (.vtt/.srt, chemin ou URL)")
     p.add_argument("file")
     p.add_argument("--step", type=int, default=30, help="secondes par ligne (défaut 30)")
@@ -223,7 +246,7 @@ def main(argv=None):
         if args.cmd == "check":
             return cmd_build(args, write=False)
         return {"types": cmd_types, "spec": cmd_spec, "specs": cmd_specs, "libs": cmd_libs,
-                "transcript": cmd_transcript}[args.cmd](args)
+                "transcript": cmd_transcript, "skills": cmd_skills}[args.cmd](args)
     except KeyboardInterrupt:
         return 2
     except OSError as e:
