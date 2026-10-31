@@ -31,10 +31,11 @@ cd <HARNAIS>
 
 1. Lancer `tools/qa.py dist/<cours>/ --render --shots <dossier temporaire>` sur les paquets à déposer.
 2. Lire le résultat : une ligne `OK` par paquet conforme, `ÉCHEC <paquet>` suivi des problèmes (`admin:`, `teacher:`, `filtre H5P:`,
-   `rendu:`) sinon, puis `n/n paquet(s) conformes`. Code de sortie 0 = tout est conforme, 1 = au moins un échec, 2 = PHP absent.
-3. **Regarder** chaque capture : l'activité s'affiche, le texte est lisible, rien ne déborde. Les règles de présentation du projet
-   (par exemple la hauteur de l'activité après « Vérifier », dans le cas juste et dans le pire cas) se mesurent sur le rendu : elles
-   sont dans la spécification du projet, pas dans le harnais.
+   `rendu:`, `hauteur:`) sinon, puis `n/n paquet(s) conformes`. Code de sortie 0 = tout est conforme, 1 = au moins un échec, 2 = PHP absent.
+3. **Regarder** chaque capture : l'activité s'affiche, le texte est lisible, rien ne déborde. Pour un glisser-déposer, `--render` mesure aussi la hauteur
+   de l'activité avant et après « Vérifier », dans le cas juste et dans le pire cas (tout faux), à 400 et 760 px : lire les deux lignes
+   `hauteur … px` sous le `OK` (captures après « Vérifier » avec `--shots`). Le harnais ne fixe pas de seuil : la limite de hauteur est une
+   règle de présentation de la spécification du projet, qu'on applique avec `--hauteur-max PX`.
 4. Un `ÉCHEC` de contenu se corrige dans la source (skill `activite-h5p`), puis on reconstruit et on recontrôle. Un échec de
    l'environnement (PHP, réseau, Chromium) ne se contourne pas en réécrivant le contenu : le signaler.
 

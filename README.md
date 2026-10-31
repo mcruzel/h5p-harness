@@ -190,7 +190,9 @@ Vidéos : lien YouTube/Vimeo conservé tel quel, ou fichier MP4/WebM.
 3. `python tools/qa.py dist/` : **validateur officiel `h5p-php-library`** (le code qu'embarque
    Moodle), en droits gestionnaire et enseignant, et vérification que le filtre d'affichage ne
    modifie rien ; avec `--render`, chaque paquet est aussi joué dans Chromium (h5p-standalone) et
-   toute erreur JavaScript est signalée. Ces contrôles tournent en local ; sur GitHub, seulement à la
+   toute erreur JavaScript est signalée, et chaque glisser-déposer est mesuré : hauteur de l'activité avant et
+   après « Vérifier », dans le cas juste et dans le pire cas (tout faux), à 400 et 760 px de large
+   (`--largeurs`, `--hauteur-max` ; voir `docs/INTEGRATION.md`). Ces contrôles tournent en local ; sur GitHub, seulement à la
    demande (workflow manuel « Tests du harnais »), pour ne pas consommer de minutes d'Actions.
 
 ## Maintenance
@@ -201,6 +203,7 @@ Vidéos : lien YouTube/Vimeo conservé tel quel, ou fichier MP4/WebM.
 | régénérer les fiches | `python -m h5pharness specs` |
 | tests | `python -m pytest` · `python -m ruff check .` |
 | contrôle complet | `python tools/qa.py dist/ --render` |
+| hauteur d'un glisser-déposer avant et après « Vérifier » | `python tools/qa.py dist/x.h5p --render` (`--largeurs 400,760`, `--hauteur-max PX`, `--no-mesure`) |
 | recréer les skills dans un nouvel environnement | `python -m h5pharness skills --exporter <dossier>` (voir `docs/INTEGRATION.md`) |
 | ajouter des lignes aux commits de `--publish` | variable `H5P_COMMIT_TRAILERS` (ex. `Co-Authored-By: …`) |
 
@@ -223,6 +226,6 @@ docs/             INTEGRATION.md : nouvel environnement (installation, variables
 sources/          activités (Markdown) + sources/.media/ (médias téléchargés)
 sources/exemples/ un exemple validé par type (63) + media/ (leurs médias)
 tests/            tests ; tests/fixtures/ : cinq exemples réécrits entièrement en YAML
-tools/            vendoring, validateur officiel, rendu headless, publication des releases
+tools/            vendoring, validateur officiel, rendu headless, mesure de hauteur des glisser-déposer, publication des releases
 vendor/           bibliothèques H5P et verrou des versions
 ```

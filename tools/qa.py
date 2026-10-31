@@ -4,6 +4,11 @@
     python tools/qa.py dist/                 # every .h5p under dist/
     python tools/qa.py dist/x.h5p --render   # also play it in Chromium (h5p-standalone)
     python tools/qa.py dist/ --render --shots out/   # + screenshots
+    python tools/qa.py dist/x.h5p --render --hauteur-max 1200   # fail above 1200 px after « Vérifier » (drag-and-drop)
+
+With --render, a drag-and-drop package (H5P.DragQuestion) is also measured: height of the activity before and after
+« Vérifier », in the right case and in the worst case (all wrong), at several widths (--largeurs, default 400,760).
+See tools/dnd_measure.py.
 
 Prerequisites (fetched into ~/.cache/h5p-harness on first use): git, php (zip, mbstring), and for
 --render: node + npm (h5p-standalone, playwright with a Chromium).
@@ -16,6 +21,8 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+
+import dnd_measure
 
 ROOT = Path(__file__).resolve().parent.parent
 CACHE = Path(os.environ.get("H5P_HARNESS_CACHE", Path.home() / ".cache" / "h5p-harness"))
@@ -67,10 +74,15 @@ def php_check(pkg, mode):
         return {"valid": False, "messages": [f"php: {(res.stderr or res.stdout).strip()[-300:]}"], "altered": []}
 
 
-def render(pkg, shot=None):
+def render_env():
     env = {**os.environ, "H5P_RENDER_MODULES": str(ensure_render())}
     if Path("/opt/pw-browsers/chromium").exists() and "H5P_CHROMIUM" not in env:
         env["H5P_CHROMIUM"] = "/opt/pw-browsers/chromium"
+    return env
+
+
+def render(pkg, shot=None):
+    env = render_env()
     cmd = ["node", str(ROOT / "tools" / "render.mjs"), str(pkg)] + ([str(shot)] if shot else [])
     res = subprocess.run(cmd, capture_output=True, text=True, timeout=180, env=env)
     try:
@@ -79,15 +91,23 @@ def render(pkg, shot=None):
         return {"initError": (res.stderr or res.stdout).strip()[-300:], "errors": [], "missing": [], "text": ""}
 
 
-def main():
+def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("targets", nargs="+")
     ap.add_argument("--render", action="store_true")
     ap.add_argument("--shots", help="dossier des captures d'écran (avec --render)")
+    ap.add_argument("--no-mesure", action="store_true",
+                    help="avec --render, ne pas mesurer la hauteur des glisser-déposer")
+    ap.add_argument("--largeurs", default=",".join(map(str, dnd_measure.LARGEURS)),
+                    help="largeurs (px) de la mesure des glisser-déposer, séparées par des virgules "
+                         "(défaut %(default)s)")
+    ap.add_argument("--hauteur-max", type=int, metavar="PX",
+                    help="glisser-déposer : échec si la hauteur après « Vérifier » dépasse PX (aucun seuil par "
+                         "défaut : la mesure est rendue, la règle du projet décide)")
     ap.add_argument("--no-php", action="store_true")
     ap.add_argument("--json", action="store_true")
     ap.add_argument("-j", "--jobs", type=int, default=4)
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
     pkgs = []
     for t in args.targets:
         p = Path(t)
@@ -99,6 +119,10 @@ def main():
         ensure_core()
     if args.render:
         ensure_render()
+    try:
+        widths = tuple(int(w) for w in args.largeurs.split(","))
+    except ValueError:
+        ap.error("--largeurs: des entiers séparés par des virgules (ex. 400,760)")
     shots = Path(args.shots) if args.shots else None
     if shots:
         shots.mkdir(parents=True, exist_ok=True)
@@ -110,6 +134,9 @@ def main():
             out["teacher"] = php_check(pkg, "teacher")
         if args.render:
             out["render"] = render(pkg, shots / (pkg.stem + ".png") if shots else None)
+            if not args.no_mesure:
+                out["mesure"] = dnd_measure.measure(pkg, render_env(), widths,
+                                                    shots / (pkg.stem + "-verifie") if shots else None)
         return out
 
     with cf.ThreadPoolExecutor(max_workers=args.jobs) as pool:
@@ -130,6 +157,8 @@ def main():
             if blank:
                 parts.append("rien d'affiché")
             issues.append("rendu: " + "; ".join(filter(None, parts)))
+        mesure = r.get("mesure")
+        issues += ["hauteur: " + p for p in dnd_measure.problems(mesure, args.hauteur_max)]
         name = r["package"]
         if issues:
             failed += 1
@@ -138,6 +167,9 @@ def main():
                 print(f"  - {i}")
         elif not args.json:
             print(f"OK    {name}" + (f"  « {rd['text'][:70]} »" if rd else ""))
+        if not args.json:
+            for line in dnd_measure.summary(mesure):
+                print(f"      hauteur {line}")
     if args.json:
         print(json.dumps(results, ensure_ascii=False, indent=1))
     print(f"\n{len(results) - failed}/{len(results)} paquet(s) conformes")
