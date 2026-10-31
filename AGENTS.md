@@ -7,5 +7,7 @@
   dans les fiches `specs/`, construit par les tests) ; ne pas y ranger d'autres activités.
 - **Modifier le harnais** (`h5pharness/`) : lancer `python -m pytest` et `python -m ruff check .` ;
   contrôle complet d'un paquet : `python tools/qa.py dist/ --render` (validateur PHP officiel + rendu).
+- **Nouvel environnement** et skills portables (`skills/`, `python -m h5pharness skills --exporter <dossier>`) :
+  `docs/INTEGRATION.md`.
 - **Mettre à jour les bibliothèques H5P** : `python tools/vendor_libraries.py` puis
   `python -m h5pharness specs`.
